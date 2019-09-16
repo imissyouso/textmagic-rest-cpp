@@ -36,53 +36,20 @@ web::json::value GetSurveyNodesResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    {
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Nodes )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
-        val[utility::conversions::to_string_t("nodes")] = web::json::value::array(jsonArray);
-    }
-    {
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Rows )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
-        val[utility::conversions::to_string_t("rows")] = web::json::value::array(jsonArray);
-    }
+    val[utility::conversions::to_string_t("nodes")] = ModelBase::toJson(m_Nodes);
+    val[utility::conversions::to_string_t("rows")] = ModelBase::toJson(m_Rows);
 
     return val;
 }
 
 void GetSurveyNodesResponse::fromJson(web::json::value& val)
 {
-    {
-        m_Nodes.clear();
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : val[utility::conversions::to_string_t("nodes")].as_array() )
-        {
-            if(item.is_null())
-            {
-                m_Nodes.push_back( std::shared_ptr<SurveyNode>(nullptr) );
-            }
-            else
-            {
-                std::shared_ptr<SurveyNode> newItem(new SurveyNode());
-                newItem->fromJson(item);
-                m_Nodes.push_back( newItem );
-            }
-        }
-    }
-    {
-        m_Rows.clear();
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : val[utility::conversions::to_string_t("rows")].as_array() )
-        {
-            m_Rows.push_back(ModelBase::std::vectorFromJson(item));
-        }
-    }
+    std::shared_ptr<Object> newNodes(nullptr);
+    newNodes->fromJson(val[utility::conversions::to_string_t("nodes")]);
+    setNodes( newNodes );
+    std::shared_ptr<Object> newRows(nullptr);
+    newRows->fromJson(val[utility::conversions::to_string_t("rows")]);
+    setRows( newRows );
 }
 
 void GetSurveyNodesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -93,22 +60,8 @@ void GetSurveyNodesResponse::toMultipart(std::shared_ptr<MultipartFormData> mult
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    {
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Nodes )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("nodes"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
-            }
-    {
-        std::vector<web::json::value> jsonArray;
-        for( auto& item : m_Rows )
-        {
-            jsonArray.push_back(ModelBase::toJson(item));
-        }
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("rows"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
-            }
+    m_Nodes->toMultipart(multipart, utility::conversions::to_string_t("nodes."));
+    m_Rows->toMultipart(multipart, utility::conversions::to_string_t("rows."));
 }
 
 void GetSurveyNodesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -119,60 +72,32 @@ void GetSurveyNodesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mu
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    {
-        m_Nodes.clear();
-
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("nodes"))));
-        for( auto& item : jsonArray.as_array() )
-        {
-            if(item.is_null())
-            {
-                m_Nodes.push_back( std::shared_ptr<SurveyNode>(nullptr) );
-            }
-            else
-            {
-                std::shared_ptr<SurveyNode> newItem(new SurveyNode());
-                newItem->fromJson(item);
-                m_Nodes.push_back( newItem );
-            }
-        }
-    }
-    {
-        m_Rows.clear();
-
-        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("rows"))));
-        for( auto& item : jsonArray.as_array() )
-        {
-            if(item.is_null())
-            {
-                m_Rows.push_back( std::vector<int32_t>(nullptr) );
-            }
-            else
-            {
-                std::vector<int32_t> newItem(std::vector<int32_t>());
-                newItem->fromJson(item);
-                m_Rows.push_back( newItem );
-            }
-        }
-    }
+    std::shared_ptr<Object> newNodes(nullptr);
+    newNodes->fromMultiPart(multipart, utility::conversions::to_string_t("nodes."));
+    setNodes( newNodes );
+    std::shared_ptr<Object> newRows(nullptr);
+    newRows->fromMultiPart(multipart, utility::conversions::to_string_t("rows."));
+    setRows( newRows );
 }
 
-std::vector<std::shared_ptr<SurveyNode>>& GetSurveyNodesResponse::getNodes()
+std::shared_ptr<Object> GetSurveyNodesResponse::getNodes() const
 {
     return m_Nodes;
 }
 
-void GetSurveyNodesResponse::setNodes(std::vector<std::shared_ptr<SurveyNode>> value)
+
+void GetSurveyNodesResponse::setNodes(std::shared_ptr<Object> value)
 {
     m_Nodes = value;
     
 }
-std::vector<std::vector<int32_t>>& GetSurveyNodesResponse::getRows()
+std::shared_ptr<Object> GetSurveyNodesResponse::getRows() const
 {
     return m_Rows;
 }
 
-void GetSurveyNodesResponse::setRows(std::vector<std::vector<int32_t>> value)
+
+void GetSurveyNodesResponse::setRows(std::shared_ptr<Object> value)
 {
     m_Rows = value;
     

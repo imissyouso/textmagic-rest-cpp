@@ -22,8 +22,7 @@
 
 #include "../ModelBase.h"
 
-#include "SurveyNode.h"
-#include <vector>
+#include "Object.h"
 
 namespace io {
 namespace swagger {
@@ -57,17 +56,17 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<SurveyNode>>& getNodes();
-        void setNodes(std::vector<std::shared_ptr<SurveyNode>> value);
+    std::shared_ptr<Object> getNodes() const;
+        void setNodes(std::shared_ptr<Object> value);
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::vector<int32_t>>& getRows();
-        void setRows(std::vector<std::vector<int32_t>> value);
+    std::shared_ptr<Object> getRows() const;
+        void setRows(std::shared_ptr<Object> value);
 
 protected:
-    std::vector<std::shared_ptr<SurveyNode>> m_Nodes;
-        std::vector<std::vector<int32_t>> m_Rows;
+    std::shared_ptr<Object> m_Nodes;
+        std::shared_ptr<Object> m_Rows;
     };
 
 }
