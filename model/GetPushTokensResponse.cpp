@@ -34,7 +34,7 @@ void GetPushTokensResponse::validate()
 
 web::json::value GetPushTokensResponse::toJson() const
 {
-    web::json::value val = this->null<PushToken>::toJson();
+    web::json::value val = web::json::value::object();
 
 
     return val;
@@ -42,8 +42,6 @@ web::json::value GetPushTokensResponse::toJson() const
 
 void GetPushTokensResponse::fromJson(web::json::value& val)
 {
-    this->null<PushToken>::fromJson(val);
-
 }
 
 void GetPushTokensResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

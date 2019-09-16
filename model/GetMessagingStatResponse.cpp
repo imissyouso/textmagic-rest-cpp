@@ -34,7 +34,7 @@ void GetMessagingStatResponse::validate()
 
 web::json::value GetMessagingStatResponse::toJson() const
 {
-    web::json::value val = this->null<MessagingStatItem>::toJson();
+    web::json::value val = web::json::value::object();
 
 
     return val;
@@ -42,8 +42,6 @@ web::json::value GetMessagingStatResponse::toJson() const
 
 void GetMessagingStatResponse::fromJson(web::json::value& val)
 {
-    this->null<MessagingStatItem>::fromJson(val);
-
 }
 
 void GetMessagingStatResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

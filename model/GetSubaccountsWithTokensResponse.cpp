@@ -34,7 +34,7 @@ void GetSubaccountsWithTokensResponse::validate()
 
 web::json::value GetSubaccountsWithTokensResponse::toJson() const
 {
-    web::json::value val = this->null<SubaccountWithToken>::toJson();
+    web::json::value val = web::json::value::object();
 
 
     return val;
@@ -42,8 +42,6 @@ web::json::value GetSubaccountsWithTokensResponse::toJson() const
 
 void GetSubaccountsWithTokensResponse::fromJson(web::json::value& val)
 {
-    this->null<SubaccountWithToken>::fromJson(val);
-
 }
 
 void GetSubaccountsWithTokensResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

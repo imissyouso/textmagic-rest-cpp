@@ -20,8 +20,8 @@
 #define IO_SWAGGER_CLIENT_MODEL_GetPushTokensResponse_H_
 
 
-#include <vector>
-#include "PushToken.h"
+#include "../ModelBase.h"
+
 
 namespace io {
 namespace swagger {
@@ -32,7 +32,7 @@ namespace model {
 /// 
 /// </summary>
 class  GetPushTokensResponse
-    : public null<PushToken>
+    : public ModelBase
 {
 public:
     GetPushTokensResponse();

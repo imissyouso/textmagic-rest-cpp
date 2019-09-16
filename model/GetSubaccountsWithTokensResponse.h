@@ -20,8 +20,8 @@
 #define IO_SWAGGER_CLIENT_MODEL_GetSubaccountsWithTokensResponse_H_
 
 
-#include "SubaccountWithToken.h"
-#include <vector>
+#include "../ModelBase.h"
+
 
 namespace io {
 namespace swagger {
@@ -32,7 +32,7 @@ namespace model {
 /// 
 /// </summary>
 class  GetSubaccountsWithTokensResponse
-    : public null<SubaccountWithToken>
+    : public ModelBase
 {
 public:
     GetSubaccountsWithTokensResponse();

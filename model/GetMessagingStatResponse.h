@@ -20,8 +20,8 @@
 #define IO_SWAGGER_CLIENT_MODEL_GetMessagingStatResponse_H_
 
 
-#include "MessagingStatItem.h"
-#include <vector>
+#include "../ModelBase.h"
+
 
 namespace io {
 namespace swagger {
@@ -32,7 +32,7 @@ namespace model {
 /// 
 /// </summary>
 class  GetMessagingStatResponse
-    : public null<MessagingStatItem>
+    : public ModelBase
 {
 public:
     GetMessagingStatResponse();
