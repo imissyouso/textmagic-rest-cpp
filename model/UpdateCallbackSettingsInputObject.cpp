@@ -48,9 +48,30 @@ web::json::value UpdateCallbackSettingsInputObject::toJson() const
 
 void UpdateCallbackSettingsInputObject::fromJson(web::json::value& val)
 {
-    setOutUrl(ModelBase::stringFromJson(val[utility::conversions::to_string_t("outUrl")]));
-    setInUrl(ModelBase::stringFromJson(val[utility::conversions::to_string_t("inUrl")]));
-    setFormat(ModelBase::stringFromJson(val[utility::conversions::to_string_t("format")]));
+    if(val.has_field(utility::conversions::to_string_t("outUrl")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("outUrl")];
+        if(!fieldValue.is_null())
+        {
+            setOutUrl(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("inUrl")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("inUrl")];
+        if(!fieldValue.is_null())
+        {
+            setInUrl(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("format")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("format")];
+        if(!fieldValue.is_null())
+        {
+            setFormat(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UpdateCallbackSettingsInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

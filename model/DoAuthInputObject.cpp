@@ -82,8 +82,22 @@ web::json::value DoAuthInputObject::toJson() const
 
 void DoAuthInputObject::fromJson(web::json::value& val)
 {
-    setUsername(ModelBase::stringFromJson(val[utility::conversions::to_string_t("username")]));
-    setPassword(ModelBase::stringFromJson(val[utility::conversions::to_string_t("password")]));
+    if(val.has_field(utility::conversions::to_string_t("username")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("username")];
+        if(!fieldValue.is_null())
+        {
+            setUsername(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("password")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("password")];
+        if(!fieldValue.is_null())
+        {
+            setPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("appName")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("appName")];

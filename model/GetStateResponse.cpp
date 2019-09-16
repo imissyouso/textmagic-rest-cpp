@@ -120,45 +120,318 @@ web::json::value GetStateResponse::toJson() const
 
 void GetStateResponse::fromJson(web::json::value& val)
 {
-    setSystemCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("systemCacheClear")]));
-    setSystemExit(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("systemExit")]));
-    setSystemAlert(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("systemAlert")]));
-    setSystemAccountStateChanged(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("systemAccountStateChanged")]));
-    setMessageDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageDeleted")]));
-    setMessageIncoming(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageIncoming")]));
-    setMessageIncomingDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageIncomingDeleted")]));
-    setMessageStateChanged(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageStateChanged")]));
-    setMessageBulkEnd(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageBulkEnd")]));
-    setMessageWipeEnd(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageWipeEnd")]));
-    setMessageSent(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageSent")]));
-    setMessageSessionDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageSessionDeleted")]));
-    setMessageCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageCacheClear")]));
-    setMessageIncomingCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageIncomingCacheClear")]));
-    setMessageScheduleAdded(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageScheduleAdded")]));
-    setMessageScheduleStateChanged(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageScheduleStateChanged")]));
-    setMessageScheduleDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageScheduleDeleted")]));
-    setMessageScheduleCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageScheduleCacheClear")]));
-    setMessageTemplateCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messageTemplateCacheClear")]));
-    setCallFinished(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("callFinished")]));
-    setChatCreated(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatCreated")]));
-    setChatMarkedAsRead(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatMarkedAsRead")]));
-    setChatMuted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatMuted")]));
-    setChatUnmuted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatUnmuted")]));
-    setChatDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatDeleted")]));
-    setChatClosed(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatClosed")]));
-    setChatReopened(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatReopened")]));
-    setChatCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chatCacheClear")]));
-    setContactAdded(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactAdded")]));
-    setContactDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactDeleted")]));
-    setContactStateChanged(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactStateChanged")]));
-    setListAdded(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("listAdded")]));
-    setListDeleted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("listDeleted")]));
-    setListStateChanged(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("listStateChanged")]));
-    setContactWipeEnd(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactWipeEnd")]));
-    setContactImportEnd(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactImportEnd")]));
-    setContactCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactCacheClear")]));
-    setListCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("listCacheClear")]));
-    setCustomFieldsCacheClear(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("customFieldsCacheClear")]));
+    if(val.has_field(utility::conversions::to_string_t("systemCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("systemCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setSystemCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("systemExit")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("systemExit")];
+        if(!fieldValue.is_null())
+        {
+            setSystemExit(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("systemAlert")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("systemAlert")];
+        if(!fieldValue.is_null())
+        {
+            setSystemAlert(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("systemAccountStateChanged")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("systemAccountStateChanged")];
+        if(!fieldValue.is_null())
+        {
+            setSystemAccountStateChanged(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setMessageDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageIncoming")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageIncoming")];
+        if(!fieldValue.is_null())
+        {
+            setMessageIncoming(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageIncomingDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageIncomingDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setMessageIncomingDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageStateChanged")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageStateChanged")];
+        if(!fieldValue.is_null())
+        {
+            setMessageStateChanged(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageBulkEnd")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageBulkEnd")];
+        if(!fieldValue.is_null())
+        {
+            setMessageBulkEnd(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageWipeEnd")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageWipeEnd")];
+        if(!fieldValue.is_null())
+        {
+            setMessageWipeEnd(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageSent")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageSent")];
+        if(!fieldValue.is_null())
+        {
+            setMessageSent(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageSessionDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageSessionDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setMessageSessionDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setMessageCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageIncomingCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageIncomingCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setMessageIncomingCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageScheduleAdded")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageScheduleAdded")];
+        if(!fieldValue.is_null())
+        {
+            setMessageScheduleAdded(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageScheduleStateChanged")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageScheduleStateChanged")];
+        if(!fieldValue.is_null())
+        {
+            setMessageScheduleStateChanged(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageScheduleDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageScheduleDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setMessageScheduleDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageScheduleCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageScheduleCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setMessageScheduleCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageTemplateCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageTemplateCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setMessageTemplateCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("callFinished")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("callFinished")];
+        if(!fieldValue.is_null())
+        {
+            setCallFinished(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatCreated")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatCreated")];
+        if(!fieldValue.is_null())
+        {
+            setChatCreated(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatMarkedAsRead")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatMarkedAsRead")];
+        if(!fieldValue.is_null())
+        {
+            setChatMarkedAsRead(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatMuted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatMuted")];
+        if(!fieldValue.is_null())
+        {
+            setChatMuted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatUnmuted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatUnmuted")];
+        if(!fieldValue.is_null())
+        {
+            setChatUnmuted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setChatDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatClosed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatClosed")];
+        if(!fieldValue.is_null())
+        {
+            setChatClosed(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatReopened")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatReopened")];
+        if(!fieldValue.is_null())
+        {
+            setChatReopened(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chatCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chatCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setChatCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactAdded")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactAdded")];
+        if(!fieldValue.is_null())
+        {
+            setContactAdded(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setContactDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactStateChanged")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactStateChanged")];
+        if(!fieldValue.is_null())
+        {
+            setContactStateChanged(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("listAdded")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("listAdded")];
+        if(!fieldValue.is_null())
+        {
+            setListAdded(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("listDeleted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("listDeleted")];
+        if(!fieldValue.is_null())
+        {
+            setListDeleted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("listStateChanged")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("listStateChanged")];
+        if(!fieldValue.is_null())
+        {
+            setListStateChanged(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactWipeEnd")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactWipeEnd")];
+        if(!fieldValue.is_null())
+        {
+            setContactWipeEnd(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactImportEnd")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactImportEnd")];
+        if(!fieldValue.is_null())
+        {
+            setContactImportEnd(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setContactCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("listCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("listCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setListCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("customFieldsCacheClear")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("customFieldsCacheClear")];
+        if(!fieldValue.is_null())
+        {
+            setCustomFieldsCacheClear(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetStateResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

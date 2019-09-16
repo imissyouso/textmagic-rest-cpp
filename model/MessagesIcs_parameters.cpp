@@ -45,10 +45,24 @@ web::json::value MessagesIcs_parameters::toJson() const
 
 void MessagesIcs_parameters::fromJson(web::json::value& val)
 {
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
-    std::shared_ptr<MessagesIcs_parameters_recipients> newRecipients(new MessagesIcs_parameters_recipients());
-    newRecipients->fromJson(val[utility::conversions::to_string_t("recipients")]);
-    setRecipients( newRecipients );
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("recipients")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("recipients")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<MessagesIcs_parameters_recipients> newItem(new MessagesIcs_parameters_recipients());
+            newItem->fromJson(fieldValue);
+            setRecipients( newItem );
+        }
+    }
 }
 
 void MessagesIcs_parameters::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

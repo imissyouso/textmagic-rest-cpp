@@ -52,12 +52,46 @@ web::json::value ForwardedCall::toJson() const
 
 void ForwardedCall::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setCallTime
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("callTime")]));
-    setCaller(ModelBase::stringFromJson(val[utility::conversions::to_string_t("caller")]));
-    setVia(ModelBase::stringFromJson(val[utility::conversions::to_string_t("via")]));
-    setReceiver(ModelBase::stringFromJson(val[utility::conversions::to_string_t("receiver")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("callTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("callTime")];
+        if(!fieldValue.is_null())
+        {
+            setCallTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("caller")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("caller")];
+        if(!fieldValue.is_null())
+        {
+            setCaller(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("via")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("via")];
+        if(!fieldValue.is_null())
+        {
+            setVia(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("receiver")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
+        if(!fieldValue.is_null())
+        {
+            setReceiver(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void ForwardedCall::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

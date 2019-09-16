@@ -52,11 +52,46 @@ web::json::value Timezone::toJson() const
 
 void Timezone::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setArea(ModelBase::stringFromJson(val[utility::conversions::to_string_t("area")]));
-    setDst(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("dst")]));
-    setOffset(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("offset")]));
-    setTimezone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("timezone")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("area")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("area")];
+        if(!fieldValue.is_null())
+        {
+            setArea(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("dst")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("dst")];
+        if(!fieldValue.is_null())
+        {
+            setDst(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("offset")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("offset")];
+        if(!fieldValue.is_null())
+        {
+            setOffset(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("timezone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("timezone")];
+        if(!fieldValue.is_null())
+        {
+            setTimezone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void Timezone::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

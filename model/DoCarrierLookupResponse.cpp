@@ -59,7 +59,14 @@ web::json::value DoCarrierLookupResponse::toJson() const
 
 void DoCarrierLookupResponse::fromJson(web::json::value& val)
 {
-    setCost(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("cost")]));
+    if(val.has_field(utility::conversions::to_string_t("cost")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("cost")];
+        if(!fieldValue.is_null())
+        {
+            setCost(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("country")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
@@ -70,11 +77,46 @@ void DoCarrierLookupResponse::fromJson(web::json::value& val)
             setCountry( newItem );
         }
     }
-    setLocal(ModelBase::stringFromJson(val[utility::conversions::to_string_t("local")]));
-    setType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("type")]));
-    setCarrier(ModelBase::stringFromJson(val[utility::conversions::to_string_t("carrier")]));
-    setNumber164(ModelBase::stringFromJson(val[utility::conversions::to_string_t("number164")]));
-    setValid(ModelBase::boolFromJson(val[utility::conversions::to_string_t("valid")]));
+    if(val.has_field(utility::conversions::to_string_t("local")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("local")];
+        if(!fieldValue.is_null())
+        {
+            setLocal(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("type")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("type")];
+        if(!fieldValue.is_null())
+        {
+            setType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("carrier")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("carrier")];
+        if(!fieldValue.is_null())
+        {
+            setCarrier(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("number164")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("number164")];
+        if(!fieldValue.is_null())
+        {
+            setNumber164(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("valid")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("valid")];
+        if(!fieldValue.is_null())
+        {
+            setValid(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void DoCarrierLookupResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

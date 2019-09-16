@@ -72,31 +72,150 @@ web::json::value SubaccountWithToken::toJson() const
 
 void SubaccountWithToken::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setUsername(ModelBase::stringFromJson(val[utility::conversions::to_string_t("username")]));
-    setFirstName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("firstName")]));
-    setLastName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastName")]));
-    setEmail(ModelBase::stringFromJson(val[utility::conversions::to_string_t("email")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setBalance(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("balance")]));
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
-    setCompany(ModelBase::stringFromJson(val[utility::conversions::to_string_t("company")]));
-    std::shared_ptr<Currency> newCurrency(new Currency());
-    newCurrency->fromJson(val[utility::conversions::to_string_t("currency")]);
-    setCurrency( newCurrency );
-    std::shared_ptr<Country> newCountry(new Country());
-    newCountry->fromJson(val[utility::conversions::to_string_t("country")]);
-    setCountry( newCountry );
-    std::shared_ptr<Timezone> newTimezone(new Timezone());
-    newTimezone->fromJson(val[utility::conversions::to_string_t("timezone")]);
-    setTimezone( newTimezone );
-    setSubaccountType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("subaccountType")]));
-    setEmailAccepted(ModelBase::boolFromJson(val[utility::conversions::to_string_t("emailAccepted")]));
-    setPhoneAccepted(ModelBase::boolFromJson(val[utility::conversions::to_string_t("phoneAccepted")]));
-    std::shared_ptr<UserImage> newAvatar(new UserImage());
-    newAvatar->fromJson(val[utility::conversions::to_string_t("avatar")]);
-    setAvatar( newAvatar );
-    setToken(ModelBase::stringFromJson(val[utility::conversions::to_string_t("token")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("username")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("username")];
+        if(!fieldValue.is_null())
+        {
+            setUsername(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstName")];
+        if(!fieldValue.is_null())
+        {
+            setFirstName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastName")];
+        if(!fieldValue.is_null())
+        {
+            setLastName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("email")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("email")];
+        if(!fieldValue.is_null())
+        {
+            setEmail(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("balance")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("balance")];
+        if(!fieldValue.is_null())
+        {
+            setBalance(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("company")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("company")];
+        if(!fieldValue.is_null())
+        {
+            setCompany(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("currency")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("currency")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Currency> newItem(new Currency());
+            newItem->fromJson(fieldValue);
+            setCurrency( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Country> newItem(new Country());
+            newItem->fromJson(fieldValue);
+            setCountry( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("timezone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("timezone")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Timezone> newItem(new Timezone());
+            newItem->fromJson(fieldValue);
+            setTimezone( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("subaccountType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("subaccountType")];
+        if(!fieldValue.is_null())
+        {
+            setSubaccountType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("emailAccepted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("emailAccepted")];
+        if(!fieldValue.is_null())
+        {
+            setEmailAccepted(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phoneAccepted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phoneAccepted")];
+        if(!fieldValue.is_null())
+        {
+            setPhoneAccepted(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<UserImage> newItem(new UserImage());
+            newItem->fromJson(fieldValue);
+            setAvatar( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("token")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("token")];
+        if(!fieldValue.is_null())
+        {
+            setToken(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void SubaccountWithToken::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

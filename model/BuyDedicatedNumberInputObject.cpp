@@ -48,9 +48,30 @@ web::json::value BuyDedicatedNumberInputObject::toJson() const
 
 void BuyDedicatedNumberInputObject::fromJson(web::json::value& val)
 {
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
-    setCountry(ModelBase::stringFromJson(val[utility::conversions::to_string_t("country")]));
-    setUserId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("userId")]));
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            setCountry(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("userId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("userId")];
+        if(!fieldValue.is_null())
+        {
+            setUserId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void BuyDedicatedNumberInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

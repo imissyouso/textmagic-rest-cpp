@@ -50,10 +50,38 @@ web::json::value UploadMessageAttachmentResponse::toJson() const
 
 void UploadMessageAttachmentResponse::fromJson(web::json::value& val)
 {
-    setChars(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chars")]));
-    setHref(ModelBase::stringFromJson(val[utility::conversions::to_string_t("href")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setSize(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("size")]));
+    if(val.has_field(utility::conversions::to_string_t("chars")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chars")];
+        if(!fieldValue.is_null())
+        {
+            setChars(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("href")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("href")];
+        if(!fieldValue.is_null())
+        {
+            setHref(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("size")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("size")];
+        if(!fieldValue.is_null())
+        {
+            setSize(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void UploadMessageAttachmentResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

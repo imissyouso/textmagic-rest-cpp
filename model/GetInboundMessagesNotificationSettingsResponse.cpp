@@ -56,13 +56,62 @@ web::json::value GetInboundMessagesNotificationSettingsResponse::toJson() const
 
 void GetInboundMessagesNotificationSettingsResponse::fromJson(web::json::value& val)
 {
-    setInboundMessageNotification(ModelBase::boolFromJson(val[utility::conversions::to_string_t("inboundMessageNotification")]));
-    setForwardedCallNotification(ModelBase::boolFromJson(val[utility::conversions::to_string_t("forwardedCallNotification")]));
-    setIncludeSmsHistory(ModelBase::boolFromJson(val[utility::conversions::to_string_t("includeSmsHistory")]));
-    setSendInHtmlFormat(ModelBase::boolFromJson(val[utility::conversions::to_string_t("sendInHtmlFormat")]));
-    setAlertEmail1(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail1")]));
-    setAlertEmail2(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail2")]));
-    setAlertEmail3(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail3")]));
+    if(val.has_field(utility::conversions::to_string_t("inboundMessageNotification")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("inboundMessageNotification")];
+        if(!fieldValue.is_null())
+        {
+            setInboundMessageNotification(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("forwardedCallNotification")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("forwardedCallNotification")];
+        if(!fieldValue.is_null())
+        {
+            setForwardedCallNotification(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("includeSmsHistory")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("includeSmsHistory")];
+        if(!fieldValue.is_null())
+        {
+            setIncludeSmsHistory(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sendInHtmlFormat")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sendInHtmlFormat")];
+        if(!fieldValue.is_null())
+        {
+            setSendInHtmlFormat(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail1")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail1")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail1(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail2")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail2")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail2(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail3")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail3")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail3(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void GetInboundMessagesNotificationSettingsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -48,9 +48,30 @@ web::json::value GetMessagingCountersResponse::toJson() const
 
 void GetMessagingCountersResponse::fromJson(web::json::value& val)
 {
-    setContacts(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contacts")]));
-    setSent(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("sent")]));
-    setReceived(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("received")]));
+    if(val.has_field(utility::conversions::to_string_t("contacts")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contacts")];
+        if(!fieldValue.is_null())
+        {
+            setContacts(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sent")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sent")];
+        if(!fieldValue.is_null())
+        {
+            setSent(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("received")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("received")];
+        if(!fieldValue.is_null())
+        {
+            setReceived(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetMessagingCountersResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

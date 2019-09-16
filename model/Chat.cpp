@@ -70,26 +70,130 @@ web::json::value Chat::toJson() const
 
 void Chat::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setOriginalId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("originalId")]));
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
-    std::shared_ptr<Contact> newContact(new Contact());
-    newContact->fromJson(val[utility::conversions::to_string_t("contact")]);
-    setContact( newContact );
-    setUnsubscribedContactId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("unsubscribedContactId")]));
-    setUnread(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("unread")]));
-    setUpdatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("updatedAt")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setMute(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("mute")]));
-    setLastMessage(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastMessage")]));
-    setDirection(ModelBase::stringFromJson(val[utility::conversions::to_string_t("direction")]));
-    setFrom(ModelBase::stringFromJson(val[utility::conversions::to_string_t("from")]));
-    setMutedUntil(ModelBase::stringFromJson(val[utility::conversions::to_string_t("mutedUntil")]));
-    setTimeLeftMute(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("timeLeftMute")]));
-    std::shared_ptr<Country> newCountry(new Country());
-    newCountry->fromJson(val[utility::conversions::to_string_t("country")]);
-    setCountry( newCountry );
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("originalId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("originalId")];
+        if(!fieldValue.is_null())
+        {
+            setOriginalId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contact")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contact")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Contact> newItem(new Contact());
+            newItem->fromJson(fieldValue);
+            setContact( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("unsubscribedContactId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("unsubscribedContactId")];
+        if(!fieldValue.is_null())
+        {
+            setUnsubscribedContactId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("unread")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("unread")];
+        if(!fieldValue.is_null())
+        {
+            setUnread(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("updatedAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("updatedAt")];
+        if(!fieldValue.is_null())
+        {
+            setUpdatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("mute")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("mute")];
+        if(!fieldValue.is_null())
+        {
+            setMute(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastMessage")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastMessage")];
+        if(!fieldValue.is_null())
+        {
+            setLastMessage(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("direction")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("direction")];
+        if(!fieldValue.is_null())
+        {
+            setDirection(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("from")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("from")];
+        if(!fieldValue.is_null())
+        {
+            setFrom(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("mutedUntil")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("mutedUntil")];
+        if(!fieldValue.is_null())
+        {
+            setMutedUntil(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("timeLeftMute")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("timeLeftMute")];
+        if(!fieldValue.is_null())
+        {
+            setTimeLeftMute(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Country> newItem(new Country());
+            newItem->fromJson(fieldValue);
+            setCountry( newItem );
+        }
+    }
 }
 
 void Chat::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

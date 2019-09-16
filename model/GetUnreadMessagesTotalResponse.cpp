@@ -44,7 +44,14 @@ web::json::value GetUnreadMessagesTotalResponse::toJson() const
 
 void GetUnreadMessagesTotalResponse::fromJson(web::json::value& val)
 {
-    setTotal(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("total")]));
+    if(val.has_field(utility::conversions::to_string_t("total")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("total")];
+        if(!fieldValue.is_null())
+        {
+            setTotal(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetUnreadMessagesTotalResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

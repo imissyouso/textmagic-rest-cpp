@@ -56,13 +56,62 @@ web::json::value GetMessageSessionStatResponse::toJson() const
 
 void GetMessageSessionStatResponse::fromJson(web::json::value& val)
 {
-    setFailed(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("failed")]));
-    setDelivered(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("delivered")]));
-    setAccepted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("accepted")]));
-    setRejected(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("rejected")]));
-    setScheduled(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("scheduled")]));
-    setAll(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("all")]));
-    setSent(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("sent")]));
+    if(val.has_field(utility::conversions::to_string_t("failed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("failed")];
+        if(!fieldValue.is_null())
+        {
+            setFailed(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("delivered")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("delivered")];
+        if(!fieldValue.is_null())
+        {
+            setDelivered(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("accepted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("accepted")];
+        if(!fieldValue.is_null())
+        {
+            setAccepted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("rejected")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("rejected")];
+        if(!fieldValue.is_null())
+        {
+            setRejected(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("scheduled")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("scheduled")];
+        if(!fieldValue.is_null())
+        {
+            setScheduled(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("all")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("all")];
+        if(!fieldValue.is_null())
+        {
+            setAll(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sent")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sent")];
+        if(!fieldValue.is_null())
+        {
+            setSent(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetMessageSessionStatResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

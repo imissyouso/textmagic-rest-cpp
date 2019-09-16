@@ -58,15 +58,70 @@ web::json::value UserStatement::toJson() const
 
 void UserStatement::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setUserId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("userId")]));
-    setDate
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("date")]));
-    setBalance(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("balance")]));
-    setDelta(ModelBase::floatFromJson(val[utility::conversions::to_string_t("delta")]));
-    setType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("type")]));
-    setValue(ModelBase::stringFromJson(val[utility::conversions::to_string_t("value")]));
-    setComment(ModelBase::stringFromJson(val[utility::conversions::to_string_t("comment")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("userId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("userId")];
+        if(!fieldValue.is_null())
+        {
+            setUserId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("date")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("date")];
+        if(!fieldValue.is_null())
+        {
+            setDate(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("balance")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("balance")];
+        if(!fieldValue.is_null())
+        {
+            setBalance(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("delta")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("delta")];
+        if(!fieldValue.is_null())
+        {
+            setDelta(ModelBase::floatFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("type")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("type")];
+        if(!fieldValue.is_null())
+        {
+            setType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("value")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("value")];
+        if(!fieldValue.is_null())
+        {
+            setValue(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("comment")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("comment")];
+        if(!fieldValue.is_null())
+        {
+            setComment(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UserStatement::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

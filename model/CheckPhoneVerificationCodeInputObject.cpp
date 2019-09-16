@@ -44,7 +44,14 @@ web::json::value CheckPhoneVerificationCodeInputObject::toJson() const
 
 void CheckPhoneVerificationCodeInputObject::fromJson(web::json::value& val)
 {
-    setCode(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("code")]));
+    if(val.has_field(utility::conversions::to_string_t("code")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("code")];
+        if(!fieldValue.is_null())
+        {
+            setCode(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void CheckPhoneVerificationCodeInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

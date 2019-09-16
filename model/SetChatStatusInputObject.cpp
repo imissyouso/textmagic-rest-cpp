@@ -46,8 +46,22 @@ web::json::value SetChatStatusInputObject::toJson() const
 
 void SetChatStatusInputObject::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void SetChatStatusInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

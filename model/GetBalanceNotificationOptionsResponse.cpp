@@ -64,17 +64,94 @@ web::json::value GetBalanceNotificationOptionsResponse::toJson() const
 
 void GetBalanceNotificationOptionsResponse::fromJson(web::json::value& val)
 {
-    set1(ModelBase::stringFromJson(val[utility::conversions::to_string_t("1")]));
-    set2(ModelBase::stringFromJson(val[utility::conversions::to_string_t("2")]));
-    set3(ModelBase::stringFromJson(val[utility::conversions::to_string_t("3")]));
-    set5(ModelBase::stringFromJson(val[utility::conversions::to_string_t("5")]));
-    set10(ModelBase::stringFromJson(val[utility::conversions::to_string_t("10")]));
-    set20(ModelBase::stringFromJson(val[utility::conversions::to_string_t("20")]));
-    set30(ModelBase::stringFromJson(val[utility::conversions::to_string_t("30")]));
-    set50(ModelBase::stringFromJson(val[utility::conversions::to_string_t("50")]));
-    set100(ModelBase::stringFromJson(val[utility::conversions::to_string_t("100")]));
-    set500(ModelBase::stringFromJson(val[utility::conversions::to_string_t("500")]));
-    set1000(ModelBase::stringFromJson(val[utility::conversions::to_string_t("1000")]));
+    if(val.has_field(utility::conversions::to_string_t("1")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("1")];
+        if(!fieldValue.is_null())
+        {
+            set1(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("2")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("2")];
+        if(!fieldValue.is_null())
+        {
+            set2(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("3")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("3")];
+        if(!fieldValue.is_null())
+        {
+            set3(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("5")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("5")];
+        if(!fieldValue.is_null())
+        {
+            set5(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("10")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("10")];
+        if(!fieldValue.is_null())
+        {
+            set10(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("20")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("20")];
+        if(!fieldValue.is_null())
+        {
+            set20(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("30")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("30")];
+        if(!fieldValue.is_null())
+        {
+            set30(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("50")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("50")];
+        if(!fieldValue.is_null())
+        {
+            set50(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("100")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("100")];
+        if(!fieldValue.is_null())
+        {
+            set100(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("500")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("500")];
+        if(!fieldValue.is_null())
+        {
+            set500(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("1000")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("1000")];
+        if(!fieldValue.is_null())
+        {
+            set1000(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void GetBalanceNotificationOptionsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

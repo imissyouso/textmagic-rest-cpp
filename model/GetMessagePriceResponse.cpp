@@ -47,11 +47,32 @@ web::json::value GetMessagePriceResponse::toJson() const
 
 void GetMessagePriceResponse::fromJson(web::json::value& val)
 {
-    setTotal(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("total")]));
-    setParts(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("parts")]));
-    std::shared_ptr<Object> newCountries(nullptr);
-    newCountries->fromJson(val[utility::conversions::to_string_t("countries")]);
-    setCountries( newCountries );
+    if(val.has_field(utility::conversions::to_string_t("total")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("total")];
+        if(!fieldValue.is_null())
+        {
+            setTotal(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("parts")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("parts")];
+        if(!fieldValue.is_null())
+        {
+            setParts(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("countries")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("countries")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setCountries( newItem );
+        }
+    }
 }
 
 void GetMessagePriceResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

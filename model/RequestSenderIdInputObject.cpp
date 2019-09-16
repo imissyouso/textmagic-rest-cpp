@@ -46,8 +46,22 @@ web::json::value RequestSenderIdInputObject::toJson() const
 
 void RequestSenderIdInputObject::fromJson(web::json::value& val)
 {
-    setSenderId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("senderId")]));
-    setExplanation(ModelBase::stringFromJson(val[utility::conversions::to_string_t("explanation")]));
+    if(val.has_field(utility::conversions::to_string_t("senderId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("senderId")];
+        if(!fieldValue.is_null())
+        {
+            setSenderId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("explanation")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("explanation")];
+        if(!fieldValue.is_null())
+        {
+            setExplanation(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void RequestSenderIdInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

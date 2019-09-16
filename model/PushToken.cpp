@@ -46,8 +46,22 @@ web::json::value PushToken::toJson() const
 
 void PushToken::fromJson(web::json::value& val)
 {
-    setType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("type")]));
-    setToken(ModelBase::stringFromJson(val[utility::conversions::to_string_t("token")]));
+    if(val.has_field(utility::conversions::to_string_t("type")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("type")];
+        if(!fieldValue.is_null())
+        {
+            setType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("token")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("token")];
+        if(!fieldValue.is_null())
+        {
+            setToken(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void PushToken::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

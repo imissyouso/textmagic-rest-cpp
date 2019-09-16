@@ -46,8 +46,22 @@ web::json::value GetSubaccountsWithTokensInputObject::toJson() const
 
 void GetSubaccountsWithTokensInputObject::fromJson(web::json::value& val)
 {
-    setAppName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("appName")]));
-    setPassword(ModelBase::stringFromJson(val[utility::conversions::to_string_t("password")]));
+    if(val.has_field(utility::conversions::to_string_t("appName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("appName")];
+        if(!fieldValue.is_null())
+        {
+            setAppName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("password")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("password")];
+        if(!fieldValue.is_null())
+        {
+            setPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void GetSubaccountsWithTokensInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

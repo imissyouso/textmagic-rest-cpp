@@ -54,12 +54,54 @@ web::json::value GetBalanceNotificationSettingsResponse::toJson() const
 
 void GetBalanceNotificationSettingsResponse::fromJson(web::json::value& val)
 {
-    setLowBalanceNotification(ModelBase::boolFromJson(val[utility::conversions::to_string_t("lowBalanceNotification")]));
-    setAlertBalance(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertBalance")]));
-    setAlertPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertPhone")]));
-    setAlertEmail1(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail1")]));
-    setAlertEmail2(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail2")]));
-    setAlertEmail3(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertEmail3")]));
+    if(val.has_field(utility::conversions::to_string_t("lowBalanceNotification")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lowBalanceNotification")];
+        if(!fieldValue.is_null())
+        {
+            setLowBalanceNotification(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertBalance")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertBalance")];
+        if(!fieldValue.is_null())
+        {
+            setAlertBalance(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertPhone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertPhone")];
+        if(!fieldValue.is_null())
+        {
+            setAlertPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail1")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail1")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail1(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail2")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail2")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail2(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("alertEmail3")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail3")];
+        if(!fieldValue.is_null())
+        {
+            setAlertEmail3(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void GetBalanceNotificationSettingsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

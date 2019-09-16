@@ -77,33 +77,45 @@ void GetAvailableSenderSettingOptionsResponse::fromJson(web::json::value& val)
     {
         m_Dedicated.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("dedicated")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("dedicated")].as_array() )
         {
             m_Dedicated.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
     {
         m_User.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("user")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("user")].as_array() )
         {
             m_User.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
     {
         m_Shared.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("shared")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("shared")].as_array() )
         {
             m_Shared.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
     {
         m_SenderIds.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("senderIds")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("senderIds")].as_array() )
         {
             m_SenderIds.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
 }

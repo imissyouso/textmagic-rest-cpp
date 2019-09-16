@@ -50,11 +50,38 @@ web::json::value MessageTemplate::toJson() const
 
 void MessageTemplate::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setContent(ModelBase::stringFromJson(val[utility::conversions::to_string_t("content")]));
-    setLastModified
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("lastModified")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("content")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("content")];
+        if(!fieldValue.is_null())
+        {
+            setContent(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastModified")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastModified")];
+        if(!fieldValue.is_null())
+        {
+            setLastModified(ModelBase::dateFromJson(fieldValue));
+        }
+    }
 }
 
 void MessageTemplate::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

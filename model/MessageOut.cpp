@@ -158,9 +158,30 @@ web::json::value MessageOut::toJson() const
 
 void MessageOut::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setContactId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("contactId")]));
-    setSessionId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("sessionId")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactId")];
+        if(!fieldValue.is_null())
+        {
+            setContactId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sessionId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sessionId")];
+        if(!fieldValue.is_null())
+        {
+            setSessionId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("receiver")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
@@ -169,11 +190,38 @@ void MessageOut::fromJson(web::json::value& val)
             setReceiver(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setMessageTime
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("messageTime")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setAvatar(ModelBase::stringFromJson(val[utility::conversions::to_string_t("avatar")]));
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
+    if(val.has_field(utility::conversions::to_string_t("messageTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageTime")];
+        if(!fieldValue.is_null())
+        {
+            setMessageTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            setAvatar(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("deleted")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("deleted")];
@@ -182,11 +230,46 @@ void MessageOut::fromJson(web::json::value& val)
             setDeleted(ModelBase::boolFromJson(fieldValue));
         }
     }
-    setCharset(ModelBase::stringFromJson(val[utility::conversions::to_string_t("charset")]));
-    setCharsetLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("charsetLabel")]));
-    setFirstName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("firstName")]));
-    setLastName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastName")]));
-    setCountry(ModelBase::stringFromJson(val[utility::conversions::to_string_t("country")]));
+    if(val.has_field(utility::conversions::to_string_t("charset")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("charset")];
+        if(!fieldValue.is_null())
+        {
+            setCharset(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("charsetLabel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("charsetLabel")];
+        if(!fieldValue.is_null())
+        {
+            setCharsetLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstName")];
+        if(!fieldValue.is_null())
+        {
+            setFirstName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastName")];
+        if(!fieldValue.is_null())
+        {
+            setLastName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            setCountry(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("sender")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("sender")];
@@ -211,7 +294,14 @@ void MessageOut::fromJson(web::json::value& val)
             setPrice(ModelBase::floatFromJson(fieldValue));
         }
     }
-    setPartsCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("partsCount")]));
+    if(val.has_field(utility::conversions::to_string_t("partsCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("partsCount")];
+        if(!fieldValue.is_null())
+        {
+            setPartsCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("fromEmail")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("fromEmail")];

@@ -44,7 +44,14 @@ web::json::value SurveyRecipient::toJson() const
 
 void SurveyRecipient::fromJson(web::json::value& val)
 {
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void SurveyRecipient::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

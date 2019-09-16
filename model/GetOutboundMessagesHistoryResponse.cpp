@@ -56,12 +56,35 @@ web::json::value GetOutboundMessagesHistoryResponse::toJson() const
 
 void GetOutboundMessagesHistoryResponse::fromJson(web::json::value& val)
 {
-    setLastId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("lastId")]));
-    setNextLastId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("nextLastId")]));
-    setLimit(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("limit")]));
+    if(val.has_field(utility::conversions::to_string_t("lastId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastId")];
+        if(!fieldValue.is_null())
+        {
+            setLastId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("nextLastId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("nextLastId")];
+        if(!fieldValue.is_null())
+        {
+            setNextLastId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("limit")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("limit")];
+        if(!fieldValue.is_null())
+        {
+            setLimit(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     {
         m_Resources.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("resources")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("resources")].as_array() )
         {
             if(item.is_null())
@@ -74,6 +97,7 @@ void GetOutboundMessagesHistoryResponse::fromJson(web::json::value& val)
                 newItem->fromJson(item);
                 m_Resources.push_back( newItem );
             }
+        }
         }
     }
 }

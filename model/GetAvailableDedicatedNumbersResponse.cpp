@@ -55,12 +55,22 @@ void GetAvailableDedicatedNumbersResponse::fromJson(web::json::value& val)
     {
         m_Numbers.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("numbers")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("numbers")].as_array() )
         {
             m_Numbers.push_back(ModelBase::stringFromJson(item));
         }
+        }
     }
-    setPrice(ModelBase::floatFromJson(val[utility::conversions::to_string_t("price")]));
+    if(val.has_field(utility::conversions::to_string_t("price")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("price")];
+        if(!fieldValue.is_null())
+        {
+            setPrice(ModelBase::floatFromJson(fieldValue));
+        }
+    }
 }
 
 void GetAvailableDedicatedNumbersResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

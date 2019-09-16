@@ -66,9 +66,30 @@ web::json::value UpdateInboundMessagesNotificationSettingsInputObject::toJson() 
 
 void UpdateInboundMessagesNotificationSettingsInputObject::fromJson(web::json::value& val)
 {
-    setInboundMessageNotification(ModelBase::boolFromJson(val[utility::conversions::to_string_t("inboundMessageNotification")]));
-    setIncludeSmsHistory(ModelBase::boolFromJson(val[utility::conversions::to_string_t("includeSmsHistory")]));
-    setSendInHtmlFormat(ModelBase::boolFromJson(val[utility::conversions::to_string_t("sendInHtmlFormat")]));
+    if(val.has_field(utility::conversions::to_string_t("inboundMessageNotification")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("inboundMessageNotification")];
+        if(!fieldValue.is_null())
+        {
+            setInboundMessageNotification(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("includeSmsHistory")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("includeSmsHistory")];
+        if(!fieldValue.is_null())
+        {
+            setIncludeSmsHistory(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sendInHtmlFormat")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sendInHtmlFormat")];
+        if(!fieldValue.is_null())
+        {
+            setSendInHtmlFormat(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("alertEmail1")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("alertEmail1")];

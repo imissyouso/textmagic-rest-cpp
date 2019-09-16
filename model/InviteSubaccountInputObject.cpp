@@ -46,8 +46,22 @@ web::json::value InviteSubaccountInputObject::toJson() const
 
 void InviteSubaccountInputObject::fromJson(web::json::value& val)
 {
-    setEmail(ModelBase::stringFromJson(val[utility::conversions::to_string_t("email")]));
-    setRole(ModelBase::stringFromJson(val[utility::conversions::to_string_t("role")]));
+    if(val.has_field(utility::conversions::to_string_t("email")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("email")];
+        if(!fieldValue.is_null())
+        {
+            setEmail(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("role")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("role")];
+        if(!fieldValue.is_null())
+        {
+            setRole(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void InviteSubaccountInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

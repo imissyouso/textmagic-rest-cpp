@@ -57,19 +57,49 @@ web::json::value DoAuthResponse::toJson() const
 
 void DoAuthResponse::fromJson(web::json::value& val)
 {
-    setUsername(ModelBase::stringFromJson(val[utility::conversions::to_string_t("username")]));
-    setToken(ModelBase::stringFromJson(val[utility::conversions::to_string_t("token")]));
-    setExpires
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("expires")]));
-    std::shared_ptr<DoAuthResponse_minVersions> newMinVersions(new DoAuthResponse_minVersions());
-    newMinVersions->fromJson(val[utility::conversions::to_string_t("minVersions")]);
-    setMinVersions( newMinVersions );
+    if(val.has_field(utility::conversions::to_string_t("username")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("username")];
+        if(!fieldValue.is_null())
+        {
+            setUsername(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("token")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("token")];
+        if(!fieldValue.is_null())
+        {
+            setToken(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("expires")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("expires")];
+        if(!fieldValue.is_null())
+        {
+            setExpires(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("minVersions")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("minVersions")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DoAuthResponse_minVersions> newItem(new DoAuthResponse_minVersions());
+            newItem->fromJson(fieldValue);
+            setMinVersions( newItem );
+        }
+    }
     {
         m_DisallowedRules.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("disallowedRules")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("disallowedRules")].as_array() )
         {
             m_DisallowedRules.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
 }

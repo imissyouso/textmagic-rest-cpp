@@ -45,15 +45,36 @@ web::json::value GetSenderSettingsResponse::toJson() const
 
 void GetSenderSettingsResponse::fromJson(web::json::value& val)
 {
-    std::shared_ptr<Object> newUser(nullptr);
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
-    std::shared_ptr<Object> newSpecial(nullptr);
-    newSpecial->fromJson(val[utility::conversions::to_string_t("special")]);
-    setSpecial( newSpecial );
-    std::shared_ptr<Object> newOther(nullptr);
-    newOther->fromJson(val[utility::conversions::to_string_t("other")]);
-    setOther( newOther );
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("special")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("special")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setSpecial( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("other")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("other")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setOther( newItem );
+        }
+    }
 }
 
 void GetSenderSettingsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

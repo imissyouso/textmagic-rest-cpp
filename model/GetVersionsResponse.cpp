@@ -48,9 +48,30 @@ web::json::value GetVersionsResponse::toJson() const
 
 void GetVersionsResponse::fromJson(web::json::value& val)
 {
-    setIos(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("ios")]));
-    setAndroid(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("android")]));
-    setDesktop(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("desktop")]));
+    if(val.has_field(utility::conversions::to_string_t("ios")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ios")];
+        if(!fieldValue.is_null())
+        {
+            setIos(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("android")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("android")];
+        if(!fieldValue.is_null())
+        {
+            setAndroid(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("desktop")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("desktop")];
+        if(!fieldValue.is_null())
+        {
+            setDesktop(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetVersionsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

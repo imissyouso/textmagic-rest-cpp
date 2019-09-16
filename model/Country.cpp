@@ -46,8 +46,22 @@ web::json::value Country::toJson() const
 
 void Country::fromJson(web::json::value& val)
 {
-    setId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("id")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void Country::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

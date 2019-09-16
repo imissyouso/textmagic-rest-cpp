@@ -82,7 +82,14 @@ void UpdateBalanceNotificationSettingsInputObject::fromJson(web::json::value& va
             setLowBalanceNotification(ModelBase::boolFromJson(fieldValue));
         }
     }
-    setAlertBalance(ModelBase::stringFromJson(val[utility::conversions::to_string_t("alertBalance")]));
+    if(val.has_field(utility::conversions::to_string_t("alertBalance")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("alertBalance")];
+        if(!fieldValue.is_null())
+        {
+            setAlertBalance(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("alertPhone")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("alertPhone")];

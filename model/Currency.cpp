@@ -48,9 +48,30 @@ web::json::value Currency::toJson() const
 
 void Currency::fromJson(web::json::value& val)
 {
-    setId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("id")]));
-    setUnicodeSymbol(ModelBase::stringFromJson(val[utility::conversions::to_string_t("unicodeSymbol")]));
-    setHtmlSymbol(ModelBase::stringFromJson(val[utility::conversions::to_string_t("htmlSymbol")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("unicodeSymbol")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("unicodeSymbol")];
+        if(!fieldValue.is_null())
+        {
+            setUnicodeSymbol(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("htmlSymbol")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("htmlSymbol")];
+        if(!fieldValue.is_null())
+        {
+            setHtmlSymbol(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void Currency::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

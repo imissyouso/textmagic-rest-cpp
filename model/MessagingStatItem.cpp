@@ -64,18 +64,94 @@ web::json::value MessagingStatItem::toJson() const
 
 void MessagingStatItem::fromJson(web::json::value& val)
 {
-    setReplyRate(ModelBase::floatFromJson(val[utility::conversions::to_string_t("replyRate")]));
-    setDate
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("date")]));
-    setDeliveryRate(ModelBase::floatFromJson(val[utility::conversions::to_string_t("deliveryRate")]));
-    setCosts(ModelBase::floatFromJson(val[utility::conversions::to_string_t("costs")]));
-    setMessagesReceived(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesReceived")]));
-    setMessagesSentDelivered(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentDelivered")]));
-    setMessagesSentAccepted(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentAccepted")]));
-    setMessagesSentBuffered(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentBuffered")]));
-    setMessagesSentFailed(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentFailed")]));
-    setMessagesSentRejected(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentRejected")]));
-    setMessagesSentParts(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("messagesSentParts")]));
+    if(val.has_field(utility::conversions::to_string_t("replyRate")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("replyRate")];
+        if(!fieldValue.is_null())
+        {
+            setReplyRate(ModelBase::floatFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("date")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("date")];
+        if(!fieldValue.is_null())
+        {
+            setDate(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("deliveryRate")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("deliveryRate")];
+        if(!fieldValue.is_null())
+        {
+            setDeliveryRate(ModelBase::floatFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("costs")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("costs")];
+        if(!fieldValue.is_null())
+        {
+            setCosts(ModelBase::floatFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesReceived")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesReceived")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesReceived(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentDelivered")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentDelivered")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentDelivered(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentAccepted")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentAccepted")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentAccepted(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentBuffered")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentBuffered")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentBuffered(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentFailed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentFailed")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentFailed(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentRejected")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentRejected")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentRejected(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messagesSentParts")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messagesSentParts")];
+        if(!fieldValue.is_null())
+        {
+            setMessagesSentParts(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void MessagingStatItem::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

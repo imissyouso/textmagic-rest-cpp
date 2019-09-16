@@ -44,12 +44,26 @@ web::json::value GetSurveyNodesResponse::toJson() const
 
 void GetSurveyNodesResponse::fromJson(web::json::value& val)
 {
-    std::shared_ptr<Object> newNodes(nullptr);
-    newNodes->fromJson(val[utility::conversions::to_string_t("nodes")]);
-    setNodes( newNodes );
-    std::shared_ptr<Object> newRows(nullptr);
-    newRows->fromJson(val[utility::conversions::to_string_t("rows")]);
-    setRows( newRows );
+    if(val.has_field(utility::conversions::to_string_t("nodes")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("nodes")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setNodes( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("rows")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("rows")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Object> newItem(nullptr);
+            newItem->fromJson(fieldValue);
+            setRows( newItem );
+        }
+    }
 }
 
 void GetSurveyNodesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

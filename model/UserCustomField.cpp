@@ -48,10 +48,30 @@ web::json::value UserCustomField::toJson() const
 
 void UserCustomField::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setCreatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("createdAt")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("createdAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("createdAt")];
+        if(!fieldValue.is_null())
+        {
+            setCreatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
 }
 
 void UserCustomField::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

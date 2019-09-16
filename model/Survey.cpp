@@ -76,13 +76,46 @@ web::json::value Survey::toJson() const
 
 void Survey::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setCreatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("createdAt")]));
-    setUpdatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("updatedAt")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("createdAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("createdAt")];
+        if(!fieldValue.is_null())
+        {
+            setCreatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("updatedAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("updatedAt")];
+        if(!fieldValue.is_null())
+        {
+            setUpdatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
     {
         m_Receipents.clear();
         std::vector<web::json::value> jsonArray;

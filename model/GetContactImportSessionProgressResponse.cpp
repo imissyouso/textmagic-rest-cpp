@@ -46,8 +46,22 @@ web::json::value GetContactImportSessionProgressResponse::toJson() const
 
 void GetContactImportSessionProgressResponse::fromJson(web::json::value& val)
 {
-    setStatus(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("status")]));
-    setProcessed(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("processed")]));
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("processed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("processed")];
+        if(!fieldValue.is_null())
+        {
+            setProcessed(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetContactImportSessionProgressResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

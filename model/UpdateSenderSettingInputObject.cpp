@@ -52,8 +52,22 @@ web::json::value UpdateSenderSettingInputObject::toJson() const
 
 void UpdateSenderSettingInputObject::fromJson(web::json::value& val)
 {
-    setValue(ModelBase::stringFromJson(val[utility::conversions::to_string_t("value")]));
-    setCountry(ModelBase::stringFromJson(val[utility::conversions::to_string_t("country")]));
+    if(val.has_field(utility::conversions::to_string_t("value")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("value")];
+        if(!fieldValue.is_null())
+        {
+            setValue(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            setCountry(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("chatId")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("chatId")];

@@ -49,13 +49,40 @@ web::json::value ContactNote::toJson() const
 
 void ContactNote::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setCreatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("createdAt")]));
-    setNote(ModelBase::stringFromJson(val[utility::conversions::to_string_t("note")]));
-    std::shared_ptr<User> newUser(new User());
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("createdAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("createdAt")];
+        if(!fieldValue.is_null())
+        {
+            setCreatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("note")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("note")];
+        if(!fieldValue.is_null())
+        {
+            setNote(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<User> newItem(new User());
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
 }
 
 void ContactNote::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

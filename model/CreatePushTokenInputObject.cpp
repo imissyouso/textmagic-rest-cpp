@@ -46,8 +46,22 @@ web::json::value CreatePushTokenInputObject::toJson() const
 
 void CreatePushTokenInputObject::fromJson(web::json::value& val)
 {
-    setDeviceId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("deviceId")]));
-    setPushServiceType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("pushServiceType")]));
+    if(val.has_field(utility::conversions::to_string_t("deviceId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("deviceId")];
+        if(!fieldValue.is_null())
+        {
+            setDeviceId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("pushServiceType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("pushServiceType")];
+        if(!fieldValue.is_null())
+        {
+            setPushServiceType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void CreatePushTokenInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

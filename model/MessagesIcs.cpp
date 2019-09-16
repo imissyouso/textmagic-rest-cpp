@@ -73,34 +73,148 @@ web::json::value MessagesIcs::toJson() const
 
 void MessagesIcs::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setNextSend
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("nextSend")]));
-    setRrule(ModelBase::stringFromJson(val[utility::conversions::to_string_t("rrule")]));
-    std::shared_ptr<MessageSession> newSession(new MessageSession());
-    newSession->fromJson(val[utility::conversions::to_string_t("session")]);
-    setSession( newSession );
-    setLastSent
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("lastSent")]));
-    setContactName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("contactName")]));
-    std::shared_ptr<MessagesIcs_parameters> newParameters(new MessagesIcs_parameters());
-    newParameters->fromJson(val[utility::conversions::to_string_t("parameters")]);
-    setParameters( newParameters );
-    setType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("type")]));
-    setSummary(ModelBase::stringFromJson(val[utility::conversions::to_string_t("summary")]));
-    std::shared_ptr<MessagesIcs_textParameters> newTextParameters(new MessagesIcs_textParameters());
-    newTextParameters->fromJson(val[utility::conversions::to_string_t("textParameters")]);
-    setTextParameters( newTextParameters );
-    setFirstOccurrence
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("firstOccurrence")]));
-    setLastOccurrence
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("lastOccurrence")]));
-    setRecipientsCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("recipientsCount")]));
-    setTimezone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("timezone")]));
-    setCompleted(ModelBase::boolFromJson(val[utility::conversions::to_string_t("completed")]));
-    setAvatar(ModelBase::stringFromJson(val[utility::conversions::to_string_t("avatar")]));
-    setCreatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("createdAt")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("nextSend")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("nextSend")];
+        if(!fieldValue.is_null())
+        {
+            setNextSend(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("rrule")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("rrule")];
+        if(!fieldValue.is_null())
+        {
+            setRrule(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("session")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("session")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<MessageSession> newItem(new MessageSession());
+            newItem->fromJson(fieldValue);
+            setSession( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastSent")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastSent")];
+        if(!fieldValue.is_null())
+        {
+            setLastSent(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("contactName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contactName")];
+        if(!fieldValue.is_null())
+        {
+            setContactName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("parameters")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("parameters")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<MessagesIcs_parameters> newItem(new MessagesIcs_parameters());
+            newItem->fromJson(fieldValue);
+            setParameters( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("type")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("type")];
+        if(!fieldValue.is_null())
+        {
+            setType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("summary")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("summary")];
+        if(!fieldValue.is_null())
+        {
+            setSummary(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("textParameters")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("textParameters")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<MessagesIcs_textParameters> newItem(new MessagesIcs_textParameters());
+            newItem->fromJson(fieldValue);
+            setTextParameters( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstOccurrence")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstOccurrence")];
+        if(!fieldValue.is_null())
+        {
+            setFirstOccurrence(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastOccurrence")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastOccurrence")];
+        if(!fieldValue.is_null())
+        {
+            setLastOccurrence(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("recipientsCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("recipientsCount")];
+        if(!fieldValue.is_null())
+        {
+            setRecipientsCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("timezone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("timezone")];
+        if(!fieldValue.is_null())
+        {
+            setTimezone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("completed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("completed")];
+        if(!fieldValue.is_null())
+        {
+            setCompleted(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            setAvatar(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("createdAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("createdAt")];
+        if(!fieldValue.is_null())
+        {
+            setCreatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
 }
 
 void MessagesIcs::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

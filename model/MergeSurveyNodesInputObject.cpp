@@ -46,8 +46,22 @@ web::json::value MergeSurveyNodesInputObject::toJson() const
 
 void MergeSurveyNodesInputObject::fromJson(web::json::value& val)
 {
-    setFirstNode(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("firstNode")]));
-    setSecondNode(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("secondNode")]));
+    if(val.has_field(utility::conversions::to_string_t("firstNode")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstNode")];
+        if(!fieldValue.is_null())
+        {
+            setFirstNode(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("secondNode")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("secondNode")];
+        if(!fieldValue.is_null())
+        {
+            setSecondNode(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void MergeSurveyNodesInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

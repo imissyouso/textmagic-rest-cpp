@@ -50,10 +50,38 @@ web::json::value SurveySenderCountries::toJson() const
 
 void SurveySenderCountries::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setCountryName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("countryName")]));
-    setFromNumber(ModelBase::stringFromJson(val[utility::conversions::to_string_t("fromNumber")]));
-    setAllowDedicated(ModelBase::boolFromJson(val[utility::conversions::to_string_t("allowDedicated")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("countryName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("countryName")];
+        if(!fieldValue.is_null())
+        {
+            setCountryName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("fromNumber")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("fromNumber")];
+        if(!fieldValue.is_null())
+        {
+            setFromNumber(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("allowDedicated")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("allowDedicated")];
+        if(!fieldValue.is_null())
+        {
+            setAllowDedicated(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void SurveySenderCountries::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -67,7 +67,14 @@ web::json::value UpdateSurveyInputObject::toJson() const
 
 void UpdateSurveyInputObject::fromJson(web::json::value& val)
 {
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("contacts")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("contacts")];

@@ -46,8 +46,22 @@ web::json::value UpdateTemplateInputObject::toJson() const
 
 void UpdateTemplateInputObject::fromJson(web::json::value& val)
 {
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setContent(ModelBase::stringFromJson(val[utility::conversions::to_string_t("content")]));
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("content")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("content")];
+        if(!fieldValue.is_null())
+        {
+            setContent(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UpdateTemplateInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

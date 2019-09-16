@@ -121,7 +121,14 @@ void CreateContactInputObject::fromJson(web::json::value& val)
             setLastName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("email")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("email")];
@@ -138,7 +145,14 @@ void CreateContactInputObject::fromJson(web::json::value& val)
             setCompanyName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setLists(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lists")]));
+    if(val.has_field(utility::conversions::to_string_t("lists")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lists")];
+        if(!fieldValue.is_null())
+        {
+            setLists(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("favorited")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("favorited")];

@@ -69,25 +69,34 @@ void MessagesIcs_parameters_recipients::fromJson(web::json::value& val)
     {
         m_Contacts.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("contacts")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("contacts")].as_array() )
         {
             m_Contacts.push_back(ModelBase::int32_tFromJson(item));
+        }
         }
     }
     {
         m_Groups.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("groups")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("groups")].as_array() )
         {
             m_Groups.push_back(ModelBase::int32_tFromJson(item));
+        }
         }
     }
     {
         m_Numbers.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("numbers")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("numbers")].as_array() )
         {
             m_Numbers.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
 }

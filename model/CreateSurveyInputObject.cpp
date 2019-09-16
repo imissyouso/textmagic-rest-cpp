@@ -44,7 +44,14 @@ web::json::value CreateSurveyInputObject::toJson() const
 
 void CreateSurveyInputObject::fromJson(web::json::value& val)
 {
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void CreateSurveyInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -44,7 +44,14 @@ web::json::value ClearAndAssignContactsToListInputObject::toJson() const
 
 void ClearAndAssignContactsToListInputObject::fromJson(web::json::value& val)
 {
-    setContacts(ModelBase::stringFromJson(val[utility::conversions::to_string_t("contacts")]));
+    if(val.has_field(utility::conversions::to_string_t("contacts")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("contacts")];
+        if(!fieldValue.is_null())
+        {
+            setContacts(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void ClearAndAssignContactsToListInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

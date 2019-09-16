@@ -55,16 +55,64 @@ web::json::value BulkSession::toJson() const
 
 void BulkSession::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setItemsProcessed(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("itemsProcessed")]));
-    setItemsTotal(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("itemsTotal")]));
-    setCreatedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("createdAt")]));
-    std::shared_ptr<MessageSession> newSession(new MessageSession());
-    newSession->fromJson(val[utility::conversions::to_string_t("session")]);
-    setSession( newSession );
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("itemsProcessed")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("itemsProcessed")];
+        if(!fieldValue.is_null())
+        {
+            setItemsProcessed(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("itemsTotal")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("itemsTotal")];
+        if(!fieldValue.is_null())
+        {
+            setItemsTotal(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("createdAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("createdAt")];
+        if(!fieldValue.is_null())
+        {
+            setCreatedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("session")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("session")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<MessageSession> newItem(new MessageSession());
+            newItem->fromJson(fieldValue);
+            setSession( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void BulkSession::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

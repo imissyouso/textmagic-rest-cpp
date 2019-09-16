@@ -58,18 +58,58 @@ web::json::value UsersInbound::toJson() const
 
 void UsersInbound::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    std::shared_ptr<User> newUser(new User());
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
-    setPurchasedAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("purchasedAt")]));
-    setExpireAt
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("expireAt")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    std::shared_ptr<Country> newCountry(new Country());
-    newCountry->fromJson(val[utility::conversions::to_string_t("country")]);
-    setCountry( newCountry );
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<User> newItem(new User());
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("purchasedAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("purchasedAt")];
+        if(!fieldValue.is_null())
+        {
+            setPurchasedAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("expireAt")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("expireAt")];
+        if(!fieldValue.is_null())
+        {
+            setExpireAt(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Country> newItem(new Country());
+            newItem->fromJson(fieldValue);
+            setCountry( newItem );
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("phone")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];

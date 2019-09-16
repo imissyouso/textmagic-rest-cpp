@@ -58,8 +58,22 @@ web::json::value CreateListInputObject::toJson() const
 
 void CreateListInputObject::fromJson(web::json::value& val)
 {
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setShared(ModelBase::boolFromJson(val[utility::conversions::to_string_t("shared")]));
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("shared")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("shared")];
+        if(!fieldValue.is_null())
+        {
+            setShared(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("favorited")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("favorited")];

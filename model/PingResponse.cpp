@@ -46,8 +46,22 @@ web::json::value PingResponse::toJson() const
 
 void PingResponse::fromJson(web::json::value& val)
 {
-    setPing(ModelBase::stringFromJson(val[utility::conversions::to_string_t("ping")]));
-    setUtcDateTime(ModelBase::stringFromJson(val[utility::conversions::to_string_t("utcDateTime")]));
+    if(val.has_field(utility::conversions::to_string_t("ping")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("ping")];
+        if(!fieldValue.is_null())
+        {
+            setPing(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("utcDateTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("utcDateTime")];
+        if(!fieldValue.is_null())
+        {
+            setUtcDateTime(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void PingResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -87,20 +87,85 @@ web::json::value Contact::toJson() const
 
 void Contact::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setFavorited(ModelBase::boolFromJson(val[utility::conversions::to_string_t("favorited")]));
-    setBlocked(ModelBase::boolFromJson(val[utility::conversions::to_string_t("blocked")]));
-    setFirstName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("firstName")]));
-    setLastName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastName")]));
-    setCompanyName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("companyName")]));
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
-    setEmail(ModelBase::stringFromJson(val[utility::conversions::to_string_t("email")]));
-    std::shared_ptr<Country> newCountry(new Country());
-    newCountry->fromJson(val[utility::conversions::to_string_t("country")]);
-    setCountry( newCountry );
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("favorited")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("favorited")];
+        if(!fieldValue.is_null())
+        {
+            setFavorited(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("blocked")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("blocked")];
+        if(!fieldValue.is_null())
+        {
+            setBlocked(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstName")];
+        if(!fieldValue.is_null())
+        {
+            setFirstName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastName")];
+        if(!fieldValue.is_null())
+        {
+            setLastName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("companyName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("companyName")];
+        if(!fieldValue.is_null())
+        {
+            setCompanyName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("email")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("email")];
+        if(!fieldValue.is_null())
+        {
+            setEmail(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("country")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("country")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Country> newItem(new Country());
+            newItem->fromJson(fieldValue);
+            setCountry( newItem );
+        }
+    }
     {
         m_CustomFields.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("customFields")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("customFields")].as_array() )
         {
             if(item.is_null())
@@ -114,13 +179,23 @@ void Contact::fromJson(web::json::value& val)
                 m_CustomFields.push_back( newItem );
             }
         }
+        }
     }
-    std::shared_ptr<User> newUser(new User());
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<User> newItem(new User());
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
     {
         m_Lists.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("lists")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("lists")].as_array() )
         {
             if(item.is_null())
@@ -134,14 +209,31 @@ void Contact::fromJson(web::json::value& val)
                 m_Lists.push_back( newItem );
             }
         }
+        }
     }
-    setPhoneType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phoneType")]));
-    std::shared_ptr<ContactImage> newAvatar(new ContactImage());
-    newAvatar->fromJson(val[utility::conversions::to_string_t("avatar")]);
-    setAvatar( newAvatar );
+    if(val.has_field(utility::conversions::to_string_t("phoneType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phoneType")];
+        if(!fieldValue.is_null())
+        {
+            setPhoneType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<ContactImage> newItem(new ContactImage());
+            newItem->fromJson(fieldValue);
+            setAvatar( newItem );
+        }
+    }
     {
         m_Notes.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("notes")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("notes")].as_array() )
         {
             if(item.is_null())
@@ -154,6 +246,7 @@ void Contact::fromJson(web::json::value& val)
                 newItem->fromJson(item);
                 m_Notes.push_back( newItem );
             }
+        }
         }
     }
 }

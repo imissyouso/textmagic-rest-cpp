@@ -58,8 +58,22 @@ web::json::value UpdateChatDesktopNotificationSettingsInputObject::toJson() cons
 
 void UpdateChatDesktopNotificationSettingsInputObject::fromJson(web::json::value& val)
 {
-    setPlaySound(ModelBase::boolFromJson(val[utility::conversions::to_string_t("playSound")]));
-    setShowNotifications(ModelBase::boolFromJson(val[utility::conversions::to_string_t("showNotifications")]));
+    if(val.has_field(utility::conversions::to_string_t("playSound")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("playSound")];
+        if(!fieldValue.is_null())
+        {
+            setPlaySound(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("showNotifications")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("showNotifications")];
+        if(!fieldValue.is_null())
+        {
+            setShowNotifications(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("showText")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("showText")];

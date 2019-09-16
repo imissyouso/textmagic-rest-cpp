@@ -54,12 +54,54 @@ web::json::value FavoriteContact::toJson() const
 
 void FavoriteContact::fromJson(web::json::value& val)
 {
-    setEntityId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("entityId")]));
-    setEntityType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("entityType")]));
-    setPrimaryLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("primaryLabel")]));
-    setSecondaryLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("secondaryLabel")]));
-    setTertiaryLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("tertiaryLabel")]));
-    setAvatar(ModelBase::stringFromJson(val[utility::conversions::to_string_t("avatar")]));
+    if(val.has_field(utility::conversions::to_string_t("entityId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("entityId")];
+        if(!fieldValue.is_null())
+        {
+            setEntityId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("entityType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("entityType")];
+        if(!fieldValue.is_null())
+        {
+            setEntityType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("primaryLabel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("primaryLabel")];
+        if(!fieldValue.is_null())
+        {
+            setPrimaryLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("secondaryLabel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("secondaryLabel")];
+        if(!fieldValue.is_null())
+        {
+            setSecondaryLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("tertiaryLabel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("tertiaryLabel")];
+        if(!fieldValue.is_null())
+        {
+            setTertiaryLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            setAvatar(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void FavoriteContact::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

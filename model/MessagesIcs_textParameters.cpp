@@ -60,19 +60,57 @@ web::json::value MessagesIcs_textParameters::toJson() const
 
 void MessagesIcs_textParameters::fromJson(web::json::value& val)
 {
-    setCost(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("cost")]));
-    setParts(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("parts")]));
-    setChars(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("chars")]));
-    setEncoding(ModelBase::stringFromJson(val[utility::conversions::to_string_t("encoding")]));
+    if(val.has_field(utility::conversions::to_string_t("cost")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("cost")];
+        if(!fieldValue.is_null())
+        {
+            setCost(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("parts")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("parts")];
+        if(!fieldValue.is_null())
+        {
+            setParts(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("chars")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("chars")];
+        if(!fieldValue.is_null())
+        {
+            setChars(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("encoding")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("encoding")];
+        if(!fieldValue.is_null())
+        {
+            setEncoding(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     {
         m_Countries.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("countries")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("countries")].as_array() )
         {
             m_Countries.push_back(ModelBase::stringFromJson(item));
         }
+        }
     }
-    setCharsetLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("charsetLabel")]));
+    if(val.has_field(utility::conversions::to_string_t("charsetLabel")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("charsetLabel")];
+        if(!fieldValue.is_null())
+        {
+            setCharsetLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void MessagesIcs_textParameters::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -52,11 +52,46 @@ web::json::value Invoice::toJson() const
 
 void Invoice::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setBundle(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("bundle")]));
-    setCurrency(ModelBase::stringFromJson(val[utility::conversions::to_string_t("currency")]));
-    setVat(ModelBase::floatFromJson(val[utility::conversions::to_string_t("vat")]));
-    setPaymentMethod(ModelBase::stringFromJson(val[utility::conversions::to_string_t("paymentMethod")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("bundle")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("bundle")];
+        if(!fieldValue.is_null())
+        {
+            setBundle(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("currency")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("currency")];
+        if(!fieldValue.is_null())
+        {
+            setCurrency(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("vat")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("vat")];
+        if(!fieldValue.is_null())
+        {
+            setVat(ModelBase::floatFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("paymentMethod")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("paymentMethod")];
+        if(!fieldValue.is_null())
+        {
+            setPaymentMethod(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void Invoice::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

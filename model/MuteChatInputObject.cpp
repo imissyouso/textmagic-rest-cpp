@@ -52,8 +52,22 @@ web::json::value MuteChatInputObject::toJson() const
 
 void MuteChatInputObject::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setMute(ModelBase::boolFromJson(val[utility::conversions::to_string_t("mute")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("mute")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("mute")];
+        if(!fieldValue.is_null())
+        {
+            setMute(ModelBase::boolFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("for")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("for")];

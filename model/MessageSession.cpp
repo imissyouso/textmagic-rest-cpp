@@ -58,14 +58,70 @@ web::json::value MessageSession::toJson() const
 
 void MessageSession::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setStartTime(ModelBase::stringFromJson(val[utility::conversions::to_string_t("startTime")]));
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
-    setSource(ModelBase::stringFromJson(val[utility::conversions::to_string_t("source")]));
-    setReferenceId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("referenceId")]));
-    setPrice(ModelBase::doubleFromJson(val[utility::conversions::to_string_t("price")]));
-    setNumbersCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("numbersCount")]));
-    setDestination(ModelBase::stringFromJson(val[utility::conversions::to_string_t("destination")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("startTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("startTime")];
+        if(!fieldValue.is_null())
+        {
+            setStartTime(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("source")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("source")];
+        if(!fieldValue.is_null())
+        {
+            setSource(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("referenceId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("referenceId")];
+        if(!fieldValue.is_null())
+        {
+            setReferenceId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("price")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("price")];
+        if(!fieldValue.is_null())
+        {
+            setPrice(ModelBase::doubleFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("numbersCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("numbersCount")];
+        if(!fieldValue.is_null())
+        {
+            setNumbersCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("destination")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("destination")];
+        if(!fieldValue.is_null())
+        {
+            setDestination(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void MessageSession::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

@@ -44,7 +44,14 @@ web::json::value UpdateContactNoteInputObject::toJson() const
 
 void UpdateContactNoteInputObject::fromJson(web::json::value& val)
 {
-    setNote(ModelBase::stringFromJson(val[utility::conversions::to_string_t("note")]));
+    if(val.has_field(utility::conversions::to_string_t("note")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("note")];
+        if(!fieldValue.is_null())
+        {
+            setNote(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UpdateContactNoteInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

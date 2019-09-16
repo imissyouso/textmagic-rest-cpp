@@ -72,12 +72,46 @@ web::json::value MessageIn::toJson() const
 
 void MessageIn::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setSender(ModelBase::stringFromJson(val[utility::conversions::to_string_t("sender")]));
-    setReceiver(ModelBase::stringFromJson(val[utility::conversions::to_string_t("receiver")]));
-    setMessageTime
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("messageTime")]));
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sender")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sender")];
+        if(!fieldValue.is_null())
+        {
+            setSender(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("receiver")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
+        if(!fieldValue.is_null())
+        {
+            setReceiver(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageTime")];
+        if(!fieldValue.is_null())
+        {
+            setMessageTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("contactId")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("contactId")];
@@ -102,7 +136,14 @@ void MessageIn::fromJson(web::json::value& val)
             setLastName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    setAvatar(ModelBase::stringFromJson(val[utility::conversions::to_string_t("avatar")]));
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            setAvatar(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void MessageIn::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

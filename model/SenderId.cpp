@@ -49,12 +49,40 @@ web::json::value SenderId::toJson() const
 
 void SenderId::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setSenderId(ModelBase::stringFromJson(val[utility::conversions::to_string_t("senderId")]));
-    std::shared_ptr<User> newUser(new User());
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("senderId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("senderId")];
+        if(!fieldValue.is_null())
+        {
+            setSenderId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<User> newItem(new User());
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void SenderId::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

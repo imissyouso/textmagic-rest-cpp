@@ -60,20 +60,90 @@ web::json::value Group::toJson() const
 
 void Group::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("name")]));
-    setDescription(ModelBase::stringFromJson(val[utility::conversions::to_string_t("description")]));
-    setFavorited(ModelBase::boolFromJson(val[utility::conversions::to_string_t("favorited")]));
-    setMembersCount(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("membersCount")]));
-    std::shared_ptr<User> newUser(new User());
-    newUser->fromJson(val[utility::conversions::to_string_t("user")]);
-    setUser( newUser );
-    setService(ModelBase::boolFromJson(val[utility::conversions::to_string_t("service")]));
-    setShared(ModelBase::boolFromJson(val[utility::conversions::to_string_t("shared")]));
-    std::shared_ptr<GroupImage> newAvatar(new GroupImage());
-    newAvatar->fromJson(val[utility::conversions::to_string_t("avatar")]);
-    setAvatar( newAvatar );
-    setIsDefault(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isDefault")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("name")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("name")];
+        if(!fieldValue.is_null())
+        {
+            setName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("description")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("description")];
+        if(!fieldValue.is_null())
+        {
+            setDescription(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("favorited")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("favorited")];
+        if(!fieldValue.is_null())
+        {
+            setFavorited(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("membersCount")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("membersCount")];
+        if(!fieldValue.is_null())
+        {
+            setMembersCount(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("user")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<User> newItem(new User());
+            newItem->fromJson(fieldValue);
+            setUser( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("service")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("service")];
+        if(!fieldValue.is_null())
+        {
+            setService(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("shared")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("shared")];
+        if(!fieldValue.is_null())
+        {
+            setShared(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<GroupImage> newItem(new GroupImage());
+            newItem->fromJson(fieldValue);
+            setAvatar( newItem );
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("isDefault")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("isDefault")];
+        if(!fieldValue.is_null())
+        {
+            setIsDefault(ModelBase::boolFromJson(fieldValue));
+        }
+    }
 }
 
 void Group::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

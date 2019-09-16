@@ -64,17 +64,94 @@ web::json::value GetContactsAutocompleteResponse::toJson() const
 
 void GetContactsAutocompleteResponse::fromJson(web::json::value& val)
 {
-    setEntityId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("entityId")]));
-    setEntityType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("entityType")]));
-    setValue(ModelBase::stringFromJson(val[utility::conversions::to_string_t("value")]));
-    setLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("label")]));
-    setSharedBy(ModelBase::stringFromJson(val[utility::conversions::to_string_t("sharedBy")]));
-    setAvatar(ModelBase::stringFromJson(val[utility::conversions::to_string_t("avatar")]));
-    setFavorited(ModelBase::boolFromJson(val[utility::conversions::to_string_t("favorited")]));
-    setUserId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("userId")]));
-    setCountryName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("countryName")]));
-    setQposition(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("qposition")]));
-    setRposition(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("rposition")]));
+    if(val.has_field(utility::conversions::to_string_t("entityId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("entityId")];
+        if(!fieldValue.is_null())
+        {
+            setEntityId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("entityType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("entityType")];
+        if(!fieldValue.is_null())
+        {
+            setEntityType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("value")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("value")];
+        if(!fieldValue.is_null())
+        {
+            setValue(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("label")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("label")];
+        if(!fieldValue.is_null())
+        {
+            setLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sharedBy")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sharedBy")];
+        if(!fieldValue.is_null())
+        {
+            setSharedBy(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("avatar")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
+        if(!fieldValue.is_null())
+        {
+            setAvatar(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("favorited")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("favorited")];
+        if(!fieldValue.is_null())
+        {
+            setFavorited(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("userId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("userId")];
+        if(!fieldValue.is_null())
+        {
+            setUserId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("countryName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("countryName")];
+        if(!fieldValue.is_null())
+        {
+            setCountryName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("qposition")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("qposition")];
+        if(!fieldValue.is_null())
+        {
+            setQposition(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("rposition")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("rposition")];
+        if(!fieldValue.is_null())
+        {
+            setRposition(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

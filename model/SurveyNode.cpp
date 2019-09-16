@@ -70,26 +70,74 @@ web::json::value SurveyNode::toJson() const
 
 void SurveyNode::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setLabel(ModelBase::stringFromJson(val[utility::conversions::to_string_t("label")]));
-    setBody(ModelBase::stringFromJson(val[utility::conversions::to_string_t("body")]));
-    setNodeType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("nodeType")]));
-    setIsEndNode(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isEndNode")]));
-    setSendDelay(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("sendDelay")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("label")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("label")];
+        if(!fieldValue.is_null())
+        {
+            setLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("body")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("body")];
+        if(!fieldValue.is_null())
+        {
+            setBody(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("nodeType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("nodeType")];
+        if(!fieldValue.is_null())
+        {
+            setNodeType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("isEndNode")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("isEndNode")];
+        if(!fieldValue.is_null())
+        {
+            setIsEndNode(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sendDelay")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sendDelay")];
+        if(!fieldValue.is_null())
+        {
+            setSendDelay(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
     {
         m_StartNodes.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("startNodes")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("startNodes")].as_array() )
         {
             m_StartNodes.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
     {
         m_EndNodes.clear();
         std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("endNodes")))
+        {
         for( auto& item : val[utility::conversions::to_string_t("endNodes")].as_array() )
         {
             m_EndNodes.push_back(ModelBase::stringFromJson(item));
+        }
         }
     }
 }

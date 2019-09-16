@@ -62,17 +62,86 @@ web::json::value Conversation::toJson() const
 
 void Conversation::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setDirection(ModelBase::stringFromJson(val[utility::conversions::to_string_t("direction")]));
-    setSender(ModelBase::stringFromJson(val[utility::conversions::to_string_t("sender")]));
-    setMessageTime
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("messageTime")]));
-    setText(ModelBase::stringFromJson(val[utility::conversions::to_string_t("text")]));
-    setReceiver(ModelBase::stringFromJson(val[utility::conversions::to_string_t("receiver")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setFirstName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("firstName")]));
-    setLastName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastName")]));
-    setSessionId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("sessionId")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("direction")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("direction")];
+        if(!fieldValue.is_null())
+        {
+            setDirection(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sender")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sender")];
+        if(!fieldValue.is_null())
+        {
+            setSender(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("messageTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("messageTime")];
+        if(!fieldValue.is_null())
+        {
+            setMessageTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("receiver")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
+        if(!fieldValue.is_null())
+        {
+            setReceiver(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstName")];
+        if(!fieldValue.is_null())
+        {
+            setFirstName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastName")];
+        if(!fieldValue.is_null())
+        {
+            setLastName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("sessionId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sessionId")];
+        if(!fieldValue.is_null())
+        {
+            setSessionId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
 }
 
 void Conversation::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

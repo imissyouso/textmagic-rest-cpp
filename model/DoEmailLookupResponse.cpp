@@ -78,24 +78,150 @@ web::json::value DoEmailLookupResponse::toJson() const
 
 void DoEmailLookupResponse::fromJson(web::json::value& val)
 {
-    setAddress(ModelBase::stringFromJson(val[utility::conversions::to_string_t("address")]));
-    setAddressType(ModelBase::stringFromJson(val[utility::conversions::to_string_t("addressType")]));
-    setEmailRole(ModelBase::stringFromJson(val[utility::conversions::to_string_t("emailRole")]));
-    setReason(ModelBase::stringFromJson(val[utility::conversions::to_string_t("reason")]));
-    setStatus(ModelBase::stringFromJson(val[utility::conversions::to_string_t("status")]));
-    setDeliverability(ModelBase::stringFromJson(val[utility::conversions::to_string_t("deliverability")]));
-    setIsDisposableAddress(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isDisposableAddress")]));
-    setLocalPart(ModelBase::stringFromJson(val[utility::conversions::to_string_t("localPart")]));
-    setDomainPart(ModelBase::stringFromJson(val[utility::conversions::to_string_t("domainPart")]));
-    setExchange(ModelBase::stringFromJson(val[utility::conversions::to_string_t("exchange")]));
-    setIsInWhiteList(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isInWhiteList")]));
-    setIsInBlackList(ModelBase::boolFromJson(val[utility::conversions::to_string_t("isInBlackList")]));
-    setHasMx(ModelBase::boolFromJson(val[utility::conversions::to_string_t("hasMx")]));
-    setHasAa(ModelBase::boolFromJson(val[utility::conversions::to_string_t("hasAa")]));
-    setHasAaaa(ModelBase::boolFromJson(val[utility::conversions::to_string_t("hasAaaa")]));
-    setRisk(ModelBase::stringFromJson(val[utility::conversions::to_string_t("risk")]));
-    setPreference(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("preference")]));
-    setSuggestion(ModelBase::stringFromJson(val[utility::conversions::to_string_t("suggestion")]));
+    if(val.has_field(utility::conversions::to_string_t("address")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("address")];
+        if(!fieldValue.is_null())
+        {
+            setAddress(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("addressType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("addressType")];
+        if(!fieldValue.is_null())
+        {
+            setAddressType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("emailRole")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("emailRole")];
+        if(!fieldValue.is_null())
+        {
+            setEmailRole(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("reason")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("reason")];
+        if(!fieldValue.is_null())
+        {
+            setReason(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("deliverability")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("deliverability")];
+        if(!fieldValue.is_null())
+        {
+            setDeliverability(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("isDisposableAddress")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("isDisposableAddress")];
+        if(!fieldValue.is_null())
+        {
+            setIsDisposableAddress(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("localPart")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("localPart")];
+        if(!fieldValue.is_null())
+        {
+            setLocalPart(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("domainPart")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("domainPart")];
+        if(!fieldValue.is_null())
+        {
+            setDomainPart(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("exchange")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("exchange")];
+        if(!fieldValue.is_null())
+        {
+            setExchange(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("isInWhiteList")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("isInWhiteList")];
+        if(!fieldValue.is_null())
+        {
+            setIsInWhiteList(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("isInBlackList")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("isInBlackList")];
+        if(!fieldValue.is_null())
+        {
+            setIsInBlackList(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("hasMx")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("hasMx")];
+        if(!fieldValue.is_null())
+        {
+            setHasMx(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("hasAa")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("hasAa")];
+        if(!fieldValue.is_null())
+        {
+            setHasAa(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("hasAaaa")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("hasAaaa")];
+        if(!fieldValue.is_null())
+        {
+            setHasAaaa(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("risk")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("risk")];
+        if(!fieldValue.is_null())
+        {
+            setRisk(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("preference")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("preference")];
+        if(!fieldValue.is_null())
+        {
+            setPreference(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("suggestion")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("suggestion")];
+        if(!fieldValue.is_null())
+        {
+            setSuggestion(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void DoEmailLookupResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

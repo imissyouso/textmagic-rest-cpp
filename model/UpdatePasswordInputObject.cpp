@@ -46,8 +46,22 @@ web::json::value UpdatePasswordInputObject::toJson() const
 
 void UpdatePasswordInputObject::fromJson(web::json::value& val)
 {
-    setOldPassword(ModelBase::stringFromJson(val[utility::conversions::to_string_t("oldPassword")]));
-    setNewPassword(ModelBase::stringFromJson(val[utility::conversions::to_string_t("newPassword")]));
+    if(val.has_field(utility::conversions::to_string_t("oldPassword")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("oldPassword")];
+        if(!fieldValue.is_null())
+        {
+            setOldPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("newPassword")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("newPassword")];
+        if(!fieldValue.is_null())
+        {
+            setNewPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UpdatePasswordInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

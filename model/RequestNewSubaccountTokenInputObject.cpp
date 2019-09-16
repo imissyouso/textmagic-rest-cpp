@@ -52,8 +52,22 @@ web::json::value RequestNewSubaccountTokenInputObject::toJson() const
 
 void RequestNewSubaccountTokenInputObject::fromJson(web::json::value& val)
 {
-    setUserId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("userId")]));
-    setPassword(ModelBase::stringFromJson(val[utility::conversions::to_string_t("password")]));
+    if(val.has_field(utility::conversions::to_string_t("userId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("userId")];
+        if(!fieldValue.is_null())
+        {
+            setUserId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("password")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("password")];
+        if(!fieldValue.is_null())
+        {
+            setPassword(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("appName")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("appName")];

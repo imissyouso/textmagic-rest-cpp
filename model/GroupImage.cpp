@@ -44,7 +44,14 @@ web::json::value GroupImage::toJson() const
 
 void GroupImage::fromJson(web::json::value& val)
 {
-    setHref(ModelBase::stringFromJson(val[utility::conversions::to_string_t("href")]));
+    if(val.has_field(utility::conversions::to_string_t("href")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("href")];
+        if(!fieldValue.is_null())
+        {
+            setHref(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void GroupImage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const

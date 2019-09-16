@@ -52,12 +52,46 @@ web::json::value UnsubscribedContact::toJson() const
 
 void UnsubscribedContact::fromJson(web::json::value& val)
 {
-    setId(ModelBase::int32_tFromJson(val[utility::conversions::to_string_t("id")]));
-    setPhone(ModelBase::stringFromJson(val[utility::conversions::to_string_t("phone")]));
-    setUnsubscribeTime
-    (ModelBase::dateFromJson(val[utility::conversions::to_string_t("unsubscribeTime")]));
-    setFirstName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("firstName")]));
-    setLastName(ModelBase::stringFromJson(val[utility::conversions::to_string_t("lastName")]));
+    if(val.has_field(utility::conversions::to_string_t("id")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("id")];
+        if(!fieldValue.is_null())
+        {
+            setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("unsubscribeTime")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("unsubscribeTime")];
+        if(!fieldValue.is_null())
+        {
+            setUnsubscribeTime(ModelBase::dateFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("firstName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("firstName")];
+        if(!fieldValue.is_null())
+        {
+            setFirstName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("lastName")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("lastName")];
+        if(!fieldValue.is_null())
+        {
+            setLastName(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void UnsubscribedContact::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
