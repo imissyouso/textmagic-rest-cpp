@@ -20,7 +20,8 @@
 #define IO_SWAGGER_CLIENT_MODEL_GetListContactsIdsResponse_H_
 
 
-#include <vector>
+#include "../ModelBase.h"
+
 
 namespace io {
 namespace swagger {
@@ -31,7 +32,7 @@ namespace model {
 /// 
 /// </summary>
 class  GetListContactsIdsResponse
-    : public null<int32_t>
+    : public ModelBase
 {
 public:
     GetListContactsIdsResponse();

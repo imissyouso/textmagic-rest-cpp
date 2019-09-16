@@ -34,7 +34,7 @@ void GetListContactsIdsResponse::validate()
 
 web::json::value GetListContactsIdsResponse::toJson() const
 {
-    web::json::value val = this->null<int32_t>::toJson();
+    web::json::value val = web::json::value::object();
 
 
     return val;
@@ -42,8 +42,6 @@ web::json::value GetListContactsIdsResponse::toJson() const
 
 void GetListContactsIdsResponse::fromJson(web::json::value& val)
 {
-    this->null<int32_t>::fromJson(val);
-
 }
 
 void GetListContactsIdsResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
