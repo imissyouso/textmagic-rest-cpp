@@ -4,6 +4,16 @@ C++ client for TextMagic API
 
 For detailed documentation, please visit http://docs.textmagictesting.com/
 
+## Requirements
+
+* cmake 2.8 and later (https://cmake.org/)
+* boost (https://www.boost.org/)
+* cpprest (https://github.com/microsoft/cpprestsdk)
+
+Quick installation example:
+```shell
+apt-get install build-essential cmake libcpprest-dev
+
 ## Installation
 
 Download and extract lib archive
@@ -15,9 +25,6 @@ Build using cmake
 cmake --build .
 ```
 Output library file will be placed to `textmagic-rest-cpp-master/lib` directory
-```shell
-cmake --build .
-```
 
 ## Usage Example
 
