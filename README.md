@@ -62,10 +62,7 @@ int main() {
     std::shared_ptr<ApiClient> apiClient(new ApiClient);
     std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration);
 
-    apiConfig->setBaseUrl("http://host.docker.internal");
-
-    apiConfig->getHttpConfig().set_credentials(web::credentials("test", "mdwpeFrNGc7GyV1V4J6UJawcp0XTLm"));
-
+    apiConfig->getHttpConfig().set_credentials(web::credentials("YOUR_NAME", "YOUR_PASSWORD"));
     apiClient->setConfiguration(apiConfig);
 
     TextMagicApi api(apiClient);
