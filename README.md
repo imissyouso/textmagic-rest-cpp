@@ -76,7 +76,8 @@ int main() {
     } catch(const std::exception& e) {
         std::cout << "getPing() exception: " << e.what() << '\n';
     }
-
+    
+    // Send a new message request example
     std::shared_ptr<SendMessageInputObject> sendMessageInputObject(new SendMessageInputObject);
     sendMessageInputObject->setPhones("+19998887766");
     sendMessageInputObject->setText("I love TextMagic!");
