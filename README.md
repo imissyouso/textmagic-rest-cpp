@@ -130,3 +130,7 @@ build your test project:
 ```shell
 cmake --build .
 ```
+Run:
+```shell
+./app
+```
