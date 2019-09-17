@@ -9,7 +9,7 @@ For detailed documentation, please visit http://docs.textmagictesting.com/
 * CMake 2.8 and later (https://cmake.org/)
 * cpprest (https://github.com/microsoft/cpprestsdk)
 
-Ubuntu Deps quick installation example:
+Ubuntu dependencies quick installation example:
 ```shell
 apt-get install build-essential cmake libcpprest-dev
 ```
