@@ -6,13 +6,14 @@ For detailed documentation, please visit http://docs.textmagictesting.com/
 
 ## Requirements
 
-* cmake 2.8 and later (https://cmake.org/)
+* CMake 2.8 and later (https://cmake.org/)
 * boost (https://www.boost.org/)
 * cpprest (https://github.com/microsoft/cpprestsdk)
 
 Quick installation example:
 ```shell
 apt-get install build-essential cmake libcpprest-dev
+```
 
 ## Installation
 
