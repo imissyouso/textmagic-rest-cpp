@@ -19,8 +19,10 @@ apt-get install build-essential cmake libcpprest-dev
 
 Download and extract lib archive
 ```shell
-curl -SL https://github.com/imissyouso/textmagic-rest-cpp/archive/master.zip | tar -xf - -C .
-cd ./textmagic-rest-cpp-master
+wget https://github.com/imissyouso/textmagic-rest-cpp/archive/master.tar.gz && \
+tar zxf master.tar.gz && \
+rm -f master.tar.gz && \
+cd textmagic-rest-cpp-master
 ```
 Build using cmake
 ```shell
