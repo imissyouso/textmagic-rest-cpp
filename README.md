@@ -3,7 +3,7 @@
 C++ client for TextMagic API
 
 {{#infoUrl}}
-For detailed documentation, please visit [{{{infoUrl}}}]({{{infoUrl}}})
+For detailed documentation, please visit http://docs.textmagictesting.com/
 {{/infoUrl}}
 
 ## Installation
