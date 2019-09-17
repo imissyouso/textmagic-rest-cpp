@@ -9,7 +9,7 @@ For detailed documentation, please visit http://docs.textmagictesting.com/
 * CMake 2.8 and later (https://cmake.org/)
 * cpprest (https://github.com/microsoft/cpprestsdk)
 
-Deps quick installation example:
+Ubuntu Deps quick installation example:
 ```shell
 apt-get install build-essential cmake libcpprest-dev
 ```
@@ -25,7 +25,7 @@ cd textmagic-rest-cpp-master
 ```
 Build using cmake
 ```shell
-cmake --build .
+cmake . && cmake --build . 
 ```
 Output library file will be placed to `textmagic-rest-cpp-master/lib` directory
 
@@ -128,7 +128,7 @@ int main() {
 ```
 build your test project:
 ```shell
-cmake --build .
+cmake . && cmake --build .
 ```
 Run:
 ```shell
