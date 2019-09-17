@@ -10,7 +10,7 @@ For detailed documentation, please visit http://docs.textmagictesting.com/
 * boost (https://www.boost.org/)
 * cpprest (https://github.com/microsoft/cpprestsdk)
 
-Quick installation example:
+Deps quick installation example:
 ```shell
 apt-get install build-essential cmake libcpprest-dev
 ```
