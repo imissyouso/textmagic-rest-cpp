@@ -7,7 +7,6 @@ For detailed documentation, please visit http://docs.textmagictesting.com/
 ## Requirements
 
 * CMake 2.8 and later (https://cmake.org/)
-* boost (https://www.boost.org/)
 * cpprest (https://github.com/microsoft/cpprestsdk)
 
 Deps quick installation example:
