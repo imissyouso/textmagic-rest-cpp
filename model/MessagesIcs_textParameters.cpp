@@ -14,8 +14,8 @@
 
 #include "MessagesIcs_textParameters.h"
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace model {
 

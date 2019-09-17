@@ -16,8 +16,8 @@
  * 
  */
 
-#ifndef IO_SWAGGER_CLIENT_API_TextMagicApi_H_
-#define IO_SWAGGER_CLIENT_API_TextMagicApi_H_
+#ifndef COM_TEXTMAGIC_CLIENT_API_TextMagicApi_H_
+#define COM_TEXTMAGIC_CLIENT_API_TextMagicApi_H_
 
 
 #include "../ApiClient.h"
@@ -171,12 +171,12 @@
 
 #include <boost/optional.hpp>
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace api {
 
-using namespace io::swagger::client::model;
+using namespace com::textmagic::client::model;
 
 class  TextMagicApi
 {
@@ -2345,5 +2345,5 @@ protected:
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_API_TextMagicApi_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_API_TextMagicApi_H_ */
 

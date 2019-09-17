@@ -16,8 +16,8 @@
  * 
  */
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_Contact_H_
-#define IO_SWAGGER_CLIENT_MODEL_Contact_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_Contact_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_Contact_H_
 
 
 #include "../ModelBase.h"
@@ -31,8 +31,8 @@
 #include <vector>
 #include "User.h"
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace model {
 
@@ -159,4 +159,4 @@ protected:
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_Contact_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_Contact_H_ */

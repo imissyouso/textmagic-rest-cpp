@@ -14,8 +14,8 @@
 
 #include "GetAllInboundMessagesResponse.h"
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace model {
 

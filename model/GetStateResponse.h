@@ -16,15 +16,15 @@
  * 
  */
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_GetStateResponse_H_
-#define IO_SWAGGER_CLIENT_MODEL_GetStateResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetStateResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_GetStateResponse_H_
 
 
 #include "../ModelBase.h"
 
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace model {
 
@@ -295,4 +295,4 @@ protected:
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_GetStateResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetStateResponse_H_ */

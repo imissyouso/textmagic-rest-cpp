@@ -14,12 +14,12 @@
 #include "MultipartFormData.h"
 #include "ModelBase.h"
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace api {
 
-using namespace io::swagger::client::model;
+using namespace com::textmagic::client::model;
 
 ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
     : m_Configuration(configuration)

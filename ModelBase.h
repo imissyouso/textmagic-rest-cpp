@@ -16,8 +16,8 @@
  * This is the base class for all model classes
  */
 
-#ifndef IO_SWAGGER_CLIENT_MODEL_ModelBase_H_
-#define IO_SWAGGER_CLIENT_MODEL_ModelBase_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_ModelBase_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_ModelBase_H_
 
 
 #include "HttpContent.h"
@@ -28,8 +28,8 @@
 
 #include <vector>
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace model {
 
@@ -118,4 +118,4 @@ std::shared_ptr<HttpContent> ModelBase::toHttpContent( const utility::string_t& 
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_MODEL_ModelBase_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_ModelBase_H_ */

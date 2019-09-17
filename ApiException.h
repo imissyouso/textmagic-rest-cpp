@@ -16,8 +16,8 @@
  * This is the exception being thrown in case the api call was not successful
  */
 
-#ifndef IO_SWAGGER_CLIENT_API_ApiException_H_
-#define IO_SWAGGER_CLIENT_API_ApiException_H_
+#ifndef COM_TEXTMAGIC_CLIENT_API_ApiException_H_
+#define COM_TEXTMAGIC_CLIENT_API_ApiException_H_
 
 
 
@@ -28,8 +28,8 @@
 #include <cpprest/http_msg.h>
 
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace api {
 
@@ -59,4 +59,4 @@ protected:
 }
 }
 
-#endif /* IO_SWAGGER_CLIENT_API_ApiBase_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_API_ApiBase_H_ */

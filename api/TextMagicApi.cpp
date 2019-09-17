@@ -20,12 +20,12 @@
 
 #include <boost/algorithm/string/replace.hpp>
 
-namespace io {
-namespace swagger {
+namespace com {
+namespace textmagic {
 namespace client {
 namespace api {
 
-using namespace io::swagger::client::model;
+using namespace com::textmagic::client::model;
 
 TextMagicApi::TextMagicApi( std::shared_ptr<ApiClient> apiClient )
     : m_ApiClient(apiClient)
