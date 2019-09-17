@@ -20,6 +20,7 @@ apt-get install build-essential cmake libcpprest-dev
 Download and extract lib archive
 ```shell
 curl -SL https://github.com/imissyouso/textmagic-rest-cpp/archive/master.zip | tar -xf - -C .
+cd ./textmagic-rest-cpp-master
 ```
 Build using cmake
 ```shell
@@ -28,6 +29,7 @@ cmake --build .
 Output library file will be placed to `textmagic-rest-cpp-master/lib` directory
 
 ## Usage Example
+In example below we assume that you moved library sources `textmagic-rest-cpp-master` directory to your test project root directory.
 
 Configure your `CMakeLists.txt` like below:
 ```shell
