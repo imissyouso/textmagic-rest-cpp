@@ -11,7 +11,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 #PROJECT's NAME
-project(CppRestSwaggerClient)
+project(textmagic_client)
 
 
 # THE LOCATION OF OUTPUT BINARIES
@@ -21,7 +21,7 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_LIBRARY_DIR})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Release)
 endif()
 
 # BUILD TYPE
@@ -36,7 +36,7 @@ set(CPPREST_INCLUDE_DIR ${CPPREST_ROOT}/include)
 set(CPPREST_LIBRARY_DIR ${CPPREST_ROOT}/lib)
 
 if( NOT DEFINED CPPREST_ROOT )
-    message( FATAL_ERROR "Failed to find cpprest SDK (or missing components). Double check that \"CPPREST_ROOT\" is properly set")
+message( FATAL_ERROR "Failed to find cpprest SDK (or missing components). Double check that \"CPPREST_ROOT\" is properly set")
 endif( NOT DEFINED CPPREST_ROOT )
 
 include_directories(${PROJECT_SOURCE_DIR} api model ${CPPREST_INCLUDE_DIR})
