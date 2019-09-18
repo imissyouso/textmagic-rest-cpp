@@ -18,19 +18,19 @@ apt-get install build-essential cmake libcpprest-dev
 
 Download and extract lib archive
 ```shell
-wget https://github.com/imissyouso/textmagic-rest-cpp/archive/2.0.289.tar.gz && \
-tar zxf 2.0.289.tar.gz && \
-rm -f 2.0.289.tar.gz && \
-cd textmagic-rest-cpp-2.0.289
+wget https://github.com/imissyouso/textmagic-rest-cpp/archive/v2.0.291.tar.gz && \
+tar zxf v2.0.291.tar.gz && \
+rm -f v2.0.291.tar.gz && \
+cd textmagic-rest-cpp-v2.0.291
 ```
 Build using cmake
 ```shell
 cmake . && cmake --build .
 ```
-Output library file will be placed to `textmagic-rest-cpp-2.0.289/lib` directory
+Output library file will be placed to `textmagic-rest-cpp-v2.0.291/lib` directory
 
 ## Usage Example
-In example below we assume that you moved library sources `textmagic-rest-cpp-2.0.289` directory to your test project root directory.
+In example below we assume that you moved library sources `textmagic-rest-cpp-v2.0.291` directory to your test project root directory.
 
 Configure your `CMakeLists.txt` like below:
 ```shell
@@ -42,97 +42,97 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(app main.cpp)
 
 add_library(textmagic_client SHARED IMPORTED)
-set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.289/lib/libtextmagic_client.so")
+set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-v2.0.291/lib/libtextmagic_client.so")
 
-target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.289 ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.289/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.289/api)
+target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-v2.0.291 ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-v2.0.291/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-v2.0.291/api)
 target_link_libraries(app boost_system cpprest crypto textmagic_client )
 ```
 
 `main.cpp` file example:
 ```cpp
 #include <iostream>
-    #include <fstream>
-    #include "textmagic-rest-cpp-2.0.289/ApiClient.h"
-    #include "textmagic-rest-cpp-2.0.289/ApiConfiguration.h"
-    #include "textmagic-rest-cpp-2.0.289/api/TextMagicApi.h"
+#include <fstream>
+#include "textmagic-rest-cpp-v2.0.291/ApiClient.h"
+#include "textmagic-rest-cpp-v2.0.291/ApiConfiguration.h"
+#include "textmagic-rest-cpp-v2.0.291/api/TextMagicApi.h"
 
-    using namespace com::textmagic::client::api;
+using namespace com::textmagic::client::api;
 
-    int main() {
+int main() {
     std::shared_ptr<ApiClient> apiClient(new ApiClient);
     std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration);
 
-        apiConfig->setBaseUrl("https://rest.textmagic.com");
-        apiConfig->getHttpConfig().set_credentials(web::credentials("YOUR_NAME", "YOUR_PASSWORD"));
-        apiClient->setConfiguration(apiConfig);
+    apiConfig->setBaseUrl("https://rest.textmagic.com");
+    apiConfig->getHttpConfig().set_credentials(web::credentials("YOUR_NAME", "YOUR_PASSWORD"));
+    apiClient->setConfiguration(apiConfig);
 
-        TextMagicApi api(apiClient);
+    TextMagicApi api(apiClient);
 
-        // Simple ping request example
-        pplx::task<std::shared_ptr<PingResponse>> pingResponse = api.ping();
-            pingResponse.wait();
+    // Simple ping request example
+    pplx::task<std::shared_ptr<PingResponse>> pingResponse = api.ping();
+    pingResponse.wait();
 
-            try {
-            std::cout << pingResponse.get()->getPing() << '\n';
-            } catch(const std::exception& e) {
-            std::cout << "getPing() exception: " << e.what() << '\n';
-            }
+    try {
+        std::cout << pingResponse.get()->getPing() << '\n';
+    } catch(const std::exception& e) {
+        std::cout << "getPing() exception: " << e.what() << '\n';
+    }
 
-            // Send a new message request example
-            std::shared_ptr<SendMessageInputObject> sendMessageInputObject(new SendMessageInputObject);
-                sendMessageInputObject->setPhones("+19998887766");
-                sendMessageInputObject->setText("I love TextMagic!");
+    // Send a new message request example
+    std::shared_ptr<SendMessageInputObject> sendMessageInputObject(new SendMessageInputObject);
+    sendMessageInputObject->setPhones("+19998887766");
+    sendMessageInputObject->setText("I love TextMagic!");
 
-                pplx::task<std::shared_ptr<SendMessageResponse>> sendMessageResponse = api.sendMessage(sendMessageInputObject, false);
-                    sendMessageResponse.wait();
+    pplx::task<std::shared_ptr<SendMessageResponse>> sendMessageResponse = api.sendMessage(sendMessageInputObject, false);
+    sendMessageResponse.wait();
 
-                    try {
-                    std::cout << sendMessageResponse.get()->getId() << '\n';
-                    } catch(const std::exception& e) {
-                    std::cout << "getId() exception: " << e.what() << '\n';
-                    }
+    try {
+        std::cout << sendMessageResponse.get()->getId() << '\n';
+    } catch(const std::exception& e) {
+        std::cout << "getId() exception: " << e.what() << '\n';
+    }
 
-                    // Get all outgoing messages request example
-                    pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> getAllOutboundMessagesResponse = api.getAllOutboundMessages(boost::none, boost::none, boost::none);
-                        getAllOutboundMessagesResponse.wait();
+    // Get all outgoing messages request example
+    pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> getAllOutboundMessagesResponse = api.getAllOutboundMessages(boost::none, boost::none, boost::none);
+    getAllOutboundMessagesResponse.wait();
 
-                        try {
-                        std::cout << getAllOutboundMessagesResponse.get()->getResources()[0]->getId() << '\n';
-                        } catch(const std::exception& e) {
-                        std::cout << "getId() exception: " << e.what() << '\n';
-                        }
+    try {
+        std::cout << getAllOutboundMessagesResponse.get()->getResources()[0]->getId() << '\n';
+    } catch(const std::exception& e) {
+        std::cout << "getId() exception: " << e.what() << '\n';
+    }
 
-                        // Upload list avatar request example
-                        std::filebuf fb;
-                        fb.open ("test.jpg", std::ios::in);
-                        std::shared_ptr<std::istream> is(new std::istream(&fb));
+    // Upload list avatar request example
+    std::filebuf fb;
+    fb.open ("test.jpg", std::ios::in);
+    std::shared_ptr<std::istream> is(new std::istream(&fb));
 
-                            std::shared_ptr<HttpContent> image(new HttpContent);
-                                image->setName("test");
-                                image->setContentDisposition("attachment");
-                                image->setFileName("test.jpg");
+    std::shared_ptr<HttpContent> image(new HttpContent);
+    image->setName("test");
+    image->setContentDisposition("attachment");
+    image->setFileName("test.jpg");
 
-                                image->setContentType("image/jpeg");
-                                image->setData(is);
+    image->setContentType("image/jpeg");
+    image->setData(is);
 
-                                // List ID in current example is 3223
-                                pplx::task<std::shared_ptr<ResourceLinkResponse>> resourceLinkResponse = api.uploadListAvatar(image, 3223);
-                                    resourceLinkResponse.wait();
+    // List ID in current example is 3223
+    pplx::task<std::shared_ptr<ResourceLinkResponse>> resourceLinkResponse = api.uploadListAvatar(image, 3223);
+    resourceLinkResponse.wait();
 
-                                    try {
-                                    std::cout << resourceLinkResponse.get()->getId() << '\n';
-                                    } catch(const std::exception& e) {
-                                    std::cout << "getId() exception: " << e.what() << '\n';
-                                    }
+    try {
+        std::cout << resourceLinkResponse.get()->getId() << '\n';
+    } catch(const std::exception& e) {
+        std::cout << "getId() exception: " << e.what() << '\n';
+    }
 
-                                    return 0;
-                                    }
-                                    ```
-                                    build your test project:
-                                    ```shell
-                                    cmake . && cmake --build .
-                                    ```
-                                    Run:
-                                    ```shell
-                                    ./app
-                                    ```
+    return 0;
+}
+```
+build your test project:
+```shell
+cmake . && cmake --build .
+```
+Run:
+```shell
+./app
+```
