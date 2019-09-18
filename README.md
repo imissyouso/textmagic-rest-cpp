@@ -61,7 +61,8 @@ using namespace com::textmagic::client::api;
 int main() {
     std::shared_ptr<ApiClient> apiClient(new ApiClient);
     std::shared_ptr<ApiConfiguration> apiConfig(new ApiConfiguration);
-
+    
+    apiConfig->setBaseUrl("https://rest.textmagic.com");
     apiConfig->getHttpConfig().set_credentials(web::credentials("YOUR_NAME", "YOUR_PASSWORD"));
     apiClient->setConfiguration(apiConfig);
 
