@@ -1,11 +1,11 @@
 # TextMagic C++ SDK
 
-This library provides you with an easy solution to send SMS and receive replies by integrating TextMagic SMS Gateway to your C++ application.
+This library provides you with an easy way to send SMS and receive replies, by integrating the TextMagic SMS Gateway into your C++ application.
 
 ## What is TextMagic?
-TextMagic's application programming interface (API) provides the communication link between your application and TextMagic’s SMS Gateway, allowing you to send and receive text messages and to check the delivery status of text messages you’ve already sent.
+TextMagic’s application programming interface (API) provides the communication link between your application and TextMagic’s SMS Gateway, allowing you to send and receive text messages and to check the delivery status of text messages you’ve already sent.
 
-For detailed documentation, please visit http://docs.textmagictesting.com/
+For detailed documentation, please visit http://docs.textmagictesting.com/.
 
 ## Requirements
 
@@ -19,23 +19,23 @@ apt-get install build-essential cmake libcpprest-dev
 
 ## Installation
 
-Download and extract lib archive
+Download and extract lib archive:
 ```shell
-wget https://github.com/imissyouso/textmagic-rest-cpp/archive/v2.0.399.tar.gz && \
-tar zxf v2.0.399.tar.gz && \
-rm -f v2.0.399.tar.gz && \
-cd textmagic-rest-cpp-2.0.399
+wget https://github.com/imissyouso/textmagic-rest-cpp/archive/v2.0.401.tar.gz && \
+tar zxf v2.0.401.tar.gz && \
+rm -f v2.0.401.tar.gz && \
+cd textmagic-rest-cpp-2.0.401
 ```
 Build using cmake
 ```shell
 cmake . && cmake --build .
 ```
-Output library file will be placed to `textmagic-rest-cpp-2.0.399/lib` directory
+The output library file will be placed in `textmagic-rest-cpp-2.0.401/lib` directory:
 
 ## Usage Example
-In example below we assume that you moved library sources `textmagic-rest-cpp-2.0.399` directory to your test project root directory.
+In the example below, we assume that you moved the library sources `textmagic-rest-cpp-2.0.401` directory to your test project root directory.
 
-Configure your `CMakeLists.txt` like below:
+Configure your `CMakeLists.txt` as shown here:
 ```shell
 cmake_minimum_required(VERSION 2.8)
 project(test)
@@ -45,9 +45,9 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(app main.cpp)
 
 add_library(textmagic_client SHARED IMPORTED)
-set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/lib/libtextmagic_client.so")
+set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.401/lib/libtextmagic_client.so")
 
-target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399 ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/api)
+target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.401 ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.401/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.401/api)
 target_link_libraries(app boost_system cpprest crypto textmagic_client )
 ```
 
@@ -55,9 +55,9 @@ target_link_libraries(app boost_system cpprest crypto textmagic_client )
 ```cpp
 #include <iostream>
 #include <fstream>
-#include "textmagic-rest-cpp-2.0.399/ApiClient.h"
-#include "textmagic-rest-cpp-2.0.399/ApiConfiguration.h"
-#include "textmagic-rest-cpp-2.0.399/api/TextMagicApi.h"
+#include "textmagic-rest-cpp-2.0.401/ApiClient.h"
+#include "textmagic-rest-cpp-2.0.401/ApiConfiguration.h"
+#include "textmagic-rest-cpp-2.0.401/api/TextMagicApi.h"
 
 using namespace com::textmagic::client::api;
 
@@ -131,7 +131,7 @@ int main() {
     return 0;
 }
 ```
-build your test project:
+Build your test project:
 ```shell
 cmake . && cmake --build .
 ```
