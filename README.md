@@ -21,19 +21,19 @@ apt-get install build-essential cmake libcpprest-dev
 
 Download and extract lib archive
 ```shell
-wget https://github.com/imissyouso/textmagic-rest-cpp/archive/v.tar.gz && \
-tar zxf v.tar.gz && \
-rm -f v.tar.gz && \
-cd textmagic-rest-cpp-
+wget https://github.com/imissyouso/textmagic-rest-cpp/archive/v2.0.399.tar.gz && \
+tar zxf v2.0.399.tar.gz && \
+rm -f v2.0.399.tar.gz && \
+cd textmagic-rest-cpp-2.0.399
 ```
 Build using cmake
 ```shell
 cmake . && cmake --build .
 ```
-Output library file will be placed to `textmagic-rest-cpp-/lib` directory
+Output library file will be placed to `textmagic-rest-cpp-2.0.399/lib` directory
 
 ## Usage Example
-In example below we assume that you moved library sources `textmagic-rest-cpp-` directory to your test project root directory.
+In example below we assume that you moved library sources `textmagic-rest-cpp-2.0.399` directory to your test project root directory.
 
 Configure your `CMakeLists.txt` like below:
 ```shell
@@ -45,9 +45,9 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(app main.cpp)
 
 add_library(textmagic_client SHARED IMPORTED)
-set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-/lib/libtextmagic_client.so")
+set_property(TARGET textmagic_client PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/lib/libtextmagic_client.so")
 
-target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp- ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-/api)
+target_include_directories (app PRIVATE ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399 ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/model ${PROJECT_SOURCE_DIR}/textmagic-rest-cpp-2.0.399/api)
 target_link_libraries(app boost_system cpprest crypto textmagic_client )
 ```
 
@@ -55,9 +55,9 @@ target_link_libraries(app boost_system cpprest crypto textmagic_client )
 ```cpp
 #include <iostream>
 #include <fstream>
-#include "textmagic-rest-cpp-/ApiClient.h"
-#include "textmagic-rest-cpp-/ApiConfiguration.h"
-#include "textmagic-rest-cpp-/api/TextMagicApi.h"
+#include "textmagic-rest-cpp-2.0.399/ApiClient.h"
+#include "textmagic-rest-cpp-2.0.399/ApiConfiguration.h"
+#include "textmagic-rest-cpp-2.0.399/api/TextMagicApi.h"
 
 using namespace com::textmagic::client::api;
 
