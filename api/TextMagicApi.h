@@ -202,10 +202,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="blockContactInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> blockContact(
-        std::shared_ptr<BlockContactInputObject> blockContactInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<BlockContactInputObject> blockContactInputObject
     );
     /// <summary>
     /// Buy a dedicated number and assign it to the specified account.
@@ -214,10 +212,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="buyDedicatedNumberInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> buyDedicatedNumber(
-        std::shared_ptr<BuyDedicatedNumberInputObject> buyDedicatedNumberInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<BuyDedicatedNumberInputObject> buyDedicatedNumberInputObject
     );
     /// <summary>
     /// Cancel a survey.
@@ -236,10 +232,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="checkPhoneVerificationCodeInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> checkPhoneVerificationCode(
-        std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject
     );
     /// <summary>
     /// Reset list members to the specified contacts.
@@ -260,10 +254,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="closeChatsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> closeChatsBulk(
-        std::shared_ptr<CloseChatsBulkInputObject> closeChatsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CloseChatsBulkInputObject> closeChatsBulkInputObject
     );
     /// <summary>
     /// Close all chats that have no unread messages.
@@ -290,10 +282,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createContactInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createContact(
-        std::shared_ptr<CreateContactInputObject> createContactInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreateContactInputObject> createContactInputObject
     );
     /// <summary>
     /// Create a new contact note.
@@ -303,11 +293,9 @@ public:
     /// </remarks>
     /// <param name="createContactNoteInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createContactNote(
         std::shared_ptr<CreateContactNoteInputObject> createContactNoteInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Create a new custom field from the submitted data.
@@ -316,10 +304,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createCustomFieldInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createCustomField(
-        std::shared_ptr<CreateCustomFieldInputObject> createCustomFieldInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreateCustomFieldInputObject> createCustomFieldInputObject
     );
     /// <summary>
     /// Create a new list from the submitted data.
@@ -328,10 +314,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createListInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createList(
-        std::shared_ptr<CreateListInputObject> createListInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreateListInputObject> createListInputObject
     );
     /// <summary>
     /// Add or update a device token.
@@ -340,10 +324,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createPushTokenInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> createPushToken(
-        std::shared_ptr<CreatePushTokenInputObject> createPushTokenInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreatePushTokenInputObject> createPushTokenInputObject
     );
     /// <summary>
     /// Create a new survey from the submitted data.
@@ -352,10 +334,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createSurveyInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createSurvey(
-        std::shared_ptr<CreateSurveyInputObject> createSurveyInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreateSurveyInputObject> createSurveyInputObject
     );
     /// <summary>
     /// Create a new node from the submitted data.
@@ -365,11 +345,9 @@ public:
     /// </remarks>
     /// <param name="createSurveyNodeInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createSurveyNode(
         std::shared_ptr<CreateSurveyNodeInputObject> createSurveyNodeInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Create a new template from the submitted data.
@@ -378,10 +356,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="createTemplateInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createTemplate(
-        std::shared_ptr<CreateTemplateInputObject> createTemplateInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<CreateTemplateInputObject> createTemplateInputObject
     );
     /// <summary>
     /// Delete all contacts.
@@ -415,11 +391,9 @@ public:
     /// </remarks>
     /// <param name="deleteChatMessagesBulkInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteChatMessages(
         std::shared_ptr<DeleteChatMessagesBulkInputObject> deleteChatMessagesBulkInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Delete chats by given ID(s) or delete all chats.
@@ -428,10 +402,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteChatsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteChatsBulk(
-        std::shared_ptr<DeleteChatsBulkInputObject> deleteChatsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteChatsBulkInputObject> deleteChatsBulkInputObject
     );
     /// <summary>
     /// Delete a single contact.
@@ -471,11 +443,9 @@ public:
     /// </remarks>
     /// <param name="id"></param>
     /// <param name="deleteContactNotesBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteContactNotesBulk(
         int32_t id,
-        std::shared_ptr<DeleteContactNotesBulkInputObject> deleteContactNotesBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteContactNotesBulkInputObject> deleteContactNotesBulkInputObject
     );
     /// <summary>
     /// Delete contact by given ID(s) or delete all contacts.
@@ -484,10 +454,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteContactsByIdsInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteContactsByIds(
-        std::shared_ptr<DeleteContactsByIdsInputObject> deleteContactsByIdsInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteContactsByIdsInputObject> deleteContactsByIdsInputObject
     );
     /// <summary>
     /// Unassign contacts from the specified list.
@@ -538,10 +506,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteInboundMessagesBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteInboundMessagesBulk(
-        std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject
     );
     /// <summary>
     /// Delete a single list.
@@ -571,11 +537,9 @@ public:
     /// </remarks>
     /// <param name="deleteListContactsBulkInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteListContactsBulk(
         std::shared_ptr<DeleteListContactsBulkInputObject> deleteListContactsBulkInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Delete list by given ID(s) or delete all lists.
@@ -584,10 +548,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteListsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteListsBulk(
-        std::shared_ptr<DeleteListsBulkInputObject> deleteListsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteListsBulkInputObject> deleteListsBulkInputObject
     );
     /// <summary>
     /// Delete a message session, together with all nested messages.
@@ -606,10 +568,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteMessageSessionsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteMessageSessionsBulk(
-        std::shared_ptr<DeleteMessageSessionsBulkInputObject> deleteMessageSessionsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteMessageSessionsBulkInputObject> deleteMessageSessionsBulkInputObject
     );
     /// <summary>
     /// Delete message
@@ -628,10 +588,8 @@ public:
     /// Delete outbound messages by given ID(s) or delete all outbound messages.
     /// </remarks>
     /// <param name="deleteOutboundMessagesBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteOutboundMessagesBulk(
-        std::shared_ptr<DeleteOutboundMessagesBulkInputObject> deleteOutboundMessagesBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteOutboundMessagesBulkInputObject> deleteOutboundMessagesBulkInputObject
     );
     /// <summary>
     /// Delete a push notification device token.
@@ -662,10 +620,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteScheduledMessagesBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteScheduledMessagesBulk(
-        std::shared_ptr<DeleteScheduledMessagesBulkInputObject> deleteScheduledMessagesBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteScheduledMessagesBulkInputObject> deleteScheduledMessagesBulkInputObject
     );
     /// <summary>
     /// Delete a Sender ID.
@@ -714,10 +670,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="deleteTemplatesBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> deleteTemplatesBulk(
-        std::shared_ptr<DeleteTemplatesBulkInputObject> deleteTemplatesBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DeleteTemplatesBulkInputObject> deleteTemplatesBulkInputObject
     );
     /// <summary>
     /// Authenticate user by given username and password.
@@ -726,10 +680,8 @@ public:
     /// Returning a username and token that you should pass to the all requests (in X-TM-Username and X-TM-Key, respectively)
     /// </remarks>
     /// <param name="doAuthInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<DoAuthResponse>> doAuth(
-        std::shared_ptr<DoAuthInputObject> doAuthInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<DoAuthInputObject> doAuthInputObject
     );
     /// <summary>
     /// Carrier Lookup
@@ -1548,12 +1500,10 @@ public:
     /// <param name="getSubaccountsWithTokensInputObject"></param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> getSubaccountsWithTokens(
         std::shared_ptr<GetSubaccountsWithTokensInputObject> getSubaccountsWithTokensInputObject,
         boost::optional<double> page,
-        boost::optional<int32_t> limit,
-        boost::optional<bool> xIgnoreNullValues
+        boost::optional<int32_t> limit
     );
     /// <summary>
     /// Get a survey by id.
@@ -1696,10 +1646,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="inviteSubaccountInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> inviteSubaccount(
-        std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject
     );
     /// <summary>
     /// Mark several chats as read by chat ids or mark all chats as read
@@ -1708,10 +1656,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="markChatsReadBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> markChatsReadBulk(
-        std::shared_ptr<MarkChatsReadBulkInputObject> markChatsReadBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<MarkChatsReadBulkInputObject> markChatsReadBulkInputObject
     );
     /// <summary>
     /// Mark several chats as UNread by chat ids or mark all chats as UNread
@@ -1720,10 +1666,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="markChatsUnreadBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> markChatsUnreadBulk(
-        std::shared_ptr<MarkChatsUnreadBulkInputObject> markChatsUnreadBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<MarkChatsUnreadBulkInputObject> markChatsUnreadBulkInputObject
     );
     /// <summary>
     /// Merge two question nodes.
@@ -1732,10 +1676,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="mergeSurveyNodesInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> mergeSurveyNodes(
-        std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject
     );
     /// <summary>
     /// Set mute mode.
@@ -1744,10 +1686,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="muteChatInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> muteChat(
-        std::shared_ptr<MuteChatInputObject> muteChatInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<MuteChatInputObject> muteChatInputObject
     );
     /// <summary>
     /// Mute several chats by chat ids or mute all chats
@@ -1756,10 +1696,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="muteChatsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> muteChatsBulk(
-        std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject
     );
     /// <summary>
     /// Just does a pong.
@@ -1776,10 +1714,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="reopenChatsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> reopenChatsBulk(
-        std::shared_ptr<ReopenChatsBulkInputObject> reopenChatsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<ReopenChatsBulkInputObject> reopenChatsBulkInputObject
     );
     /// <summary>
     /// Request a new REST API token for subaccount.
@@ -1788,10 +1724,8 @@ public:
     /// Returning user object, key and app name.
     /// </remarks>
     /// <param name="requestNewSubaccountTokenInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<User>> requestNewSubaccountToken(
-        std::shared_ptr<RequestNewSubaccountTokenInputObject> requestNewSubaccountTokenInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<RequestNewSubaccountTokenInputObject> requestNewSubaccountTokenInputObject
     );
     /// <summary>
     /// Request for a new Sender ID.
@@ -1800,10 +1734,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="requestSenderIdInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> requestSenderId(
-        std::shared_ptr<RequestSenderIdInputObject> requestSenderIdInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<RequestSenderIdInputObject> requestSenderIdInputObject
     );
     /// <summary>
     /// Reset a survey flow.
@@ -2014,10 +1946,8 @@ public:
     /// The main entrypoint to send messages. See examples above for the reference.
     /// </remarks>
     /// <param name="sendMessageInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<SendMessageResponse>> sendMessage(
-        std::shared_ptr<SendMessageInputObject> sendMessageInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<SendMessageInputObject> sendMessageInputObject
     );
     /// <summary>
     /// Send user phone verification
@@ -2034,10 +1964,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="setChatStatusInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> setChatStatus(
-        std::shared_ptr<SetChatStatusInputObject> setChatStatusInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<SetChatStatusInputObject> setChatStatusInputObject
     );
     /// <summary>
     /// Start a survey.
@@ -2056,10 +1984,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="unblockContactInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> unblockContact(
-        std::shared_ptr<UnblockContactInputObject> unblockContactInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UnblockContactInputObject> unblockContactInputObject
     );
     /// <summary>
     /// Unblock several contacts by blocked contact ids or unblock all contacts
@@ -2068,10 +1994,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="unblockContactsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> unblockContactsBulk(
-        std::shared_ptr<UnblockContactsBulkInputObject> unblockContactsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UnblockContactsBulkInputObject> unblockContactsBulkInputObject
     );
     /// <summary>
     /// Unmute several chats by chat ids or unmute all chats
@@ -2080,10 +2004,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="unmuteChatsBulkInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> unmuteChatsBulk(
-        std::shared_ptr<UnmuteChatsBulkInputObject> unmuteChatsBulkInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UnmuteChatsBulkInputObject> unmuteChatsBulkInputObject
     );
     /// <summary>
     /// Unsubscribe contact from your communication by phone number.
@@ -2092,10 +2014,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="unsubscribeContactInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> unsubscribeContact(
-        std::shared_ptr<UnsubscribeContactInputObject> unsubscribeContactInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UnsubscribeContactInputObject> unsubscribeContactInputObject
     );
     /// <summary>
     /// Update balance notification settings
@@ -2104,10 +2024,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateBalanceNotificationSettingsInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updateBalanceNotificationSettings(
-        std::shared_ptr<UpdateBalanceNotificationSettingsInputObject> updateBalanceNotificationSettingsInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateBalanceNotificationSettingsInputObject> updateBalanceNotificationSettingsInputObject
     );
     /// <summary>
     /// Update callback URL settings
@@ -2116,10 +2034,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateCallbackSettingsInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updateCallbackSettings(
-        std::shared_ptr<UpdateCallbackSettingsInputObject> updateCallbackSettingsInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateCallbackSettingsInputObject> updateCallbackSettingsInputObject
     );
     /// <summary>
     /// Update chat desktop notification settings
@@ -2128,10 +2044,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateChatDesktopNotificationSettingsInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updateChatDesktopNotificationSettings(
-        std::shared_ptr<UpdateChatDesktopNotificationSettingsInputObject> updateChatDesktopNotificationSettingsInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateChatDesktopNotificationSettingsInputObject> updateChatDesktopNotificationSettingsInputObject
     );
     /// <summary>
     /// Update existing contact.
@@ -2141,11 +2055,9 @@ public:
     /// </remarks>
     /// <param name="updateContactInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateContact(
         std::shared_ptr<UpdateContactInputObject> updateContactInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Update existing contact note.
@@ -2155,11 +2067,9 @@ public:
     /// </remarks>
     /// <param name="updateContactNoteInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateContactNote(
         std::shared_ptr<UpdateContactNoteInputObject> updateContactNoteInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Update current user info.
@@ -2168,10 +2078,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateCurrentUserInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<UpdateCurrentUserResponse>> updateCurrentUser(
-        std::shared_ptr<UpdateCurrentUserInputObject> updateCurrentUserInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateCurrentUserInputObject> updateCurrentUserInputObject
     );
     /// <summary>
     /// Update existing custom field.
@@ -2181,11 +2089,9 @@ public:
     /// </remarks>
     /// <param name="updateCustomFieldInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateCustomField(
         std::shared_ptr<UpdateCustomFieldInputObject> updateCustomFieldInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Update contact&#39;s custom field value.
@@ -2195,11 +2101,9 @@ public:
     /// </remarks>
     /// <param name="updateCustomFieldValueInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateCustomFieldValue(
         std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject,
-        utility::string_t id,
-        boost::optional<bool> xIgnoreNullValues
+        utility::string_t id
     );
     /// <summary>
     /// Update inbound messages notification settings
@@ -2208,10 +2112,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateInboundMessagesNotificationSettingsInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updateInboundMessagesNotificationSettings(
-        std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject
     );
     /// <summary>
     /// Update existing list.
@@ -2232,10 +2134,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updatePasswordInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updatePassword(
-        std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject
     );
     /// <summary>
     /// Change sender settings for specified country.
@@ -2244,10 +2144,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="updateSenderSettingInputObject"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<void> updateSenderSetting(
-        std::shared_ptr<UpdateSenderSettingInputObject> updateSenderSettingInputObject,
-        boost::optional<bool> xIgnoreNullValues
+        std::shared_ptr<UpdateSenderSettingInputObject> updateSenderSettingInputObject
     );
     /// <summary>
     /// Update existing survey.
@@ -2257,11 +2155,9 @@ public:
     /// </remarks>
     /// <param name="updateSurveyInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateSurvey(
         std::shared_ptr<UpdateSurveyInputObject> updateSurveyInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Update existing node.
@@ -2271,11 +2167,9 @@ public:
     /// </remarks>
     /// <param name="updateSurveyNodeInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateSurveyNode(
         std::shared_ptr<UpdateSurveyNodeInputObject> updateSurveyNodeInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Update existing template.
@@ -2285,11 +2179,9 @@ public:
     /// </remarks>
     /// <param name="updateTemplateInputObject"></param>
     /// <param name="id"></param>
-    /// <param name="xIgnoreNullValues"> (optional, default to true)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateTemplate(
         std::shared_ptr<UpdateTemplateInputObject> updateTemplateInputObject,
-        int32_t id,
-        boost::optional<bool> xIgnoreNullValues
+        int32_t id
     );
     /// <summary>
     /// Add an avatar for the current user.

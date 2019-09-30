@@ -174,7 +174,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::assignContactsTo
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::blockContact(std::shared_ptr<BlockContactInputObject> blockContactInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::blockContact(std::shared_ptr<BlockContactInputObject> blockContactInputObject)
 {
 
     // verify the required parameter 'blockContactInputObject' is set
@@ -222,10 +222,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::blockContact(std
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -315,7 +311,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::blockContact(std
         return result;
     });
 }
-pplx::task<void> TextMagicApi::buyDedicatedNumber(std::shared_ptr<BuyDedicatedNumberInputObject> buyDedicatedNumberInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::buyDedicatedNumber(std::shared_ptr<BuyDedicatedNumberInputObject> buyDedicatedNumberInputObject)
 {
 
     // verify the required parameter 'buyDedicatedNumberInputObject' is set
@@ -363,10 +359,6 @@ pplx::task<void> TextMagicApi::buyDedicatedNumber(std::shared_ptr<BuyDedicatedNu
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -555,7 +547,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::cancelSurvey(int
         return result;
     });
 }
-pplx::task<void> TextMagicApi::checkPhoneVerificationCode(std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::checkPhoneVerificationCode(std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject)
 {
 
     // verify the required parameter 'checkPhoneVerificationCodeInputObject' is set
@@ -603,10 +595,6 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode(std::shared_ptr<CheckP
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -816,7 +804,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::clearAndAssignCo
         return result;
     });
 }
-pplx::task<void> TextMagicApi::closeChatsBulk(std::shared_ptr<CloseChatsBulkInputObject> closeChatsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::closeChatsBulk(std::shared_ptr<CloseChatsBulkInputObject> closeChatsBulkInputObject)
 {
 
     // verify the required parameter 'closeChatsBulkInputObject' is set
@@ -863,10 +851,6 @@ pplx::task<void> TextMagicApi::closeChatsBulk(std::shared_ptr<CloseChatsBulkInpu
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1133,7 +1117,7 @@ pplx::task<void> TextMagicApi::closeSubaccount(int32_t id)
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContact(std::shared_ptr<CreateContactInputObject> createContactInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContact(std::shared_ptr<CreateContactInputObject> createContactInputObject)
 {
 
     // verify the required parameter 'createContactInputObject' is set
@@ -1181,10 +1165,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContact(st
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1274,7 +1254,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContact(st
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContactNote(std::shared_ptr<CreateContactNoteInputObject> createContactNoteInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContactNote(std::shared_ptr<CreateContactNoteInputObject> createContactNoteInputObject, int32_t id)
 {
 
     // verify the required parameter 'createContactNoteInputObject' is set
@@ -1323,10 +1303,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContactNot
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1416,7 +1392,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createContactNot
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createCustomField(std::shared_ptr<CreateCustomFieldInputObject> createCustomFieldInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createCustomField(std::shared_ptr<CreateCustomFieldInputObject> createCustomFieldInputObject)
 {
 
     // verify the required parameter 'createCustomFieldInputObject' is set
@@ -1464,10 +1440,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createCustomFiel
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1557,7 +1529,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createCustomFiel
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createList(std::shared_ptr<CreateListInputObject> createListInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createList(std::shared_ptr<CreateListInputObject> createListInputObject)
 {
 
     // verify the required parameter 'createListInputObject' is set
@@ -1605,10 +1577,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createList(std::
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1698,7 +1666,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createList(std::
         return result;
     });
 }
-pplx::task<void> TextMagicApi::createPushToken(std::shared_ptr<CreatePushTokenInputObject> createPushTokenInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::createPushToken(std::shared_ptr<CreatePushTokenInputObject> createPushTokenInputObject)
 {
 
     // verify the required parameter 'createPushTokenInputObject' is set
@@ -1746,10 +1714,6 @@ pplx::task<void> TextMagicApi::createPushToken(std::shared_ptr<CreatePushTokenIn
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1821,7 +1785,7 @@ pplx::task<void> TextMagicApi::createPushToken(std::shared_ptr<CreatePushTokenIn
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurvey(std::shared_ptr<CreateSurveyInputObject> createSurveyInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurvey(std::shared_ptr<CreateSurveyInputObject> createSurveyInputObject)
 {
 
     // verify the required parameter 'createSurveyInputObject' is set
@@ -1869,10 +1833,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurvey(std
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -1962,7 +1922,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurvey(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurveyNode(std::shared_ptr<CreateSurveyNodeInputObject> createSurveyNodeInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurveyNode(std::shared_ptr<CreateSurveyNodeInputObject> createSurveyNodeInputObject, int32_t id)
 {
 
     // verify the required parameter 'createSurveyNodeInputObject' is set
@@ -2011,10 +1971,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurveyNode
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -2104,7 +2060,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createSurveyNode
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createTemplate(std::shared_ptr<CreateTemplateInputObject> createTemplateInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createTemplate(std::shared_ptr<CreateTemplateInputObject> createTemplateInputObject)
 {
 
     // verify the required parameter 'createTemplateInputObject' is set
@@ -2152,10 +2108,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::createTemplate(s
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -2536,7 +2488,7 @@ pplx::task<void> TextMagicApi::deleteAvatar()
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteChatMessages(std::shared_ptr<DeleteChatMessagesBulkInputObject> deleteChatMessagesBulkInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteChatMessages(std::shared_ptr<DeleteChatMessagesBulkInputObject> deleteChatMessagesBulkInputObject, int32_t id)
 {
 
     // verify the required parameter 'deleteChatMessagesBulkInputObject' is set
@@ -2584,10 +2536,6 @@ pplx::task<void> TextMagicApi::deleteChatMessages(std::shared_ptr<DeleteChatMess
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -2659,7 +2607,7 @@ pplx::task<void> TextMagicApi::deleteChatMessages(std::shared_ptr<DeleteChatMess
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteChatsBulk(std::shared_ptr<DeleteChatsBulkInputObject> deleteChatsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteChatsBulk(std::shared_ptr<DeleteChatsBulkInputObject> deleteChatsBulkInputObject)
 {
 
     // verify the required parameter 'deleteChatsBulkInputObject' is set
@@ -2706,10 +2654,6 @@ pplx::task<void> TextMagicApi::deleteChatsBulk(std::shared_ptr<DeleteChatsBulkIn
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -3076,7 +3020,7 @@ pplx::task<void> TextMagicApi::deleteContactNote(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteContactNotesBulk(int32_t id, std::shared_ptr<DeleteContactNotesBulkInputObject> deleteContactNotesBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteContactNotesBulk(int32_t id, std::shared_ptr<DeleteContactNotesBulkInputObject> deleteContactNotesBulkInputObject)
 {
 
     // verify the required parameter 'deleteContactNotesBulkInputObject' is set
@@ -3124,10 +3068,6 @@ pplx::task<void> TextMagicApi::deleteContactNotesBulk(int32_t id, std::shared_pt
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -3199,7 +3139,7 @@ pplx::task<void> TextMagicApi::deleteContactNotesBulk(int32_t id, std::shared_pt
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteContactsByIds(std::shared_ptr<DeleteContactsByIdsInputObject> deleteContactsByIdsInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteContactsByIds(std::shared_ptr<DeleteContactsByIdsInputObject> deleteContactsByIdsInputObject)
 {
 
     // verify the required parameter 'deleteContactsByIdsInputObject' is set
@@ -3246,10 +3186,6 @@ pplx::task<void> TextMagicApi::deleteContactsByIds(std::shared_ptr<DeleteContact
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -3734,7 +3670,7 @@ pplx::task<void> TextMagicApi::deleteInboundMessage(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteInboundMessagesBulk(std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteInboundMessagesBulk(std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject)
 {
 
     // verify the required parameter 'deleteInboundMessagesBulkInputObject' is set
@@ -3781,10 +3717,6 @@ pplx::task<void> TextMagicApi::deleteInboundMessagesBulk(std::shared_ptr<DeleteI
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -4053,7 +3985,7 @@ pplx::task<void> TextMagicApi::deleteListAvatar(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteListContactsBulk(std::shared_ptr<DeleteListContactsBulkInputObject> deleteListContactsBulkInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteListContactsBulk(std::shared_ptr<DeleteListContactsBulkInputObject> deleteListContactsBulkInputObject, int32_t id)
 {
 
     // verify the required parameter 'deleteListContactsBulkInputObject' is set
@@ -4101,10 +4033,6 @@ pplx::task<void> TextMagicApi::deleteListContactsBulk(std::shared_ptr<DeleteList
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -4176,7 +4104,7 @@ pplx::task<void> TextMagicApi::deleteListContactsBulk(std::shared_ptr<DeleteList
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteListsBulk(std::shared_ptr<DeleteListsBulkInputObject> deleteListsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteListsBulk(std::shared_ptr<DeleteListsBulkInputObject> deleteListsBulkInputObject)
 {
 
     // verify the required parameter 'deleteListsBulkInputObject' is set
@@ -4223,10 +4151,6 @@ pplx::task<void> TextMagicApi::deleteListsBulk(std::shared_ptr<DeleteListsBulkIn
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -4396,7 +4320,7 @@ pplx::task<void> TextMagicApi::deleteMessageSession(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteMessageSessionsBulk(std::shared_ptr<DeleteMessageSessionsBulkInputObject> deleteMessageSessionsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteMessageSessionsBulk(std::shared_ptr<DeleteMessageSessionsBulkInputObject> deleteMessageSessionsBulkInputObject)
 {
 
     // verify the required parameter 'deleteMessageSessionsBulkInputObject' is set
@@ -4443,10 +4367,6 @@ pplx::task<void> TextMagicApi::deleteMessageSessionsBulk(std::shared_ptr<DeleteM
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -4616,7 +4536,7 @@ pplx::task<void> TextMagicApi::deleteOutboundMessage(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteOutboundMessagesBulk(std::shared_ptr<DeleteOutboundMessagesBulkInputObject> deleteOutboundMessagesBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteOutboundMessagesBulk(std::shared_ptr<DeleteOutboundMessagesBulkInputObject> deleteOutboundMessagesBulkInputObject)
 {
 
     // verify the required parameter 'deleteOutboundMessagesBulkInputObject' is set
@@ -4663,10 +4583,6 @@ pplx::task<void> TextMagicApi::deleteOutboundMessagesBulk(std::shared_ptr<Delete
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -4935,7 +4851,7 @@ pplx::task<void> TextMagicApi::deleteScheduledMessage(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteScheduledMessagesBulk(std::shared_ptr<DeleteScheduledMessagesBulkInputObject> deleteScheduledMessagesBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteScheduledMessagesBulk(std::shared_ptr<DeleteScheduledMessagesBulkInputObject> deleteScheduledMessagesBulkInputObject)
 {
 
     // verify the required parameter 'deleteScheduledMessagesBulkInputObject' is set
@@ -4982,10 +4898,6 @@ pplx::task<void> TextMagicApi::deleteScheduledMessagesBulk(std::shared_ptr<Delet
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -5449,7 +5361,7 @@ pplx::task<void> TextMagicApi::deleteTemplate(int32_t id)
         return void();
     });
 }
-pplx::task<void> TextMagicApi::deleteTemplatesBulk(std::shared_ptr<DeleteTemplatesBulkInputObject> deleteTemplatesBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::deleteTemplatesBulk(std::shared_ptr<DeleteTemplatesBulkInputObject> deleteTemplatesBulkInputObject)
 {
 
     // verify the required parameter 'deleteTemplatesBulkInputObject' is set
@@ -5496,10 +5408,6 @@ pplx::task<void> TextMagicApi::deleteTemplatesBulk(std::shared_ptr<DeleteTemplat
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -5571,7 +5479,7 @@ pplx::task<void> TextMagicApi::deleteTemplatesBulk(std::shared_ptr<DeleteTemplat
         return void();
     });
 }
-pplx::task<std::shared_ptr<DoAuthResponse>> TextMagicApi::doAuth(std::shared_ptr<DoAuthInputObject> doAuthInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<DoAuthResponse>> TextMagicApi::doAuth(std::shared_ptr<DoAuthInputObject> doAuthInputObject)
 {
 
     // verify the required parameter 'doAuthInputObject' is set
@@ -5619,10 +5527,6 @@ pplx::task<std::shared_ptr<DoAuthResponse>> TextMagicApi::doAuth(std::shared_ptr
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -13571,7 +13475,7 @@ pplx::task<std::shared_ptr<User>> TextMagicApi::getSubaccounts(boost::optional<i
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> TextMagicApi::getSubaccountsWithTokens(std::shared_ptr<GetSubaccountsWithTokensInputObject> getSubaccountsWithTokensInputObject, boost::optional<double> page, boost::optional<int32_t> limit, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> TextMagicApi::getSubaccountsWithTokens(std::shared_ptr<GetSubaccountsWithTokensInputObject> getSubaccountsWithTokensInputObject, boost::optional<double> page, boost::optional<int32_t> limit)
 {
 
     // verify the required parameter 'getSubaccountsWithTokensInputObject' is set
@@ -13626,10 +13530,6 @@ pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> TextMagicApi::getS
     if (limit)
     {
         queryParams[utility::conversions::to_string_t("limit")] = ApiClient::parameterToString(*limit);
-    }
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -15173,7 +15073,7 @@ pplx::task<std::shared_ptr<GetVersionsResponse>> TextMagicApi::getVersions()
         return result;
     });
 }
-pplx::task<void> TextMagicApi::inviteSubaccount(std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::inviteSubaccount(std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject)
 {
 
     // verify the required parameter 'inviteSubaccountInputObject' is set
@@ -15220,10 +15120,6 @@ pplx::task<void> TextMagicApi::inviteSubaccount(std::shared_ptr<InviteSubaccount
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -15295,7 +15191,7 @@ pplx::task<void> TextMagicApi::inviteSubaccount(std::shared_ptr<InviteSubaccount
         return void();
     });
 }
-pplx::task<void> TextMagicApi::markChatsReadBulk(std::shared_ptr<MarkChatsReadBulkInputObject> markChatsReadBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::markChatsReadBulk(std::shared_ptr<MarkChatsReadBulkInputObject> markChatsReadBulkInputObject)
 {
 
     // verify the required parameter 'markChatsReadBulkInputObject' is set
@@ -15342,10 +15238,6 @@ pplx::task<void> TextMagicApi::markChatsReadBulk(std::shared_ptr<MarkChatsReadBu
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -15417,7 +15309,7 @@ pplx::task<void> TextMagicApi::markChatsReadBulk(std::shared_ptr<MarkChatsReadBu
         return void();
     });
 }
-pplx::task<void> TextMagicApi::markChatsUnreadBulk(std::shared_ptr<MarkChatsUnreadBulkInputObject> markChatsUnreadBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::markChatsUnreadBulk(std::shared_ptr<MarkChatsUnreadBulkInputObject> markChatsUnreadBulkInputObject)
 {
 
     // verify the required parameter 'markChatsUnreadBulkInputObject' is set
@@ -15464,10 +15356,6 @@ pplx::task<void> TextMagicApi::markChatsUnreadBulk(std::shared_ptr<MarkChatsUnre
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -15539,7 +15427,7 @@ pplx::task<void> TextMagicApi::markChatsUnreadBulk(std::shared_ptr<MarkChatsUnre
         return void();
     });
 }
-pplx::task<void> TextMagicApi::mergeSurveyNodes(std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::mergeSurveyNodes(std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject)
 {
 
     // verify the required parameter 'mergeSurveyNodesInputObject' is set
@@ -15586,10 +15474,6 @@ pplx::task<void> TextMagicApi::mergeSurveyNodes(std::shared_ptr<MergeSurveyNodes
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -15661,7 +15545,7 @@ pplx::task<void> TextMagicApi::mergeSurveyNodes(std::shared_ptr<MergeSurveyNodes
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::muteChat(std::shared_ptr<MuteChatInputObject> muteChatInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::muteChat(std::shared_ptr<MuteChatInputObject> muteChatInputObject)
 {
 
     // verify the required parameter 'muteChatInputObject' is set
@@ -15709,10 +15593,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::muteChat(std::sh
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -15802,7 +15682,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::muteChat(std::sh
         return result;
     });
 }
-pplx::task<void> TextMagicApi::muteChatsBulk(std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::muteChatsBulk(std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject)
 {
 
     // verify the required parameter 'muteChatsBulkInputObject' is set
@@ -15849,10 +15729,6 @@ pplx::task<void> TextMagicApi::muteChatsBulk(std::shared_ptr<MuteChatsBulkInputO
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -16040,7 +15916,7 @@ pplx::task<std::shared_ptr<PingResponse>> TextMagicApi::ping()
         return result;
     });
 }
-pplx::task<void> TextMagicApi::reopenChatsBulk(std::shared_ptr<ReopenChatsBulkInputObject> reopenChatsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::reopenChatsBulk(std::shared_ptr<ReopenChatsBulkInputObject> reopenChatsBulkInputObject)
 {
 
     // verify the required parameter 'reopenChatsBulkInputObject' is set
@@ -16087,10 +15963,6 @@ pplx::task<void> TextMagicApi::reopenChatsBulk(std::shared_ptr<ReopenChatsBulkIn
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -16162,7 +16034,7 @@ pplx::task<void> TextMagicApi::reopenChatsBulk(std::shared_ptr<ReopenChatsBulkIn
         return void();
     });
 }
-pplx::task<std::shared_ptr<User>> TextMagicApi::requestNewSubaccountToken(std::shared_ptr<RequestNewSubaccountTokenInputObject> requestNewSubaccountTokenInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<User>> TextMagicApi::requestNewSubaccountToken(std::shared_ptr<RequestNewSubaccountTokenInputObject> requestNewSubaccountTokenInputObject)
 {
 
     // verify the required parameter 'requestNewSubaccountTokenInputObject' is set
@@ -16210,10 +16082,6 @@ pplx::task<std::shared_ptr<User>> TextMagicApi::requestNewSubaccountToken(std::s
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -16303,7 +16171,7 @@ pplx::task<std::shared_ptr<User>> TextMagicApi::requestNewSubaccountToken(std::s
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::requestSenderId(std::shared_ptr<RequestSenderIdInputObject> requestSenderIdInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::requestSenderId(std::shared_ptr<RequestSenderIdInputObject> requestSenderIdInputObject)
 {
 
     // verify the required parameter 'requestSenderIdInputObject' is set
@@ -16351,10 +16219,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::requestSenderId(
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -17927,7 +17791,7 @@ pplx::task<void> TextMagicApi::sendEmailVerificationCode()
         return void();
     });
 }
-pplx::task<std::shared_ptr<SendMessageResponse>> TextMagicApi::sendMessage(std::shared_ptr<SendMessageInputObject> sendMessageInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<SendMessageResponse>> TextMagicApi::sendMessage(std::shared_ptr<SendMessageInputObject> sendMessageInputObject)
 {
 
     // verify the required parameter 'sendMessageInputObject' is set
@@ -17975,10 +17839,6 @@ pplx::task<std::shared_ptr<SendMessageResponse>> TextMagicApi::sendMessage(std::
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18166,7 +18026,7 @@ pplx::task<void> TextMagicApi::sendPhoneVerificationCode()
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::setChatStatus(std::shared_ptr<SetChatStatusInputObject> setChatStatusInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::setChatStatus(std::shared_ptr<SetChatStatusInputObject> setChatStatusInputObject)
 {
 
     // verify the required parameter 'setChatStatusInputObject' is set
@@ -18214,10 +18074,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::setChatStatus(st
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18424,7 +18280,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::startSurvey(int3
         return result;
     });
 }
-pplx::task<void> TextMagicApi::unblockContact(std::shared_ptr<UnblockContactInputObject> unblockContactInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::unblockContact(std::shared_ptr<UnblockContactInputObject> unblockContactInputObject)
 {
 
     // verify the required parameter 'unblockContactInputObject' is set
@@ -18471,10 +18327,6 @@ pplx::task<void> TextMagicApi::unblockContact(std::shared_ptr<UnblockContactInpu
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18546,7 +18398,7 @@ pplx::task<void> TextMagicApi::unblockContact(std::shared_ptr<UnblockContactInpu
         return void();
     });
 }
-pplx::task<void> TextMagicApi::unblockContactsBulk(std::shared_ptr<UnblockContactsBulkInputObject> unblockContactsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::unblockContactsBulk(std::shared_ptr<UnblockContactsBulkInputObject> unblockContactsBulkInputObject)
 {
 
     // verify the required parameter 'unblockContactsBulkInputObject' is set
@@ -18593,10 +18445,6 @@ pplx::task<void> TextMagicApi::unblockContactsBulk(std::shared_ptr<UnblockContac
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18668,7 +18516,7 @@ pplx::task<void> TextMagicApi::unblockContactsBulk(std::shared_ptr<UnblockContac
         return void();
     });
 }
-pplx::task<void> TextMagicApi::unmuteChatsBulk(std::shared_ptr<UnmuteChatsBulkInputObject> unmuteChatsBulkInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::unmuteChatsBulk(std::shared_ptr<UnmuteChatsBulkInputObject> unmuteChatsBulkInputObject)
 {
 
     // verify the required parameter 'unmuteChatsBulkInputObject' is set
@@ -18715,10 +18563,6 @@ pplx::task<void> TextMagicApi::unmuteChatsBulk(std::shared_ptr<UnmuteChatsBulkIn
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18790,7 +18634,7 @@ pplx::task<void> TextMagicApi::unmuteChatsBulk(std::shared_ptr<UnmuteChatsBulkIn
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::unsubscribeContact(std::shared_ptr<UnsubscribeContactInputObject> unsubscribeContactInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::unsubscribeContact(std::shared_ptr<UnsubscribeContactInputObject> unsubscribeContactInputObject)
 {
 
     // verify the required parameter 'unsubscribeContactInputObject' is set
@@ -18838,10 +18682,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::unsubscribeConta
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -18931,7 +18771,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::unsubscribeConta
         return result;
     });
 }
-pplx::task<void> TextMagicApi::updateBalanceNotificationSettings(std::shared_ptr<UpdateBalanceNotificationSettingsInputObject> updateBalanceNotificationSettingsInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updateBalanceNotificationSettings(std::shared_ptr<UpdateBalanceNotificationSettingsInputObject> updateBalanceNotificationSettingsInputObject)
 {
 
     // verify the required parameter 'updateBalanceNotificationSettingsInputObject' is set
@@ -18978,10 +18818,6 @@ pplx::task<void> TextMagicApi::updateBalanceNotificationSettings(std::shared_ptr
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19053,7 +18889,7 @@ pplx::task<void> TextMagicApi::updateBalanceNotificationSettings(std::shared_ptr
         return void();
     });
 }
-pplx::task<void> TextMagicApi::updateCallbackSettings(std::shared_ptr<UpdateCallbackSettingsInputObject> updateCallbackSettingsInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updateCallbackSettings(std::shared_ptr<UpdateCallbackSettingsInputObject> updateCallbackSettingsInputObject)
 {
 
     // verify the required parameter 'updateCallbackSettingsInputObject' is set
@@ -19101,10 +18937,6 @@ pplx::task<void> TextMagicApi::updateCallbackSettings(std::shared_ptr<UpdateCall
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19176,7 +19008,7 @@ pplx::task<void> TextMagicApi::updateCallbackSettings(std::shared_ptr<UpdateCall
         return void();
     });
 }
-pplx::task<void> TextMagicApi::updateChatDesktopNotificationSettings(std::shared_ptr<UpdateChatDesktopNotificationSettingsInputObject> updateChatDesktopNotificationSettingsInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updateChatDesktopNotificationSettings(std::shared_ptr<UpdateChatDesktopNotificationSettingsInputObject> updateChatDesktopNotificationSettingsInputObject)
 {
 
     // verify the required parameter 'updateChatDesktopNotificationSettingsInputObject' is set
@@ -19224,10 +19056,6 @@ pplx::task<void> TextMagicApi::updateChatDesktopNotificationSettings(std::shared
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19299,7 +19127,7 @@ pplx::task<void> TextMagicApi::updateChatDesktopNotificationSettings(std::shared
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContact(std::shared_ptr<UpdateContactInputObject> updateContactInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContact(std::shared_ptr<UpdateContactInputObject> updateContactInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateContactInputObject' is set
@@ -19348,10 +19176,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContact(st
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19441,7 +19265,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContact(st
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContactNote(std::shared_ptr<UpdateContactNoteInputObject> updateContactNoteInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContactNote(std::shared_ptr<UpdateContactNoteInputObject> updateContactNoteInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateContactNoteInputObject' is set
@@ -19490,10 +19314,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContactNot
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19583,7 +19403,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContactNot
         return result;
     });
 }
-pplx::task<std::shared_ptr<UpdateCurrentUserResponse>> TextMagicApi::updateCurrentUser(std::shared_ptr<UpdateCurrentUserInputObject> updateCurrentUserInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<UpdateCurrentUserResponse>> TextMagicApi::updateCurrentUser(std::shared_ptr<UpdateCurrentUserInputObject> updateCurrentUserInputObject)
 {
 
     // verify the required parameter 'updateCurrentUserInputObject' is set
@@ -19631,10 +19451,6 @@ pplx::task<std::shared_ptr<UpdateCurrentUserResponse>> TextMagicApi::updateCurre
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19724,7 +19540,7 @@ pplx::task<std::shared_ptr<UpdateCurrentUserResponse>> TextMagicApi::updateCurre
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomField(std::shared_ptr<UpdateCustomFieldInputObject> updateCustomFieldInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomField(std::shared_ptr<UpdateCustomFieldInputObject> updateCustomFieldInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateCustomFieldInputObject' is set
@@ -19773,10 +19589,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFiel
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -19866,7 +19678,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFiel
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFieldValue(std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject, utility::string_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFieldValue(std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject, utility::string_t id)
 {
 
     // verify the required parameter 'updateCustomFieldValueInputObject' is set
@@ -19915,10 +19727,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFiel
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20008,7 +19816,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFiel
         return result;
     });
 }
-pplx::task<void> TextMagicApi::updateInboundMessagesNotificationSettings(std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updateInboundMessagesNotificationSettings(std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject)
 {
 
     // verify the required parameter 'updateInboundMessagesNotificationSettingsInputObject' is set
@@ -20055,10 +19863,6 @@ pplx::task<void> TextMagicApi::updateInboundMessagesNotificationSettings(std::sh
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20262,7 +20066,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateList(int32
         return result;
     });
 }
-pplx::task<void> TextMagicApi::updatePassword(std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updatePassword(std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject)
 {
 
     // verify the required parameter 'updatePasswordInputObject' is set
@@ -20309,10 +20113,6 @@ pplx::task<void> TextMagicApi::updatePassword(std::shared_ptr<UpdatePasswordInpu
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20384,7 +20184,7 @@ pplx::task<void> TextMagicApi::updatePassword(std::shared_ptr<UpdatePasswordInpu
         return void();
     });
 }
-pplx::task<void> TextMagicApi::updateSenderSetting(std::shared_ptr<UpdateSenderSettingInputObject> updateSenderSettingInputObject, boost::optional<bool> xIgnoreNullValues)
+pplx::task<void> TextMagicApi::updateSenderSetting(std::shared_ptr<UpdateSenderSettingInputObject> updateSenderSettingInputObject)
 {
 
     // verify the required parameter 'updateSenderSettingInputObject' is set
@@ -20431,10 +20231,6 @@ pplx::task<void> TextMagicApi::updateSenderSetting(std::shared_ptr<UpdateSenderS
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20506,7 +20302,7 @@ pplx::task<void> TextMagicApi::updateSenderSetting(std::shared_ptr<UpdateSenderS
         return void();
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurvey(std::shared_ptr<UpdateSurveyInputObject> updateSurveyInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurvey(std::shared_ptr<UpdateSurveyInputObject> updateSurveyInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateSurveyInputObject' is set
@@ -20555,10 +20351,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurvey(std
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20648,7 +20440,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurvey(std
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurveyNode(std::shared_ptr<UpdateSurveyNodeInputObject> updateSurveyNodeInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurveyNode(std::shared_ptr<UpdateSurveyNodeInputObject> updateSurveyNodeInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateSurveyNodeInputObject' is set
@@ -20697,10 +20489,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurveyNode
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -20790,7 +20578,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateSurveyNode
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateTemplate(std::shared_ptr<UpdateTemplateInputObject> updateTemplateInputObject, int32_t id, boost::optional<bool> xIgnoreNullValues)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateTemplate(std::shared_ptr<UpdateTemplateInputObject> updateTemplateInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateTemplateInputObject' is set
@@ -20839,10 +20627,6 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateTemplate(s
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
-    if (xIgnoreNullValues)
-    {
-        headerParams[utility::conversions::to_string_t("X-Ignore-Null-Values")] = ApiClient::parameterToString(*xIgnoreNullValues);
-    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
