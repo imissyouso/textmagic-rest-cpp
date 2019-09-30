@@ -12,41 +12,41 @@
 
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include "GetDisallowedRulesResponse.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-GetContactsAutocompleteResponse::GetContactsAutocompleteResponse()
+GetDisallowedRulesResponse::GetDisallowedRulesResponse()
 {
 }
 
-GetContactsAutocompleteResponse::~GetContactsAutocompleteResponse()
+GetDisallowedRulesResponse::~GetDisallowedRulesResponse()
 {
 }
 
-void GetContactsAutocompleteResponse::validate()
+void GetDisallowedRulesResponse::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value GetContactsAutocompleteResponse::toJson() const
+web::json::value GetDisallowedRulesResponse::toJson() const
 {
-    web::json::value val = this->null<GetContactsAutocompleteResponse>::toJson();
+    web::json::value val = this->null<utility::string_t>::toJson();
 
 
     return val;
 }
 
-void GetContactsAutocompleteResponse::fromJson(web::json::value& val)
+void GetDisallowedRulesResponse::fromJson(web::json::value& val)
 {
-    this->null<GetContactsAutocompleteResponse>::fromJson(val);
+    this->null<utility::string_t>::fromJson(val);
 
 }
 
-void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void GetDisallowedRulesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -56,7 +56,7 @@ void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormD
 
 }
 
-void GetContactsAutocompleteResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void GetDisallowedRulesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))

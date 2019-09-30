@@ -12,41 +12,39 @@
 
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include "GetCallsPricesResponse.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-GetContactsAutocompleteResponse::GetContactsAutocompleteResponse()
+GetCallsPricesResponse::GetCallsPricesResponse()
 {
 }
 
-GetContactsAutocompleteResponse::~GetContactsAutocompleteResponse()
+GetCallsPricesResponse::~GetCallsPricesResponse()
 {
 }
 
-void GetContactsAutocompleteResponse::validate()
+void GetCallsPricesResponse::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value GetContactsAutocompleteResponse::toJson() const
+web::json::value GetCallsPricesResponse::toJson() const
 {
-    web::json::value val = this->null<GetContactsAutocompleteResponse>::toJson();
+    web::json::value val = web::json::value::object();
 
 
     return val;
 }
 
-void GetContactsAutocompleteResponse::fromJson(web::json::value& val)
+void GetCallsPricesResponse::fromJson(web::json::value& val)
 {
-    this->null<GetContactsAutocompleteResponse>::fromJson(val);
-
 }
 
-void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void GetCallsPricesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -56,7 +54,7 @@ void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormD
 
 }
 
-void GetContactsAutocompleteResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void GetCallsPricesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))

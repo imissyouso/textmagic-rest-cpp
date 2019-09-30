@@ -5969,7 +5969,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::duplicateSurvey(
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllBulkSessionsResponse>> TextMagicApi::getAllBulkSessions(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetAllBulkSessionsPaginatedResponse>> TextMagicApi::getAllBulkSessions(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -6072,7 +6072,7 @@ pplx::task<std::shared_ptr<GetAllBulkSessionsResponse>> TextMagicApi::getAllBulk
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllBulkSessionsResponse> result(new GetAllBulkSessionsResponse());
+        std::shared_ptr<GetAllBulkSessionsPaginatedResponse> result(new GetAllBulkSessionsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6093,7 +6093,7 @@ pplx::task<std::shared_ptr<GetAllBulkSessionsResponse>> TextMagicApi::getAllBulk
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllChatsResponse>> TextMagicApi::getAllChats(boost::optional<utility::string_t> status, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<int32_t> voice, boost::optional<int32_t> flat)
+pplx::task<std::shared_ptr<GetAllChatsPaginatedResponse>> TextMagicApi::getAllChats(boost::optional<utility::string_t> status, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<int32_t> voice, boost::optional<int32_t> flat)
 {
 
 
@@ -6212,7 +6212,7 @@ pplx::task<std::shared_ptr<GetAllChatsResponse>> TextMagicApi::getAllChats(boost
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllChatsResponse> result(new GetAllChatsResponse());
+        std::shared_ptr<GetAllChatsPaginatedResponse> result(new GetAllChatsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6233,7 +6233,7 @@ pplx::task<std::shared_ptr<GetAllChatsResponse>> TextMagicApi::getAllChats(boost
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllInboundMessagesResponse>> TextMagicApi::getAllInboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetAllInboundMessagesPaginatedResponse>> TextMagicApi::getAllInboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -6344,7 +6344,7 @@ pplx::task<std::shared_ptr<GetAllInboundMessagesResponse>> TextMagicApi::getAllI
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllInboundMessagesResponse> result(new GetAllInboundMessagesResponse());
+        std::shared_ptr<GetAllInboundMessagesPaginatedResponse> result(new GetAllInboundMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6365,7 +6365,7 @@ pplx::task<std::shared_ptr<GetAllInboundMessagesResponse>> TextMagicApi::getAllI
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllMessageSessionsResponse>> TextMagicApi::getAllMessageSessions(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetAllMessageSessionsPaginatedResponse>> TextMagicApi::getAllMessageSessions(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -6468,7 +6468,7 @@ pplx::task<std::shared_ptr<GetAllMessageSessionsResponse>> TextMagicApi::getAllM
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllMessageSessionsResponse> result(new GetAllMessageSessionsResponse());
+        std::shared_ptr<GetAllMessageSessionsPaginatedResponse> result(new GetAllMessageSessionsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6489,7 +6489,7 @@ pplx::task<std::shared_ptr<GetAllMessageSessionsResponse>> TextMagicApi::getAllM
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> TextMagicApi::getAllOutboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> lastId)
+pplx::task<std::shared_ptr<GetAllOutboundMessagesPaginatedResponse>> TextMagicApi::getAllOutboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> lastId)
 {
 
 
@@ -6596,7 +6596,7 @@ pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> TextMagicApi::getAll
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllOutboundMessagesResponse> result(new GetAllOutboundMessagesResponse());
+        std::shared_ptr<GetAllOutboundMessagesPaginatedResponse> result(new GetAllOutboundMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6617,7 +6617,7 @@ pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> TextMagicApi::getAll
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllScheduledMessagesResponse>> TextMagicApi::getAllScheduledMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> status, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetAllScheduledMessagesPaginatedResponse>> TextMagicApi::getAllScheduledMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> status, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -6732,7 +6732,7 @@ pplx::task<std::shared_ptr<GetAllScheduledMessagesResponse>> TextMagicApi::getAl
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllScheduledMessagesResponse> result(new GetAllScheduledMessagesResponse());
+        std::shared_ptr<GetAllScheduledMessagesPaginatedResponse> result(new GetAllScheduledMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -6753,7 +6753,7 @@ pplx::task<std::shared_ptr<GetAllScheduledMessagesResponse>> TextMagicApi::getAl
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetAllTemplatesResponse>> TextMagicApi::getAllTemplates(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetAllTemplatesPaginatedResponse>> TextMagicApi::getAllTemplates(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -6856,7 +6856,7 @@ pplx::task<std::shared_ptr<GetAllTemplatesResponse>> TextMagicApi::getAllTemplat
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetAllTemplatesResponse> result(new GetAllTemplatesResponse());
+        std::shared_ptr<GetAllTemplatesPaginatedResponse> result(new GetAllTemplatesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -7356,7 +7356,7 @@ pplx::task<std::shared_ptr<GetBalanceNotificationSettingsResponse>> TextMagicApi
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetBlockedContactsResponse>> TextMagicApi::getBlockedContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetBlockedContactsPaginatedResponse>> TextMagicApi::getBlockedContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -7471,7 +7471,7 @@ pplx::task<std::shared_ptr<GetBlockedContactsResponse>> TextMagicApi::getBlocked
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetBlockedContactsResponse> result(new GetBlockedContactsResponse());
+        std::shared_ptr<GetBlockedContactsPaginatedResponse> result(new GetBlockedContactsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -7725,7 +7725,7 @@ pplx::task<std::shared_ptr<GetCallbackSettingsResponse>> TextMagicApi::getCallba
         return result;
     });
 }
-pplx::task<std::map<utility::string_t, std::shared_ptr<Object>>> TextMagicApi::getCallsPrices()
+pplx::task<std::shared_ptr<GetCallsPricesResponse>> TextMagicApi::getCallsPrices()
 {
 
 
@@ -7820,20 +7820,13 @@ pplx::task<std::map<utility::string_t, std::shared_ptr<Object>>> TextMagicApi::g
     })
     .then([=](utility::string_t response)
     {
-        std::map<utility::string_t, std::shared_ptr<Object>> result;
+        std::shared_ptr<GetCallsPricesResponse> result(new GetCallsPricesResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_object() )
-            {
-                std::shared_ptr<Object> itemObj(nullptr);
-                itemObj->fromJson(item.second);
-                result[item.first] = itemObj;
-                
-            }
-            
+            result->fromJson(json);
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -8090,7 +8083,7 @@ pplx::task<std::shared_ptr<Chat>> TextMagicApi::getChatByPhone(utility::string_t
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetChatMessagesResponse>> TextMagicApi::getChatMessages(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<int32_t> start, boost::optional<int32_t> end, boost::optional<utility::string_t> direction, boost::optional<int32_t> voice)
+pplx::task<std::shared_ptr<GetChatMessagesPaginatedResponse>> TextMagicApi::getChatMessages(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<int32_t> start, boost::optional<int32_t> end, boost::optional<utility::string_t> direction, boost::optional<int32_t> voice)
 {
 
 
@@ -8214,7 +8207,7 @@ pplx::task<std::shared_ptr<GetChatMessagesResponse>> TextMagicApi::getChatMessag
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetChatMessagesResponse> result(new GetChatMessagesResponse());
+        std::shared_ptr<GetChatMessagesPaginatedResponse> result(new GetChatMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -8822,7 +8815,7 @@ pplx::task<std::shared_ptr<ContactNote>> TextMagicApi::getContactNote(int32_t id
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetContactNotesResponse>> TextMagicApi::getContactNotes(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetContactNotesPaginatedResponse>> TextMagicApi::getContactNotes(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -8926,7 +8919,7 @@ pplx::task<std::shared_ptr<GetContactNotesResponse>> TextMagicApi::getContactNot
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetContactNotesResponse> result(new GetContactNotesResponse());
+        std::shared_ptr<GetContactNotesPaginatedResponse> result(new GetContactNotesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -8947,7 +8940,7 @@ pplx::task<std::shared_ptr<GetContactNotesResponse>> TextMagicApi::getContactNot
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetContactsResponse>> TextMagicApi::getContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> shared, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetContactsPaginatedResponse>> TextMagicApi::getContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> shared, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -9062,7 +9055,7 @@ pplx::task<std::shared_ptr<GetContactsResponse>> TextMagicApi::getContacts(boost
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetContactsResponse> result(new GetContactsResponse());
+        std::shared_ptr<GetContactsPaginatedResponse> result(new GetContactsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -9083,7 +9076,7 @@ pplx::task<std::shared_ptr<GetContactsResponse>> TextMagicApi::getContacts(boost
         return result;
     });
 }
-pplx::task<std::vector<std::shared_ptr<GetContactsAutocompleteResponse>>> TextMagicApi::getContactsAutocomplete(utility::string_t query, boost::optional<int32_t> limit, boost::optional<int32_t> lists)
+pplx::task<std::shared_ptr<GetContactsAutocompleteResponse>> TextMagicApi::getContactsAutocomplete(utility::string_t query, boost::optional<int32_t> limit, boost::optional<int32_t> lists)
 {
 
 
@@ -9189,20 +9182,13 @@ pplx::task<std::vector<std::shared_ptr<GetContactsAutocompleteResponse>>> TextMa
     })
     .then([=](utility::string_t response)
     {
-        std::vector<std::shared_ptr<GetContactsAutocompleteResponse>> result;
+        std::shared_ptr<GetContactsAutocompleteResponse> result(new GetContactsAutocompleteResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_array() )
-            {
-                std::shared_ptr<GetContactsAutocompleteResponse> itemObj(new GetContactsAutocompleteResponse());
-                itemObj->fromJson(item);
-                result.push_back(itemObj);
-                
-            }
-            
+            result->fromJson(json);
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9217,7 +9203,7 @@ pplx::task<std::vector<std::shared_ptr<GetContactsAutocompleteResponse>>> TextMa
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetContactsByListIdResponse>> TextMagicApi::getContactsByListId(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetContactsByListIdPaginatedResponse>> TextMagicApi::getContactsByListId(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -9329,7 +9315,7 @@ pplx::task<std::shared_ptr<GetContactsByListIdResponse>> TextMagicApi::getContac
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetContactsByListIdResponse> result(new GetContactsByListIdResponse());
+        std::shared_ptr<GetContactsByListIdPaginatedResponse> result(new GetContactsByListIdPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -9350,7 +9336,7 @@ pplx::task<std::shared_ptr<GetContactsByListIdResponse>> TextMagicApi::getContac
         return result;
     });
 }
-pplx::task<std::vector<std::shared_ptr<Country>>> TextMagicApi::getCountries()
+pplx::task<std::shared_ptr<GetCountriesResponse>> TextMagicApi::getCountries()
 {
 
 
@@ -9445,20 +9431,13 @@ pplx::task<std::vector<std::shared_ptr<Country>>> TextMagicApi::getCountries()
     })
     .then([=](utility::string_t response)
     {
-        std::vector<std::shared_ptr<Country>> result;
+        std::shared_ptr<GetCountriesResponse> result(new GetCountriesResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_array() )
-            {
-                std::shared_ptr<Country> itemObj(new Country());
-                itemObj->fromJson(item);
-                result.push_back(itemObj);
-                
-            }
-            
+            result->fromJson(json);
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -9706,7 +9685,7 @@ pplx::task<std::shared_ptr<UserCustomField>> TextMagicApi::getCustomField(int32_
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetCustomFieldsResponse>> TextMagicApi::getCustomFields(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetCustomFieldsPaginatedResponse>> TextMagicApi::getCustomFields(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -9809,7 +9788,7 @@ pplx::task<std::shared_ptr<GetCustomFieldsResponse>> TextMagicApi::getCustomFiel
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetCustomFieldsResponse> result(new GetCustomFieldsResponse());
+        std::shared_ptr<GetCustomFieldsPaginatedResponse> result(new GetCustomFieldsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -9947,7 +9926,7 @@ pplx::task<std::shared_ptr<UsersInbound>> TextMagicApi::getDedicatedNumber(int32
         return result;
     });
 }
-pplx::task<std::vector<utility::string_t>> TextMagicApi::getDisallowedRules()
+pplx::task<std::shared_ptr<GetDisallowedRulesResponse>> TextMagicApi::getDisallowedRules()
 {
 
 
@@ -10042,18 +10021,13 @@ pplx::task<std::vector<utility::string_t>> TextMagicApi::getDisallowedRules()
     })
     .then([=](utility::string_t response)
     {
-        std::vector<utility::string_t> result;
+        std::shared_ptr<GetDisallowedRulesResponse> result(new GetDisallowedRulesResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_array() )
-            {
-                result.push_back(ModelBase::stringFromJson(item));
-                
-            }
-            
+            result->fromJson(json);
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -10068,7 +10042,7 @@ pplx::task<std::vector<utility::string_t>> TextMagicApi::getDisallowedRules()
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetFavouritesResponse>> TextMagicApi::getFavourites(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query)
+pplx::task<std::shared_ptr<GetFavouritesPaginatedResponse>> TextMagicApi::getFavourites(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query)
 {
 
 
@@ -10175,7 +10149,7 @@ pplx::task<std::shared_ptr<GetFavouritesResponse>> TextMagicApi::getFavourites(b
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetFavouritesResponse> result(new GetFavouritesResponse());
+        std::shared_ptr<GetFavouritesPaginatedResponse> result(new GetFavouritesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -10196,7 +10170,7 @@ pplx::task<std::shared_ptr<GetFavouritesResponse>> TextMagicApi::getFavourites(b
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetForwardedCallsResponse>> TextMagicApi::getForwardedCalls(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetForwardedCallsPaginatedResponse>> TextMagicApi::getForwardedCalls(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -10299,7 +10273,7 @@ pplx::task<std::shared_ptr<GetForwardedCallsResponse>> TextMagicApi::getForwarde
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetForwardedCallsResponse> result(new GetForwardedCallsResponse());
+        std::shared_ptr<GetForwardedCallsPaginatedResponse> result(new GetForwardedCallsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -10553,7 +10527,7 @@ pplx::task<std::shared_ptr<GetInboundMessagesNotificationSettingsResponse>> Text
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetInvoicesResponse>> TextMagicApi::getInvoices(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetInvoicesPaginatedResponse>> TextMagicApi::getInvoices(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -10656,7 +10630,7 @@ pplx::task<std::shared_ptr<GetInvoicesResponse>> TextMagicApi::getInvoices(boost
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetInvoicesResponse> result(new GetInvoicesResponse());
+        std::shared_ptr<GetInvoicesPaginatedResponse> result(new GetInvoicesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -10911,7 +10885,7 @@ pplx::task<std::shared_ptr<GetListContactsIdsResponse>> TextMagicApi::getListCon
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetListsOfContactResponse>> TextMagicApi::getListsOfContact(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetListsOfContactPaginatedResponse>> TextMagicApi::getListsOfContact(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -11015,7 +10989,7 @@ pplx::task<std::shared_ptr<GetListsOfContactResponse>> TextMagicApi::getListsOfC
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetListsOfContactResponse> result(new GetListsOfContactResponse());
+        std::shared_ptr<GetListsOfContactPaginatedResponse> result(new GetListsOfContactPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -11762,7 +11736,7 @@ pplx::task<std::shared_ptr<GetMessageSessionStatResponse>> TextMagicApi::getMess
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetMessagesBySessionIdResponse>> TextMagicApi::getMessagesBySessionId(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> statuses, boost::optional<int32_t> includeDeleted)
+pplx::task<std::shared_ptr<GetMessagesBySessionIdPaginatedResponse>> TextMagicApi::getMessagesBySessionId(int32_t id, boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> statuses, boost::optional<int32_t> includeDeleted)
 {
 
 
@@ -11874,7 +11848,7 @@ pplx::task<std::shared_ptr<GetMessagesBySessionIdResponse>> TextMagicApi::getMes
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetMessagesBySessionIdResponse> result(new GetMessagesBySessionIdResponse());
+        std::shared_ptr<GetMessagesBySessionIdPaginatedResponse> result(new GetMessagesBySessionIdPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -12256,7 +12230,7 @@ pplx::task<std::shared_ptr<MessageOut>> TextMagicApi::getOutboundMessage(int32_t
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetOutboundMessagesHistoryResponse>> TextMagicApi::getOutboundMessagesHistory(boost::optional<int32_t> limit, boost::optional<int32_t> lastId, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<GetOutboundMessagesHistoryPaginatedResponse>> TextMagicApi::getOutboundMessagesHistory(boost::optional<int32_t> limit, boost::optional<int32_t> lastId, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -12371,7 +12345,7 @@ pplx::task<std::shared_ptr<GetOutboundMessagesHistoryResponse>> TextMagicApi::ge
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetOutboundMessagesHistoryResponse> result(new GetOutboundMessagesHistoryResponse());
+        std::shared_ptr<GetOutboundMessagesHistoryPaginatedResponse> result(new GetOutboundMessagesHistoryPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -12742,7 +12716,7 @@ pplx::task<std::shared_ptr<SenderId>> TextMagicApi::getSenderId(int32_t id)
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSenderIdsResponse>> TextMagicApi::getSenderIds(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetSenderIdsPaginatedResponse>> TextMagicApi::getSenderIds(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -12845,7 +12819,7 @@ pplx::task<std::shared_ptr<GetSenderIdsResponse>> TextMagicApi::getSenderIds(boo
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetSenderIdsResponse> result(new GetSenderIdsResponse());
+        std::shared_ptr<GetSenderIdsPaginatedResponse> result(new GetSenderIdsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -12986,7 +12960,7 @@ pplx::task<std::shared_ptr<GetSenderSettingsResponse>> TextMagicApi::getSenderSe
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSpendingStatResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> start, boost::optional<int32_t> end)
+pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> start, boost::optional<int32_t> end)
 {
 
 
@@ -13097,7 +13071,7 @@ pplx::task<std::shared_ptr<GetSpendingStatResponse>> TextMagicApi::getSpendingSt
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetSpendingStatResponse> result(new GetSpendingStatResponse());
+        std::shared_ptr<GetSpendingStatPaginatedResponse> result(new GetSpendingStatPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -13971,7 +13945,7 @@ pplx::task<std::shared_ptr<GetSurveyNodesResponse>> TextMagicApi::getSurveyNodes
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSurveysResponse>> TextMagicApi::getSurveys(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetSurveysPaginatedResponse>> TextMagicApi::getSurveys(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -14074,7 +14048,7 @@ pplx::task<std::shared_ptr<GetSurveysResponse>> TextMagicApi::getSurveys(boost::
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetSurveysResponse> result(new GetSurveysResponse());
+        std::shared_ptr<GetSurveysPaginatedResponse> result(new GetSurveysPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -14212,7 +14186,7 @@ pplx::task<std::shared_ptr<MessageTemplate>> TextMagicApi::getTemplate(int32_t i
         return result;
     });
 }
-pplx::task<std::shared_ptr<Object>> TextMagicApi::getTimezones(boost::optional<int32_t> full)
+pplx::task<std::shared_ptr<GetTimezonesResponse>> TextMagicApi::getTimezones(boost::optional<int32_t> full)
 {
 
 
@@ -14311,7 +14285,7 @@ pplx::task<std::shared_ptr<Object>> TextMagicApi::getTimezones(boost::optional<i
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<Object> result(nullptr);
+        std::shared_ptr<GetTimezonesResponse> result(new GetTimezonesResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -14565,7 +14539,7 @@ pplx::task<std::shared_ptr<UnsubscribedContact>> TextMagicApi::getUnsubscribedCo
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetUnsubscribersResponse>> TextMagicApi::getUnsubscribers(boost::optional<int32_t> page, boost::optional<int32_t> limit)
+pplx::task<std::shared_ptr<GetUnsubscribersPaginatedResponse>> TextMagicApi::getUnsubscribers(boost::optional<int32_t> page, boost::optional<int32_t> limit)
 {
 
 
@@ -14668,7 +14642,7 @@ pplx::task<std::shared_ptr<GetUnsubscribersResponse>> TextMagicApi::getUnsubscri
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetUnsubscribersResponse> result(new GetUnsubscribersResponse());
+        std::shared_ptr<GetUnsubscribersPaginatedResponse> result(new GetUnsubscribersPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -14689,7 +14663,7 @@ pplx::task<std::shared_ptr<GetUnsubscribersResponse>> TextMagicApi::getUnsubscri
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetUserDedicatedNumbersResponse>> TextMagicApi::getUserDedicatedNumbers(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> surveyId)
+pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> TextMagicApi::getUserDedicatedNumbers(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> surveyId)
 {
 
 
@@ -14796,7 +14770,7 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersResponse>> TextMagicApi::getUs
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetUserDedicatedNumbersResponse> result(new GetUserDedicatedNumbersResponse());
+        std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse> result(new GetUserDedicatedNumbersPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -14817,7 +14791,7 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersResponse>> TextMagicApi::getUs
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetUserListsResponse>> TextMagicApi::getUserLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> favoriteOnly, boost::optional<int32_t> onlyMine)
+pplx::task<std::shared_ptr<GetUserListsPaginatedResponse>> TextMagicApi::getUserLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> favoriteOnly, boost::optional<int32_t> onlyMine)
 {
 
 
@@ -14936,7 +14910,7 @@ pplx::task<std::shared_ptr<GetUserListsResponse>> TextMagicApi::getUserLists(boo
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<GetUserListsResponse> result(new GetUserListsResponse());
+        std::shared_ptr<GetUserListsPaginatedResponse> result(new GetUserListsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -16425,7 +16399,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::resetSurvey(int3
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchChatsResponse>> TextMagicApi::searchChats(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query)
+pplx::task<std::shared_ptr<SearchChatsPaginatedResponse>> TextMagicApi::searchChats(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query)
 {
 
 
@@ -16532,7 +16506,7 @@ pplx::task<std::shared_ptr<SearchChatsResponse>> TextMagicApi::searchChats(boost
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchChatsResponse> result(new SearchChatsResponse());
+        std::shared_ptr<SearchChatsPaginatedResponse> result(new SearchChatsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -16553,7 +16527,7 @@ pplx::task<std::shared_ptr<SearchChatsResponse>> TextMagicApi::searchChats(boost
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchChatsByIdsResponse>> TextMagicApi::searchChatsByIds(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids)
+pplx::task<std::shared_ptr<SearchChatsByIdsPaginatedResponse>> TextMagicApi::searchChatsByIds(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids)
 {
 
 
@@ -16660,7 +16634,7 @@ pplx::task<std::shared_ptr<SearchChatsByIdsResponse>> TextMagicApi::searchChatsB
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchChatsByIdsResponse> result(new SearchChatsByIdsResponse());
+        std::shared_ptr<SearchChatsByIdsPaginatedResponse> result(new SearchChatsByIdsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -16681,7 +16655,7 @@ pplx::task<std::shared_ptr<SearchChatsByIdsResponse>> TextMagicApi::searchChatsB
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchChatsByReceipentResponse>> TextMagicApi::searchChatsByReceipent(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy)
+pplx::task<std::shared_ptr<SearchChatsByReceipentPaginatedResponse>> TextMagicApi::searchChatsByReceipent(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy)
 {
 
 
@@ -16792,7 +16766,7 @@ pplx::task<std::shared_ptr<SearchChatsByReceipentResponse>> TextMagicApi::search
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchChatsByReceipentResponse> result(new SearchChatsByReceipentResponse());
+        std::shared_ptr<SearchChatsByReceipentPaginatedResponse> result(new SearchChatsByReceipentPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -16813,7 +16787,7 @@ pplx::task<std::shared_ptr<SearchChatsByReceipentResponse>> TextMagicApi::search
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchContactsResponse>> TextMagicApi::searchContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> shared, boost::optional<utility::string_t> ids, boost::optional<int32_t> listId, boost::optional<int32_t> includeBlocked, boost::optional<utility::string_t> query, boost::optional<int32_t> local, boost::optional<utility::string_t> country, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<SearchContactsPaginatedResponse>> TextMagicApi::searchContacts(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> shared, boost::optional<utility::string_t> ids, boost::optional<int32_t> listId, boost::optional<int32_t> includeBlocked, boost::optional<utility::string_t> query, boost::optional<int32_t> local, boost::optional<utility::string_t> country, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -16952,7 +16926,7 @@ pplx::task<std::shared_ptr<SearchContactsResponse>> TextMagicApi::searchContacts
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchContactsResponse> result(new SearchContactsResponse());
+        std::shared_ptr<SearchContactsPaginatedResponse> result(new SearchContactsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -16973,7 +16947,7 @@ pplx::task<std::shared_ptr<SearchContactsResponse>> TextMagicApi::searchContacts
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchInboundMessagesResponse>> TextMagicApi::searchInboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> expand)
+pplx::task<std::shared_ptr<SearchInboundMessagesPaginatedResponse>> TextMagicApi::searchInboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> query, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> expand)
 {
 
 
@@ -17096,7 +17070,7 @@ pplx::task<std::shared_ptr<SearchInboundMessagesResponse>> TextMagicApi::searchI
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchInboundMessagesResponse> result(new SearchInboundMessagesResponse());
+        std::shared_ptr<SearchInboundMessagesPaginatedResponse> result(new SearchInboundMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -17117,7 +17091,7 @@ pplx::task<std::shared_ptr<SearchInboundMessagesResponse>> TextMagicApi::searchI
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchListsResponse>> TextMagicApi::searchLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> query, boost::optional<int32_t> onlyMine, boost::optional<int32_t> onlyDefault, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<SearchListsPaginatedResponse>> TextMagicApi::searchLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> query, boost::optional<int32_t> onlyMine, boost::optional<int32_t> onlyDefault, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -17244,7 +17218,7 @@ pplx::task<std::shared_ptr<SearchListsResponse>> TextMagicApi::searchLists(boost
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchListsResponse> result(new SearchListsResponse());
+        std::shared_ptr<SearchListsPaginatedResponse> result(new SearchListsPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -17265,7 +17239,7 @@ pplx::task<std::shared_ptr<SearchListsResponse>> TextMagicApi::searchLists(boost
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchOutboundMessagesResponse>> TextMagicApi::searchOutboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> lastId, boost::optional<utility::string_t> ids, boost::optional<int32_t> sessionId, boost::optional<utility::string_t> statuses, boost::optional<int32_t> includeDeleted, boost::optional<utility::string_t> query)
+pplx::task<std::shared_ptr<SearchOutboundMessagesPaginatedResponse>> TextMagicApi::searchOutboundMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> lastId, boost::optional<utility::string_t> ids, boost::optional<int32_t> sessionId, boost::optional<utility::string_t> statuses, boost::optional<int32_t> includeDeleted, boost::optional<utility::string_t> query)
 {
 
 
@@ -17392,7 +17366,7 @@ pplx::task<std::shared_ptr<SearchOutboundMessagesResponse>> TextMagicApi::search
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchOutboundMessagesResponse> result(new SearchOutboundMessagesResponse());
+        std::shared_ptr<SearchOutboundMessagesPaginatedResponse> result(new SearchOutboundMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -17413,7 +17387,7 @@ pplx::task<std::shared_ptr<SearchOutboundMessagesResponse>> TextMagicApi::search
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchScheduledMessagesResponse>> TextMagicApi::searchScheduledMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> status, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
+pplx::task<std::shared_ptr<SearchScheduledMessagesPaginatedResponse>> TextMagicApi::searchScheduledMessages(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> query, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> status, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction)
 {
 
 
@@ -17536,7 +17510,7 @@ pplx::task<std::shared_ptr<SearchScheduledMessagesResponse>> TextMagicApi::searc
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchScheduledMessagesResponse> result(new SearchScheduledMessagesResponse());
+        std::shared_ptr<SearchScheduledMessagesPaginatedResponse> result(new SearchScheduledMessagesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -17557,7 +17531,7 @@ pplx::task<std::shared_ptr<SearchScheduledMessagesResponse>> TextMagicApi::searc
         return result;
     });
 }
-pplx::task<std::shared_ptr<SearchTemplatesResponse>> TextMagicApi::searchTemplates(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> name, boost::optional<utility::string_t> content)
+pplx::task<std::shared_ptr<SearchTemplatesPaginatedResponse>> TextMagicApi::searchTemplates(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> ids, boost::optional<utility::string_t> name, boost::optional<utility::string_t> content)
 {
 
 
@@ -17672,7 +17646,7 @@ pplx::task<std::shared_ptr<SearchTemplatesResponse>> TextMagicApi::searchTemplat
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<SearchTemplatesResponse> result(new SearchTemplatesResponse());
+        std::shared_ptr<SearchTemplatesPaginatedResponse> result(new SearchTemplatesPaginatedResponse());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

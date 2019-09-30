@@ -33,7 +33,6 @@
 #include "CloseChatsBulkInputObject.h"
 #include "Contact.h"
 #include "ContactNote.h"
-#include "Country.h"
 #include "CreateContactInputObject.h"
 #include "CreateContactNoteInputObject.h"
 #include "CreateCustomFieldInputObject.h"
@@ -58,53 +57,57 @@
 #include "DoAuthResponse.h"
 #include "DoCarrierLookupResponse.h"
 #include "DoEmailLookupResponse.h"
-#include "GetAllBulkSessionsResponse.h"
-#include "GetAllChatsResponse.h"
-#include "GetAllInboundMessagesResponse.h"
-#include "GetAllMessageSessionsResponse.h"
-#include "GetAllOutboundMessagesResponse.h"
-#include "GetAllScheduledMessagesResponse.h"
-#include "GetAllTemplatesResponse.h"
+#include "GetAllBulkSessionsPaginatedResponse.h"
+#include "GetAllChatsPaginatedResponse.h"
+#include "GetAllInboundMessagesPaginatedResponse.h"
+#include "GetAllMessageSessionsPaginatedResponse.h"
+#include "GetAllOutboundMessagesPaginatedResponse.h"
+#include "GetAllScheduledMessagesPaginatedResponse.h"
+#include "GetAllTemplatesPaginatedResponse.h"
 #include "GetAvailableDedicatedNumbersResponse.h"
 #include "GetAvailableSenderSettingOptionsResponse.h"
 #include "GetBalanceNotificationOptionsResponse.h"
 #include "GetBalanceNotificationSettingsResponse.h"
-#include "GetBlockedContactsResponse.h"
+#include "GetBlockedContactsPaginatedResponse.h"
 #include "GetCallbackSettingsResponse.h"
-#include "GetChatMessagesResponse.h"
+#include "GetCallsPricesResponse.h"
+#include "GetChatMessagesPaginatedResponse.h"
 #include "GetContactImportSessionProgressResponse.h"
-#include "GetContactNotesResponse.h"
+#include "GetContactNotesPaginatedResponse.h"
 #include "GetContactsAutocompleteResponse.h"
-#include "GetContactsByListIdResponse.h"
-#include "GetContactsResponse.h"
-#include "GetCustomFieldsResponse.h"
-#include "GetFavouritesResponse.h"
-#include "GetForwardedCallsResponse.h"
+#include "GetContactsByListIdPaginatedResponse.h"
+#include "GetContactsPaginatedResponse.h"
+#include "GetCountriesResponse.h"
+#include "GetCustomFieldsPaginatedResponse.h"
+#include "GetDisallowedRulesResponse.h"
+#include "GetFavouritesPaginatedResponse.h"
+#include "GetForwardedCallsPaginatedResponse.h"
 #include "GetInboundMessagesNotificationSettingsResponse.h"
-#include "GetInvoicesResponse.h"
+#include "GetInvoicesPaginatedResponse.h"
 #include "GetListContactsIdsResponse.h"
-#include "GetListsOfContactResponse.h"
+#include "GetListsOfContactPaginatedResponse.h"
 #include "GetMessagePreviewResponse.h"
 #include "GetMessagePriceResponse.h"
 #include "GetMessagePricesResponse.h"
 #include "GetMessageSessionStatResponse.h"
-#include "GetMessagesBySessionIdResponse.h"
+#include "GetMessagesBySessionIdPaginatedResponse.h"
 #include "GetMessagingCountersResponse.h"
 #include "GetMessagingStatResponse.h"
-#include "GetOutboundMessagesHistoryResponse.h"
+#include "GetOutboundMessagesHistoryPaginatedResponse.h"
 #include "GetPushTokensResponse.h"
-#include "GetSenderIdsResponse.h"
+#include "GetSenderIdsPaginatedResponse.h"
 #include "GetSenderSettingsResponse.h"
-#include "GetSpendingStatResponse.h"
+#include "GetSpendingStatPaginatedResponse.h"
 #include "GetStateResponse.h"
 #include "GetSubaccountsWithTokensInputObject.h"
 #include "GetSubaccountsWithTokensResponse.h"
 #include "GetSurveyNodesResponse.h"
-#include "GetSurveysResponse.h"
+#include "GetSurveysPaginatedResponse.h"
+#include "GetTimezonesResponse.h"
 #include "GetUnreadMessagesTotalResponse.h"
-#include "GetUnsubscribersResponse.h"
-#include "GetUserDedicatedNumbersResponse.h"
-#include "GetUserListsResponse.h"
+#include "GetUnsubscribersPaginatedResponse.h"
+#include "GetUserDedicatedNumbersPaginatedResponse.h"
+#include "GetUserListsPaginatedResponse.h"
 #include "GetVersionsResponse.h"
 #include "Group.h"
 #include "HttpContent.h"
@@ -120,21 +123,20 @@
 #include "MuteChatInputObject.h"
 #include "MuteChatsBulkInputObject.h"
 #include "NotFoundResponse.h"
-#include "Object.h"
 #include "PingResponse.h"
 #include "ReopenChatsBulkInputObject.h"
 #include "RequestNewSubaccountTokenInputObject.h"
 #include "RequestSenderIdInputObject.h"
 #include "ResourceLinkResponse.h"
-#include "SearchChatsByIdsResponse.h"
-#include "SearchChatsByReceipentResponse.h"
-#include "SearchChatsResponse.h"
-#include "SearchContactsResponse.h"
-#include "SearchInboundMessagesResponse.h"
-#include "SearchListsResponse.h"
-#include "SearchOutboundMessagesResponse.h"
-#include "SearchScheduledMessagesResponse.h"
-#include "SearchTemplatesResponse.h"
+#include "SearchChatsByIdsPaginatedResponse.h"
+#include "SearchChatsByReceipentPaginatedResponse.h"
+#include "SearchChatsPaginatedResponse.h"
+#include "SearchContactsPaginatedResponse.h"
+#include "SearchInboundMessagesPaginatedResponse.h"
+#include "SearchListsPaginatedResponse.h"
+#include "SearchOutboundMessagesPaginatedResponse.h"
+#include "SearchScheduledMessagesPaginatedResponse.h"
+#include "SearchTemplatesPaginatedResponse.h"
 #include "SendMessageInputObject.h"
 #include "SendMessageResponse.h"
 #include "SenderId.h"
@@ -723,7 +725,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetAllBulkSessionsResponse>> getAllBulkSessions(
+    pplx::task<std::shared_ptr<GetAllBulkSessionsPaginatedResponse>> getAllBulkSessions(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -739,7 +741,7 @@ public:
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="voice">Fetch results with voice calls (optional, default to 0)</param>
     /// <param name="flat">Should additional contact info be included (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<GetAllChatsResponse>> getAllChats(
+    pplx::task<std::shared_ptr<GetAllChatsPaginatedResponse>> getAllChats(
         boost::optional<utility::string_t> status,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
@@ -757,7 +759,7 @@ public:
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetAllInboundMessagesResponse>> getAllInboundMessages(
+    pplx::task<std::shared_ptr<GetAllInboundMessagesPaginatedResponse>> getAllInboundMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> orderBy,
@@ -771,7 +773,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetAllMessageSessionsResponse>> getAllMessageSessions(
+    pplx::task<std::shared_ptr<GetAllMessageSessionsPaginatedResponse>> getAllMessageSessions(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -784,7 +786,7 @@ public:
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="lastId">Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)</param>
-    pplx::task<std::shared_ptr<GetAllOutboundMessagesResponse>> getAllOutboundMessages(
+    pplx::task<std::shared_ptr<GetAllOutboundMessagesPaginatedResponse>> getAllOutboundMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> lastId
@@ -800,7 +802,7 @@ public:
     /// <param name="status">Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetAllScheduledMessagesResponse>> getAllScheduledMessages(
+    pplx::task<std::shared_ptr<GetAllScheduledMessagesPaginatedResponse>> getAllScheduledMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> status,
@@ -815,7 +817,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional)</param>
     /// <param name="limit">How many results to return (optional)</param>
-    pplx::task<std::shared_ptr<GetAllTemplatesResponse>> getAllTemplates(
+    pplx::task<std::shared_ptr<GetAllTemplatesPaginatedResponse>> getAllTemplates(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -870,7 +872,7 @@ public:
     /// <param name="query">Find blocked contacts by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetBlockedContactsResponse>> getBlockedContacts(
+    pplx::task<std::shared_ptr<GetBlockedContactsPaginatedResponse>> getBlockedContacts(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> query,
@@ -901,7 +903,7 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    pplx::task<std::map<utility::string_t, std::shared_ptr<Object>>> getCallsPrices(
+    pplx::task<std::shared_ptr<GetCallsPricesResponse>> getCallsPrices(
     );
     /// <summary>
     /// Get a single chat.
@@ -941,7 +943,7 @@ public:
     /// <param name="end">Return messages up to specified timestamp only (optional)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     /// <param name="voice">Fetch results with voice calls (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<GetChatMessagesResponse>> getChatMessages(
+    pplx::task<std::shared_ptr<GetChatMessagesPaginatedResponse>> getChatMessages(
         int32_t id,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
@@ -1010,7 +1012,7 @@ public:
     /// <param name="id"></param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetContactNotesResponse>> getContactNotes(
+    pplx::task<std::shared_ptr<GetContactNotesPaginatedResponse>> getContactNotes(
         int32_t id,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1026,7 +1028,7 @@ public:
     /// <param name="shared">Should shared contacts to be included (optional, default to 0)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetContactsResponse>> getContacts(
+    pplx::task<std::shared_ptr<GetContactsPaginatedResponse>> getContacts(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> shared,
@@ -1042,7 +1044,7 @@ public:
     /// <param name="query">Find recipients by specified search query</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="lists">Should lists be returned or not (optional, default to 0)</param>
-    pplx::task<std::vector<std::shared_ptr<GetContactsAutocompleteResponse>>> getContactsAutocomplete(
+    pplx::task<std::shared_ptr<GetContactsAutocompleteResponse>> getContactsAutocomplete(
         utility::string_t query,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> lists
@@ -1058,7 +1060,7 @@ public:
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetContactsByListIdResponse>> getContactsByListId(
+    pplx::task<std::shared_ptr<GetContactsByListIdPaginatedResponse>> getContactsByListId(
         int32_t id,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
@@ -1071,7 +1073,7 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    pplx::task<std::vector<std::shared_ptr<Country>>> getCountries(
+    pplx::task<std::shared_ptr<GetCountriesResponse>> getCountries(
     );
     /// <summary>
     /// Get current user info.
@@ -1099,7 +1101,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetCustomFieldsResponse>> getCustomFields(
+    pplx::task<std::shared_ptr<GetCustomFieldsPaginatedResponse>> getCustomFields(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1119,7 +1121,7 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    pplx::task<std::vector<utility::string_t>> getDisallowedRules(
+    pplx::task<std::shared_ptr<GetDisallowedRulesResponse>> getDisallowedRules(
     );
     /// <summary>
     /// Get favorite contacts and lists.
@@ -1130,7 +1132,7 @@ public:
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="query">Find contacts or lists by specified search query (optional, default to A)</param>
-    pplx::task<std::shared_ptr<GetFavouritesResponse>> getFavourites(
+    pplx::task<std::shared_ptr<GetFavouritesPaginatedResponse>> getFavourites(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> query
@@ -1143,7 +1145,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetForwardedCallsResponse>> getForwardedCalls(
+    pplx::task<std::shared_ptr<GetForwardedCallsPaginatedResponse>> getForwardedCalls(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1173,7 +1175,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetInvoicesResponse>> getInvoices(
+    pplx::task<std::shared_ptr<GetInvoicesPaginatedResponse>> getInvoices(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1206,7 +1208,7 @@ public:
     /// <param name="id"></param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetListsOfContactResponse>> getListsOfContact(
+    pplx::task<std::shared_ptr<GetListsOfContactPaginatedResponse>> getListsOfContact(
         int32_t id,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1338,7 +1340,7 @@ public:
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="statuses">Find messages by status (optional)</param>
     /// <param name="includeDeleted">Search also in deleted messages (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<GetMessagesBySessionIdResponse>> getMessagesBySessionId(
+    pplx::task<std::shared_ptr<GetMessagesBySessionIdPaginatedResponse>> getMessagesBySessionId(
         int32_t id,
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
@@ -1388,7 +1390,7 @@ public:
     /// <param name="query">Find message by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<GetOutboundMessagesHistoryResponse>> getOutboundMessagesHistory(
+    pplx::task<std::shared_ptr<GetOutboundMessagesHistoryPaginatedResponse>> getOutboundMessagesHistory(
         boost::optional<int32_t> limit,
         boost::optional<int32_t> lastId,
         boost::optional<utility::string_t> query,
@@ -1431,7 +1433,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetSenderIdsResponse>> getSenderIds(
+    pplx::task<std::shared_ptr<GetSenderIdsPaginatedResponse>> getSenderIds(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1455,7 +1457,7 @@ public:
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="start">Optional. Start date in unix timestamp format. Default is 7 days ago (optional)</param>
     /// <param name="end">Optional. End date in unix timestamp format. Default is now (optional)</param>
-    pplx::task<std::shared_ptr<GetSpendingStatResponse>> getSpendingStat(
+    pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> getSpendingStat(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> start,
@@ -1543,7 +1545,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetSurveysResponse>> getSurveys(
+    pplx::task<std::shared_ptr<GetSurveysPaginatedResponse>> getSurveys(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1564,7 +1566,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="full">Return full info about timezones in array (0 or 1). Default is 0 (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<Object>> getTimezones(
+    pplx::task<std::shared_ptr<GetTimezonesResponse>> getTimezones(
         boost::optional<int32_t> full
     );
     /// <summary>
@@ -1593,7 +1595,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetUnsubscribersResponse>> getUnsubscribers(
+    pplx::task<std::shared_ptr<GetUnsubscribersPaginatedResponse>> getUnsubscribers(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
@@ -1606,7 +1608,7 @@ public:
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="surveyId">Fetch only that numbers which are ready for the survey (optional)</param>
-    pplx::task<std::shared_ptr<GetUserDedicatedNumbersResponse>> getUserDedicatedNumbers(
+    pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> getUserDedicatedNumbers(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> surveyId
@@ -1623,7 +1625,7 @@ public:
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     /// <param name="favoriteOnly">Return only favorite lists (optional, default to 0)</param>
     /// <param name="onlyMine">Return only current user lists (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<GetUserListsResponse>> getUserLists(
+    pplx::task<std::shared_ptr<GetUserListsPaginatedResponse>> getUserLists(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> orderBy,
@@ -1756,7 +1758,7 @@ public:
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="query">Find chats by specified search query (optional)</param>
-    pplx::task<std::shared_ptr<SearchChatsResponse>> searchChats(
+    pplx::task<std::shared_ptr<SearchChatsPaginatedResponse>> searchChats(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> query
@@ -1770,7 +1772,7 @@ public:
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="ids">Find chats by ID(s) (optional)</param>
-    pplx::task<std::shared_ptr<SearchChatsByIdsResponse>> searchChatsByIds(
+    pplx::task<std::shared_ptr<SearchChatsByIdsPaginatedResponse>> searchChatsByIds(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> ids
@@ -1785,7 +1787,7 @@ public:
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="query">Find chats by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
-    pplx::task<std::shared_ptr<SearchChatsByReceipentResponse>> searchChatsByReceipent(
+    pplx::task<std::shared_ptr<SearchChatsByReceipentPaginatedResponse>> searchChatsByReceipent(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> query,
@@ -1808,7 +1810,7 @@ public:
     /// <param name="country">2-letter ISO country code for local phone numbers, used when &#39;local&#39; is set to true. Default is account country (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<SearchContactsResponse>> searchContacts(
+    pplx::task<std::shared_ptr<SearchContactsPaginatedResponse>> searchContacts(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> shared,
@@ -1834,7 +1836,7 @@ public:
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     /// <param name="expand">Expand by adding firstName, lastName and contactId (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<SearchInboundMessagesResponse>> searchInboundMessages(
+    pplx::task<std::shared_ptr<SearchInboundMessagesPaginatedResponse>> searchInboundMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> ids,
@@ -1857,7 +1859,7 @@ public:
     /// <param name="onlyDefault">Return only default lists (optional, default to 0)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<SearchListsResponse>> searchLists(
+    pplx::task<std::shared_ptr<SearchListsPaginatedResponse>> searchLists(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> ids,
@@ -1881,7 +1883,7 @@ public:
     /// <param name="statuses">Find messages by status (optional)</param>
     /// <param name="includeDeleted">Search also in deleted messages (optional, default to 0)</param>
     /// <param name="query">Find messages by specified search query (optional)</param>
-    pplx::task<std::shared_ptr<SearchOutboundMessagesResponse>> searchOutboundMessages(
+    pplx::task<std::shared_ptr<SearchOutboundMessagesPaginatedResponse>> searchOutboundMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> lastId,
@@ -1904,7 +1906,7 @@ public:
     /// <param name="status">Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    pplx::task<std::shared_ptr<SearchScheduledMessagesResponse>> searchScheduledMessages(
+    pplx::task<std::shared_ptr<SearchScheduledMessagesPaginatedResponse>> searchScheduledMessages(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> query,
@@ -1924,7 +1926,7 @@ public:
     /// <param name="ids">Find template by ID(s) (optional)</param>
     /// <param name="name">Find template by name (optional)</param>
     /// <param name="content">Find template by content (optional)</param>
-    pplx::task<std::shared_ptr<SearchTemplatesResponse>> searchTemplates(
+    pplx::task<std::shared_ptr<SearchTemplatesPaginatedResponse>> searchTemplates(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<utility::string_t> ids,

@@ -11,16 +11,16 @@
  */
 
 /*
- * GetContactsAutocompleteResponse.h
+ * GetDisallowedRulesResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetDisallowedRulesResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_GetDisallowedRulesResponse_H_
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include <cpprest/details/basic_types.h>
 #include <vector>
 
 namespace com {
@@ -31,12 +31,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetContactsAutocompleteResponse
-    : public null<GetContactsAutocompleteResponse>
+class  GetDisallowedRulesResponse
+    : public null<utility::string_t>
 {
 public:
-    GetContactsAutocompleteResponse();
-    virtual ~GetContactsAutocompleteResponse();
+    GetDisallowedRulesResponse();
+    virtual ~GetDisallowedRulesResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +50,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetContactsAutocompleteResponse members
+    /// GetDisallowedRulesResponse members
 
 
 protected:
@@ -61,4 +61,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetDisallowedRulesResponse_H_ */

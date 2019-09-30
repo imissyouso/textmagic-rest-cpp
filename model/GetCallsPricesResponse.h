@@ -11,17 +11,17 @@
  */
 
 /*
- * GetContactsAutocompleteResponse.h
+ * GetCallsPricesResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetCallsPricesResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_GetCallsPricesResponse_H_
 
 
-#include "GetContactsAutocompleteResponse.h"
-#include <vector>
+#include "../ModelBase.h"
+
 
 namespace com {
 namespace textmagic {
@@ -31,12 +31,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetContactsAutocompleteResponse
-    : public null<GetContactsAutocompleteResponse>
+class  GetCallsPricesResponse
+    : public ModelBase
 {
 public:
-    GetContactsAutocompleteResponse();
-    virtual ~GetContactsAutocompleteResponse();
+    GetCallsPricesResponse();
+    virtual ~GetCallsPricesResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +50,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetContactsAutocompleteResponse members
+    /// GetCallsPricesResponse members
 
 
 protected:
@@ -61,4 +61,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetCallsPricesResponse_H_ */

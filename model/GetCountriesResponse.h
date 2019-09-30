@@ -11,16 +11,16 @@
  */
 
 /*
- * GetContactsAutocompleteResponse.h
+ * GetCountriesResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetCountriesResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_GetCountriesResponse_H_
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include "Country.h"
 #include <vector>
 
 namespace com {
@@ -31,12 +31,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetContactsAutocompleteResponse
-    : public null<GetContactsAutocompleteResponse>
+class  GetCountriesResponse
+    : public null<Country>
 {
 public:
-    GetContactsAutocompleteResponse();
-    virtual ~GetContactsAutocompleteResponse();
+    GetCountriesResponse();
+    virtual ~GetCountriesResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +50,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetContactsAutocompleteResponse members
+    /// GetCountriesResponse members
 
 
 protected:
@@ -61,4 +61,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetCountriesResponse_H_ */

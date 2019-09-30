@@ -12,41 +12,41 @@
 
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include "GetCountriesResponse.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-GetContactsAutocompleteResponse::GetContactsAutocompleteResponse()
+GetCountriesResponse::GetCountriesResponse()
 {
 }
 
-GetContactsAutocompleteResponse::~GetContactsAutocompleteResponse()
+GetCountriesResponse::~GetCountriesResponse()
 {
 }
 
-void GetContactsAutocompleteResponse::validate()
+void GetCountriesResponse::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value GetContactsAutocompleteResponse::toJson() const
+web::json::value GetCountriesResponse::toJson() const
 {
-    web::json::value val = this->null<GetContactsAutocompleteResponse>::toJson();
+    web::json::value val = this->null<Country>::toJson();
 
 
     return val;
 }
 
-void GetContactsAutocompleteResponse::fromJson(web::json::value& val)
+void GetCountriesResponse::fromJson(web::json::value& val)
 {
-    this->null<GetContactsAutocompleteResponse>::fromJson(val);
+    this->null<Country>::fromJson(val);
 
 }
 
-void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void GetCountriesResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -56,7 +56,7 @@ void GetContactsAutocompleteResponse::toMultipart(std::shared_ptr<MultipartFormD
 
 }
 
-void GetContactsAutocompleteResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void GetCountriesResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
