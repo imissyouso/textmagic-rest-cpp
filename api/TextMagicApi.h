@@ -1955,7 +1955,7 @@ public:
     /// Send user phone verification
     /// </summary>
     /// <remarks>
-    /// 
+    /// Send Two-Factor Authentication Messages &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;  You can easily verify your customers using their phone numbers with the help of 2FA (better known as two-factor authentication) and protect against fraud, build trust, and increase conversions. There is a simple way to do this with an API call to a TextMagic endpoint. With the help of TextMagic API you can:  *   Send two-factor authentication messages (2FA) *   Send one-time passwords (OTP) *   Integrate passwordless login into your app *   Protect your app from fraud  How does it work? -----------------  *   **Step 1:** Your server makes an API call to the TextMagic endpoint, and we send a text message (and later, as a fallback, a generate a text-to-speech voice call) with a verification code to the phone number supplied in the initial request.      *   **Step 2:** Once the code is received, the user enters it into the relevant input field in your app. This code needs to be passed to TextMagic in the second API call; if it is correct, the server will respond with the correct response code. This way, you can ensure that the recipient really owns the phone number entered into your app or form.
     /// </remarks>
     pplx::task<void> sendPhoneVerificationCode(
     );
