@@ -373,7 +373,7 @@ public:
     /// Delete all messages
     /// </summary>
     /// <remarks>
-    /// Delete all messages.
+    /// 
     /// </remarks>
     pplx::task<void> deleteAllOutboundMessages(
     );
@@ -577,7 +577,7 @@ public:
     /// Delete message
     /// </summary>
     /// <remarks>
-    /// Delete a single message.
+    /// 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteOutboundMessage(
@@ -587,7 +587,7 @@ public:
     /// Delete messages by IDs
     /// </summary>
     /// <remarks>
-    /// Delete outbound messages by given ID(s) or delete all outbound messages.
+    /// 
     /// </remarks>
     /// <param name="deleteOutboundMessagesBulkInputObject"></param>
     pplx::task<void> deleteOutboundMessagesBulk(
@@ -679,7 +679,7 @@ public:
     /// Authenticate user by given username and password.
     /// </summary>
     /// <remarks>
-    /// Returning a username and token that you should pass to the all requests (in X-TM-Username and X-TM-Key, respectively)
+    /// 
     /// </remarks>
     /// <param name="doAuthInputObject"></param>
     pplx::task<std::shared_ptr<DoAuthResponse>> doAuth(
@@ -781,7 +781,7 @@ public:
     /// Get all messages
     /// </summary>
     /// <remarks>
-    /// Get all user oubound messages.
+    /// 
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
@@ -1053,7 +1053,7 @@ public:
     /// Fetch user contacts by given group id.
     /// </summary>
     /// <remarks>
-    /// A useful synonym for \&quot;contacts/search\&quot; command with provided \&quot;listId\&quot; parameter.
+    /// 
     /// </remarks>
     /// <param name="id">Given group Id.</param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
@@ -1217,7 +1217,7 @@ public:
     /// Preview message
     /// </summary>
     /// <remarks>
-    /// Get messages preview (with tags merged) up to 100 messages per session.
+    /// 
     /// </remarks>
     /// <param name="text">Message text. Required if template_id is not set (optional)</param>
     /// <param name="templateId">Template used instead of message text. Required if text is not set (optional)</param>
@@ -1259,7 +1259,7 @@ public:
     /// Check price
     /// </summary>
     /// <remarks>
-    /// Check pricing for a new outbound message.
+    /// 
     /// </remarks>
     /// <param name="includeBlocked">Should we show pricing for the blocked contacts. (optional, default to 0)</param>
     /// <param name="text">Message text. Required if template_id is not set (optional)</param>
@@ -1303,7 +1303,7 @@ public:
     /// Get pricing
     /// </summary>
     /// <remarks>
-    /// Get message prices for all countries.
+    /// 
     /// </remarks>
     pplx::task<std::shared_ptr<GetMessagePricesResponse>> getMessagePrices(
     );
@@ -1333,7 +1333,7 @@ public:
     /// Fetch messages by given session id.
     /// </summary>
     /// <remarks>
-    /// A useful synonym for \&quot;messages/search\&quot; command with provided \&quot;sessionId\&quot; parameter.
+    /// 
     /// </remarks>
     /// <param name="id"></param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
@@ -1373,7 +1373,7 @@ public:
     /// Get a single message
     /// </summary>
     /// <remarks>
-    /// Get a single outgoing message.
+    /// 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<MessageOut>> getOutboundMessage(
@@ -1383,7 +1383,7 @@ public:
     /// Get history
     /// </summary>
     /// <remarks>
-    /// Get outbound messages history.
+    /// 
     /// </remarks>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
     /// <param name="lastId">Filter results by ID, selecting all values lesser than the specified ID. (optional)</param>
@@ -1497,7 +1497,7 @@ public:
     /// Get all subaccounts with their REST API tokens associated with specified app name.
     /// </summary>
     /// <remarks>
-    /// When more than one token related to app name, last key will be returned.
+    /// 
     /// </remarks>
     /// <param name="getSubaccountsWithTokensInputObject"></param>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
@@ -1723,7 +1723,7 @@ public:
     /// Request a new REST API token for subaccount.
     /// </summary>
     /// <remarks>
-    /// Returning user object, key and app name.
+    /// 
     /// </remarks>
     /// <param name="requestNewSubaccountTokenInputObject"></param>
     pplx::task<std::shared_ptr<User>> requestNewSubaccountToken(
@@ -1873,7 +1873,7 @@ public:
     /// Find messages
     /// </summary>
     /// <remarks>
-    /// Find outbound messages by given parameters.
+    /// 
     /// </remarks>
     /// <param name="page">Fetch specified results page (optional, default to 1)</param>
     /// <param name="limit">How many results to return (optional, default to 10)</param>
@@ -1945,7 +1945,7 @@ public:
     /// Send message
     /// </summary>
     /// <remarks>
-    /// The main entrypoint to send messages. See examples above for the reference.
+    /// 
     /// </remarks>
     /// <param name="sendMessageInputObject"></param>
     pplx::task<std::shared_ptr<SendMessageResponse>> sendMessage(
@@ -2223,7 +2223,7 @@ public:
     /// Upload message attachment
     /// </summary>
     /// <remarks>
-    /// Upload a new file to insert it as a link.
+    /// 
     /// </remarks>
     /// <param name="file">Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats</param>
     pplx::task<std::shared_ptr<UploadMessageAttachmentResponse>> uploadMessageAttachment(
