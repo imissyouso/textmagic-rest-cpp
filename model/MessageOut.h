@@ -78,7 +78,7 @@ public:
     utility::string_t getText() const;
         void setText(utility::string_t value);
     /// <summary>
-    /// Delivery status of the message. @TODO: Please see the table below to see different delivery statuses. 
+    /// Delivery status of the message. TODO: Please see the table below to see different delivery statuses. 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
@@ -120,7 +120,7 @@ public:
     utility::string_t getCharsetLabel() const;
         void setCharsetLabel(utility::string_t value);
     /// <summary>
-    /// @TODO: Contact first name. Could be substituted from your [Contacts](/docs/api/contacts/) (even if you submitted phone number instead of contact ID). 
+    /// TODO: Contact first name. Could be substituted from your [Contacts](/docs/api/contacts/) (even if you submitted phone number instead of contact ID). 
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);

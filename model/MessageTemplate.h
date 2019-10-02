@@ -64,7 +64,7 @@ public:
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// Template text. May contain the tags listed below @TODO.
+    /// Template text. May contain the tags listed below TODO.
     /// </summary>
     utility::string_t getContent() const;
         void setContent(utility::string_t value);
