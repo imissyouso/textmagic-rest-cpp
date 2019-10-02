@@ -53,17 +53,17 @@ public:
     /// GetMessagingCountersResponse members
 
     /// <summary>
-    /// 
+    /// Total contacts amount.
     /// </summary>
     int32_t getContacts() const;
         void setContacts(int32_t value);
     /// <summary>
-    /// 
+    /// Total sent messages amount.
     /// </summary>
     int32_t getSent() const;
         void setSent(int32_t value);
     /// <summary>
-    /// 
+    /// Total received messages amount.
     /// </summary>
     int32_t getReceived() const;
         void setReceived(int32_t value);

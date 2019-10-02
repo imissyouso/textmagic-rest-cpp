@@ -58,37 +58,37 @@ public:
     /// User members
 
     /// <summary>
-    /// 
+    /// User ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Username.
     /// </summary>
     utility::string_t getUsername() const;
         void setUsername(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account first name.
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account last name.
     /// </summary>
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// User email address.
     /// </summary>
     utility::string_t getEmail() const;
         void setEmail(utility::string_t value);
     /// <summary>
-    /// 
+    /// Current account status: * **A** for Active * **T** for Trial. 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account balance (in account currency).
     /// </summary>
     double getBalance() const;
         void setBalance(double value);
@@ -98,7 +98,7 @@ public:
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account company name.
     /// </summary>
     utility::string_t getCompany() const;
         void setCompany(utility::string_t value);
@@ -118,7 +118,7 @@ public:
     std::shared_ptr<Timezone> getTimezone() const;
         void setTimezone(std::shared_ptr<Timezone> value);
     /// <summary>
-    /// 
+    /// Type of account: * **P** for Parent User * **A** for Administrator Sub-Account * **U** for Regular User 
     /// </summary>
     utility::string_t getSubaccountType() const;
         void setSubaccountType(utility::string_t value);

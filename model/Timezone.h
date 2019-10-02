@@ -54,17 +54,17 @@ public:
     /// Timezone members
 
     /// <summary>
-    /// 
+    /// Internal timezone ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Timezone area.
     /// </summary>
     utility::string_t getArea() const;
         void setArea(utility::string_t value);
     /// <summary>
-    /// 
+    /// Is Daylight saving time used in this timezone?
     /// </summary>
     int32_t getDst() const;
         void setDst(int32_t value);
@@ -74,7 +74,7 @@ public:
     int32_t getOffset() const;
         void setOffset(int32_t value);
     /// <summary>
-    /// 
+    /// User-friendly timezone name (with spaces replaced by underscores).
     /// </summary>
     utility::string_t getTimezone() const;
         void setTimezone(utility::string_t value);

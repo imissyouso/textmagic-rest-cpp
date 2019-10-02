@@ -54,12 +54,12 @@ public:
     /// InviteSubaccountInputObject members
 
     /// <summary>
-    /// Subaccount email
+    /// Invitation email will be sent to this email address.
     /// </summary>
     utility::string_t getEmail() const;
         void setEmail(utility::string_t value);
     /// <summary>
-    /// Subaccount role: A for administrator or U for regular user
+    /// Type of account: *   **A** for Administrator sub-account *   **U** for Regular User 
     /// </summary>
     utility::string_t getRole() const;
         void setRole(utility::string_t value);

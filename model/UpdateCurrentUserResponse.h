@@ -54,28 +54,28 @@ public:
     /// UpdateCurrentUserResponse members
 
     /// <summary>
-    /// 
+    /// Username.
     /// </summary>
     utility::string_t getUsername() const;
     bool usernameIsSet() const;
     void unsetUsername();
     void setUsername(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account first name.
     /// </summary>
     utility::string_t getFirstName() const;
     bool firstNameIsSet() const;
     void unsetFirstName();
     void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account last name.
     /// </summary>
     utility::string_t getLastName() const;
     bool lastNameIsSet() const;
     void unsetLastName();
     void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// User email address.
     /// </summary>
     utility::string_t getEmail() const;
     bool emailIsSet() const;
@@ -89,14 +89,14 @@ public:
     void unsetPhone();
     void setPhone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account company name.
     /// </summary>
     utility::string_t getCompany() const;
     bool companyIsSet() const;
     void unsetCompany();
     void setCompany(utility::string_t value);
     /// <summary>
-    /// timezone id
+    /// Internal timezone ID
     /// </summary>
     int32_t getTimezone() const;
     bool timezoneIsSet() const;

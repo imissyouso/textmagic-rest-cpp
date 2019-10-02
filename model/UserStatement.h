@@ -59,12 +59,12 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// User statement ID.
     /// </summary>
     int32_t getUserId() const;
         void setUserId(int32_t value);
     /// <summary>
-    /// 
+    /// User statement date.
     /// </summary>
     utility::datetime getDate() const;
         void setDate(utility::datetime value);
@@ -74,22 +74,22 @@ public:
     double getBalance() const;
         void setBalance(double value);
     /// <summary>
-    /// 
+    /// Balance change amount.
     /// </summary>
     float getDelta() const;
         void setDelta(float value);
     /// <summary>
-    /// 
+    /// Type of statement (what you have been charged for): *   **sms** for sending SMS *   **number** for renewing a dedicated number *   **schedule** for scheduling text messages *   **topup** for adding credits to your account 
     /// </summary>
     utility::string_t getType() const;
         void setType(utility::string_t value);
     /// <summary>
-    /// 
+    /// Value differs by **type**: *   for **sms**, it is the sent messages amount *   for **number**, it is a dedicated phone number *   for **schedule**, it is a scheduled messages amount *   for **top-up**, it is an invoice ID 
     /// </summary>
     utility::string_t getValue() const;
         void setValue(utility::string_t value);
     /// <summary>
-    /// 
+    /// Optional comment.
     /// </summary>
     utility::string_t getComment() const;
         void setComment(utility::string_t value);

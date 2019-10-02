@@ -13054,7 +13054,7 @@ pplx::task<std::shared_ptr<GetSenderSettingsResponse>> TextMagicApi::getSenderSe
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> start, boost::optional<int32_t> end)
+pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> start, boost::optional<utility::string_t> end)
 {
 
 

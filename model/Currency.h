@@ -54,17 +54,17 @@ public:
     /// Currency members
 
     /// <summary>
-    /// 
+    /// Three-letter ISO currency ID.
     /// </summary>
     utility::string_t getId() const;
         void setId(utility::string_t value);
     /// <summary>
-    /// 
+    /// Unicode-compatible currency symbol.
     /// </summary>
     utility::string_t getUnicodeSymbol() const;
         void setUnicodeSymbol(utility::string_t value);
     /// <summary>
-    /// 
+    /// HTML-compatible currency symbol.
     /// </summary>
     utility::string_t getHtmlSymbol() const;
         void setHtmlSymbol(utility::string_t value);

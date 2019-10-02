@@ -54,27 +54,27 @@ public:
     /// Invoice members
 
     /// <summary>
-    /// 
+    /// The invoice ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Top up amount.
     /// </summary>
     int32_t getBundle() const;
         void setBundle(int32_t value);
     /// <summary>
-    /// 
+    /// Top up currency.
     /// </summary>
     utility::string_t getCurrency() const;
         void setCurrency(utility::string_t value);
     /// <summary>
-    /// 
+    /// VAT charged (if any).
     /// </summary>
     float getVat() const;
         void setVat(float value);
     /// <summary>
-    /// 
+    /// Payment method description.
     /// </summary>
     utility::string_t getPaymentMethod() const;
         void setPaymentMethod(utility::string_t value);

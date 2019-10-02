@@ -290,7 +290,7 @@ public:
     pplx::task<void> closeReadChats(
     );
     /// <summary>
-    /// Close subaccount.
+    /// Close sub-account
     /// </summary>
     /// <remarks>
     /// 
@@ -400,7 +400,7 @@ public:
     pplx::task<void> deleteAllOutboundMessages(
     );
     /// <summary>
-    /// Delete an avatar for the current user.\\
+    /// Delete an avatar
     /// </summary>
     /// <remarks>
     /// 
@@ -1098,7 +1098,7 @@ public:
     pplx::task<std::shared_ptr<GetCountriesResponse>> getCountries(
     );
     /// <summary>
-    /// Get current user info.
+    /// Get current account information
     /// </summary>
     /// <remarks>
     /// 
@@ -1138,10 +1138,10 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get an array of all rules that are disallowed to the current account.
+    /// Get disallowed permissions
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get an array of all rules that are disallowed to the current account.
     /// </remarks>
     pplx::task<std::shared_ptr<GetDisallowedRulesResponse>> getDisallowedRules(
     );
@@ -1178,10 +1178,10 @@ public:
     pplx::task<std::shared_ptr<GetInboundMessagesNotificationSettingsResponse>> getInboundMessagesNotificationSettings(
     );
     /// <summary>
-    /// Return account invoices.
+    /// Get all invoices
     /// </summary>
     /// <remarks>
-    /// 
+    /// With the TextMagic API, you can check the invoices and transactions for your account.
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
@@ -1358,22 +1358,22 @@ public:
         boost::optional<int32_t> includeDeleted
     );
     /// <summary>
-    /// Return counters for messaging data views.
+    /// Get sent/received messages counters values
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get total contacts, sent messages and received messages counters values.
     /// </remarks>
     pplx::task<std::shared_ptr<GetMessagingCountersResponse>> getMessagingCounters(
     );
     /// <summary>
-    /// Return messaging statistics.
+    /// Get messaging statistics
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="by">Group results by specified period: off, day, month or year. Default is off (optional, default to off)</param>
-    /// <param name="start">Start date in unix timestamp format. Default is 7 days ago (optional)</param>
-    /// <param name="end">End date in unix timestamp format. Default is now (optional)</param>
+    /// <param name="by">*   **off** to get total values per specified time interval *   **day** to show values grouped by day *   **month** to show values grouped by month *   **year** to show values grouped by year  (optional, default to off)</param>
+    /// <param name="start">Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior.  (optional)</param>
+    /// <param name="end">Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today.  (optional)</param>
     pplx::task<std::shared_ptr<GetMessagingStatResponse>> getMessagingStat(
         boost::optional<utility::string_t> by,
         boost::optional<int32_t> start,
@@ -1458,20 +1458,20 @@ public:
         boost::optional<utility::string_t> country
     );
     /// <summary>
-    /// Return account spending statistics.
+    /// Get spending statistics
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
-    /// <param name="start">Optional. Start date in unix timestamp format. Default is 7 days ago (optional)</param>
-    /// <param name="end">Optional. End date in unix timestamp format. Default is now (optional)</param>
+    /// <param name="start">Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is 7 days prior.  (optional)</param>
+    /// <param name="end">Time period start in [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) format. The default is today.  (optional)</param>
     pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> getSpendingStat(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> start,
-        boost::optional<int32_t> end
+        boost::optional<utility::string_t> end
     );
     /// <summary>
     /// Get current entities state
@@ -1482,7 +1482,7 @@ public:
     pplx::task<std::shared_ptr<GetStateResponse>> getState(
     );
     /// <summary>
-    /// Get a single subaccount.
+    /// Get sub-account information
     /// </summary>
     /// <remarks>
     /// 
@@ -1492,7 +1492,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get all subaccounts of current user.
+    /// Get sub-accounts list
     /// </summary>
     /// <remarks>
     /// 
@@ -1504,10 +1504,10 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get all subaccounts with their REST API tokens associated with specified app name.
+    /// Get all sub-accounts with their REST API tokens associated with app name
     /// </summary>
     /// <remarks>
-    /// When more than one token related to app name, last key will be returned.
+    /// Get all sub-accounts with their REST API tokens associated with specified app name. When more than one token related to app name, last key will be returned.
     /// </remarks>
     /// <param name="getSubaccountsWithTokensInputObject"></param>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
@@ -1652,7 +1652,7 @@ public:
     pplx::task<std::shared_ptr<GetVersionsResponse>> getVersions(
     );
     /// <summary>
-    /// Invite new subaccount.
+    /// Invite a new sub-account
     /// </summary>
     /// <remarks>
     /// 
@@ -1730,7 +1730,7 @@ public:
         std::shared_ptr<ReopenChatsBulkInputObject> reopenChatsBulkInputObject
     );
     /// <summary>
-    /// Request a new REST API token for subaccount.
+    /// Request a new REST API token for sub-account
     /// </summary>
     /// <remarks>
     /// Returning user object, key and app name.
@@ -2094,7 +2094,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Update current user info.
+    /// Edit current account info
     /// </summary>
     /// <remarks>
     /// 
@@ -2206,7 +2206,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Add an avatar for the current user.
+    /// Upload an avatar
     /// </summary>
     /// <remarks>
     /// 

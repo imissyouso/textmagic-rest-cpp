@@ -61,14 +61,14 @@ public:
     void unsetUsername();
     void setUsername(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account first name.
     /// </summary>
     utility::string_t getFirstName() const;
     bool firstNameIsSet() const;
     void unsetFirstName();
     void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account last name.
     /// </summary>
     utility::string_t getLastName() const;
     bool lastNameIsSet() const;
@@ -89,14 +89,14 @@ public:
     void unsetPhone();
     void setPhone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account company name.
     /// </summary>
     utility::string_t getCompany() const;
     bool companyIsSet() const;
     void unsetCompany();
     void setCompany(utility::string_t value);
     /// <summary>
-    /// timezone id
+    /// The timezome internal id
     /// </summary>
     int32_t getTimezone() const;
     bool timezoneIsSet() const;
