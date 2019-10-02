@@ -60,12 +60,12 @@ public:
     int32_t getPage() const;
         void setPage(int32_t value);
     /// <summary>
-    /// 
+    /// The total number of pages.
     /// </summary>
     int32_t getPageCount() const;
         void setPageCount(int32_t value);
     /// <summary>
-    /// 
+    /// The number of results per page.
     /// </summary>
     int32_t getLimit() const;
         void setLimit(int32_t value);

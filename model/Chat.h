@@ -56,7 +56,7 @@ public:
     /// Chat members
 
     /// <summary>
-    /// 
+    /// Chat ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
@@ -66,7 +66,7 @@ public:
     int32_t getOriginalId() const;
         void setOriginalId(int32_t value);
     /// <summary>
-    /// 
+    /// Chat partner phone number.
     /// </summary>
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
@@ -81,12 +81,12 @@ public:
     int32_t getUnsubscribedContactId() const;
         void setUnsubscribedContactId(int32_t value);
     /// <summary>
-    /// 
+    /// Unread incoming messages count.
     /// </summary>
     int32_t getUnread() const;
         void setUnread(int32_t value);
     /// <summary>
-    /// 
+    /// Time when last incoming message arrived at this chat.
     /// </summary>
     utility::datetime getUpdatedAt() const;
         void setUpdatedAt(utility::datetime value);

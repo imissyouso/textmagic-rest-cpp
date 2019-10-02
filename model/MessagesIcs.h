@@ -57,17 +57,17 @@ public:
     /// MessagesIcs members
 
     /// <summary>
-    /// 
+    /// Schedule ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Next send date in [ISO 8601](https://en.wikipedia.org/?title&#x3D;ISO_8601) format. 
     /// </summary>
     utility::datetime getNextSend() const;
         void setNextSend(utility::datetime value);
     /// <summary>
-    /// 
+    /// [iCal RRULE](http://www.kanzaki.com/docs/ical/rrule.html) string. 
     /// </summary>
     utility::string_t getRrule() const;
         void setRrule(utility::string_t value);

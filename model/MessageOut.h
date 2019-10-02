@@ -54,10 +54,34 @@ public:
     /// MessageOut members
 
     /// <summary>
-    /// 
+    /// Message ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
+    /// <summary>
+    /// Message sender (phone number or alphanumeric Sender ID).
+    /// </summary>
+    utility::string_t getSender() const;
+    bool senderIsSet() const;
+    void unsetSender();
+    void setSender(utility::string_t value);
+    /// <summary>
+    /// Recipient phone number.
+    /// </summary>
+    utility::string_t getReceiver() const;
+    bool receiverIsSet() const;
+    void unsetReceiver();
+    void setReceiver(utility::string_t value);
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getText() const;
+        void setText(utility::string_t value);
+    /// <summary>
+    /// Delivery status of the message. @TODO: Please see the table below to see different delivery statuses. 
+    /// </summary>
+    utility::string_t getStatus() const;
+        void setStatus(utility::string_t value);
     /// <summary>
     /// 
     /// </summary>
@@ -69,22 +93,10 @@ public:
     int32_t getSessionId() const;
         void setSessionId(int32_t value);
     /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
-    void setReceiver(utility::string_t value);
-    /// <summary>
-    /// 
+    /// Sending time.
     /// </summary>
     utility::datetime getMessageTime() const;
         void setMessageTime(utility::datetime value);
-    /// <summary>
-    /// q - queued s - scheduled queue e - sending error r - enroute a - acked d - delivered b - buffered f - failed u - unknown j - rejected i - bulk insert p - scheduled suspend h - queue suspend
-    /// </summary>
-    utility::string_t getStatus() const;
-        void setStatus(utility::string_t value);
     /// <summary>
     /// 
     /// </summary>
@@ -93,17 +105,12 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getText() const;
-        void setText(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
     bool isDeleted() const;
     bool deletedIsSet() const;
     void unsetDeleted();
     void setDeleted(bool value);
     /// <summary>
-    /// 
+    /// Message charset. Could be: *   **ISO-8859-1** for plaintext SMS *   **UTF-16BE** for Unicode SMS 
     /// </summary>
     utility::string_t getCharset() const;
         void setCharset(utility::string_t value);
@@ -113,27 +120,20 @@ public:
     utility::string_t getCharsetLabel() const;
         void setCharsetLabel(utility::string_t value);
     /// <summary>
-    /// 
+    /// @TODO: Contact first name. Could be substituted from your [Contacts](/docs/api/contacts/) (even if you submitted phone number instead of contact ID). 
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact last name.
     /// </summary>
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Two-letter ISO country code of the recipient phone number. 
     /// </summary>
     utility::string_t getCountry() const;
         void setCountry(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getSender() const;
-    bool senderIsSet() const;
-    void unsetSender();
-    void setSender(utility::string_t value);
     /// <summary>
     /// 
     /// </summary>
@@ -149,7 +149,7 @@ public:
     void unsetPrice();
     void setPrice(float value);
     /// <summary>
-    /// 
+    /// Message parts (multiples of 160 characters) count.
     /// </summary>
     int32_t getPartsCount() const;
         void setPartsCount(int32_t value);
@@ -226,14 +226,16 @@ public:
 
 protected:
     int32_t m_Id;
+        utility::string_t m_Sender;
+    bool m_SenderIsSet;
+    utility::string_t m_Receiver;
+    bool m_ReceiverIsSet;
+    utility::string_t m_Text;
+        utility::string_t m_Status;
         int32_t m_ContactId;
         int32_t m_SessionId;
-        utility::string_t m_Receiver;
-    bool m_ReceiverIsSet;
-    utility::datetime m_MessageTime;
-        utility::string_t m_Status;
+        utility::datetime m_MessageTime;
         utility::string_t m_Avatar;
-        utility::string_t m_Text;
         bool m_Deleted;
     bool m_DeletedIsSet;
     utility::string_t m_Charset;
@@ -241,9 +243,7 @@ protected:
         utility::string_t m_FirstName;
         utility::string_t m_LastName;
         utility::string_t m_Country;
-        utility::string_t m_Sender;
-    bool m_SenderIsSet;
-    utility::string_t m_Phone;
+        utility::string_t m_Phone;
     bool m_PhoneIsSet;
     float m_Price;
     bool m_PriceIsSet;

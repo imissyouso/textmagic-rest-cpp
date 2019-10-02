@@ -22,14 +22,16 @@ namespace model {
 MessageOut::MessageOut()
 {
     m_Id = 0;
-    m_ContactId = 0;
-    m_SessionId = 0;
+    m_Sender = utility::conversions::to_string_t("");
+    m_SenderIsSet = false;
     m_Receiver = utility::conversions::to_string_t("");
     m_ReceiverIsSet = false;
-    m_MessageTime = utility::datetime();
-    m_Status = utility::conversions::to_string_t("");
-    m_Avatar = utility::conversions::to_string_t("");
     m_Text = utility::conversions::to_string_t("");
+    m_Status = utility::conversions::to_string_t("");
+    m_ContactId = 0;
+    m_SessionId = 0;
+    m_MessageTime = utility::datetime();
+    m_Avatar = utility::conversions::to_string_t("");
     m_Deleted = false;
     m_DeletedIsSet = false;
     m_Charset = utility::conversions::to_string_t("");
@@ -37,8 +39,6 @@ MessageOut::MessageOut()
     m_FirstName = utility::conversions::to_string_t("");
     m_LastName = utility::conversions::to_string_t("");
     m_Country = utility::conversions::to_string_t("");
-    m_Sender = utility::conversions::to_string_t("");
-    m_SenderIsSet = false;
     m_Phone = utility::conversions::to_string_t("");
     m_PhoneIsSet = false;
     m_Price = 0.0f;
@@ -80,16 +80,20 @@ web::json::value MessageOut::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("id")] = ModelBase::toJson(m_Id);
-    val[utility::conversions::to_string_t("contactId")] = ModelBase::toJson(m_ContactId);
-    val[utility::conversions::to_string_t("sessionId")] = ModelBase::toJson(m_SessionId);
+    if(m_SenderIsSet)
+    {
+        val[utility::conversions::to_string_t("sender")] = ModelBase::toJson(m_Sender);
+    }
     if(m_ReceiverIsSet)
     {
         val[utility::conversions::to_string_t("receiver")] = ModelBase::toJson(m_Receiver);
     }
-    val[utility::conversions::to_string_t("messageTime")] = ModelBase::toJson(m_MessageTime);
-    val[utility::conversions::to_string_t("status")] = ModelBase::toJson(m_Status);
-    val[utility::conversions::to_string_t("avatar")] = ModelBase::toJson(m_Avatar);
     val[utility::conversions::to_string_t("text")] = ModelBase::toJson(m_Text);
+    val[utility::conversions::to_string_t("status")] = ModelBase::toJson(m_Status);
+    val[utility::conversions::to_string_t("contactId")] = ModelBase::toJson(m_ContactId);
+    val[utility::conversions::to_string_t("sessionId")] = ModelBase::toJson(m_SessionId);
+    val[utility::conversions::to_string_t("messageTime")] = ModelBase::toJson(m_MessageTime);
+    val[utility::conversions::to_string_t("avatar")] = ModelBase::toJson(m_Avatar);
     if(m_DeletedIsSet)
     {
         val[utility::conversions::to_string_t("deleted")] = ModelBase::toJson(m_Deleted);
@@ -99,10 +103,6 @@ web::json::value MessageOut::toJson() const
     val[utility::conversions::to_string_t("firstName")] = ModelBase::toJson(m_FirstName);
     val[utility::conversions::to_string_t("lastName")] = ModelBase::toJson(m_LastName);
     val[utility::conversions::to_string_t("country")] = ModelBase::toJson(m_Country);
-    if(m_SenderIsSet)
-    {
-        val[utility::conversions::to_string_t("sender")] = ModelBase::toJson(m_Sender);
-    }
     if(m_PhoneIsSet)
     {
         val[utility::conversions::to_string_t("phone")] = ModelBase::toJson(m_Phone);
@@ -166,6 +166,38 @@ void MessageOut::fromJson(web::json::value& val)
             setId(ModelBase::int32_tFromJson(fieldValue));
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("sender")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("sender")];
+        if(!fieldValue.is_null())
+        {
+            setSender(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("receiver")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
+        if(!fieldValue.is_null())
+        {
+            setReceiver(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("text")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
+        if(!fieldValue.is_null())
+        {
+            setText(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("status")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
+        if(!fieldValue.is_null())
+        {
+            setStatus(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("contactId")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("contactId")];
@@ -182,14 +214,6 @@ void MessageOut::fromJson(web::json::value& val)
             setSessionId(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("receiver")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("receiver")];
-        if(!fieldValue.is_null())
-        {
-            setReceiver(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t("messageTime")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("messageTime")];
@@ -198,28 +222,12 @@ void MessageOut::fromJson(web::json::value& val)
             setMessageTime(ModelBase::dateFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("status")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("status")];
-        if(!fieldValue.is_null())
-        {
-            setStatus(ModelBase::stringFromJson(fieldValue));
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t("avatar")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
         if(!fieldValue.is_null())
         {
             setAvatar(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("text")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("text")];
-        if(!fieldValue.is_null())
-        {
-            setText(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("deleted")))
@@ -268,14 +276,6 @@ void MessageOut::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setCountry(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("sender")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("sender")];
-        if(!fieldValue.is_null())
-        {
-            setSender(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("phone")))
@@ -393,17 +393,22 @@ void MessageOut::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("id"), m_Id));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("contactId"), m_ContactId));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sessionId"), m_SessionId));
+    if(m_SenderIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sender"), m_Sender));
+        
+    }
     if(m_ReceiverIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("receiver"), m_Receiver));
         
     }
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("messageTime"), m_MessageTime));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("status"), m_Status));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("avatar"), m_Avatar));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("text"), m_Text));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("status"), m_Status));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("contactId"), m_ContactId));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sessionId"), m_SessionId));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("messageTime"), m_MessageTime));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("avatar"), m_Avatar));
     if(m_DeletedIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("deleted"), m_Deleted));
@@ -413,11 +418,6 @@ void MessageOut::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("firstName"), m_FirstName));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("lastName"), m_LastName));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("country"), m_Country));
-    if(m_SenderIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sender"), m_Sender));
-        
-    }
     if(m_PhoneIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("phone"), m_Phone));
@@ -485,16 +485,20 @@ void MessageOut::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
     }
 
     setId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("id"))));
-    setContactId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("contactId"))));
-    setSessionId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("sessionId"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("sender")))
+    {
+        setSender(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("sender"))));
+    }
     if(multipart->hasContent(utility::conversions::to_string_t("receiver")))
     {
         setReceiver(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("receiver"))));
     }
-    setMessageTime(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("messageTime"))));
-    setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("status"))));
-    setAvatar(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("avatar"))));
     setText(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("text"))));
+    setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("status"))));
+    setContactId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("contactId"))));
+    setSessionId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("sessionId"))));
+    setMessageTime(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("messageTime"))));
+    setAvatar(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("avatar"))));
     if(multipart->hasContent(utility::conversions::to_string_t("deleted")))
     {
         setDeleted(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("deleted"))));
@@ -504,10 +508,6 @@ void MessageOut::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
     setFirstName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("firstName"))));
     setLastName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("lastName"))));
     setCountry(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("country"))));
-    if(multipart->hasContent(utility::conversions::to_string_t("sender")))
-    {
-        setSender(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("sender"))));
-    }
     if(multipart->hasContent(utility::conversions::to_string_t("phone")))
     {
         setPhone(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("phone"))));
@@ -570,6 +570,70 @@ void MessageOut::setId(int32_t value)
     m_Id = value;
     
 }
+utility::string_t MessageOut::getSender() const
+{
+    return m_Sender;
+}
+
+
+void MessageOut::setSender(utility::string_t value)
+{
+    m_Sender = value;
+    m_SenderIsSet = true;
+}
+bool MessageOut::senderIsSet() const
+{
+    return m_SenderIsSet;
+}
+
+void MessageOut::unsetSender()
+{
+    m_SenderIsSet = false;
+}
+
+utility::string_t MessageOut::getReceiver() const
+{
+    return m_Receiver;
+}
+
+
+void MessageOut::setReceiver(utility::string_t value)
+{
+    m_Receiver = value;
+    m_ReceiverIsSet = true;
+}
+bool MessageOut::receiverIsSet() const
+{
+    return m_ReceiverIsSet;
+}
+
+void MessageOut::unsetReceiver()
+{
+    m_ReceiverIsSet = false;
+}
+
+utility::string_t MessageOut::getText() const
+{
+    return m_Text;
+}
+
+
+void MessageOut::setText(utility::string_t value)
+{
+    m_Text = value;
+    
+}
+utility::string_t MessageOut::getStatus() const
+{
+    return m_Status;
+}
+
+
+void MessageOut::setStatus(utility::string_t value)
+{
+    m_Status = value;
+    
+}
 int32_t MessageOut::getContactId() const
 {
     return m_ContactId;
@@ -592,27 +656,6 @@ void MessageOut::setSessionId(int32_t value)
     m_SessionId = value;
     
 }
-utility::string_t MessageOut::getReceiver() const
-{
-    return m_Receiver;
-}
-
-
-void MessageOut::setReceiver(utility::string_t value)
-{
-    m_Receiver = value;
-    m_ReceiverIsSet = true;
-}
-bool MessageOut::receiverIsSet() const
-{
-    return m_ReceiverIsSet;
-}
-
-void MessageOut::unsetReceiver()
-{
-    m_ReceiverIsSet = false;
-}
-
 utility::datetime MessageOut::getMessageTime() const
 {
     return m_MessageTime;
@@ -624,17 +667,6 @@ void MessageOut::setMessageTime(utility::datetime value)
     m_MessageTime = value;
     
 }
-utility::string_t MessageOut::getStatus() const
-{
-    return m_Status;
-}
-
-
-void MessageOut::setStatus(utility::string_t value)
-{
-    m_Status = value;
-    
-}
 utility::string_t MessageOut::getAvatar() const
 {
     return m_Avatar;
@@ -644,17 +676,6 @@ utility::string_t MessageOut::getAvatar() const
 void MessageOut::setAvatar(utility::string_t value)
 {
     m_Avatar = value;
-    
-}
-utility::string_t MessageOut::getText() const
-{
-    return m_Text;
-}
-
-
-void MessageOut::setText(utility::string_t value)
-{
-    m_Text = value;
     
 }
 bool MessageOut::isDeleted() const
@@ -733,27 +754,6 @@ void MessageOut::setCountry(utility::string_t value)
     m_Country = value;
     
 }
-utility::string_t MessageOut::getSender() const
-{
-    return m_Sender;
-}
-
-
-void MessageOut::setSender(utility::string_t value)
-{
-    m_Sender = value;
-    m_SenderIsSet = true;
-}
-bool MessageOut::senderIsSet() const
-{
-    return m_SenderIsSet;
-}
-
-void MessageOut::unsetSender()
-{
-    m_SenderIsSet = false;
-}
-
 utility::string_t MessageOut::getPhone() const
 {
     return m_Phone;

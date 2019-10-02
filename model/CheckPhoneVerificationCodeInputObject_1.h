@@ -11,19 +11,18 @@
  */
 
 /*
- * GetInvoicesPaginatedResponse.h
+ * CheckPhoneVerificationCodeInputObject_1.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetInvoicesPaginatedResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetInvoicesPaginatedResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_CheckPhoneVerificationCodeInputObject_1_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_CheckPhoneVerificationCodeInputObject_1_H_
 
 
 #include "../ModelBase.h"
 
-#include "Invoice.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -33,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetInvoicesPaginatedResponse
+class  CheckPhoneVerificationCodeInputObject_1
     : public ModelBase
 {
 public:
-    GetInvoicesPaginatedResponse();
-    virtual ~GetInvoicesPaginatedResponse();
+    CheckPhoneVerificationCodeInputObject_1();
+    virtual ~CheckPhoneVerificationCodeInputObject_1();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,34 +51,22 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetInvoicesPaginatedResponse members
+    /// CheckPhoneVerificationCodeInputObject_1 members
 
     /// <summary>
-    /// 
+    /// Verification code that was received by the user and entered into the form field.
     /// </summary>
-    int32_t getPage() const;
-        void setPage(int32_t value);
+    int32_t getCode() const;
+        void setCode(int32_t value);
     /// <summary>
-    /// The total number of pages.
+    /// VerifyId from Step 1 to match both requests together.
     /// </summary>
-    int32_t getPageCount() const;
-        void setPageCount(int32_t value);
-    /// <summary>
-    /// The number of results per page.
-    /// </summary>
-    int32_t getLimit() const;
-        void setLimit(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<Invoice>>& getResources();
-        void setResources(std::vector<std::shared_ptr<Invoice>> value);
+    utility::string_t getVerifyId() const;
+        void setVerifyId(utility::string_t value);
 
 protected:
-    int32_t m_Page;
-        int32_t m_PageCount;
-        int32_t m_Limit;
-        std::vector<std::shared_ptr<Invoice>> m_Resources;
+    int32_t m_Code;
+        utility::string_t m_VerifyId;
     };
 
 }
@@ -87,4 +74,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetInvoicesPaginatedResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_CheckPhoneVerificationCodeInputObject_1_H_ */

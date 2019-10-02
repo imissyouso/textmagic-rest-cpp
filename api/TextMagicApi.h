@@ -29,6 +29,7 @@
 #include "BuyDedicatedNumberInputObject.h"
 #include "Chat.h"
 #include "CheckPhoneVerificationCodeInputObject.h"
+#include "CheckPhoneVerificationCodeInputObject_1.h"
 #include "ClearAndAssignContactsToListInputObject.h"
 #include "CloseChatsBulkInputObject.h"
 #include "Contact.h"
@@ -81,7 +82,6 @@
 #include "GetCustomFieldsPaginatedResponse.h"
 #include "GetDisallowedRulesResponse.h"
 #include "GetFavouritesPaginatedResponse.h"
-#include "GetForwardedCallsPaginatedResponse.h"
 #include "GetInboundMessagesNotificationSettingsResponse.h"
 #include "GetInvoicesPaginatedResponse.h"
 #include "GetListContactsIdsResponse.h"
@@ -139,6 +139,8 @@
 #include "SearchTemplatesPaginatedResponse.h"
 #include "SendMessageInputObject.h"
 #include "SendMessageResponse.h"
+#include "SendPhoneVerificationCodeInputObject.h"
+#include "SendPhoneVerificationCodeResponse.h"
 #include "SenderId.h"
 #include "SetChatStatusInputObject.h"
 #include "Survey.h"
@@ -228,6 +230,16 @@ public:
         int32_t id
     );
     /// <summary>
+    /// Cancel verification process
+    /// </summary>
+    /// <remarks>
+    /// You can cancel the verification not earlier than 30 seconds after the initial request.
+    /// </remarks>
+    /// <param name="verifyId">the verifyId that you received in Step 1.</param>
+    pplx::task<void> cancelVerification(
+        utility::string_t verifyId
+    );
+    /// <summary>
     /// Check user phone verification code
     /// </summary>
     /// <remarks>
@@ -236,6 +248,16 @@ public:
     /// <param name="checkPhoneVerificationCodeInputObject"></param>
     pplx::task<void> checkPhoneVerificationCode(
         std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject
+    );
+    /// <summary>
+    /// Step 2: Check the verification code 
+    /// </summary>
+    /// <remarks>
+    /// Check received code from user with the code which was actually sent.
+    /// </remarks>
+    /// <param name="checkPhoneVerificationCodeInputObject"></param>
+    pplx::task<void> checkPhoneVerificationCode_0(
+        std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject
     );
     /// <summary>
     /// Reset list members to the specified contacts.
@@ -250,20 +272,20 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Close chats by chat ids or close all chats
+    /// Close chats (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Close chats by chat ids or close all chats
     /// </remarks>
     /// <param name="closeChatsBulkInputObject"></param>
     pplx::task<void> closeChatsBulk(
         std::shared_ptr<CloseChatsBulkInputObject> closeChatsBulkInputObject
     );
     /// <summary>
-    /// Close all chats that have no unread messages.
+    /// Close read chats
     /// </summary>
     /// <remarks>
-    /// 
+    /// Close all chats that have no unread messages.
     /// </remarks>
     pplx::task<void> closeReadChats(
     );
@@ -352,7 +374,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Create a new template from the submitted data.
+    /// Create a template
     /// </summary>
     /// <remarks>
     /// 
@@ -373,7 +395,7 @@ public:
     /// Delete all messages
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete all messages.
     /// </remarks>
     pplx::task<void> deleteAllOutboundMessages(
     );
@@ -386,10 +408,10 @@ public:
     pplx::task<void> deleteAvatar(
     );
     /// <summary>
-    /// Delete messages from chat by given messages ID(s).
+    /// Delete chat messages by ID(s)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete messages from chat by given messages ID(s).
     /// </remarks>
     /// <param name="deleteChatMessagesBulkInputObject"></param>
     /// <param name="id"></param>
@@ -398,10 +420,10 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete chats by given ID(s) or delete all chats.
+    /// Delete chats (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete chats by given ID(s) or delete all chats.
     /// </remarks>
     /// <param name="deleteChatsBulkInputObject"></param>
     pplx::task<void> deleteChatsBulk(
@@ -492,20 +514,20 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete the incoming message.
+    /// Delete a single inbound message
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; Note, deleted inbound message will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
     /// </remarks>
-    /// <param name="id"></param>
+    /// <param name="id">The unique numeric ID for the inbound message.</param>
     pplx::task<void> deleteInboundMessage(
         int32_t id
     );
     /// <summary>
-    /// Delete inbound messages by given ID(s) or delete all inbound messages.
+    /// Delete inbound messages (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; Note, deleted inbound message will disappear from TextMagic Online, chats, and any other place they are referenced.  So, be careful! 
     /// </remarks>
     /// <param name="deleteInboundMessagesBulkInputObject"></param>
     pplx::task<void> deleteInboundMessagesBulk(
@@ -554,7 +576,7 @@ public:
         std::shared_ptr<DeleteListsBulkInputObject> deleteListsBulkInputObject
     );
     /// <summary>
-    /// Delete a message session, together with all nested messages.
+    /// Delete a session
     /// </summary>
     /// <remarks>
     /// 
@@ -564,7 +586,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete messages sessions, together with all nested messages, by given ID(s) or delete all messages sessions.
+    /// Delete sessions (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -577,17 +599,17 @@ public:
     /// Delete message
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete a single message.
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteOutboundMessage(
         int32_t id
     );
     /// <summary>
-    /// Delete messages by IDs
+    /// Delete messages (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete outbound messages by given ID(s) or delete all outbound messages.
     /// </remarks>
     /// <param name="deleteOutboundMessagesBulkInputObject"></param>
     pplx::task<void> deleteOutboundMessagesBulk(
@@ -606,7 +628,7 @@ public:
         int32_t deviceId
     );
     /// <summary>
-    /// Delete a message session, together with all nested messages.
+    /// Delete a single scheduled message
     /// </summary>
     /// <remarks>
     /// 
@@ -616,7 +638,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete scheduled messages by given ID(s) or delete all scheduled messages.
+    /// Delete scheduled messages (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -656,7 +678,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete a single template.
+    /// Delete a template
     /// </summary>
     /// <remarks>
     /// 
@@ -666,7 +688,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete template by given ID(s) or delete all templates.
+    /// Delete templates (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -679,7 +701,7 @@ public:
     /// Authenticate user by given username and password.
     /// </summary>
     /// <remarks>
-    /// 
+    /// Returning a username and token that you should pass to the all requests (in X-TM-Username and X-TM-Key, respectively)
     /// </remarks>
     /// <param name="doAuthInputObject"></param>
     pplx::task<std::shared_ptr<DoAuthResponse>> doAuth(
@@ -723,21 +745,21 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetAllBulkSessionsPaginatedResponse>> getAllBulkSessions(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get all user chats.
+    /// Get all chats
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="status">Fetch only (a)ctive, (c)losed or (d)eleted chats (optional)</param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="voice">Fetch results with voice calls (optional, default to 0)</param>
     /// <param name="flat">Should additional contact info be included (optional, default to 0)</param>
@@ -750,13 +772,13 @@ public:
         boost::optional<int32_t> flat
     );
     /// <summary>
-    /// Get all inbox messages.
+    /// Get all inbound messages
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     pplx::task<std::shared_ptr<GetAllInboundMessagesPaginatedResponse>> getAllInboundMessages(
@@ -766,13 +788,13 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Get all message sending sessions.
+    /// Get all sessions
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetAllMessageSessionsPaginatedResponse>> getAllMessageSessions(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -781,10 +803,10 @@ public:
     /// Get all messages
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get all user oubound messages.
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="lastId">Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)</param>
     pplx::task<std::shared_ptr<GetAllOutboundMessagesPaginatedResponse>> getAllOutboundMessages(
         boost::optional<int32_t> page,
@@ -792,13 +814,13 @@ public:
         boost::optional<int32_t> lastId
     );
     /// <summary>
-    /// Get all scheduled messages.
+    /// Get all scheduled messages
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="status">Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
@@ -810,13 +832,13 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Get all user templates.
+    /// Get all templates
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional)</param>
-    /// <param name="limit">How many results to return (optional)</param>
+    /// <param name="page">Fetch specified results page. (optional)</param>
+    /// <param name="limit">The number of results per page. (optional)</param>
     pplx::task<std::shared_ptr<GetAllTemplatesPaginatedResponse>> getAllTemplates(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -867,8 +889,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find blocked contacts by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
@@ -906,7 +928,7 @@ public:
     pplx::task<std::shared_ptr<GetCallsPricesResponse>> getCallsPrices(
     );
     /// <summary>
-    /// Get a single chat.
+    /// Get a single chat
     /// </summary>
     /// <remarks>
     /// 
@@ -916,7 +938,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Find chats by phone.
+    /// Find chats by phone
     /// </summary>
     /// <remarks>
     /// 
@@ -930,14 +952,14 @@ public:
         boost::optional<int32_t> reopen
     );
     /// <summary>
-    /// Fetch messages from chat with specified chat id.
+    /// Get chat messages
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find messages by specified search query (optional)</param>
     /// <param name="start">Return messages since specified timestamp only (optional)</param>
     /// <param name="end">Return messages up to specified timestamp only (optional)</param>
@@ -1010,8 +1032,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetContactNotesPaginatedResponse>> getContactNotes(
         int32_t id,
         boost::optional<int32_t> page,
@@ -1023,8 +1045,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="shared">Should shared contacts to be included (optional, default to 0)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
@@ -1042,7 +1064,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="query">Find recipients by specified search query</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="lists">Should lists be returned or not (optional, default to 0)</param>
     pplx::task<std::shared_ptr<GetContactsAutocompleteResponse>> getContactsAutocomplete(
         utility::string_t query,
@@ -1053,11 +1075,11 @@ public:
     /// Fetch user contacts by given group id.
     /// </summary>
     /// <remarks>
-    /// 
+    /// A useful synonym for \&quot;contacts/search\&quot; command with provided \&quot;listId\&quot; parameter.
     /// </remarks>
     /// <param name="id">Given group Id.</param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     pplx::task<std::shared_ptr<GetContactsByListIdPaginatedResponse>> getContactsByListId(
@@ -1099,8 +1121,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetCustomFieldsPaginatedResponse>> getCustomFields(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1129,8 +1151,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find contacts or lists by specified search query (optional, default to A)</param>
     pplx::task<std::shared_ptr<GetFavouritesPaginatedResponse>> getFavourites(
         boost::optional<int32_t> page,
@@ -1138,24 +1160,12 @@ public:
         boost::optional<utility::string_t> query
     );
     /// <summary>
-    /// Get all forwarded calls.
+    /// Get a single inbound message
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetForwardedCallsPaginatedResponse>> getForwardedCalls(
-        boost::optional<int32_t> page,
-        boost::optional<int32_t> limit
-    );
-    /// <summary>
-    /// Get a single inbox message.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
+    /// <param name="id">The unique numeric ID for the inbound message.</param>
     pplx::task<std::shared_ptr<MessageIn>> getInboundMessage(
         int32_t id
     );
@@ -1173,8 +1183,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetInvoicesPaginatedResponse>> getInvoices(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1206,8 +1216,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetListsOfContactPaginatedResponse>> getListsOfContact(
         int32_t id,
         boost::optional<int32_t> page,
@@ -1217,7 +1227,7 @@ public:
     /// Preview message
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get messages preview (with tags merged) up to 100 messages per session.
     /// </remarks>
     /// <param name="text">Message text. Required if template_id is not set (optional)</param>
     /// <param name="templateId">Template used instead of message text. Required if text is not set (optional)</param>
@@ -1259,7 +1269,7 @@ public:
     /// Check price
     /// </summary>
     /// <remarks>
-    /// 
+    /// Check pricing for a new outbound message.
     /// </remarks>
     /// <param name="includeBlocked">Should we show pricing for the blocked contacts. (optional, default to 0)</param>
     /// <param name="text">Message text. Required if template_id is not set (optional)</param>
@@ -1303,22 +1313,22 @@ public:
     /// Get pricing
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get message prices for all countries.
     /// </remarks>
     pplx::task<std::shared_ptr<GetMessagePricesResponse>> getMessagePrices(
     );
     /// <summary>
-    /// Get a message session.
+    /// Get a session details
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="id"></param>
+    /// <param name="id">a session ID</param>
     pplx::task<std::shared_ptr<MessageSession>> getMessageSession(
         int32_t id
     );
     /// <summary>
-    /// Get sending session statistics.
+    /// Get a session statistics
     /// </summary>
     /// <remarks>
     /// 
@@ -1330,14 +1340,14 @@ public:
         boost::optional<int32_t> includeDeleted
     );
     /// <summary>
-    /// Fetch messages by given session id.
+    /// Get a session messages
     /// </summary>
     /// <remarks>
-    /// 
+    /// A useful synonym for \&quot;messages/search\&quot; command with provided \&quot;sessionId\&quot; parameter.
     /// </remarks>
     /// <param name="id"></param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="statuses">Find messages by status (optional)</param>
     /// <param name="includeDeleted">Search also in deleted messages (optional, default to 0)</param>
     pplx::task<std::shared_ptr<GetMessagesBySessionIdPaginatedResponse>> getMessagesBySessionId(
@@ -1373,7 +1383,7 @@ public:
     /// Get a single message
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get a single outgoing message.
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<MessageOut>> getOutboundMessage(
@@ -1383,9 +1393,9 @@ public:
     /// Get history
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get outbound messages history.
     /// </remarks>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="lastId">Filter results by ID, selecting all values lesser than the specified ID. (optional)</param>
     /// <param name="query">Find message by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
@@ -1406,7 +1416,7 @@ public:
     pplx::task<std::shared_ptr<GetPushTokensResponse>> getPushTokens(
     );
     /// <summary>
-    /// Get message schedule.
+    /// Get a single scheduled message
     /// </summary>
     /// <remarks>
     /// 
@@ -1431,8 +1441,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetSenderIdsPaginatedResponse>> getSenderIds(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1453,8 +1463,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="start">Optional. Start date in unix timestamp format. Default is 7 days ago (optional)</param>
     /// <param name="end">Optional. End date in unix timestamp format. Default is now (optional)</param>
     pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> getSpendingStat(
@@ -1487,8 +1497,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<User>> getSubaccounts(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1497,11 +1507,11 @@ public:
     /// Get all subaccounts with their REST API tokens associated with specified app name.
     /// </summary>
     /// <remarks>
-    /// 
+    /// When more than one token related to app name, last key will be returned.
     /// </remarks>
     /// <param name="getSubaccountsWithTokensInputObject"></param>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> getSubaccountsWithTokens(
         std::shared_ptr<GetSubaccountsWithTokensInputObject> getSubaccountsWithTokensInputObject,
         boost::optional<double> page,
@@ -1543,14 +1553,14 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetSurveysPaginatedResponse>> getSurveys(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get a single template.
+    /// Get a template details
     /// </summary>
     /// <remarks>
     /// 
@@ -1570,10 +1580,10 @@ public:
         boost::optional<int32_t> full
     );
     /// <summary>
-    /// Get total amount of unread messages in the current user chats.
+    /// Get unread messages number
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get total amount of unread messages in the current user chats.
     /// </remarks>
     pplx::task<std::shared_ptr<GetUnreadMessagesTotalResponse>> getUnreadMessagesTotal(
     );
@@ -1593,8 +1603,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     pplx::task<std::shared_ptr<GetUnsubscribersPaginatedResponse>> getUnsubscribers(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit
@@ -1605,8 +1615,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="surveyId">Fetch only that numbers which are ready for the survey (optional)</param>
     pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> getUserDedicatedNumbers(
         boost::optional<int32_t> page,
@@ -1619,8 +1629,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
     /// <param name="favoriteOnly">Return only favorite lists (optional, default to 0)</param>
@@ -1652,20 +1662,20 @@ public:
         std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject
     );
     /// <summary>
-    /// Mark several chats as read by chat ids or mark all chats as read
+    /// Mark chats as read (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Mark several chats as read by chat ids or mark all chats as read
     /// </remarks>
     /// <param name="markChatsReadBulkInputObject"></param>
     pplx::task<void> markChatsReadBulk(
         std::shared_ptr<MarkChatsReadBulkInputObject> markChatsReadBulkInputObject
     );
     /// <summary>
-    /// Mark several chats as UNread by chat ids or mark all chats as UNread
+    /// Mark chats as unread (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Mark several chats as UNread by chat ids or mark all chats as UNread
     /// </remarks>
     /// <param name="markChatsUnreadBulkInputObject"></param>
     pplx::task<void> markChatsUnreadBulk(
@@ -1682,7 +1692,7 @@ public:
         std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject
     );
     /// <summary>
-    /// Set mute mode.
+    /// Mute chat sounds
     /// </summary>
     /// <remarks>
     /// 
@@ -1692,10 +1702,10 @@ public:
         std::shared_ptr<MuteChatInputObject> muteChatInputObject
     );
     /// <summary>
-    /// Mute several chats by chat ids or mute all chats
+    /// Mute chats (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Mute several chats by chat ids or mute all chats
     /// </remarks>
     /// <param name="muteChatsBulkInputObject"></param>
     pplx::task<void> muteChatsBulk(
@@ -1710,10 +1720,10 @@ public:
     pplx::task<std::shared_ptr<PingResponse>> ping(
     );
     /// <summary>
-    /// Reopen chats by chat ids or reopen all chats
+    /// Reopen chats (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Reopen chats by chat ids or reopen all chats
     /// </remarks>
     /// <param name="reopenChatsBulkInputObject"></param>
     pplx::task<void> reopenChatsBulk(
@@ -1723,7 +1733,7 @@ public:
     /// Request a new REST API token for subaccount.
     /// </summary>
     /// <remarks>
-    /// 
+    /// Returning user object, key and app name.
     /// </remarks>
     /// <param name="requestNewSubaccountTokenInputObject"></param>
     pplx::task<std::shared_ptr<User>> requestNewSubaccountToken(
@@ -1750,13 +1760,13 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Find chats by inbound or outbound messages text.
+    /// Find chats by message text
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find chats by specified search query (optional)</param>
     pplx::task<std::shared_ptr<SearchChatsPaginatedResponse>> searchChats(
         boost::optional<int32_t> page,
@@ -1764,13 +1774,13 @@ public:
         boost::optional<utility::string_t> query
     );
     /// <summary>
-    /// Find chats by IDs.
+    /// Find chats (bulk)
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="ids">Find chats by ID(s) (optional)</param>
     pplx::task<std::shared_ptr<SearchChatsByIdsPaginatedResponse>> searchChatsByIds(
         boost::optional<int32_t> page,
@@ -1778,13 +1788,13 @@ public:
         boost::optional<utility::string_t> ids
     );
     /// <summary>
-    /// Find chats by recipient (contact, list name or phone number).
+    /// Find chats by recipient
     /// </summary>
     /// <remarks>
-    /// 
+    /// Find chats by recipient (contact, list name or phone number).
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find chats by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
     pplx::task<std::shared_ptr<SearchChatsByReceipentPaginatedResponse>> searchChatsByReceipent(
@@ -1799,8 +1809,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="shared">Should shared contacts to be included (optional, default to 0)</param>
     /// <param name="ids">Find contact by ID(s) (optional)</param>
     /// <param name="listId">Find contact by List ID (optional)</param>
@@ -1824,13 +1834,13 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Find inbound messages by given parameters.
+    /// Find inbound messages
     /// </summary>
     /// <remarks>
-    /// 
+    /// Find inbound messages by given parameters.
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="ids">Find message by ID(s) (optional)</param>
     /// <param name="query">Find recipients by specified search query (optional)</param>
     /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
@@ -1851,8 +1861,8 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="ids">Find lists by ID(s) (optional)</param>
     /// <param name="query">Find lists by specified search query (optional)</param>
     /// <param name="onlyMine">Return only current user lists (optional, default to 0)</param>
@@ -1873,10 +1883,10 @@ public:
     /// Find messages
     /// </summary>
     /// <remarks>
-    /// 
+    /// Find outbound messages by given parameters.
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="lastId">Filter results by ID, selecting all values lesser than the specified ID. Note that \\&#39;page\\&#39; parameter is ignored when \\&#39;lastId\\&#39; is specified (optional)</param>
     /// <param name="ids">Find message by ID(s) (optional)</param>
     /// <param name="sessionId">Find messages by session ID (optional)</param>
@@ -1894,13 +1904,13 @@ public:
         boost::optional<utility::string_t> query
     );
     /// <summary>
-    /// Find scheduled messages by given parameters.
+    /// Find scheduled messages
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="query">Find messages by specified search query (optional)</param>
     /// <param name="ids">Find schedules by ID(s) (optional)</param>
     /// <param name="status">Fetch schedules with the specific status: a - actual, c - completed, x - all (optional, default to x)</param>
@@ -1916,13 +1926,13 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Find user templates by given parameters.
+    /// Find templates by criteria
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="page">Fetch specified results page (optional, default to 1)</param>
-    /// <param name="limit">How many results to return (optional, default to 10)</param>
+    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
     /// <param name="ids">Find template by ID(s) (optional)</param>
     /// <param name="name">Find template by name (optional)</param>
     /// <param name="content">Find template by content (optional)</param>
@@ -1945,7 +1955,7 @@ public:
     /// Send message
     /// </summary>
     /// <remarks>
-    /// 
+    /// The main entrypoint to send messages. See examples above for the reference.
     /// </remarks>
     /// <param name="sendMessageInputObject"></param>
     pplx::task<std::shared_ptr<SendMessageResponse>> sendMessage(
@@ -1955,15 +1965,25 @@ public:
     /// Send user phone verification
     /// </summary>
     /// <remarks>
-    /// Send Two-Factor Authentication Messages &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;  You can easily verify your customers using their phone numbers with the help of 2FA (better known as two-factor authentication) and protect against fraud, build trust, and increase conversions. There is a simple way to do this with an API call to a TextMagic endpoint. With the help of TextMagic API you can:  *   Send two-factor authentication messages (2FA) *   Send one-time passwords (OTP) *   Integrate passwordless login into your app *   Protect your app from fraud  How does it work? -----------------  *   **Step 1:** Your server makes an API call to the TextMagic endpoint, and we send a text message (and later, as a fallback, a generate a text-to-speech voice call) with a verification code to the phone number supplied in the initial request.      *   **Step 2:** Once the code is received, the user enters it into the relevant input field in your app. This code needs to be passed to TextMagic in the second API call; if it is correct, the server will respond with the correct response code. This way, you can ensure that the recipient really owns the phone number entered into your app or form.
+    /// 
     /// </remarks>
     pplx::task<void> sendPhoneVerificationCode(
     );
     /// <summary>
-    /// Set status of the chat given by ID.
+    /// Step 1: Send a verification code 
     /// </summary>
     /// <remarks>
-    /// 
+    /// Sends verification code to specified phone number.
+    /// </remarks>
+    /// <param name="sendPhoneVerificationCodeInputObject"></param>
+    pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> sendPhoneVerificationCode_0(
+        std::shared_ptr<SendPhoneVerificationCodeInputObject> sendPhoneVerificationCodeInputObject
+    );
+    /// <summary>
+    /// Change chat status
+    /// </summary>
+    /// <remarks>
+    /// Set status of the chat given by ID.
     /// </remarks>
     /// <param name="setChatStatusInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> setChatStatus(
@@ -2000,10 +2020,10 @@ public:
         std::shared_ptr<UnblockContactsBulkInputObject> unblockContactsBulkInputObject
     );
     /// <summary>
-    /// Unmute several chats by chat ids or unmute all chats
+    /// Unmute chats (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Unmute several chats by chat ids or unmute all chats
     /// </remarks>
     /// <param name="unmuteChatsBulkInputObject"></param>
     pplx::task<void> unmuteChatsBulk(
@@ -2174,7 +2194,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Update existing template.
+    /// Update a template
     /// </summary>
     /// <remarks>
     /// 
@@ -2223,7 +2243,7 @@ public:
     /// Upload message attachment
     /// </summary>
     /// <remarks>
-    /// 
+    /// Upload a new file to insert it as a link.
     /// </remarks>
     /// <param name="file">Attachment. Supports .jpg, .gif, .png, .pdf, .txt, .csv, .doc, .docx, .xls, .xlsx, .ppt, .pptx &amp; .vcf file formats</param>
     pplx::task<std::shared_ptr<UploadMessageAttachmentResponse>> uploadMessageAttachment(

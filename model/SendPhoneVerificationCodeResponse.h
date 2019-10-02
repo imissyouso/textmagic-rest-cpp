@@ -11,19 +11,18 @@
  */
 
 /*
- * GetForwardedCallsPaginatedResponse.h
+ * SendPhoneVerificationCodeResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetForwardedCallsPaginatedResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetForwardedCallsPaginatedResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_SendPhoneVerificationCodeResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_SendPhoneVerificationCodeResponse_H_
 
 
 #include "../ModelBase.h"
 
-#include "ForwardedCall.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -33,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetForwardedCallsPaginatedResponse
+class  SendPhoneVerificationCodeResponse
     : public ModelBase
 {
 public:
-    GetForwardedCallsPaginatedResponse();
-    virtual ~GetForwardedCallsPaginatedResponse();
+    SendPhoneVerificationCodeResponse();
+    virtual ~SendPhoneVerificationCodeResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,34 +51,22 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetForwardedCallsPaginatedResponse members
+    /// SendPhoneVerificationCodeResponse members
 
     /// <summary>
-    /// 
+    /// The ID of a verification request. This is required to finish the verification request in the next step.
     /// </summary>
-    int32_t getPage() const;
-        void setPage(int32_t value);
+    utility::string_t getVerifyId() const;
+        void setVerifyId(utility::string_t value);
     /// <summary>
-    /// 
+    /// Amount of credit which will be deducted from your account balance when this verification is successfully completed.
     /// </summary>
-    int32_t getPageCount() const;
-        void setPageCount(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getLimit() const;
-        void setLimit(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<ForwardedCall>>& getResources();
-        void setResources(std::vector<std::shared_ptr<ForwardedCall>> value);
+    double getPrice() const;
+        void setPrice(double value);
 
 protected:
-    int32_t m_Page;
-        int32_t m_PageCount;
-        int32_t m_Limit;
-        std::vector<std::shared_ptr<ForwardedCall>> m_Resources;
+    utility::string_t m_VerifyId;
+        double m_Price;
     };
 
 }
@@ -87,4 +74,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetForwardedCallsPaginatedResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_SendPhoneVerificationCodeResponse_H_ */

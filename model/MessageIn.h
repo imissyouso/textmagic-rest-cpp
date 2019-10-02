@@ -54,27 +54,27 @@ public:
     /// MessageIn members
 
     /// <summary>
-    /// 
+    /// The ID of the inbound message.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// The sender’s phone number.
     /// </summary>
     utility::string_t getSender() const;
         void setSender(utility::string_t value);
     /// <summary>
-    /// 
+    /// The receiver’s phone number (i.e. your dedicated or shared reply number).
     /// </summary>
     utility::string_t getReceiver() const;
         void setReceiver(utility::string_t value);
     /// <summary>
-    /// 
+    /// The time when the message reached the TextMagic API endpoint.
     /// </summary>
     utility::datetime getMessageTime() const;
         void setMessageTime(utility::datetime value);
     /// <summary>
-    /// 
+    /// The text from the received message.
     /// </summary>
     utility::string_t getText() const;
         void setText(utility::string_t value);

@@ -54,37 +54,37 @@ public:
     /// MessageSession members
 
     /// <summary>
-    /// 
+    /// Session ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Session creation time.
     /// </summary>
     utility::string_t getStartTime() const;
         void setStartTime(utility::string_t value);
     /// <summary>
-    /// 
+    /// Session text. If a template was used for the session text (see [Messages: Send](#tag/Outbound-Messages) for details), it may contain template tags. 
     /// </summary>
     utility::string_t getText() const;
         void setText(utility::string_t value);
     /// <summary>
-    /// 
+    /// *   **O** for TextMagic Online *   **A** for API *   **M** for TextMagic Messenger *   **E** for [Email to SMS](/docs/api/send-email-to-sms/) *   **X** for [Distribution lists](/docs/api/distribution-lists/) 
     /// </summary>
     utility::string_t getSource() const;
         void setSource(utility::string_t value);
     /// <summary>
-    /// 
+    /// Custom reference ID (see [Messages: Send](/docs/api/send-sms/) for details). 
     /// </summary>
     utility::string_t getReferenceId() const;
         void setReferenceId(utility::string_t value);
     /// <summary>
-    /// 
+    /// Session cost (in account currency).
     /// </summary>
     double getPrice() const;
         void setPrice(double value);
     /// <summary>
-    /// 
+    /// Session recipient count.
     /// </summary>
     int32_t getNumbersCount() const;
         void setNumbersCount(int32_t value);

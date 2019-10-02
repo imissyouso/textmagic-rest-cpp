@@ -59,42 +59,42 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Message type: inbound or outbound. 
     /// </summary>
     utility::string_t getDirection() const;
         void setDirection(utility::string_t value);
     /// <summary>
-    /// 
+    /// Sender phone number.
     /// </summary>
     utility::string_t getSender() const;
         void setSender(utility::string_t value);
     /// <summary>
-    /// 
+    /// Time when message arrived at TextMagic.
     /// </summary>
     utility::datetime getMessageTime() const;
         void setMessageTime(utility::datetime value);
     /// <summary>
-    /// 
+    /// Message text.
     /// </summary>
     utility::string_t getText() const;
         void setText(utility::string_t value);
     /// <summary>
-    /// 
+    /// Receiver phone number.
     /// </summary>
     utility::string_t getReceiver() const;
         void setReceiver(utility::string_t value);
     /// <summary>
-    /// 
+    /// Message status (for chats outbound only). See [message delivery statuses](/docs/api/sms-sessions/#message-delivery-statuses) for details.
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact first name.
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact last name.
     /// </summary>
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
