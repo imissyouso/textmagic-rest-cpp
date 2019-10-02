@@ -55,12 +55,12 @@ public:
     /// GetAvailableDedicatedNumbersResponse members
 
     /// <summary>
-    /// 
+    /// Array of phone number strings.
     /// </summary>
     std::vector<utility::string_t>& getNumbers();
         void setNumbers(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Dedicated number monthly fee for this country. Returned in current [account](/docs/api/account/) currency.@TODO
     /// </summary>
     float getPrice() const;
         void setPrice(float value);

@@ -210,10 +210,10 @@ public:
         std::shared_ptr<BlockContactInputObject> blockContactInputObject
     );
     /// <summary>
-    /// Buy a dedicated number and assign it to the specified account.
+    /// Buy a dedicated number
     /// </summary>
     /// <remarks>
-    /// 
+    /// To buy a dedicated number, you first need to find an available number matching your criteria using the &#x60;/api/v2/numbers/available&#x60; command described above.
     /// </remarks>
     /// <param name="buyDedicatedNumberInputObject"></param>
     pplx::task<void> buyDedicatedNumber(
@@ -377,7 +377,7 @@ public:
     /// Create a template
     /// </summary>
     /// <remarks>
-    /// 
+    /// There are times when creating a new template makes sense (such as when targeting specific clients or improving your business strategies).  You can create new SMS templates for marketing purposes or SMS templates for business campaigns. 
     /// </remarks>
     /// <param name="createTemplateInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createTemplate(
@@ -504,7 +504,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Cancel dedicated number subscription.
+    /// Cancel dedicated number subscription
     /// </summary>
     /// <remarks>
     /// 
@@ -648,7 +648,7 @@ public:
         std::shared_ptr<DeleteScheduledMessagesBulkInputObject> deleteScheduledMessagesBulkInputObject
     );
     /// <summary>
-    /// Delete a Sender ID.
+    /// Delete a Sender ID
     /// </summary>
     /// <remarks>
     /// 
@@ -844,26 +844,26 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Find available dedicated numbers to buy.
+    /// Find dedicated numbers available for purchase
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="country">Dedicated number country. Two letters in upper case</param>
-    /// <param name="prefix">Desired number prefix. Should include country code (i.e. 447 for GB). In case provide tollfree &#x3D; 1 parameter and there are available tollfree numbers, this parameter will be ignore. (optional, default to 1)</param>
-    /// <param name="tollfree">Should we show only tollfree numbers (tollfree available only for US). Default is false. (optional, default to 0)</param>
+    /// <param name="country">Two-letter dedicated number country ISO code.</param>
+    /// <param name="prefix">Desired number prefix. Should include country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country. (optional, default to 1)</param>
+    /// <param name="tollfree">Should we show only tollfree numbers (tollfree available only for US). (optional, default to 0)</param>
     pplx::task<std::shared_ptr<GetAvailableDedicatedNumbersResponse>> getAvailableDedicatedNumbers(
         utility::string_t country,
         boost::optional<int32_t> prefix,
         boost::optional<int32_t> tollfree
     );
     /// <summary>
-    /// Get all available sender setting options which could be used in \&quot;from\&quot; parameter of POST messages method.
+    /// Get available sender settings
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get all available sender setting options which could be used in \&quot;from\&quot; parameter of POST messages method.
     /// </remarks>
-    /// <param name="country">Return sender setting options available in specific country only. Two upper case characters (optional)</param>
+    /// <param name="country">Two-letter ISO country ID. If not specified, it returns all the available sender settings. (optional)</param>
     pplx::task<std::shared_ptr<GetAvailableSenderSettingOptionsResponse>> getAvailableSenderSettingOptions(
         boost::optional<utility::string_t> country
     );
@@ -1128,7 +1128,7 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get a single dedicated number.
+    /// Get the details of a specific dedicated number
     /// </summary>
     /// <remarks>
     /// 
@@ -1426,7 +1426,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get a single Sender ID.
+    /// Get the details of a specific Sender ID
     /// </summary>
     /// <remarks>
     /// 
@@ -1436,7 +1436,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get all sender IDs of current user.
+    /// Get all your approved Sender IDs
     /// </summary>
     /// <remarks>
     /// 
@@ -1448,10 +1448,10 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get current user sender settings.
+    /// Get current sender settings
     /// </summary>
     /// <remarks>
-    /// 
+    /// @TODO
     /// </remarks>
     /// <param name="country">Return sender settings enabled for sending to specified country. Two upper case characters (optional)</param>
     pplx::task<std::shared_ptr<GetSenderSettingsResponse>> getSenderSettings(
@@ -1610,7 +1610,7 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get user&#39;s dedicated numbers.
+    /// Get all your dedicated numbers
     /// </summary>
     /// <remarks>
     /// 
@@ -1740,10 +1740,10 @@ public:
         std::shared_ptr<RequestNewSubaccountTokenInputObject> requestNewSubaccountTokenInputObject
     );
     /// <summary>
-    /// Request for a new Sender ID.
+    /// Apply for a new Sender ID
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; Sender IDs are shared between all of your sub-accounts.
     /// </remarks>
     /// <param name="requestSenderIdInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> requestSenderId(
@@ -2160,10 +2160,10 @@ public:
         std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject
     );
     /// <summary>
-    /// Change sender settings for specified country.
+    /// Change sender settings
     /// </summary>
     /// <remarks>
-    /// 
+    /// @TODO
     /// </remarks>
     /// <param name="updateSenderSettingInputObject"></param>
     pplx::task<void> updateSenderSetting(

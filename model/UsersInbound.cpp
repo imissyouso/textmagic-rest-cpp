@@ -22,11 +22,11 @@ namespace model {
 UsersInbound::UsersInbound()
 {
     m_Id = 0;
+    m_Phone = utility::conversions::to_string_t("");
+    m_PhoneIsSet = false;
     m_PurchasedAt = utility::datetime();
     m_ExpireAt = utility::datetime();
     m_Status = utility::conversions::to_string_t("");
-    m_Phone = utility::conversions::to_string_t("");
-    m_PhoneIsSet = false;
 }
 
 UsersInbound::~UsersInbound()
@@ -43,15 +43,15 @@ web::json::value UsersInbound::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("id")] = ModelBase::toJson(m_Id);
+    if(m_PhoneIsSet)
+    {
+        val[utility::conversions::to_string_t("phone")] = ModelBase::toJson(m_Phone);
+    }
     val[utility::conversions::to_string_t("user")] = ModelBase::toJson(m_User);
     val[utility::conversions::to_string_t("purchasedAt")] = ModelBase::toJson(m_PurchasedAt);
     val[utility::conversions::to_string_t("expireAt")] = ModelBase::toJson(m_ExpireAt);
     val[utility::conversions::to_string_t("status")] = ModelBase::toJson(m_Status);
     val[utility::conversions::to_string_t("country")] = ModelBase::toJson(m_Country);
-    if(m_PhoneIsSet)
-    {
-        val[utility::conversions::to_string_t("phone")] = ModelBase::toJson(m_Phone);
-    }
 
     return val;
 }
@@ -64,6 +64,14 @@ void UsersInbound::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("phone")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
+        if(!fieldValue.is_null())
+        {
+            setPhone(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("user")))
@@ -110,14 +118,6 @@ void UsersInbound::fromJson(web::json::value& val)
             setCountry( newItem );
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("phone")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("phone")];
-        if(!fieldValue.is_null())
-        {
-            setPhone(ModelBase::stringFromJson(fieldValue));
-        }
-    }
 }
 
 void UsersInbound::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -129,16 +129,16 @@ void UsersInbound::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("id"), m_Id));
-    m_User->toMultipart(multipart, utility::conversions::to_string_t("user."));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("purchasedAt"), m_PurchasedAt));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("expireAt"), m_ExpireAt));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("status"), m_Status));
-    m_Country->toMultipart(multipart, utility::conversions::to_string_t("country."));
     if(m_PhoneIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("phone"), m_Phone));
         
     }
+    m_User->toMultipart(multipart, utility::conversions::to_string_t("user."));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("purchasedAt"), m_PurchasedAt));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("expireAt"), m_ExpireAt));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("status"), m_Status));
+    m_Country->toMultipart(multipart, utility::conversions::to_string_t("country."));
 }
 
 void UsersInbound::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -150,6 +150,10 @@ void UsersInbound::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
     }
 
     setId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("id"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("phone")))
+    {
+        setPhone(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("phone"))));
+    }
     std::shared_ptr<User> newUser(new User());
     newUser->fromMultiPart(multipart, utility::conversions::to_string_t("user."));
     setUser( newUser );
@@ -159,10 +163,6 @@ void UsersInbound::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
     std::shared_ptr<Country> newCountry(new Country());
     newCountry->fromMultiPart(multipart, utility::conversions::to_string_t("country."));
     setCountry( newCountry );
-    if(multipart->hasContent(utility::conversions::to_string_t("phone")))
-    {
-        setPhone(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("phone"))));
-    }
 }
 
 int32_t UsersInbound::getId() const
@@ -176,6 +176,27 @@ void UsersInbound::setId(int32_t value)
     m_Id = value;
     
 }
+utility::string_t UsersInbound::getPhone() const
+{
+    return m_Phone;
+}
+
+
+void UsersInbound::setPhone(utility::string_t value)
+{
+    m_Phone = value;
+    m_PhoneIsSet = true;
+}
+bool UsersInbound::phoneIsSet() const
+{
+    return m_PhoneIsSet;
+}
+
+void UsersInbound::unsetPhone()
+{
+    m_PhoneIsSet = false;
+}
+
 std::shared_ptr<User> UsersInbound::getUser() const
 {
     return m_User;
@@ -231,27 +252,6 @@ void UsersInbound::setCountry(std::shared_ptr<Country> value)
     m_Country = value;
     
 }
-utility::string_t UsersInbound::getPhone() const
-{
-    return m_Phone;
-}
-
-
-void UsersInbound::setPhone(utility::string_t value)
-{
-    m_Phone = value;
-    m_PhoneIsSet = true;
-}
-bool UsersInbound::phoneIsSet() const
-{
-    return m_PhoneIsSet;
-}
-
-void UsersInbound::unsetPhone()
-{
-    m_PhoneIsSet = false;
-}
-
 }
 }
 }

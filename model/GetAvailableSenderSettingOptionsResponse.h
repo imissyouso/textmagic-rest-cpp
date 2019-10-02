@@ -55,22 +55,22 @@ public:
     /// GetAvailableSenderSettingOptionsResponse members
 
     /// <summary>
-    /// 
+    /// Array of dedicated numbers strings.
     /// </summary>
     std::vector<utility::string_t>& getDedicated();
         void setDedicated(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Array of verified account phone numbers (currently only one).
     /// </summary>
     std::vector<utility::string_t>& getUser();
         void setUser(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Array of shared numbers strings.
     /// </summary>
     std::vector<utility::string_t>& getShared();
         void setShared(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Array of alphanumeric sender IDs.
     /// </summary>
     std::vector<utility::string_t>& getSenderIds();
         void setSenderIds(std::vector<utility::string_t> value);

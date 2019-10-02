@@ -54,12 +54,12 @@ public:
     /// Country members
 
     /// <summary>
-    /// 
+    /// Two-letter ISO country ID.
     /// </summary>
     utility::string_t getId() const;
         void setId(utility::string_t value);
     /// <summary>
-    /// 
+    /// Full country name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);

@@ -55,12 +55,12 @@ public:
     /// SenderId members
 
     /// <summary>
-    /// 
+    /// Numeric sender ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Alphanumeric ID.
     /// </summary>
     utility::string_t getSenderId() const;
         void setSenderId(utility::string_t value);
@@ -70,7 +70,7 @@ public:
     std::shared_ptr<User> getUser() const;
         void setUser(std::shared_ptr<User> value);
     /// <summary>
-    /// A - accepted, R - rejected, P - pending
+    /// *   **P** for Pending. This Sender ID is being reviewed by our support team. *   **R** for Rejected. Our support team rejected your application for this Sender ID. *   **A** for Active. 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);

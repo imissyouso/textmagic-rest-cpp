@@ -54,12 +54,12 @@ public:
     /// RequestSenderIdInputObject members
 
     /// <summary>
-    /// Alphanumeric Sender ID (maximum 11 characters)
+    /// Sender ID that you are applying for. *   11 characters maximum *   Only Latin based characters and digits are allowed *   Should contain at least one letter 
     /// </summary>
     utility::string_t getSenderId() const;
         void setSenderId(utility::string_t value);
     /// <summary>
-    /// Explain why do you need this Sender ID
+    /// Explanation why do you need this Sender ID.
     /// </summary>
     utility::string_t getExplanation() const;
         void setExplanation(utility::string_t value);

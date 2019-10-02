@@ -56,27 +56,34 @@ public:
     /// UsersInbound members
 
     /// <summary>
-    /// 
+    /// Dedicated number ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
+    /// <summary>
+    /// Dedicated phone number.
+    /// </summary>
+    utility::string_t getPhone() const;
+    bool phoneIsSet() const;
+    void unsetPhone();
+    void setPhone(utility::string_t value);
     /// <summary>
     /// 
     /// </summary>
     std::shared_ptr<User> getUser() const;
         void setUser(std::shared_ptr<User> value);
     /// <summary>
-    /// 
+    /// Time when the dedicated number was purchased.
     /// </summary>
     utility::datetime getPurchasedAt() const;
         void setPurchasedAt(utility::datetime value);
     /// <summary>
-    /// 
+    /// Dedicated number subscription expiration time.
     /// </summary>
     utility::datetime getExpireAt() const;
         void setExpireAt(utility::datetime value);
     /// <summary>
-    /// A - active, in use (at least one message was sent/received from/to this number), U - never used before
+    /// Number status: *   **U** for Unused. No messages have been sent from (or received to) this number. *   **A** for Active. 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
@@ -85,24 +92,17 @@ public:
     /// </summary>
     std::shared_ptr<Country> getCountry() const;
         void setCountry(std::shared_ptr<Country> value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getPhone() const;
-    bool phoneIsSet() const;
-    void unsetPhone();
-    void setPhone(utility::string_t value);
 
 protected:
     int32_t m_Id;
-        std::shared_ptr<User> m_User;
+        utility::string_t m_Phone;
+    bool m_PhoneIsSet;
+    std::shared_ptr<User> m_User;
         utility::datetime m_PurchasedAt;
         utility::datetime m_ExpireAt;
         utility::string_t m_Status;
         std::shared_ptr<Country> m_Country;
-        utility::string_t m_Phone;
-    bool m_PhoneIsSet;
-};
+    };
 
 }
 }

@@ -54,22 +54,22 @@ public:
     /// MessageTemplate members
 
     /// <summary>
-    /// 
+    /// Template ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Template name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Template text. May contain the tags listed below @TODO.
     /// </summary>
     utility::string_t getContent() const;
         void setContent(utility::string_t value);
     /// <summary>
-    /// 
+    /// Time when template was last modified.
     /// </summary>
     utility::datetime getLastModified() const;
         void setLastModified(utility::datetime value);

@@ -54,17 +54,17 @@ public:
     /// BuyDedicatedNumberInputObject members
 
     /// <summary>
-    /// Desired dedicated phone number in international E.164 format
+    /// Dedicated phone number.
     /// </summary>
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
     /// <summary>
-    /// Dedicated number country. Two charactes in upper case.
+    /// Country code phone number.
     /// </summary>
     utility::string_t getCountry() const;
         void setCountry(utility::string_t value);
     /// <summary>
-    /// User ID this number will be assigned to
+    /// Assigned dedicated number. This number will be available for this account only. You cannot transfer numbers between sub-accounts. 
     /// </summary>
     int32_t getUserId() const;
         void setUserId(int32_t value);
