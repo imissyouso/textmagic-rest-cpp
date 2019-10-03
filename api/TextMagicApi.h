@@ -89,7 +89,6 @@
 #include "GetListsPaginatedResponse.h"
 #include "GetMessagePreviewResponse.h"
 #include "GetMessagePriceResponse.h"
-#include "GetMessagePricesResponse.h"
 #include "GetMessageSessionStatResponse.h"
 #include "GetMessagesBySessionIdPaginatedResponse.h"
 #include "GetMessagingCountersResponse.h"
@@ -1328,14 +1327,6 @@ public:
         boost::optional<int32_t> tts,
         boost::optional<int32_t> local,
         boost::optional<utility::string_t> localCountry
-    );
-    /// <summary>
-    /// Get pricing
-    /// </summary>
-    /// <remarks>
-    /// Get message prices for all countries.
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetMessagePricesResponse>> getMessagePrices(
     );
     /// <summary>
     /// Get a session details
