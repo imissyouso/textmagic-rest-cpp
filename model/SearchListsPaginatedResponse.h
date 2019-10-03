@@ -22,7 +22,7 @@
 
 #include "../ModelBase.h"
 
-#include "Group.h"
+#include "List.h"
 #include <vector>
 
 namespace com {
@@ -72,14 +72,14 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<Group>>& getResources();
-        void setResources(std::vector<std::shared_ptr<Group>> value);
+    std::vector<std::shared_ptr<List>>& getResources();
+        void setResources(std::vector<std::shared_ptr<List>> value);
 
 protected:
     int32_t m_Page;
         int32_t m_PageCount;
         int32_t m_Limit;
-        std::vector<std::shared_ptr<Group>> m_Resources;
+        std::vector<std::shared_ptr<List>> m_Resources;
     };
 
 }

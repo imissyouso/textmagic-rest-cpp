@@ -12,14 +12,14 @@
 
 
 
-#include "Group.h"
+#include "List.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-Group::Group()
+List::List()
 {
     m_Id = 0;
     m_Name = utility::conversions::to_string_t("");
@@ -31,16 +31,16 @@ Group::Group()
     m_IsDefault = false;
 }
 
-Group::~Group()
+List::~List()
 {
 }
 
-void Group::validate()
+void List::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value Group::toJson() const
+web::json::value List::toJson() const
 {
     web::json::value val = web::json::value::object();
 
@@ -58,7 +58,7 @@ web::json::value Group::toJson() const
     return val;
 }
 
-void Group::fromJson(web::json::value& val)
+void List::fromJson(web::json::value& val)
 {
     if(val.has_field(utility::conversions::to_string_t("id")))
     {
@@ -131,7 +131,7 @@ void Group::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[utility::conversions::to_string_t("avatar")];
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<GroupImage> newItem(new GroupImage());
+            std::shared_ptr<ListImage> newItem(new ListImage());
             newItem->fromJson(fieldValue);
             setAvatar( newItem );
         }
@@ -146,7 +146,7 @@ void Group::fromJson(web::json::value& val)
     }
 }
 
-void Group::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void List::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -166,7 +166,7 @@ void Group::toMultipart(std::shared_ptr<MultipartFormData> multipart, const util
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isDefault"), m_IsDefault));
 }
 
-void Group::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void List::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -184,118 +184,118 @@ void Group::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const ut
     setUser( newUser );
     setService(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("service"))));
     setShared(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("shared"))));
-    std::shared_ptr<GroupImage> newAvatar(new GroupImage());
+    std::shared_ptr<ListImage> newAvatar(new ListImage());
     newAvatar->fromMultiPart(multipart, utility::conversions::to_string_t("avatar."));
     setAvatar( newAvatar );
     setIsDefault(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isDefault"))));
 }
 
-int32_t Group::getId() const
+int32_t List::getId() const
 {
     return m_Id;
 }
 
 
-void Group::setId(int32_t value)
+void List::setId(int32_t value)
 {
     m_Id = value;
     
 }
-utility::string_t Group::getName() const
+utility::string_t List::getName() const
 {
     return m_Name;
 }
 
 
-void Group::setName(utility::string_t value)
+void List::setName(utility::string_t value)
 {
     m_Name = value;
     
 }
-utility::string_t Group::getDescription() const
+utility::string_t List::getDescription() const
 {
     return m_Description;
 }
 
 
-void Group::setDescription(utility::string_t value)
+void List::setDescription(utility::string_t value)
 {
     m_Description = value;
     
 }
-bool Group::isFavorited() const
+bool List::isFavorited() const
 {
     return m_Favorited;
 }
 
 
-void Group::setFavorited(bool value)
+void List::setFavorited(bool value)
 {
     m_Favorited = value;
     
 }
-int32_t Group::getMembersCount() const
+int32_t List::getMembersCount() const
 {
     return m_MembersCount;
 }
 
 
-void Group::setMembersCount(int32_t value)
+void List::setMembersCount(int32_t value)
 {
     m_MembersCount = value;
     
 }
-std::shared_ptr<User> Group::getUser() const
+std::shared_ptr<User> List::getUser() const
 {
     return m_User;
 }
 
 
-void Group::setUser(std::shared_ptr<User> value)
+void List::setUser(std::shared_ptr<User> value)
 {
     m_User = value;
     
 }
-bool Group::isService() const
+bool List::isService() const
 {
     return m_Service;
 }
 
 
-void Group::setService(bool value)
+void List::setService(bool value)
 {
     m_Service = value;
     
 }
-bool Group::isShared() const
+bool List::isShared() const
 {
     return m_Shared;
 }
 
 
-void Group::setShared(bool value)
+void List::setShared(bool value)
 {
     m_Shared = value;
     
 }
-std::shared_ptr<GroupImage> Group::getAvatar() const
+std::shared_ptr<ListImage> List::getAvatar() const
 {
     return m_Avatar;
 }
 
 
-void Group::setAvatar(std::shared_ptr<GroupImage> value)
+void List::setAvatar(std::shared_ptr<ListImage> value)
 {
     m_Avatar = value;
     
 }
-bool Group::isIsDefault() const
+bool List::isIsDefault() const
 {
     return m_IsDefault;
 }
 
 
-void Group::setIsDefault(bool value)
+void List::setIsDefault(bool value)
 {
     m_IsDefault = value;
     

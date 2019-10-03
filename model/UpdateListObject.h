@@ -62,7 +62,9 @@ public:
     /// Should this list be shared with sub-accounts
     /// </summary>
     bool isShared() const;
-        void setShared(bool value);
+    bool sharedIsSet() const;
+    void unsetShared();
+    void setShared(bool value);
     /// <summary>
     /// Is list favorited. Default is false
     /// </summary>
@@ -81,7 +83,8 @@ public:
 protected:
     utility::string_t m_Name;
         bool m_Shared;
-        bool m_Favorited;
+    bool m_SharedIsSet;
+    bool m_Favorited;
     bool m_FavoritedIsSet;
     bool m_IsDefault;
     bool m_IsDefaultIsSet;

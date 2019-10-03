@@ -23,7 +23,7 @@
 #include "../ModelBase.h"
 
 #include "Country.h"
-#include "Group.h"
+#include "List.h"
 #include "ContactCustomField.h"
 #include <cpprest/details/basic_types.h>
 #include "ContactImage.h"
@@ -118,8 +118,8 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<Group>>& getLists();
-        void setLists(std::vector<std::shared_ptr<Group>> value);
+    std::vector<std::shared_ptr<List>>& getLists();
+        void setLists(std::vector<std::shared_ptr<List>> value);
     /// <summary>
     /// 
     /// </summary>
@@ -148,7 +148,7 @@ protected:
         std::shared_ptr<Country> m_Country;
         std::vector<std::shared_ptr<ContactCustomField>> m_CustomFields;
         std::shared_ptr<User> m_User;
-        std::vector<std::shared_ptr<Group>> m_Lists;
+        std::vector<std::shared_ptr<List>> m_Lists;
         utility::string_t m_PhoneType;
         std::shared_ptr<ContactImage> m_Avatar;
         std::vector<std::shared_ptr<ContactNote>> m_Notes;

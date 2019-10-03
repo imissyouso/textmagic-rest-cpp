@@ -13,7 +13,7 @@
 /*
  * BadRequestResponse_errors.h
  *
- * 
+ * If it was a **POST** or **PUT** request (and the **message** returned is &#x60;Validation Failed&#x60;), this field may contain **errors **that describe the errors grouped by the input parameter name. 
  */
 
 #ifndef COM_TEXTMAGIC_CLIENT_MODEL_BadRequestResponse_errors_H_
@@ -32,7 +32,7 @@ namespace client {
 namespace model {
 
 /// <summary>
-/// 
+/// If it was a **POST** or **PUT** request (and the **message** returned is &#x60;Validation Failed&#x60;), this field may contain **errors **that describe the errors grouped by the input parameter name. 
 /// </summary>
 class  BadRequestResponse_errors
     : public ModelBase
@@ -56,14 +56,14 @@ public:
     /// BadRequestResponse_errors members
 
     /// <summary>
-    /// 
+    /// Array of messages with errors related to the entire request. For example, you did not specify either the **text** or **templateId** when [sending the message](/docs/api/send-sms/). 
     /// </summary>
     std::vector<utility::string_t>& getCommon();
     bool commonIsSet() const;
     void unsetCommon();
     void setCommon(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Associative array. The keys are the POST/PUT parameters names and the values are arrays with error messages for these parameters. 
     /// </summary>
     std::shared_ptr<Object> getFields() const;
     bool fieldsIsSet() const;

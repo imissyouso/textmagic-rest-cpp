@@ -86,6 +86,7 @@
 #include "GetInvoicesPaginatedResponse.h"
 #include "GetListContactsIdsResponse.h"
 #include "GetListsOfContactPaginatedResponse.h"
+#include "GetListsPaginatedResponse.h"
 #include "GetMessagePreviewResponse.h"
 #include "GetMessagePriceResponse.h"
 #include "GetMessagePricesResponse.h"
@@ -107,11 +108,10 @@
 #include "GetUnreadMessagesTotalResponse.h"
 #include "GetUnsubscribersPaginatedResponse.h"
 #include "GetUserDedicatedNumbersPaginatedResponse.h"
-#include "GetUserListsPaginatedResponse.h"
 #include "GetVersionsResponse.h"
-#include "Group.h"
 #include "HttpContent.h"
 #include "InviteSubaccountInputObject.h"
+#include "List.h"
 #include "MarkChatsReadBulkInputObject.h"
 #include "MarkChatsUnreadBulkInputObject.h"
 #include "MergeSurveyNodesInputObject.h"
@@ -256,7 +256,7 @@ public:
     /// Check received code from user with the code which was actually sent.
     /// </remarks>
     /// <param name="checkPhoneVerificationCodeInputObject"></param>
-    pplx::task<void> checkPhoneVerificationCode_0(
+    pplx::task<void> checkPhoneVerificationCodeTFA(
         std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject
     );
     /// <summary>
@@ -332,7 +332,7 @@ public:
         std::shared_ptr<CreateCustomFieldInputObject> createCustomFieldInputObject
     );
     /// <summary>
-    /// Create a new list from the submitted data.
+    /// Create a new list
     /// </summary>
     /// <remarks>
     /// 
@@ -1190,13 +1190,13 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get a single list.
+    /// Get the details of a specific list
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    pplx::task<std::shared_ptr<Group>> getList(
+    pplx::task<std::shared_ptr<List>> getList(
         int32_t id
     );
     /// <summary>
@@ -1208,6 +1208,26 @@ public:
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<GetListContactsIdsResponse>> getListContactsIds(
         int32_t id
+    );
+    /// <summary>
+    /// Get all lists
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="page">The current fetched page. (optional, default to 1)</param>
+    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
+    /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
+    /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
+    /// <param name="favoriteOnly">Return only favorite lists (optional, default to 0)</param>
+    /// <param name="onlyMine">Return only current user lists (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<GetListsPaginatedResponse>> getLists(
+        boost::optional<int32_t> page,
+        boost::optional<int32_t> limit,
+        boost::optional<utility::string_t> orderBy,
+        boost::optional<utility::string_t> direction,
+        boost::optional<int32_t> favoriteOnly,
+        boost::optional<int32_t> onlyMine
     );
     /// <summary>
     /// Return lists which contact belongs to.
@@ -1624,26 +1644,6 @@ public:
         boost::optional<int32_t> surveyId
     );
     /// <summary>
-    /// Get all user lists.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
-    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
-    /// <param name="orderBy">Order results by some field. Default is id (optional, default to id)</param>
-    /// <param name="direction">Order direction. Default is desc (optional, default to desc)</param>
-    /// <param name="favoriteOnly">Return only favorite lists (optional, default to 0)</param>
-    /// <param name="onlyMine">Return only current user lists (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<GetUserListsPaginatedResponse>> getUserLists(
-        boost::optional<int32_t> page,
-        boost::optional<int32_t> limit,
-        boost::optional<utility::string_t> orderBy,
-        boost::optional<utility::string_t> direction,
-        boost::optional<int32_t> favoriteOnly,
-        boost::optional<int32_t> onlyMine
-    );
-    /// <summary>
     /// Get minimal valid apps versions
     /// </summary>
     /// <remarks>
@@ -1976,7 +1976,7 @@ public:
     /// Sends verification code to specified phone number.
     /// </remarks>
     /// <param name="sendPhoneVerificationCodeInputObject"></param>
-    pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> sendPhoneVerificationCode_0(
+    pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> sendPhoneVerificationCodeTFA(
         std::shared_ptr<SendPhoneVerificationCodeInputObject> sendPhoneVerificationCodeInputObject
     );
     /// <summary>

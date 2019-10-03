@@ -11,13 +11,13 @@
  */
 
 /*
- * GroupImage.h
+ * ListImage.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GroupImage_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GroupImage_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_ListImage_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_ListImage_H_
 
 
 #include "../ModelBase.h"
@@ -32,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GroupImage
+class  ListImage
     : public ModelBase
 {
 public:
-    GroupImage();
-    virtual ~GroupImage();
+    ListImage();
+    virtual ~ListImage();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,7 +51,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GroupImage members
+    /// ListImage members
 
     /// <summary>
     /// 
@@ -68,4 +68,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GroupImage_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_ListImage_H_ */

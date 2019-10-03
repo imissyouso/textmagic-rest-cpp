@@ -23,6 +23,7 @@ UpdateListObject::UpdateListObject()
 {
     m_Name = utility::conversions::to_string_t("");
     m_Shared = false;
+    m_SharedIsSet = false;
     m_Favorited = false;
     m_FavoritedIsSet = false;
     m_IsDefault = false;
@@ -43,7 +44,10 @@ web::json::value UpdateListObject::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("name")] = ModelBase::toJson(m_Name);
-    val[utility::conversions::to_string_t("shared")] = ModelBase::toJson(m_Shared);
+    if(m_SharedIsSet)
+    {
+        val[utility::conversions::to_string_t("shared")] = ModelBase::toJson(m_Shared);
+    }
     if(m_FavoritedIsSet)
     {
         val[utility::conversions::to_string_t("favorited")] = ModelBase::toJson(m_Favorited);
@@ -101,7 +105,10 @@ void UpdateListObject::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("name"), m_Name));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("shared"), m_Shared));
+    if(m_SharedIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("shared"), m_Shared));
+    }
     if(m_FavoritedIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("favorited"), m_Favorited));
@@ -121,7 +128,10 @@ void UpdateListObject::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
     }
 
     setName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("name"))));
-    setShared(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("shared"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("shared")))
+    {
+        setShared(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("shared"))));
+    }
     if(multipart->hasContent(utility::conversions::to_string_t("favorited")))
     {
         setFavorited(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("favorited"))));
@@ -152,8 +162,18 @@ bool UpdateListObject::isShared() const
 void UpdateListObject::setShared(bool value)
 {
     m_Shared = value;
-    
+    m_SharedIsSet = true;
 }
+bool UpdateListObject::sharedIsSet() const
+{
+    return m_SharedIsSet;
+}
+
+void UpdateListObject::unsetShared()
+{
+    m_SharedIsSet = false;
+}
+
 bool UpdateListObject::isFavorited() const
 {
     return m_Favorited;

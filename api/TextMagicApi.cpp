@@ -765,13 +765,13 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode(std::shared_ptr<CheckP
         return void();
     });
 }
-pplx::task<void> TextMagicApi::checkPhoneVerificationCode_0(std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject)
+pplx::task<void> TextMagicApi::checkPhoneVerificationCodeTFA(std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject)
 {
 
     // verify the required parameter 'checkPhoneVerificationCodeInputObject' is set
     if (checkPhoneVerificationCodeInputObject == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'checkPhoneVerificationCodeInputObject' when calling TextMagicApi->checkPhoneVerificationCode_0"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'checkPhoneVerificationCodeInputObject' when calling TextMagicApi->checkPhoneVerificationCodeTFA"));
     }
 
 
@@ -805,7 +805,7 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode_0(std::shared_ptr<Chec
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->checkPhoneVerificationCode_0 does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->checkPhoneVerificationCodeTFA does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
@@ -844,7 +844,7 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode_0(std::shared_ptr<Chec
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->checkPhoneVerificationCode_0 does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->checkPhoneVerificationCodeTFA does not consume any supported media type"));
     }
 
     // authentication (BasicAuth) required
@@ -861,7 +861,7 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode_0(std::shared_ptr<Chec
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling checkPhoneVerificationCode_0: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling checkPhoneVerificationCodeTFA: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -872,7 +872,7 @@ pplx::task<void> TextMagicApi::checkPhoneVerificationCode_0(std::shared_ptr<Chec
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling checkPhoneVerificationCode_0: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling checkPhoneVerificationCodeTFA: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -10745,7 +10745,7 @@ pplx::task<std::shared_ptr<GetInvoicesPaginatedResponse>> TextMagicApi::getInvoi
         return result;
     });
 }
-pplx::task<std::shared_ptr<Group>> TextMagicApi::getList(int32_t id)
+pplx::task<std::shared_ptr<List>> TextMagicApi::getList(int32_t id)
 {
 
 
@@ -10841,7 +10841,7 @@ pplx::task<std::shared_ptr<Group>> TextMagicApi::getList(int32_t id)
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<Group> result(new Group());
+        std::shared_ptr<List> result(new List());
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -10974,6 +10974,146 @@ pplx::task<std::shared_ptr<GetListContactsIdsResponse>> TextMagicApi::getListCon
         {
             throw ApiException(500
                 , utility::conversions::to_string_t("error calling getListContactsIds: unsupported response type"));
+        }
+
+        return result;
+    });
+}
+pplx::task<std::shared_ptr<GetListsPaginatedResponse>> TextMagicApi::getLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> favoriteOnly, boost::optional<int32_t> onlyMine)
+{
+
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
+    utility::string_t path = utility::conversions::to_string_t("/api/v2/lists");
+    
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if ( responseHttpContentTypes.size() == 0 )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->getLists does not produce any supported media type"));
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+
+    if (page)
+    {
+        queryParams[utility::conversions::to_string_t("page")] = ApiClient::parameterToString(*page);
+    }
+    if (limit)
+    {
+        queryParams[utility::conversions::to_string_t("limit")] = ApiClient::parameterToString(*limit);
+    }
+    if (orderBy)
+    {
+        queryParams[utility::conversions::to_string_t("orderBy")] = ApiClient::parameterToString(*orderBy);
+    }
+    if (direction)
+    {
+        queryParams[utility::conversions::to_string_t("direction")] = ApiClient::parameterToString(*direction);
+    }
+    if (favoriteOnly)
+    {
+        queryParams[utility::conversions::to_string_t("favoriteOnly")] = ApiClient::parameterToString(*favoriteOnly);
+    }
+    if (onlyMine)
+    {
+        queryParams[utility::conversions::to_string_t("onlyMine")] = ApiClient::parameterToString(*onlyMine);
+    }
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->getLists does not consume any supported media type"));
+    }
+
+    // authentication (BasicAuth) required
+    // Basic authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+        if (response.status_code() >= 400)
+        {
+            throw ApiException(response.status_code()
+                , utility::conversions::to_string_t("error calling getLists: ") + response.reason_phrase()
+                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+        }
+
+        // check response content type
+        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        {
+            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
+            if( contentType.find(responseHttpContentType) == std::string::npos )
+            {
+                throw ApiException(500
+                    , utility::conversions::to_string_t("error calling getLists: unexpected response type: ") + contentType
+                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+            }
+        }
+
+        return response.extract_string();
+    })
+    .then([=](utility::string_t response)
+    {
+        std::shared_ptr<GetListsPaginatedResponse> result(new GetListsPaginatedResponse());
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result->fromJson(json);
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling getLists: unsupported response type"));
         }
 
         return result;
@@ -14885,146 +15025,6 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> TextMagicA
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetUserListsPaginatedResponse>> TextMagicApi::getUserLists(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> orderBy, boost::optional<utility::string_t> direction, boost::optional<int32_t> favoriteOnly, boost::optional<int32_t> onlyMine)
-{
-
-
-    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/api/v2/lists");
-    
-    std::map<utility::string_t, utility::string_t> queryParams;
-    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
-    std::map<utility::string_t, utility::string_t> formParams;
-    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
-
-    std::unordered_set<utility::string_t> responseHttpContentTypes;
-    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-
-    utility::string_t responseHttpContentType;
-
-    // use JSON if possible
-    if ( responseHttpContentTypes.size() == 0 )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // JSON
-    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // multipart formdata
-    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
-    {
-        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    else
-    {
-        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->getUserLists does not produce any supported media type"));
-    }
-
-    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
-
-    std::unordered_set<utility::string_t> consumeHttpContentTypes;
-    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-
-    if (page)
-    {
-        queryParams[utility::conversions::to_string_t("page")] = ApiClient::parameterToString(*page);
-    }
-    if (limit)
-    {
-        queryParams[utility::conversions::to_string_t("limit")] = ApiClient::parameterToString(*limit);
-    }
-    if (orderBy)
-    {
-        queryParams[utility::conversions::to_string_t("orderBy")] = ApiClient::parameterToString(*orderBy);
-    }
-    if (direction)
-    {
-        queryParams[utility::conversions::to_string_t("direction")] = ApiClient::parameterToString(*direction);
-    }
-    if (favoriteOnly)
-    {
-        queryParams[utility::conversions::to_string_t("favoriteOnly")] = ApiClient::parameterToString(*favoriteOnly);
-    }
-    if (onlyMine)
-    {
-        queryParams[utility::conversions::to_string_t("onlyMine")] = ApiClient::parameterToString(*onlyMine);
-    }
-
-    std::shared_ptr<IHttpBody> httpBody;
-    utility::string_t requestHttpContentType;
-
-    // use JSON if possible
-    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
-    {
-        requestHttpContentType = utility::conversions::to_string_t("application/json");
-    }
-    // multipart formdata
-    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
-    {
-        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    else
-    {
-        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->getUserLists does not consume any supported media type"));
-    }
-
-    // authentication (BasicAuth) required
-    // Basic authentication is added automatically as part of the http_client_config
-
-    return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
-    .then([=](web::http::http_response response)
-    {
-        // 1xx - informational : OK
-        // 2xx - successful       : OK
-        // 3xx - redirection   : OK
-        // 4xx - client error  : not OK
-        // 5xx - client error  : not OK
-        if (response.status_code() >= 400)
-        {
-            throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling getUserLists: ") + response.reason_phrase()
-                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-        }
-
-        // check response content type
-        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
-        {
-            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
-            if( contentType.find(responseHttpContentType) == std::string::npos )
-            {
-                throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getUserLists: unexpected response type: ") + contentType
-                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
-            }
-        }
-
-        return response.extract_string();
-    })
-    .then([=](utility::string_t response)
-    {
-        std::shared_ptr<GetUserListsPaginatedResponse> result(new GetUserListsPaginatedResponse());
-
-        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value json = web::json::value::parse(response);
-
-            result->fromJson(json);
-        }
-        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling getUserLists: unsupported response type"));
-        }
-
-        return result;
-    });
-}
 pplx::task<std::shared_ptr<GetVersionsResponse>> TextMagicApi::getVersions()
 {
 
@@ -18094,13 +18094,13 @@ pplx::task<void> TextMagicApi::sendPhoneVerificationCode()
         return void();
     });
 }
-pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sendPhoneVerificationCode_0(std::shared_ptr<SendPhoneVerificationCodeInputObject> sendPhoneVerificationCodeInputObject)
+pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sendPhoneVerificationCodeTFA(std::shared_ptr<SendPhoneVerificationCodeInputObject> sendPhoneVerificationCodeInputObject)
 {
 
     // verify the required parameter 'sendPhoneVerificationCodeInputObject' is set
     if (sendPhoneVerificationCodeInputObject == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'sendPhoneVerificationCodeInputObject' when calling TextMagicApi->sendPhoneVerificationCode_0"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'sendPhoneVerificationCodeInputObject' when calling TextMagicApi->sendPhoneVerificationCodeTFA"));
     }
 
 
@@ -18134,7 +18134,7 @@ pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sen
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->sendPhoneVerificationCode_0 does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->sendPhoneVerificationCodeTFA does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
@@ -18173,7 +18173,7 @@ pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sen
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->sendPhoneVerificationCode_0 does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->sendPhoneVerificationCodeTFA does not consume any supported media type"));
     }
 
     // authentication (BasicAuth) required
@@ -18190,7 +18190,7 @@ pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sen
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling sendPhoneVerificationCode_0: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling sendPhoneVerificationCodeTFA: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -18201,7 +18201,7 @@ pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sen
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling sendPhoneVerificationCode_0: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling sendPhoneVerificationCodeTFA: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -18225,7 +18225,7 @@ pplx::task<std::shared_ptr<SendPhoneVerificationCodeResponse>> TextMagicApi::sen
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling sendPhoneVerificationCode_0: unsupported response type"));
+                , utility::conversions::to_string_t("error calling sendPhoneVerificationCodeTFA: unsupported response type"));
         }
 
         return result;

@@ -11,18 +11,18 @@
  */
 
 /*
- * GetUserListsPaginatedResponse.h
+ * GetListsPaginatedResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetUserListsPaginatedResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetUserListsPaginatedResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetListsPaginatedResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_GetListsPaginatedResponse_H_
 
 
 #include "../ModelBase.h"
 
-#include "Group.h"
+#include "List.h"
 #include <vector>
 
 namespace com {
@@ -33,12 +33,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetUserListsPaginatedResponse
+class  GetListsPaginatedResponse
     : public ModelBase
 {
 public:
-    GetUserListsPaginatedResponse();
-    virtual ~GetUserListsPaginatedResponse();
+    GetListsPaginatedResponse();
+    virtual ~GetListsPaginatedResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,7 +52,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetUserListsPaginatedResponse members
+    /// GetListsPaginatedResponse members
 
     /// <summary>
     /// 
@@ -72,14 +72,14 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<Group>>& getResources();
-        void setResources(std::vector<std::shared_ptr<Group>> value);
+    std::vector<std::shared_ptr<List>>& getResources();
+        void setResources(std::vector<std::shared_ptr<List>> value);
 
 protected:
     int32_t m_Page;
         int32_t m_PageCount;
         int32_t m_Limit;
-        std::vector<std::shared_ptr<Group>> m_Resources;
+        std::vector<std::shared_ptr<List>> m_Resources;
     };
 
 }
@@ -87,4 +87,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetUserListsPaginatedResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetListsPaginatedResponse_H_ */

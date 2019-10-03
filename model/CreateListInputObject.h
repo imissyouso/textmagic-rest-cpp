@@ -54,24 +54,26 @@ public:
     /// CreateListInputObject members
 
     /// <summary>
-    /// List name
+    /// List name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// Should this list be shared with sub-accounts
+    /// Should new list be shared among all the sub-accounts? The default is 0 (false).
     /// </summary>
     bool isShared() const;
-        void setShared(bool value);
+    bool sharedIsSet() const;
+    void unsetShared();
+    void setShared(bool value);
     /// <summary>
-    /// Is list favorited. Default is false
+    /// Is list favorited. Default is false.
     /// </summary>
     bool isFavorited() const;
     bool favoritedIsSet() const;
     void unsetFavorited();
     void setFavorited(bool value);
     /// <summary>
-    /// Is list default for new contacts (web only).
+    /// Is list default for new contacts (web only). Default is false.
     /// </summary>
     bool isIsDefault() const;
     bool isDefaultIsSet() const;
@@ -81,7 +83,8 @@ public:
 protected:
     utility::string_t m_Name;
         bool m_Shared;
-        bool m_Favorited;
+    bool m_SharedIsSet;
+    bool m_Favorited;
     bool m_FavoritedIsSet;
     bool m_IsDefault;
     bool m_IsDefaultIsSet;

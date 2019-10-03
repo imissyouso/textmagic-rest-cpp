@@ -54,12 +54,12 @@ public:
     /// ResourceLinkResponse members
 
     /// <summary>
-    /// 
+    /// Resource ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// A link to this resource. If you want to fetch it, just **GET** this address.
     /// </summary>
     utility::string_t getHref() const;
         void setHref(utility::string_t value);

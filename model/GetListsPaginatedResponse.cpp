@@ -12,30 +12,30 @@
 
 
 
-#include "GetUserListsPaginatedResponse.h"
+#include "GetListsPaginatedResponse.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-GetUserListsPaginatedResponse::GetUserListsPaginatedResponse()
+GetListsPaginatedResponse::GetListsPaginatedResponse()
 {
     m_Page = 0;
     m_PageCount = 0;
     m_Limit = 0;
 }
 
-GetUserListsPaginatedResponse::~GetUserListsPaginatedResponse()
+GetListsPaginatedResponse::~GetListsPaginatedResponse()
 {
 }
 
-void GetUserListsPaginatedResponse::validate()
+void GetListsPaginatedResponse::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value GetUserListsPaginatedResponse::toJson() const
+web::json::value GetListsPaginatedResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
 
@@ -54,7 +54,7 @@ web::json::value GetUserListsPaginatedResponse::toJson() const
     return val;
 }
 
-void GetUserListsPaginatedResponse::fromJson(web::json::value& val)
+void GetListsPaginatedResponse::fromJson(web::json::value& val)
 {
     if(val.has_field(utility::conversions::to_string_t("page")))
     {
@@ -89,11 +89,11 @@ void GetUserListsPaginatedResponse::fromJson(web::json::value& val)
         {
             if(item.is_null())
             {
-                m_Resources.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Resources.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Resources.push_back( newItem );
             }
@@ -102,7 +102,7 @@ void GetUserListsPaginatedResponse::fromJson(web::json::value& val)
     }
 }
 
-void GetUserListsPaginatedResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void GetListsPaginatedResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -123,7 +123,7 @@ void GetUserListsPaginatedResponse::toMultipart(std::shared_ptr<MultipartFormDat
             }
 }
 
-void GetUserListsPaginatedResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void GetListsPaginatedResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -142,11 +142,11 @@ void GetUserListsPaginatedResponse::fromMultiPart(std::shared_ptr<MultipartFormD
         {
             if(item.is_null())
             {
-                m_Resources.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Resources.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Resources.push_back( newItem );
             }
@@ -154,45 +154,45 @@ void GetUserListsPaginatedResponse::fromMultiPart(std::shared_ptr<MultipartFormD
     }
 }
 
-int32_t GetUserListsPaginatedResponse::getPage() const
+int32_t GetListsPaginatedResponse::getPage() const
 {
     return m_Page;
 }
 
 
-void GetUserListsPaginatedResponse::setPage(int32_t value)
+void GetListsPaginatedResponse::setPage(int32_t value)
 {
     m_Page = value;
     
 }
-int32_t GetUserListsPaginatedResponse::getPageCount() const
+int32_t GetListsPaginatedResponse::getPageCount() const
 {
     return m_PageCount;
 }
 
 
-void GetUserListsPaginatedResponse::setPageCount(int32_t value)
+void GetListsPaginatedResponse::setPageCount(int32_t value)
 {
     m_PageCount = value;
     
 }
-int32_t GetUserListsPaginatedResponse::getLimit() const
+int32_t GetListsPaginatedResponse::getLimit() const
 {
     return m_Limit;
 }
 
 
-void GetUserListsPaginatedResponse::setLimit(int32_t value)
+void GetListsPaginatedResponse::setLimit(int32_t value)
 {
     m_Limit = value;
     
 }
-std::vector<std::shared_ptr<Group>>& GetUserListsPaginatedResponse::getResources()
+std::vector<std::shared_ptr<List>>& GetListsPaginatedResponse::getResources()
 {
     return m_Resources;
 }
 
-void GetUserListsPaginatedResponse::setResources(std::vector<std::shared_ptr<Group>> value)
+void GetListsPaginatedResponse::setResources(std::vector<std::shared_ptr<List>> value)
 {
     m_Resources = value;
     

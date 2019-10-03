@@ -200,11 +200,11 @@ void Contact::fromJson(web::json::value& val)
         {
             if(item.is_null())
             {
-                m_Lists.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Lists.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Lists.push_back( newItem );
             }
@@ -345,11 +345,11 @@ void Contact::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const 
         {
             if(item.is_null())
             {
-                m_Lists.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Lists.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Lists.push_back( newItem );
             }
@@ -499,12 +499,12 @@ void Contact::setUser(std::shared_ptr<User> value)
     m_User = value;
     
 }
-std::vector<std::shared_ptr<Group>>& Contact::getLists()
+std::vector<std::shared_ptr<List>>& Contact::getLists()
 {
     return m_Lists;
 }
 
-void Contact::setLists(std::vector<std::shared_ptr<Group>> value)
+void Contact::setLists(std::vector<std::shared_ptr<List>> value)
 {
     m_Lists = value;
     

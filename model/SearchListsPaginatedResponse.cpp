@@ -89,11 +89,11 @@ void SearchListsPaginatedResponse::fromJson(web::json::value& val)
         {
             if(item.is_null())
             {
-                m_Resources.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Resources.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Resources.push_back( newItem );
             }
@@ -142,11 +142,11 @@ void SearchListsPaginatedResponse::fromMultiPart(std::shared_ptr<MultipartFormDa
         {
             if(item.is_null())
             {
-                m_Resources.push_back( std::shared_ptr<Group>(nullptr) );
+                m_Resources.push_back( std::shared_ptr<List>(nullptr) );
             }
             else
             {
-                std::shared_ptr<Group> newItem(new Group());
+                std::shared_ptr<List> newItem(new List());
                 newItem->fromJson(item);
                 m_Resources.push_back( newItem );
             }
@@ -187,12 +187,12 @@ void SearchListsPaginatedResponse::setLimit(int32_t value)
     m_Limit = value;
     
 }
-std::vector<std::shared_ptr<Group>>& SearchListsPaginatedResponse::getResources()
+std::vector<std::shared_ptr<List>>& SearchListsPaginatedResponse::getResources()
 {
     return m_Resources;
 }
 
-void SearchListsPaginatedResponse::setResources(std::vector<std::shared_ptr<Group>> value)
+void SearchListsPaginatedResponse::setResources(std::vector<std::shared_ptr<List>> value)
 {
     m_Resources = value;
     

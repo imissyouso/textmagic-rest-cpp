@@ -12,28 +12,28 @@
 
 
 
-#include "GroupImage.h"
+#include "ListImage.h"
 
 namespace com {
 namespace textmagic {
 namespace client {
 namespace model {
 
-GroupImage::GroupImage()
+ListImage::ListImage()
 {
     m_Href = utility::conversions::to_string_t("");
 }
 
-GroupImage::~GroupImage()
+ListImage::~ListImage()
 {
 }
 
-void GroupImage::validate()
+void ListImage::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value GroupImage::toJson() const
+web::json::value ListImage::toJson() const
 {
     web::json::value val = web::json::value::object();
 
@@ -42,7 +42,7 @@ web::json::value GroupImage::toJson() const
     return val;
 }
 
-void GroupImage::fromJson(web::json::value& val)
+void ListImage::fromJson(web::json::value& val)
 {
     if(val.has_field(utility::conversions::to_string_t("href")))
     {
@@ -54,7 +54,7 @@ void GroupImage::fromJson(web::json::value& val)
     }
 }
 
-void GroupImage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ListImage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -65,7 +65,7 @@ void GroupImage::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("href"), m_Href));
 }
 
-void GroupImage::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+void ListImage::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -76,13 +76,13 @@ void GroupImage::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
     setHref(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("href"))));
 }
 
-utility::string_t GroupImage::getHref() const
+utility::string_t ListImage::getHref() const
 {
     return m_Href;
 }
 
 
-void GroupImage::setHref(utility::string_t value)
+void ListImage::setHref(utility::string_t value)
 {
     m_Href = value;
     

@@ -11,18 +11,18 @@
  */
 
 /*
- * Group.h
+ * List.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_Group_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_Group_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_List_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_List_H_
 
 
 #include "../ModelBase.h"
 
-#include "GroupImage.h"
+#include "ListImage.h"
 #include <cpprest/details/basic_types.h>
 #include "User.h"
 
@@ -34,12 +34,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  Group
+class  List
     : public ModelBase
 {
 public:
-    Group();
-    virtual ~Group();
+    List();
+    virtual ~List();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,7 +53,7 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Group members
+    /// List members
 
     /// <summary>
     /// 
@@ -98,8 +98,8 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<GroupImage> getAvatar() const;
-        void setAvatar(std::shared_ptr<GroupImage> value);
+    std::shared_ptr<ListImage> getAvatar() const;
+        void setAvatar(std::shared_ptr<ListImage> value);
     /// <summary>
     /// 
     /// </summary>
@@ -115,7 +115,7 @@ protected:
         std::shared_ptr<User> m_User;
         bool m_Service;
         bool m_Shared;
-        std::shared_ptr<GroupImage> m_Avatar;
+        std::shared_ptr<ListImage> m_Avatar;
         bool m_IsDefault;
     };
 
@@ -124,4 +124,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_Group_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_List_H_ */
