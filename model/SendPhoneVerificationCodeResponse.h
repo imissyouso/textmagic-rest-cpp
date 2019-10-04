@@ -56,8 +56,8 @@ public:
     /// <summary>
     /// The ID of a verification request. This is required to finish the verification request in the next step.
     /// </summary>
-    utility::string_t getVerifyId() const;
-        void setVerifyId(utility::string_t value);
+    std::shared_ptr<utility::string_t> getVerifyId() const;
+        void setVerifyId(std::shared_ptr<utility::string_t> value);
     /// <summary>
     /// Amount of credit which will be deducted from your account balance when this verification is successfully completed.
     /// </summary>
@@ -65,7 +65,7 @@ public:
         void setPrice(double value);
 
 protected:
-    utility::string_t m_VerifyId;
+    std::shared_ptr<utility::string_t> m_VerifyId;
         double m_Price;
     };
 

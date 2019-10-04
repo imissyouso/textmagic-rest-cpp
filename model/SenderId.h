@@ -60,6 +60,13 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
+    /// Format for representation of time
+    /// </summary>
+    utility::string_t getDisplayTimeFormat() const;
+    bool displayTimeFormatIsSet() const;
+    void unsetDisplayTimeFormat();
+    void setDisplayTimeFormat(utility::string_t value);
+    /// <summary>
     /// Alphanumeric ID.
     /// </summary>
     utility::string_t getSenderId() const;
@@ -77,7 +84,9 @@ public:
 
 protected:
     int32_t m_Id;
-        utility::string_t m_SenderId;
+        utility::string_t m_DisplayTimeFormat;
+    bool m_DisplayTimeFormatIsSet;
+    utility::string_t m_SenderId;
         std::shared_ptr<User> m_User;
         utility::string_t m_Status;
     };

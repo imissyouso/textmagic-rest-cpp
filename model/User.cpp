@@ -22,6 +22,8 @@ namespace model {
 User::User()
 {
     m_Id = 0;
+    m_DisplayTimeFormat = utility::conversions::to_string_t("");
+    m_DisplayTimeFormatIsSet = false;
     m_Username = utility::conversions::to_string_t("");
     m_FirstName = utility::conversions::to_string_t("");
     m_LastName = utility::conversions::to_string_t("");
@@ -49,6 +51,10 @@ web::json::value User::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("id")] = ModelBase::toJson(m_Id);
+    if(m_DisplayTimeFormatIsSet)
+    {
+        val[utility::conversions::to_string_t("displayTimeFormat")] = ModelBase::toJson(m_DisplayTimeFormat);
+    }
     val[utility::conversions::to_string_t("username")] = ModelBase::toJson(m_Username);
     val[utility::conversions::to_string_t("firstName")] = ModelBase::toJson(m_FirstName);
     val[utility::conversions::to_string_t("lastName")] = ModelBase::toJson(m_LastName);
@@ -76,6 +82,14 @@ void User::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setId(ModelBase::int32_tFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("displayTimeFormat")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("displayTimeFormat")];
+        if(!fieldValue.is_null())
+        {
+            setDisplayTimeFormat(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("username")))
@@ -217,6 +231,11 @@ void User::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utili
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("id"), m_Id));
+    if(m_DisplayTimeFormatIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("displayTimeFormat"), m_DisplayTimeFormat));
+        
+    }
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("username"), m_Username));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("firstName"), m_FirstName));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("lastName"), m_LastName));
@@ -243,6 +262,10 @@ void User::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const uti
     }
 
     setId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("id"))));
+    if(multipart->hasContent(utility::conversions::to_string_t("displayTimeFormat")))
+    {
+        setDisplayTimeFormat(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("displayTimeFormat"))));
+    }
     setUsername(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("username"))));
     setFirstName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("firstName"))));
     setLastName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("lastName"))));
@@ -279,6 +302,27 @@ void User::setId(int32_t value)
     m_Id = value;
     
 }
+utility::string_t User::getDisplayTimeFormat() const
+{
+    return m_DisplayTimeFormat;
+}
+
+
+void User::setDisplayTimeFormat(utility::string_t value)
+{
+    m_DisplayTimeFormat = value;
+    m_DisplayTimeFormatIsSet = true;
+}
+bool User::displayTimeFormatIsSet() const
+{
+    return m_DisplayTimeFormatIsSet;
+}
+
+void User::unsetDisplayTimeFormat()
+{
+    m_DisplayTimeFormatIsSet = false;
+}
+
 utility::string_t User::getUsername() const
 {
     return m_Username;

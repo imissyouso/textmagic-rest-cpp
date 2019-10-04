@@ -61,6 +61,13 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
+    /// Format for representation of time
+    /// </summary>
+    utility::string_t getDisplayTimeFormat() const;
+    bool displayTimeFormatIsSet() const;
+    void unsetDisplayTimeFormat();
+    void setDisplayTimeFormat(utility::string_t value);
+    /// <summary>
     /// Dedicated phone number.
     /// </summary>
     utility::string_t getPhone() const;
@@ -95,7 +102,9 @@ public:
 
 protected:
     int32_t m_Id;
-        utility::string_t m_Phone;
+        utility::string_t m_DisplayTimeFormat;
+    bool m_DisplayTimeFormatIsSet;
+    utility::string_t m_Phone;
     bool m_PhoneIsSet;
     std::shared_ptr<User> m_User;
         utility::datetime m_PurchasedAt;
