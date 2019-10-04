@@ -2154,7 +2154,7 @@ public:
     /// Change sender settings
     /// </summary>
     /// <remarks>
-    /// @TODO
+    /// 
     /// </remarks>
     /// <param name="updateSenderSettingInputObject"></param>
     pplx::task<void> updateSenderSetting(
