@@ -1285,7 +1285,7 @@ public:
         boost::optional<utility::string_t> localCountry
     );
     /// <summary>
-    /// Check price
+    /// Check message price
     /// </summary>
     /// <remarks>
     /// Check pricing for a new outbound message.
