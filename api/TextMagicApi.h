@@ -187,7 +187,7 @@ public:
     TextMagicApi( std::shared_ptr<ApiClient> apiClient );
     virtual ~TextMagicApi();
     /// <summary>
-    /// Assign contacts to the specified list.
+    /// Assign contacts to a list
     /// </summary>
     /// <remarks>
     /// 
@@ -259,7 +259,7 @@ public:
         std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject
     );
     /// <summary>
-    /// Reset list members to the specified contacts.
+    /// Reset list members to the specified contacts
     /// </summary>
     /// <remarks>
     /// 
@@ -481,7 +481,7 @@ public:
         std::shared_ptr<DeleteContactsByIdsInputObject> deleteContactsByIdsInputObject
     );
     /// <summary>
-    /// Unassign contacts from the specified list.
+    /// Unassign contacts from a list
     /// </summary>
     /// <remarks>
     /// 
@@ -533,7 +533,7 @@ public:
         std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject
     );
     /// <summary>
-    /// Delete a single list.
+    /// Delete a single list
     /// </summary>
     /// <remarks>
     /// 
@@ -543,7 +543,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete an avatar for the list.
+    /// Delete an avatar for the list
     /// </summary>
     /// <remarks>
     /// 
@@ -553,7 +553,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete contact from list by given ID(s) or all contacts from list.
+    /// Delete contact from list by given ID(s) or all contacts from list
     /// </summary>
     /// <remarks>
     /// 
@@ -565,7 +565,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete list by given ID(s) or delete all lists.
+    /// Delete list by given ID(s) or delete all lists
     /// </summary>
     /// <remarks>
     /// 
@@ -1071,7 +1071,7 @@ public:
         boost::optional<int32_t> lists
     );
     /// <summary>
-    /// Fetch user contacts by given group id.
+    /// Get all contacts in a list
     /// </summary>
     /// <remarks>
     /// A useful synonym for \&quot;contacts/search\&quot; command with provided \&quot;listId\&quot; parameter.
@@ -1199,7 +1199,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Fetch all contacts IDs belonging to the list with ID.
+    /// Fetch all contacts IDs belonging to the list with ID
     /// </summary>
     /// <remarks>
     /// 
@@ -1462,7 +1462,7 @@ public:
     /// Get current sender settings
     /// </summary>
     /// <remarks>
-    /// @TODO
+    /// 
     /// </remarks>
     /// <param name="country">Return sender settings enabled for sending to specified country. Two upper case characters (optional)</param>
     pplx::task<std::shared_ptr<GetSenderSettingsResponse>> getSenderSettings(
@@ -1847,7 +1847,7 @@ public:
         boost::optional<int32_t> expand
     );
     /// <summary>
-    /// Find contact lists by given parameters.
+    /// Find contact lists by given parameters
     /// </summary>
     /// <remarks>
     /// 
@@ -2129,7 +2129,7 @@ public:
         std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject
     );
     /// <summary>
-    /// Update existing list.
+    /// Update existing list
     /// </summary>
     /// <remarks>
     /// 
@@ -2219,7 +2219,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Add an avatar for the list.
+    /// Add an avatar for the list
     /// </summary>
     /// <remarks>
     /// 
