@@ -54,7 +54,7 @@ public:
     /// UpdateCustomFieldInputObject members
 
     /// <summary>
-    /// Custom field name
+    /// Custom field name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);

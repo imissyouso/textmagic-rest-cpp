@@ -55,40 +55,40 @@ public:
     /// CreateContactInputObject members
 
     /// <summary>
-    /// Contact first name
+    /// Contact first name.
     /// </summary>
     utility::string_t getFirstName() const;
     bool firstNameIsSet() const;
     void unsetFirstName();
     void setFirstName(utility::string_t value);
     /// <summary>
-    /// Contact last name
+    /// Contact last name.
     /// </summary>
     utility::string_t getLastName() const;
     bool lastNameIsSet() const;
     void unsetLastName();
     void setLastName(utility::string_t value);
     /// <summary>
-    /// Contact phone number in E.164 (international) format without leading + or zeroes
+    /// Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
     /// </summary>
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
     /// <summary>
-    /// Contact email
+    /// Contact email address.
     /// </summary>
     utility::string_t getEmail() const;
     bool emailIsSet() const;
     void unsetEmail();
     void setEmail(utility::string_t value);
     /// <summary>
-    /// Contact company name
+    /// Company name.
     /// </summary>
     utility::string_t getCompanyName() const;
     bool companyNameIsSet() const;
     void unsetCompanyName();
     void setCompanyName(utility::string_t value);
     /// <summary>
-    /// Array of list resources id contact will be assigned to
+    /// Contact [list](/docs/api/lists/) ID. Each contact must be assigned to at least one list.
     /// </summary>
     utility::string_t getLists() const;
         void setLists(utility::string_t value);

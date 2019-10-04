@@ -54,7 +54,7 @@ public:
     /// DeleteContacsFromListObject members
 
     /// <summary>
-    /// 
+    /// Comma-separated array of [Contacts](/docs/api/contacts/) IDs. 
     /// </summary>
     utility::string_t getContacts() const;
         void setContacts(utility::string_t value);

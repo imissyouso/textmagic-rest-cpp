@@ -20,7 +20,7 @@
 #define COM_TEXTMAGIC_CLIENT_MODEL_GetContactsAutocompleteResponse_H_
 
 
-#include "GetContactsAutocompleteResponse.h"
+#include "GetContactsAutocompleteResponseItem.h"
 #include <vector>
 
 namespace com {
@@ -32,7 +32,7 @@ namespace model {
 /// 
 /// </summary>
 class  GetContactsAutocompleteResponse
-    : public null<GetContactsAutocompleteResponse>
+    : public null<GetContactsAutocompleteResponseItem>
 {
 public:
     GetContactsAutocompleteResponse();

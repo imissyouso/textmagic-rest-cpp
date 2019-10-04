@@ -190,19 +190,19 @@ public:
     /// Assign contacts to a list
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; Unlike all other PUT requests, this command does not need old contact IDs to be submitted. For example, if you have a list with contacts 150, 151 and 152 and you want to add contact ID 153, you only need to submit 153 as a parameter of PUT /api/v2/lists/{id}/contacts. 
     /// </remarks>
-    /// <param name="assignContactsToListInputObject">Contact ID(s), separated by comma or &#39;all&#39; to add all contacts belonging to the current user</param>
+    /// <param name="assignContactsToListInputObject"></param>
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> assignContactsToList(
         std::shared_ptr<AssignContactsToListInputObject> assignContactsToListInputObject,
         int32_t id
     );
     /// <summary>
-    /// Block contact from inbound and outbound communication by phone number.
+    /// Block contact by phone number
     /// </summary>
     /// <remarks>
-    /// 
+    /// Block contact from inbound and outbound communication by phone number.
     /// </remarks>
     /// <param name="blockContactInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> blockContact(
@@ -299,7 +299,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Create a new contact from the submitted data.
+    /// Add a new contact
     /// </summary>
     /// <remarks>
     /// 
@@ -321,7 +321,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Create a new custom field from the submitted data.
+    /// Add a new custom field
     /// </summary>
     /// <remarks>
     /// 
@@ -383,7 +383,7 @@ public:
         std::shared_ptr<CreateTemplateInputObject> createTemplateInputObject
     );
     /// <summary>
-    /// Delete all contacts.
+    /// Delete contacts (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -429,17 +429,17 @@ public:
         std::shared_ptr<DeleteChatsBulkInputObject> deleteChatsBulkInputObject
     );
     /// <summary>
-    /// Delete a single contact.
+    /// Delete a contact
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; This command removes your contact completely. If it was assigned or saved to a shared list, it will disappear from there too. If you only need to remove a contact from selected lists, instead use the Contact assignment command in the Lists section rather than deleting the contact. 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteContact(
         int32_t id
     );
     /// <summary>
-    /// Delete an avatar for the contact.
+    /// Delete an avatar
     /// </summary>
     /// <remarks>
     /// 
@@ -471,7 +471,7 @@ public:
         std::shared_ptr<DeleteContactNotesBulkInputObject> deleteContactNotesBulkInputObject
     );
     /// <summary>
-    /// Delete contact by given ID(s) or delete all contacts.
+    /// Delete contacts by IDs (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -484,19 +484,19 @@ public:
     /// Unassign contacts from a list
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; When you remove contacts from a specific list, they will be deleted permanently, unless they are first saved in another list. 
     /// </remarks>
-    /// <param name="deleteContacsFromListObject">Contact ID(s), separated by comma</param>
+    /// <param name="deleteContacsFromListObject"></param>
     /// <param name="id"></param>
     pplx::task<void> deleteContactsFromList(
         std::shared_ptr<DeleteContacsFromListObject> deleteContacsFromListObject,
         int32_t id
     );
     /// <summary>
-    /// Delete a single custom field.
+    /// Delete a custom field
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; When a custom field is deleted, all the information that was added to contacts under this custom field will also be lost. 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteCustomField(
@@ -533,10 +533,10 @@ public:
         std::shared_ptr<DeleteInboundMessagesBulkInputObject> deleteInboundMessagesBulkInputObject
     );
     /// <summary>
-    /// Delete a single list
+    /// Delete a list
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; When you delete a list, the contacts in it are deleted as well unless they were saved in other list. 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteList(
@@ -553,7 +553,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete contact from list by given ID(s) or all contacts from list
+    /// Delete contacts from list (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -565,7 +565,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete list by given ID(s) or delete all lists
+    /// Delete lists (bulk)
     /// </summary>
     /// <remarks>
     /// 
@@ -578,7 +578,7 @@ public:
     /// Delete a session
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete a message session, together with all nested messages. &gt; You will not be refunded for any deleted sent sessions. 
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteMessageSession(
@@ -588,7 +588,7 @@ public:
     /// Delete sessions (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete messages sessions, together with all nested messages, by given ID(s) or delete all messages sessions.
     /// </remarks>
     /// <param name="deleteMessageSessionsBulkInputObject"></param>
     pplx::task<void> deleteMessageSessionsBulk(
@@ -690,7 +690,7 @@ public:
     /// Delete templates (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Delete template by given ID(s) or delete all templates.
     /// </remarks>
     /// <param name="deleteTemplatesBulkInputObject"></param>
     pplx::task<void> deleteTemplatesBulk(
@@ -790,7 +790,7 @@ public:
     /// Get all sessions
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get all message sending sessions. &gt; This list contains all of your sessions, including those which were sent but not via API 
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
@@ -883,7 +883,7 @@ public:
     pplx::task<std::shared_ptr<GetBalanceNotificationSettingsResponse>> getBalanceNotificationSettings(
     );
     /// <summary>
-    /// Get blocked contacts.
+    /// Get blocked contacts
     /// </summary>
     /// <remarks>
     /// 
@@ -975,7 +975,7 @@ public:
         boost::optional<int32_t> voice
     );
     /// <summary>
-    /// Get a single contact.
+    /// Get the details of a specific contact
     /// </summary>
     /// <remarks>
     /// 
@@ -985,7 +985,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get a single contact by phone number.
+    /// Get the details of a specific contact by phone number
     /// </summary>
     /// <remarks>
     /// 
@@ -1039,7 +1039,7 @@ public:
         boost::optional<int32_t> limit
     );
     /// <summary>
-    /// Get all user contacts.
+    /// Get all contacts
     /// </summary>
     /// <remarks>
     /// 
@@ -1057,10 +1057,10 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Get contacts autocomplete suggestions by given search term.
+    /// Get contacts autocomplete suggestions
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get contacts autocomplete suggestions by given search term
     /// </remarks>
     /// <param name="query">Find recipients by specified search query</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
@@ -1105,7 +1105,7 @@ public:
     pplx::task<std::shared_ptr<User>> getCurrentUser(
     );
     /// <summary>
-    /// Get a single custom field.
+    /// Get the details of a specific custom field
     /// </summary>
     /// <remarks>
     /// 
@@ -1115,7 +1115,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get all contact custom fields.
+    /// Get all custom fields
     /// </summary>
     /// <remarks>
     /// 
@@ -1145,7 +1145,7 @@ public:
     pplx::task<std::shared_ptr<GetDisallowedRulesResponse>> getDisallowedRules(
     );
     /// <summary>
-    /// Get favorite contacts and lists.
+    /// Get favorite contacts and lists
     /// </summary>
     /// <remarks>
     /// 
@@ -1199,7 +1199,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Fetch all contacts IDs belonging to the list with ID
+    /// Get all contacts IDs in a list
     /// </summary>
     /// <remarks>
     /// 
@@ -1229,10 +1229,10 @@ public:
         boost::optional<int32_t> onlyMine
     );
     /// <summary>
-    /// Return lists which contact belongs to.
+    /// Get contact&#39;s lists
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get all the lists in which the contact is included
     /// </remarks>
     /// <param name="id"></param>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
@@ -1332,7 +1332,7 @@ public:
     /// Get a session details
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get a specific session’s details
     /// </remarks>
     /// <param name="id">a session ID</param>
     pplx::task<std::shared_ptr<MessageSession>> getMessageSession(
@@ -1574,7 +1574,7 @@ public:
     /// Get a template details
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get a single template.
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<MessageTemplate>> getTemplate(
@@ -1599,7 +1599,7 @@ public:
     pplx::task<std::shared_ptr<GetUnreadMessagesTotalResponse>> getUnreadMessagesTotal(
     );
     /// <summary>
-    /// Get a single unsubscribed contact.
+    /// Get the details of a specific unsubscribed contact
     /// </summary>
     /// <remarks>
     /// 
@@ -1609,10 +1609,10 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Get all contact have unsubscribed from your communication.
+    /// Get all unsubscribed contacts
     /// </summary>
     /// <remarks>
-    /// 
+    /// When one of your message recipients sends a request with one of the [STOP-words](/sms-stop-command/), they will be immediately opted-out of your send lists and their contact status will change to an unsubscribed contact. To retrieve information on all contacts who have unsubscribed, use: 
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
@@ -1795,7 +1795,7 @@ public:
         boost::optional<utility::string_t> orderBy
     );
     /// <summary>
-    /// Find user contacts by given parameters.
+    /// Find contacts by given criteria
     /// </summary>
     /// <remarks>
     /// 
@@ -1847,7 +1847,7 @@ public:
         boost::optional<int32_t> expand
     );
     /// <summary>
-    /// Find contact lists by given parameters
+    /// Find lists by given criteria
     /// </summary>
     /// <remarks>
     /// 
@@ -1920,7 +1920,7 @@ public:
     /// Find templates by criteria
     /// </summary>
     /// <remarks>
-    /// 
+    /// Find user templates by given parameters.
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
@@ -2001,10 +2001,10 @@ public:
         std::shared_ptr<UnblockContactInputObject> unblockContactInputObject
     );
     /// <summary>
-    /// Unblock several contacts by blocked contact ids or unblock all contacts
+    /// Unblock contacts (bulk)
     /// </summary>
     /// <remarks>
-    /// 
+    /// Unblock several contacts by blocked contact ids or unblock all contacts
     /// </remarks>
     /// <param name="unblockContactsBulkInputObject"></param>
     pplx::task<void> unblockContactsBulk(
@@ -2021,10 +2021,10 @@ public:
         std::shared_ptr<UnmuteChatsBulkInputObject> unmuteChatsBulkInputObject
     );
     /// <summary>
-    /// Unsubscribe contact from your communication by phone number.
+    /// Manually unsubscribe a contact
     /// </summary>
     /// <remarks>
-    /// 
+    /// &gt; Please note, if you unsubscribe a contact, this action cannot be reversed. 
     /// </remarks>
     /// <param name="unsubscribeContactInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> unsubscribeContact(
@@ -2061,7 +2061,7 @@ public:
         std::shared_ptr<UpdateChatDesktopNotificationSettingsInputObject> updateChatDesktopNotificationSettingsInputObject
     );
     /// <summary>
-    /// Update existing contact.
+    /// Edit a contact
     /// </summary>
     /// <remarks>
     /// 
@@ -2095,7 +2095,7 @@ public:
         std::shared_ptr<UpdateCurrentUserInputObject> updateCurrentUserInputObject
     );
     /// <summary>
-    /// Update existing custom field.
+    /// Edit a custom field
     /// </summary>
     /// <remarks>
     /// 
@@ -2107,7 +2107,7 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Update contact&#39;s custom field value.
+    /// Edit the custom field value of a specified contact
     /// </summary>
     /// <remarks>
     /// 
@@ -2129,7 +2129,7 @@ public:
         std::shared_ptr<UpdateInboundMessagesNotificationSettingsInputObject> updateInboundMessagesNotificationSettingsInputObject
     );
     /// <summary>
-    /// Update existing list
+    /// Edit a list
     /// </summary>
     /// <remarks>
     /// 
@@ -2207,7 +2207,7 @@ public:
         std::shared_ptr<HttpContent> image
     );
     /// <summary>
-    /// Add an avatar for the contact.
+    /// Upload an avatar
     /// </summary>
     /// <remarks>
     /// 

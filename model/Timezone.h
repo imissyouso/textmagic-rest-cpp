@@ -69,7 +69,7 @@ public:
     int32_t getDst() const;
         void setDst(int32_t value);
     /// <summary>
-    /// 
+    /// Offset from UTC time in seconds. In this example it is 21600/60/60&#x3D;6 hours.
     /// </summary>
     int32_t getOffset() const;
         void setOffset(int32_t value);

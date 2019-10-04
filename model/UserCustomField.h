@@ -54,17 +54,17 @@ public:
     /// UserCustomField members
 
     /// <summary>
-    /// 
+    /// Custom field ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Custom field name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Custom field creation time.
     /// </summary>
     utility::datetime getCreatedAt() const;
         void setCreatedAt(utility::datetime value);

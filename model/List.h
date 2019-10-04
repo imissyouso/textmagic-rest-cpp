@@ -56,17 +56,17 @@ public:
     /// List members
 
     /// <summary>
-    /// 
+    /// List ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// List name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// 
+    /// List description.
     /// </summary>
     utility::string_t getDescription() const;
         void setDescription(utility::string_t value);
@@ -76,7 +76,7 @@ public:
     bool isFavorited() const;
         void setFavorited(bool value);
     /// <summary>
-    /// 
+    /// List members count.
     /// </summary>
     int32_t getMembersCount() const;
         void setMembersCount(int32_t value);
@@ -91,7 +91,7 @@ public:
     bool isService() const;
         void setService(bool value);
     /// <summary>
-    /// 
+    /// Is the list **shared** among all sub-accounts?
     /// </summary>
     bool isShared() const;
         void setShared(bool value);

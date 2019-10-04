@@ -34,7 +34,7 @@ void GetContactsAutocompleteResponse::validate()
 
 web::json::value GetContactsAutocompleteResponse::toJson() const
 {
-    web::json::value val = this->null<GetContactsAutocompleteResponse>::toJson();
+    web::json::value val = this->null<GetContactsAutocompleteResponseItem>::toJson();
 
 
     return val;
@@ -42,7 +42,7 @@ web::json::value GetContactsAutocompleteResponse::toJson() const
 
 void GetContactsAutocompleteResponse::fromJson(web::json::value& val)
 {
-    this->null<GetContactsAutocompleteResponse>::fromJson(val);
+    this->null<GetContactsAutocompleteResponseItem>::fromJson(val);
 
 }
 

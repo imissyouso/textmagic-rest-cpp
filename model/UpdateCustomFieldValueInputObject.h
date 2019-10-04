@@ -54,14 +54,14 @@ public:
     /// UpdateCustomFieldValueInputObject members
 
     /// <summary>
-    /// 
+    /// [Contact](/docs/api/contacts/) 
     /// </summary>
     int32_t getContactId() const;
     bool contactIdIsSet() const;
     void unsetContactId();
     void setContactId(int32_t value);
     /// <summary>
-    /// 
+    /// Custom field value. Note that this value is not parsed in any way. It is stored and used in tags exactly as you send it.
     /// </summary>
     utility::string_t getValue() const;
     bool valueIsSet() const;

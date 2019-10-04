@@ -61,7 +61,7 @@ public:
     /// Contact members
 
     /// <summary>
-    /// 
+    /// Contact ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
@@ -76,37 +76,37 @@ public:
     bool isBlocked() const;
         void setBlocked(bool value);
     /// <summary>
-    /// 
+    /// Contact first name.
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact last name.
     /// </summary>
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Company name.
     /// </summary>
     utility::string_t getCompanyName() const;
         void setCompanyName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
     /// </summary>
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact email address.
     /// </summary>
     utility::string_t getEmail() const;
         void setEmail(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact country.
     /// </summary>
     std::shared_ptr<Country> getCountry() const;
         void setCountry(std::shared_ptr<Country> value);
     /// <summary>
-    /// 
+    /// See [Custom Fields](/docs/api/custom-fields/) section.
     /// </summary>
     std::vector<std::shared_ptr<ContactCustomField>>& getCustomFields();
         void setCustomFields(std::vector<std::shared_ptr<ContactCustomField>> value);

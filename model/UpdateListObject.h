@@ -54,19 +54,19 @@ public:
     /// UpdateListObject members
 
     /// <summary>
-    /// List name
+    /// List name.
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// Should this list be shared with sub-accounts
+    /// Make this list shared or not?
     /// </summary>
     bool isShared() const;
     bool sharedIsSet() const;
     void unsetShared();
     void setShared(bool value);
     /// <summary>
-    /// Is list favorited. Default is false
+    /// Is list favorited.
     /// </summary>
     bool isFavorited() const;
     bool favoritedIsSet() const;
