@@ -1,5 +1,5 @@
 #
-# TextMagic API Documentation
+# TextMagic API
 #
 # https://github.com/swagger-api/swagger-codegen.git
 #
