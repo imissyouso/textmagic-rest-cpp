@@ -55,39 +55,39 @@ public:
     /// DoCarrierLookupResponse members
 
     /// <summary>
-    /// 
+    /// Cost to check one number is constant – 0.04 in your account currency.
     /// </summary>
     double getCost() const;
         void setCost(double value);
     /// <summary>
-    /// 
+    /// Phone number country.
     /// </summary>
     std::shared_ptr<Country> getCountry() const;
     bool countryIsSet() const;
     void unsetCountry();
     void setCountry(std::shared_ptr<Country> value);
     /// <summary>
-    /// 
+    /// Phone number in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers).
     /// </summary>
     utility::string_t getLocal() const;
         void setLocal(utility::string_t value);
     /// <summary>
-    /// 
+    /// Phone number type.
     /// </summary>
     utility::string_t getType() const;
         void setType(utility::string_t value);
     /// <summary>
-    /// 
+    /// Carrier name.
     /// </summary>
     utility::string_t getCarrier() const;
         void setCarrier(utility::string_t value);
     /// <summary>
-    /// 
+    /// Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
     /// </summary>
     utility::string_t getNumber164() const;
         void setNumber164(utility::string_t value);
     /// <summary>
-    /// 
+    /// The field shows if entered phone number is valid or not.
     /// </summary>
     bool isValid() const;
         void setValid(bool value);

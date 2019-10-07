@@ -22,23 +22,23 @@ namespace model {
 DoEmailLookupResponse::DoEmailLookupResponse()
 {
     m_Address = utility::conversions::to_string_t("");
-    m_AddressType = utility::conversions::to_string_t("");
-    m_EmailRole = utility::conversions::to_string_t("");
-    m_Reason = utility::conversions::to_string_t("");
     m_Status = utility::conversions::to_string_t("");
     m_Deliverability = utility::conversions::to_string_t("");
+    m_Reason = utility::conversions::to_string_t("");
+    m_Risk = utility::conversions::to_string_t("");
+    m_AddressType = utility::conversions::to_string_t("");
     m_IsDisposableAddress = false;
+    m_Suggestion = utility::conversions::to_string_t("");
+    m_EmailRole = utility::conversions::to_string_t("");
     m_LocalPart = utility::conversions::to_string_t("");
     m_DomainPart = utility::conversions::to_string_t("");
     m_Exchange = utility::conversions::to_string_t("");
+    m_Preference = 0;
     m_IsInWhiteList = false;
     m_IsInBlackList = false;
     m_HasMx = false;
     m_HasAa = false;
     m_HasAaaa = false;
-    m_Risk = utility::conversions::to_string_t("");
-    m_Preference = 0;
-    m_Suggestion = utility::conversions::to_string_t("");
 }
 
 DoEmailLookupResponse::~DoEmailLookupResponse()
@@ -55,23 +55,23 @@ web::json::value DoEmailLookupResponse::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("address")] = ModelBase::toJson(m_Address);
-    val[utility::conversions::to_string_t("addressType")] = ModelBase::toJson(m_AddressType);
-    val[utility::conversions::to_string_t("emailRole")] = ModelBase::toJson(m_EmailRole);
-    val[utility::conversions::to_string_t("reason")] = ModelBase::toJson(m_Reason);
     val[utility::conversions::to_string_t("status")] = ModelBase::toJson(m_Status);
     val[utility::conversions::to_string_t("deliverability")] = ModelBase::toJson(m_Deliverability);
+    val[utility::conversions::to_string_t("reason")] = ModelBase::toJson(m_Reason);
+    val[utility::conversions::to_string_t("risk")] = ModelBase::toJson(m_Risk);
+    val[utility::conversions::to_string_t("addressType")] = ModelBase::toJson(m_AddressType);
     val[utility::conversions::to_string_t("isDisposableAddress")] = ModelBase::toJson(m_IsDisposableAddress);
+    val[utility::conversions::to_string_t("suggestion")] = ModelBase::toJson(m_Suggestion);
+    val[utility::conversions::to_string_t("emailRole")] = ModelBase::toJson(m_EmailRole);
     val[utility::conversions::to_string_t("localPart")] = ModelBase::toJson(m_LocalPart);
     val[utility::conversions::to_string_t("domainPart")] = ModelBase::toJson(m_DomainPart);
     val[utility::conversions::to_string_t("exchange")] = ModelBase::toJson(m_Exchange);
+    val[utility::conversions::to_string_t("preference")] = ModelBase::toJson(m_Preference);
     val[utility::conversions::to_string_t("isInWhiteList")] = ModelBase::toJson(m_IsInWhiteList);
     val[utility::conversions::to_string_t("isInBlackList")] = ModelBase::toJson(m_IsInBlackList);
     val[utility::conversions::to_string_t("hasMx")] = ModelBase::toJson(m_HasMx);
     val[utility::conversions::to_string_t("hasAa")] = ModelBase::toJson(m_HasAa);
     val[utility::conversions::to_string_t("hasAaaa")] = ModelBase::toJson(m_HasAaaa);
-    val[utility::conversions::to_string_t("risk")] = ModelBase::toJson(m_Risk);
-    val[utility::conversions::to_string_t("preference")] = ModelBase::toJson(m_Preference);
-    val[utility::conversions::to_string_t("suggestion")] = ModelBase::toJson(m_Suggestion);
 
     return val;
 }
@@ -84,30 +84,6 @@ void DoEmailLookupResponse::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setAddress(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("addressType")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("addressType")];
-        if(!fieldValue.is_null())
-        {
-            setAddressType(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("emailRole")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("emailRole")];
-        if(!fieldValue.is_null())
-        {
-            setEmailRole(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("reason")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("reason")];
-        if(!fieldValue.is_null())
-        {
-            setReason(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("status")))
@@ -126,12 +102,52 @@ void DoEmailLookupResponse::fromJson(web::json::value& val)
             setDeliverability(ModelBase::stringFromJson(fieldValue));
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("reason")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("reason")];
+        if(!fieldValue.is_null())
+        {
+            setReason(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("risk")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("risk")];
+        if(!fieldValue.is_null())
+        {
+            setRisk(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("addressType")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("addressType")];
+        if(!fieldValue.is_null())
+        {
+            setAddressType(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("isDisposableAddress")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("isDisposableAddress")];
         if(!fieldValue.is_null())
         {
             setIsDisposableAddress(ModelBase::boolFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("suggestion")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("suggestion")];
+        if(!fieldValue.is_null())
+        {
+            setSuggestion(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("emailRole")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("emailRole")];
+        if(!fieldValue.is_null())
+        {
+            setEmailRole(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("localPart")))
@@ -156,6 +172,14 @@ void DoEmailLookupResponse::fromJson(web::json::value& val)
         if(!fieldValue.is_null())
         {
             setExchange(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("preference")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("preference")];
+        if(!fieldValue.is_null())
+        {
+            setPreference(ModelBase::int32_tFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("isInWhiteList")))
@@ -198,30 +222,6 @@ void DoEmailLookupResponse::fromJson(web::json::value& val)
             setHasAaaa(ModelBase::boolFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("risk")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("risk")];
-        if(!fieldValue.is_null())
-        {
-            setRisk(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("preference")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("preference")];
-        if(!fieldValue.is_null())
-        {
-            setPreference(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("suggestion")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("suggestion")];
-        if(!fieldValue.is_null())
-        {
-            setSuggestion(ModelBase::stringFromJson(fieldValue));
-        }
-    }
 }
 
 void DoEmailLookupResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -233,23 +233,23 @@ void DoEmailLookupResponse::toMultipart(std::shared_ptr<MultipartFormData> multi
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("address"), m_Address));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("addressType"), m_AddressType));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("emailRole"), m_EmailRole));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("reason"), m_Reason));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("status"), m_Status));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("deliverability"), m_Deliverability));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("reason"), m_Reason));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("risk"), m_Risk));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("addressType"), m_AddressType));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isDisposableAddress"), m_IsDisposableAddress));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("suggestion"), m_Suggestion));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("emailRole"), m_EmailRole));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("localPart"), m_LocalPart));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("domainPart"), m_DomainPart));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("exchange"), m_Exchange));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("preference"), m_Preference));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isInWhiteList"), m_IsInWhiteList));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("isInBlackList"), m_IsInBlackList));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("hasMx"), m_HasMx));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("hasAa"), m_HasAa));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("hasAaaa"), m_HasAaaa));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("risk"), m_Risk));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("preference"), m_Preference));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("suggestion"), m_Suggestion));
 }
 
 void DoEmailLookupResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -261,23 +261,23 @@ void DoEmailLookupResponse::fromMultiPart(std::shared_ptr<MultipartFormData> mul
     }
 
     setAddress(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("address"))));
-    setAddressType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("addressType"))));
-    setEmailRole(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("emailRole"))));
-    setReason(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("reason"))));
     setStatus(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("status"))));
     setDeliverability(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("deliverability"))));
+    setReason(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("reason"))));
+    setRisk(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("risk"))));
+    setAddressType(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("addressType"))));
     setIsDisposableAddress(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isDisposableAddress"))));
+    setSuggestion(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("suggestion"))));
+    setEmailRole(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("emailRole"))));
     setLocalPart(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("localPart"))));
     setDomainPart(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("domainPart"))));
     setExchange(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("exchange"))));
+    setPreference(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("preference"))));
     setIsInWhiteList(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isInWhiteList"))));
     setIsInBlackList(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("isInBlackList"))));
     setHasMx(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("hasMx"))));
     setHasAa(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("hasAa"))));
     setHasAaaa(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("hasAaaa"))));
-    setRisk(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("risk"))));
-    setPreference(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("preference"))));
-    setSuggestion(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("suggestion"))));
 }
 
 utility::string_t DoEmailLookupResponse::getAddress() const
@@ -289,39 +289,6 @@ utility::string_t DoEmailLookupResponse::getAddress() const
 void DoEmailLookupResponse::setAddress(utility::string_t value)
 {
     m_Address = value;
-    
-}
-utility::string_t DoEmailLookupResponse::getAddressType() const
-{
-    return m_AddressType;
-}
-
-
-void DoEmailLookupResponse::setAddressType(utility::string_t value)
-{
-    m_AddressType = value;
-    
-}
-utility::string_t DoEmailLookupResponse::getEmailRole() const
-{
-    return m_EmailRole;
-}
-
-
-void DoEmailLookupResponse::setEmailRole(utility::string_t value)
-{
-    m_EmailRole = value;
-    
-}
-utility::string_t DoEmailLookupResponse::getReason() const
-{
-    return m_Reason;
-}
-
-
-void DoEmailLookupResponse::setReason(utility::string_t value)
-{
-    m_Reason = value;
     
 }
 utility::string_t DoEmailLookupResponse::getStatus() const
@@ -346,6 +313,39 @@ void DoEmailLookupResponse::setDeliverability(utility::string_t value)
     m_Deliverability = value;
     
 }
+utility::string_t DoEmailLookupResponse::getReason() const
+{
+    return m_Reason;
+}
+
+
+void DoEmailLookupResponse::setReason(utility::string_t value)
+{
+    m_Reason = value;
+    
+}
+utility::string_t DoEmailLookupResponse::getRisk() const
+{
+    return m_Risk;
+}
+
+
+void DoEmailLookupResponse::setRisk(utility::string_t value)
+{
+    m_Risk = value;
+    
+}
+utility::string_t DoEmailLookupResponse::getAddressType() const
+{
+    return m_AddressType;
+}
+
+
+void DoEmailLookupResponse::setAddressType(utility::string_t value)
+{
+    m_AddressType = value;
+    
+}
 bool DoEmailLookupResponse::isIsDisposableAddress() const
 {
     return m_IsDisposableAddress;
@@ -355,6 +355,28 @@ bool DoEmailLookupResponse::isIsDisposableAddress() const
 void DoEmailLookupResponse::setIsDisposableAddress(bool value)
 {
     m_IsDisposableAddress = value;
+    
+}
+utility::string_t DoEmailLookupResponse::getSuggestion() const
+{
+    return m_Suggestion;
+}
+
+
+void DoEmailLookupResponse::setSuggestion(utility::string_t value)
+{
+    m_Suggestion = value;
+    
+}
+utility::string_t DoEmailLookupResponse::getEmailRole() const
+{
+    return m_EmailRole;
+}
+
+
+void DoEmailLookupResponse::setEmailRole(utility::string_t value)
+{
+    m_EmailRole = value;
     
 }
 utility::string_t DoEmailLookupResponse::getLocalPart() const
@@ -388,6 +410,17 @@ utility::string_t DoEmailLookupResponse::getExchange() const
 void DoEmailLookupResponse::setExchange(utility::string_t value)
 {
     m_Exchange = value;
+    
+}
+int32_t DoEmailLookupResponse::getPreference() const
+{
+    return m_Preference;
+}
+
+
+void DoEmailLookupResponse::setPreference(int32_t value)
+{
+    m_Preference = value;
     
 }
 bool DoEmailLookupResponse::isIsInWhiteList() const
@@ -443,39 +476,6 @@ bool DoEmailLookupResponse::isHasAaaa() const
 void DoEmailLookupResponse::setHasAaaa(bool value)
 {
     m_HasAaaa = value;
-    
-}
-utility::string_t DoEmailLookupResponse::getRisk() const
-{
-    return m_Risk;
-}
-
-
-void DoEmailLookupResponse::setRisk(utility::string_t value)
-{
-    m_Risk = value;
-    
-}
-int32_t DoEmailLookupResponse::getPreference() const
-{
-    return m_Preference;
-}
-
-
-void DoEmailLookupResponse::setPreference(int32_t value)
-{
-    m_Preference = value;
-    
-}
-utility::string_t DoEmailLookupResponse::getSuggestion() const
-{
-    return m_Suggestion;
-}
-
-
-void DoEmailLookupResponse::setSuggestion(utility::string_t value)
-{
-    m_Suggestion = value;
     
 }
 }

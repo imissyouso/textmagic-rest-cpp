@@ -710,21 +710,21 @@ public:
     /// Carrier Lookup
     /// </summary>
     /// <remarks>
-    /// 
+    /// This API call allows you to retrieve additional information about a phone number: region-specific phone number formatting, carrier, phone type (landline/mobile) and country information.  &gt; Numbers can be checked one by one. You cannot check multiple numbers in one request.   
     /// </remarks>
-    /// <param name="phone"></param>
-    /// <param name="country">Country code for local formatted numbers (optional, default to US)</param>
+    /// <param name="phone">Phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) or in [National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers). </param>
+    /// <param name="country">This option must be specified only if the phone number in a **[National format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers)**.  (optional)</param>
     pplx::task<std::shared_ptr<DoCarrierLookupResponse>> doCarrierLookup(
         utility::string_t phone,
         boost::optional<utility::string_t> country
     );
     /// <summary>
-    /// Validate Email address using Email Lookup tool
+    /// Email Lookup
     /// </summary>
     /// <remarks>
-    /// 
+    /// To get more details about an email address or to check if it is a valid email, you can use the Email Lookup command. To upload and check emails in bulk, please use our [Web app](https://my.textmagic.com/online/email-lookup/).  This API call allows you to retrieve additional information about an email address, such as mailbox detection, syntax checks, DNS validation, deliverability status, and many more helpful values (see the table below).  &gt; Emails must be checked one by one. You cannot check multiple emails in one request. To upload and check emails in bulk, please use our [Web app](https://my.textmagic.com/online/email-lookup/).
     /// </remarks>
-    /// <param name="email"></param>
+    /// <param name="email">Email address.</param>
     pplx::task<std::shared_ptr<DoEmailLookupResponse>> doEmailLookup(
         utility::string_t email
     );
@@ -1089,7 +1089,7 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Return list of countries.
+    /// Get countries
     /// </summary>
     /// <remarks>
     /// 
@@ -1581,10 +1581,10 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Return all available timezone IDs.
+    /// Get timezones
     /// </summary>
     /// <remarks>
-    /// 
+    /// Return all available timezone IDs
     /// </remarks>
     /// <param name="full">Return full info about timezones in array (0 or 1). Default is 0 (optional, default to 0)</param>
     pplx::task<std::shared_ptr<GetTimezonesResponse>> getTimezones(
@@ -1703,10 +1703,10 @@ public:
         std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject
     );
     /// <summary>
-    /// Just does a pong.
+    /// Ping
     /// </summary>
     /// <remarks>
-    /// 
+    /// Make a simple ping request
     /// </remarks>
     pplx::task<std::shared_ptr<PingResponse>> ping(
     );
