@@ -13,7 +13,7 @@
 /*
  * CheckPhoneVerificationCodeInputObject.h
  *
- * Confirmation code to check
+ * 
  */
 
 #ifndef COM_TEXTMAGIC_CLIENT_MODEL_CheckPhoneVerificationCodeInputObject_H_
@@ -22,6 +22,7 @@
 
 #include "../ModelBase.h"
 
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -29,7 +30,7 @@ namespace client {
 namespace model {
 
 /// <summary>
-/// Confirmation code to check
+/// 
 /// </summary>
 class  CheckPhoneVerificationCodeInputObject
     : public ModelBase
@@ -53,13 +54,19 @@ public:
     /// CheckPhoneVerificationCodeInputObject members
 
     /// <summary>
-    /// 
+    /// Verification code that was received by the user and entered into the form field.
     /// </summary>
     int32_t getCode() const;
         void setCode(int32_t value);
+    /// <summary>
+    /// VerifyId from Step 1 to match both requests together.
+    /// </summary>
+    utility::string_t getVerifyId() const;
+        void setVerifyId(utility::string_t value);
 
 protected:
     int32_t m_Code;
+        utility::string_t m_VerifyId;
     };
 
 }

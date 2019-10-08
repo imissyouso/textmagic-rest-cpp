@@ -22,6 +22,7 @@ namespace model {
 CheckPhoneVerificationCodeInputObject::CheckPhoneVerificationCodeInputObject()
 {
     m_Code = 0;
+    m_VerifyId = utility::conversions::to_string_t("");
 }
 
 CheckPhoneVerificationCodeInputObject::~CheckPhoneVerificationCodeInputObject()
@@ -38,6 +39,7 @@ web::json::value CheckPhoneVerificationCodeInputObject::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("code")] = ModelBase::toJson(m_Code);
+    val[utility::conversions::to_string_t("verifyId")] = ModelBase::toJson(m_VerifyId);
 
     return val;
 }
@@ -52,6 +54,14 @@ void CheckPhoneVerificationCodeInputObject::fromJson(web::json::value& val)
             setCode(ModelBase::int32_tFromJson(fieldValue));
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("verifyId")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("verifyId")];
+        if(!fieldValue.is_null())
+        {
+            setVerifyId(ModelBase::stringFromJson(fieldValue));
+        }
+    }
 }
 
 void CheckPhoneVerificationCodeInputObject::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -63,6 +73,7 @@ void CheckPhoneVerificationCodeInputObject::toMultipart(std::shared_ptr<Multipar
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("code"), m_Code));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("verifyId"), m_VerifyId));
 }
 
 void CheckPhoneVerificationCodeInputObject::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -74,6 +85,7 @@ void CheckPhoneVerificationCodeInputObject::fromMultiPart(std::shared_ptr<Multip
     }
 
     setCode(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("code"))));
+    setVerifyId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("verifyId"))));
 }
 
 int32_t CheckPhoneVerificationCodeInputObject::getCode() const
@@ -85,6 +97,17 @@ int32_t CheckPhoneVerificationCodeInputObject::getCode() const
 void CheckPhoneVerificationCodeInputObject::setCode(int32_t value)
 {
     m_Code = value;
+    
+}
+utility::string_t CheckPhoneVerificationCodeInputObject::getVerifyId() const
+{
+    return m_VerifyId;
+}
+
+
+void CheckPhoneVerificationCodeInputObject::setVerifyId(utility::string_t value)
+{
+    m_VerifyId = value;
     
 }
 }

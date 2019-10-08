@@ -29,7 +29,6 @@
 #include "BuyDedicatedNumberInputObject.h"
 #include "Chat.h"
 #include "CheckPhoneVerificationCodeInputObject.h"
-#include "CheckPhoneVerificationCodeInputObject_1.h"
 #include "ClearAndAssignContactsToListInputObject.h"
 #include "CloseChatsBulkInputObject.h"
 #include "Contact.h"
@@ -38,9 +37,6 @@
 #include "CreateContactNoteInputObject.h"
 #include "CreateCustomFieldInputObject.h"
 #include "CreateListInputObject.h"
-#include "CreatePushTokenInputObject.h"
-#include "CreateSurveyInputObject.h"
-#include "CreateSurveyNodeInputObject.h"
 #include "CreateTemplateInputObject.h"
 #include "DeleteChatMessagesBulkInputObject.h"
 #include "DeleteChatsBulkInputObject.h"
@@ -54,8 +50,6 @@
 #include "DeleteOutboundMessagesBulkInputObject.h"
 #include "DeleteScheduledMessagesBulkInputObject.h"
 #include "DeleteTemplatesBulkInputObject.h"
-#include "DoAuthInputObject.h"
-#include "DoAuthResponse.h"
 #include "DoCarrierLookupResponse.h"
 #include "DoEmailLookupResponse.h"
 #include "GetAllBulkSessionsPaginatedResponse.h"
@@ -92,14 +86,11 @@
 #include "GetMessagingCountersResponse.h"
 #include "GetMessagingStatResponse.h"
 #include "GetOutboundMessagesHistoryPaginatedResponse.h"
-#include "GetPushTokensResponse.h"
 #include "GetSenderIdsPaginatedResponse.h"
 #include "GetSenderSettingsResponse.h"
 #include "GetSpendingStatPaginatedResponse.h"
 #include "GetSubaccountsWithTokensInputObject.h"
 #include "GetSubaccountsWithTokensResponse.h"
-#include "GetSurveyNodesResponse.h"
-#include "GetSurveysPaginatedResponse.h"
 #include "GetTimezonesResponse.h"
 #include "GetUnreadMessagesTotalResponse.h"
 #include "GetUnsubscribersPaginatedResponse.h"
@@ -109,7 +100,6 @@
 #include "List.h"
 #include "MarkChatsReadBulkInputObject.h"
 #include "MarkChatsUnreadBulkInputObject.h"
-#include "MergeSurveyNodesInputObject.h"
 #include "MessageIn.h"
 #include "MessageOut.h"
 #include "MessageSession.h"
@@ -137,8 +127,6 @@
 #include "SendPhoneVerificationCodeResponse.h"
 #include "SenderId.h"
 #include "SetChatStatusInputObject.h"
-#include "Survey.h"
-#include "SurveyNode.h"
 #include "UnauthorizedResponse.h"
 #include "UnblockContactInputObject.h"
 #include "UnblockContactsBulkInputObject.h"
@@ -156,10 +144,7 @@
 #include "UpdateCustomFieldValueInputObject.h"
 #include "UpdateInboundMessagesNotificationSettingsInputObject.h"
 #include "UpdateListObject.h"
-#include "UpdatePasswordInputObject.h"
 #include "UpdateSenderSettingInputObject.h"
-#include "UpdateSurveyInputObject.h"
-#include "UpdateSurveyNodeInputObject.h"
 #include "UpdateTemplateInputObject.h"
 #include "UploadMessageAttachmentResponse.h"
 #include "User.h"
@@ -214,16 +199,6 @@ public:
         std::shared_ptr<BuyDedicatedNumberInputObject> buyDedicatedNumberInputObject
     );
     /// <summary>
-    /// Cancel a survey.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> cancelSurvey(
-        int32_t id
-    );
-    /// <summary>
     /// Cancel verification process
     /// </summary>
     /// <remarks>
@@ -234,16 +209,6 @@ public:
         utility::string_t verifyId
     );
     /// <summary>
-    /// Check user phone verification code
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="checkPhoneVerificationCodeInputObject"></param>
-    pplx::task<void> checkPhoneVerificationCode(
-        std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject
-    );
-    /// <summary>
     /// Step 2: Check the verification code 
     /// </summary>
     /// <remarks>
@@ -251,7 +216,7 @@ public:
     /// </remarks>
     /// <param name="checkPhoneVerificationCodeInputObject"></param>
     pplx::task<void> checkPhoneVerificationCodeTFA(
-        std::shared_ptr<CheckPhoneVerificationCodeInputObject_1> checkPhoneVerificationCodeInputObject
+        std::shared_ptr<CheckPhoneVerificationCodeInputObject> checkPhoneVerificationCodeInputObject
     );
     /// <summary>
     /// Reset list members to the specified contacts
@@ -334,38 +299,6 @@ public:
     /// <param name="createListInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> createList(
         std::shared_ptr<CreateListInputObject> createListInputObject
-    );
-    /// <summary>
-    /// Add or update a device token.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="createPushTokenInputObject"></param>
-    pplx::task<void> createPushToken(
-        std::shared_ptr<CreatePushTokenInputObject> createPushTokenInputObject
-    );
-    /// <summary>
-    /// Create a new survey from the submitted data.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="createSurveyInputObject"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> createSurvey(
-        std::shared_ptr<CreateSurveyInputObject> createSurveyInputObject
-    );
-    /// <summary>
-    /// Create a new node from the submitted data.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="createSurveyNodeInputObject"></param>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> createSurveyNode(
-        std::shared_ptr<CreateSurveyNodeInputObject> createSurveyNodeInputObject,
-        int32_t id
     );
     /// <summary>
     /// Create a template
@@ -610,18 +543,6 @@ public:
         std::shared_ptr<DeleteOutboundMessagesBulkInputObject> deleteOutboundMessagesBulkInputObject
     );
     /// <summary>
-    /// Delete a push notification device token.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="type"></param>
-    /// <param name="deviceId"></param>
-    pplx::task<void> deletePushToken(
-        utility::string_t type,
-        int32_t deviceId
-    );
-    /// <summary>
     /// Delete a single scheduled message
     /// </summary>
     /// <remarks>
@@ -652,26 +573,6 @@ public:
         int32_t id
     );
     /// <summary>
-    /// Delete a survey.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<void> deleteSurvey(
-        int32_t id
-    );
-    /// <summary>
-    /// Delete a node.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<void> deleteSurveyNode(
-        int32_t id
-    );
-    /// <summary>
     /// Delete a template
     /// </summary>
     /// <remarks>
@@ -690,16 +591,6 @@ public:
     /// <param name="deleteTemplatesBulkInputObject"></param>
     pplx::task<void> deleteTemplatesBulk(
         std::shared_ptr<DeleteTemplatesBulkInputObject> deleteTemplatesBulkInputObject
-    );
-    /// <summary>
-    /// Authenticate user by given username and password.
-    /// </summary>
-    /// <remarks>
-    /// Returning a username and token that you should pass to the all requests (in X-TM-Username and X-TM-Key, respectively)
-    /// </remarks>
-    /// <param name="doAuthInputObject"></param>
-    pplx::task<std::shared_ptr<DoAuthResponse>> doAuth(
-        std::shared_ptr<DoAuthInputObject> doAuthInputObject
     );
     /// <summary>
     /// Carrier Lookup
@@ -722,16 +613,6 @@ public:
     /// <param name="email">Email address.</param>
     pplx::task<std::shared_ptr<DoEmailLookupResponse>> doEmailLookup(
         utility::string_t email
-    );
-    /// <summary>
-    /// Duplicate a survey.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> duplicateSurvey(
-        int32_t id
     );
     /// <summary>
     /// Get all bulk sending sessions.
@@ -1396,14 +1277,6 @@ public:
         boost::optional<utility::string_t> direction
     );
     /// <summary>
-    /// Get all device tokens assigned to the current account
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetPushTokensResponse>> getPushTokens(
-    );
-    /// <summary>
     /// Get a single scheduled message
     /// </summary>
     /// <remarks>
@@ -1495,48 +1368,6 @@ public:
     pplx::task<std::shared_ptr<GetSubaccountsWithTokensResponse>> getSubaccountsWithTokens(
         std::shared_ptr<GetSubaccountsWithTokensInputObject> getSubaccountsWithTokensInputObject,
         boost::optional<double> page,
-        boost::optional<int32_t> limit
-    );
-    /// <summary>
-    /// Get a survey by id.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<Survey>> getSurvey(
-        int32_t id
-    );
-    /// <summary>
-    /// Get a node by id.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<SurveyNode>> getSurveyNode(
-        int32_t id
-    );
-    /// <summary>
-    /// Fetch nodes by given survey id.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<GetSurveyNodesResponse>> getSurveyNodes(
-        int32_t id
-    );
-    /// <summary>
-    /// Get all user surveys.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
-    /// <param name="limit">The number of results per page. (optional, default to 10)</param>
-    pplx::task<std::shared_ptr<GetSurveysPaginatedResponse>> getSurveys(
-        boost::optional<int32_t> page,
         boost::optional<int32_t> limit
     );
     /// <summary>
@@ -1634,16 +1465,6 @@ public:
         std::shared_ptr<MarkChatsUnreadBulkInputObject> markChatsUnreadBulkInputObject
     );
     /// <summary>
-    /// Merge two question nodes.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="mergeSurveyNodesInputObject"></param>
-    pplx::task<void> mergeSurveyNodes(
-        std::shared_ptr<MergeSurveyNodesInputObject> mergeSurveyNodesInputObject
-    );
-    /// <summary>
     /// Mute chat sounds
     /// </summary>
     /// <remarks>
@@ -1692,16 +1513,6 @@ public:
     /// <param name="requestSenderIdInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> requestSenderId(
         std::shared_ptr<RequestSenderIdInputObject> requestSenderIdInputObject
-    );
-    /// <summary>
-    /// Reset a survey flow.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> resetSurvey(
-        int32_t id
     );
     /// <summary>
     /// Find chats by message text
@@ -1888,14 +1699,6 @@ public:
         boost::optional<utility::string_t> content
     );
     /// <summary>
-    /// Send user email verification
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<void> sendEmailVerificationCode(
-    );
-    /// <summary>
     /// Send message
     /// </summary>
     /// <remarks>
@@ -1904,14 +1707,6 @@ public:
     /// <param name="sendMessageInputObject"></param>
     pplx::task<std::shared_ptr<SendMessageResponse>> sendMessage(
         std::shared_ptr<SendMessageInputObject> sendMessageInputObject
-    );
-    /// <summary>
-    /// Send user phone verification
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<void> sendPhoneVerificationCode(
     );
     /// <summary>
     /// Step 1: Send a verification code 
@@ -1932,16 +1727,6 @@ public:
     /// <param name="setChatStatusInputObject"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> setChatStatus(
         std::shared_ptr<SetChatStatusInputObject> setChatStatusInputObject
-    );
-    /// <summary>
-    /// Start a survey.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> startSurvey(
-        int32_t id
     );
     /// <summary>
     /// Unblock contact by phone number.
@@ -2094,16 +1879,6 @@ public:
         boost::optional<std::shared_ptr<UpdateListObject>> updateListObject
     );
     /// <summary>
-    /// Change user password.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="updatePasswordInputObject"></param>
-    pplx::task<void> updatePassword(
-        std::shared_ptr<UpdatePasswordInputObject> updatePasswordInputObject
-    );
-    /// <summary>
     /// Change sender settings
     /// </summary>
     /// <remarks>
@@ -2112,30 +1887,6 @@ public:
     /// <param name="updateSenderSettingInputObject"></param>
     pplx::task<void> updateSenderSetting(
         std::shared_ptr<UpdateSenderSettingInputObject> updateSenderSettingInputObject
-    );
-    /// <summary>
-    /// Update existing survey.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="updateSurveyInputObject"></param>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> updateSurvey(
-        std::shared_ptr<UpdateSurveyInputObject> updateSurveyInputObject,
-        int32_t id
-    );
-    /// <summary>
-    /// Update existing node.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="updateSurveyNodeInputObject"></param>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<ResourceLinkResponse>> updateSurveyNode(
-        std::shared_ptr<UpdateSurveyNodeInputObject> updateSurveyNodeInputObject,
-        int32_t id
     );
     /// <summary>
     /// Update a template
