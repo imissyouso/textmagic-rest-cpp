@@ -71,9 +71,7 @@
 #include "GetBalanceNotificationSettingsResponse.h"
 #include "GetBlockedContactsPaginatedResponse.h"
 #include "GetCallbackSettingsResponse.h"
-#include "GetCallsPricesResponse.h"
 #include "GetChatMessagesPaginatedResponse.h"
-#include "GetContactImportSessionProgressResponse.h"
 #include "GetContactNotesPaginatedResponse.h"
 #include "GetContactsAutocompleteResponse.h"
 #include "GetContactsByListIdPaginatedResponse.h"
@@ -916,14 +914,6 @@ public:
     pplx::task<std::shared_ptr<GetCallbackSettingsResponse>> getCallbackSettings(
     );
     /// <summary>
-    /// Check pricing for a inbound/outbound call.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetCallsPricesResponse>> getCallsPrices(
-    );
-    /// <summary>
     /// Get a single chat
     /// </summary>
     /// <remarks>
@@ -1000,16 +990,6 @@ public:
     /// <param name="phone">Phone number to check</param>
     pplx::task<std::shared_ptr<Contact>> getContactIfBlocked(
         utility::string_t phone
-    );
-    /// <summary>
-    /// Get contact import session progress.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<GetContactImportSessionProgressResponse>> getContactImportSessionProgress(
-        int32_t id
     );
     /// <summary>
     /// Get a single contact note.
