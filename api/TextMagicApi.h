@@ -98,7 +98,6 @@
 #include "GetSenderIdsPaginatedResponse.h"
 #include "GetSenderSettingsResponse.h"
 #include "GetSpendingStatPaginatedResponse.h"
-#include "GetStateResponse.h"
 #include "GetSubaccountsWithTokensInputObject.h"
 #include "GetSubaccountsWithTokensResponse.h"
 #include "GetSurveyNodesResponse.h"
@@ -107,7 +106,6 @@
 #include "GetUnreadMessagesTotalResponse.h"
 #include "GetUnsubscribersPaginatedResponse.h"
 #include "GetUserDedicatedNumbersPaginatedResponse.h"
-#include "GetVersionsResponse.h"
 #include "HttpContent.h"
 #include "InviteSubaccountInputObject.h"
 #include "List.h"
@@ -122,7 +120,6 @@
 #include "MuteChatInputObject.h"
 #include "MuteChatsBulkInputObject.h"
 #include "NotFoundResponse.h"
-#include "PingResponse.h"
 #include "ReopenChatsBulkInputObject.h"
 #include "RequestNewSubaccountTokenInputObject.h"
 #include "RequestSenderIdInputObject.h"
@@ -1485,14 +1482,6 @@ public:
         boost::optional<utility::string_t> end
     );
     /// <summary>
-    /// Get current entities state
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetStateResponse>> getState(
-    );
-    /// <summary>
     /// Get sub-account information
     /// </summary>
     /// <remarks>
@@ -1635,14 +1624,6 @@ public:
         boost::optional<int32_t> surveyId
     );
     /// <summary>
-    /// Get minimal valid apps versions
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetVersionsResponse>> getVersions(
-    );
-    /// <summary>
     /// Invite a new sub-account
     /// </summary>
     /// <remarks>
@@ -1701,14 +1682,6 @@ public:
     /// <param name="muteChatsBulkInputObject"></param>
     pplx::task<void> muteChatsBulk(
         std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject
-    );
-    /// <summary>
-    /// Ping
-    /// </summary>
-    /// <remarks>
-    /// Make a simple ping request
-    /// </remarks>
-    pplx::task<std::shared_ptr<PingResponse>> ping(
     );
     /// <summary>
     /// Reopen chats (bulk)
