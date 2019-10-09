@@ -120,7 +120,7 @@ public:
     utility::string_t getCharsetLabel() const;
         void setCharsetLabel(utility::string_t value);
     /// <summary>
-    /// TODO: Contact first name. Could be substituted from your [Contacts](/docs/api/contacts/) (even if you submitted phone number instead of contact ID). 
+    /// Contact first name. Could be substituted from your [Contacts](http://docs.textmagictesting.com/tag#Contacts) (even if you submitted phone number instead of contact ID). 
     /// </summary>
     utility::string_t getFirstName() const;
         void setFirstName(utility::string_t value);

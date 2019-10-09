@@ -54,7 +54,7 @@ public:
     /// UpdateCustomFieldValueInputObject members
 
     /// <summary>
-    /// [Contact](/docs/api/contacts/) 
+    /// [Contact](http://docs.textmagictesting.com/tag#Contacts) 
     /// </summary>
     int32_t getContactId() const;
     bool contactIdIsSet() const;

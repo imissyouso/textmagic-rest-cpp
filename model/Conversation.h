@@ -84,7 +84,7 @@ public:
     utility::string_t getReceiver() const;
         void setReceiver(utility::string_t value);
     /// <summary>
-    /// Message status (for chats outbound only). See [message delivery statuses](/docs/api/sms-sessions/#message-delivery-statuses) for details.
+    /// Message status (for chats outbound only). See [message delivery statuses](http://docs.textmagictesting.com/section#Delivery-status-codes) for details.
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
