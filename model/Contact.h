@@ -106,7 +106,7 @@ public:
     std::shared_ptr<Country> getCountry() const;
         void setCountry(std::shared_ptr<Country> value);
     /// <summary>
-    /// See [Custom Fields](http://docs.textmagictesting.com/tag#Custom-Fields) section.
+    /// See [Custom Fields](http://docs.textmagictesting.com/#tag/Custom-Fields) section.
     /// </summary>
     std::vector<std::shared_ptr<ContactCustomField>>& getCustomFields();
         void setCustomFields(std::vector<std::shared_ptr<ContactCustomField>> value);
