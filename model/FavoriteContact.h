@@ -59,22 +59,22 @@ public:
     int32_t getEntityId() const;
         void setEntityId(int32_t value);
     /// <summary>
-    /// 
+    /// Entity type which should be marked as **favourite**.
     /// </summary>
     utility::string_t getEntityType() const;
         void setEntityType(utility::string_t value);
     /// <summary>
-    /// Contact first name/last name if entityType is \\&#39;contact\\&#39;, List name if entity type is \\&#39;list\\&#39;
+    /// Contact first name/last name if entityType is **contact**, List name if entity type is **list**
     /// </summary>
     utility::string_t getPrimaryLabel() const;
         void setPrimaryLabel(utility::string_t value);
     /// <summary>
-    /// Phone number if entityType is \\&#39;contact\\&#39;, List contacts number if entity type is \\&#39;list\\&#39;
+    /// Phone number if entityType is **contact**, List contacts number if entity type is **list**
     /// </summary>
     utility::string_t getSecondaryLabel() const;
         void setSecondaryLabel(utility::string_t value);
     /// <summary>
-    /// Contact country if entityType is \\&#39;contact\\&#39; else null
+    /// Contact country if entityType is **contact** else null
     /// </summary>
     utility::string_t getTertiaryLabel() const;
         void setTertiaryLabel(utility::string_t value);
