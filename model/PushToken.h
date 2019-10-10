@@ -54,12 +54,12 @@ public:
     /// PushToken members
 
     /// <summary>
-    /// 
+    /// type of the token: * **GCM** — Google Cloud Messaging * **APN** — Apple Push Notification * **FCM** — Firebase Cloud Messaging 
     /// </summary>
     utility::string_t getType() const;
         void setType(utility::string_t value);
     /// <summary>
-    /// 
+    /// Push token value.
     /// </summary>
     utility::string_t getToken() const;
         void setToken(utility::string_t value);

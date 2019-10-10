@@ -108,6 +108,7 @@
 #include "MuteChatInputObject.h"
 #include "MuteChatsBulkInputObject.h"
 #include "NotFoundResponse.h"
+#include "PingResponse.h"
 #include "ReopenChatsBulkInputObject.h"
 #include "RequestNewSubaccountTokenInputObject.h"
 #include "RequestSenderIdInputObject.h"
@@ -1483,6 +1484,14 @@ public:
     /// <param name="muteChatsBulkInputObject"></param>
     pplx::task<void> muteChatsBulk(
         std::shared_ptr<MuteChatsBulkInputObject> muteChatsBulkInputObject
+    );
+    /// <summary>
+    /// Ping
+    /// </summary>
+    /// <remarks>
+    /// Make a simple ping request
+    /// </remarks>
+    pplx::task<std::shared_ptr<PingResponse>> ping(
     );
     /// <summary>
     /// Reopen chats (bulk)

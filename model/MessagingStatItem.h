@@ -54,7 +54,7 @@ public:
     /// MessagingStatItem members
 
     /// <summary>
-    /// the number of incoming messages divided by the number of total messages.
+    /// The number of incoming messages divided by the number of total messages.
     /// </summary>
     float getReplyRate() const;
         void setReplyRate(float value);

@@ -78,7 +78,7 @@ public:
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Account Email address.
     /// </summary>
     utility::string_t getEmail() const;
         void setEmail(utility::string_t value);
