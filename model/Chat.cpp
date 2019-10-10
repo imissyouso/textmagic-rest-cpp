@@ -32,7 +32,7 @@ Chat::Chat()
     m_LastMessage = utility::conversions::to_string_t("");
     m_Direction = utility::conversions::to_string_t("");
     m_From = utility::conversions::to_string_t("");
-    m_MutedUntil = utility::conversions::to_string_t("");
+    m_MutedUntil = utility::datetime();
     m_TimeLeftMute = 0;
 }
 
@@ -173,7 +173,7 @@ void Chat::fromJson(web::json::value& val)
         web::json::value& fieldValue = val[utility::conversions::to_string_t("mutedUntil")];
         if(!fieldValue.is_null())
         {
-            setMutedUntil(ModelBase::stringFromJson(fieldValue));
+            setMutedUntil(ModelBase::dateFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("timeLeftMute")))
@@ -243,7 +243,7 @@ void Chat::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const uti
     setLastMessage(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("lastMessage"))));
     setDirection(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("direction"))));
     setFrom(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("from"))));
-    setMutedUntil(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("mutedUntil"))));
+    setMutedUntil(ModelBase::dateFromHttpContent(multipart->getContent(utility::conversions::to_string_t("mutedUntil"))));
     setTimeLeftMute(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("timeLeftMute"))));
     std::shared_ptr<Country> newCountry(new Country());
     newCountry->fromMultiPart(multipart, utility::conversions::to_string_t("country."));
@@ -382,13 +382,13 @@ void Chat::setFrom(utility::string_t value)
     m_From = value;
     
 }
-utility::string_t Chat::getMutedUntil() const
+utility::datetime Chat::getMutedUntil() const
 {
     return m_MutedUntil;
 }
 
 
-void Chat::setMutedUntil(utility::string_t value)
+void Chat::setMutedUntil(utility::datetime value)
 {
     m_MutedUntil = value;
     

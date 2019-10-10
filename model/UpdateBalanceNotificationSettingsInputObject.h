@@ -54,40 +54,40 @@ public:
     /// UpdateBalanceNotificationSettingsInputObject members
 
     /// <summary>
-    /// Should user receive low balance notification
+    /// Should user receive low balance notification.
     /// </summary>
     bool isLowBalanceNotification() const;
     bool lowBalanceNotificationIsSet() const;
     void unsetLowBalanceNotification();
     void setLowBalanceNotification(bool value);
     /// <summary>
-    /// If balance is below this value, user receive low balance notification
+    /// If balance is below this value, user receive low balance notification.
     /// </summary>
     utility::string_t getAlertBalance() const;
         void setAlertBalance(utility::string_t value);
     /// <summary>
-    /// Low balance notification phone number
+    /// Low balance notification phone number.
     /// </summary>
     utility::string_t getAlertPhone() const;
     bool alertPhoneIsSet() const;
     void unsetAlertPhone();
     void setAlertPhone(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 1
+    /// Low balance notification email 1.
     /// </summary>
     utility::string_t getAlertEmail1() const;
     bool alertEmail1IsSet() const;
     void unsetAlertEmail1();
     void setAlertEmail1(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 2
+    /// Low balance notification email 2.
     /// </summary>
     utility::string_t getAlertEmail2() const;
     bool alertEmail2IsSet() const;
     void unsetAlertEmail2();
     void setAlertEmail2(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 3
+    /// Low balance notification email 3.
     /// </summary>
     utility::string_t getAlertEmail3() const;
     bool alertEmail3IsSet() const;

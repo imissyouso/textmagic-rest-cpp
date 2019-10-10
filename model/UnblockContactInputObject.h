@@ -54,7 +54,7 @@ public:
     /// UnblockContactInputObject members
 
     /// <summary>
-    /// Contact phone number
+    /// Contact phone number.
     /// </summary>
     utility::string_t getPhone() const;
     bool phoneIsSet() const;

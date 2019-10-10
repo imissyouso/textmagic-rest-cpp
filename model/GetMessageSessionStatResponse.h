@@ -53,27 +53,27 @@ public:
     /// GetMessageSessionStatResponse members
 
     /// <summary>
-    /// 
+    /// Amount of failed messages.
     /// </summary>
     int32_t getFailed() const;
         void setFailed(int32_t value);
     /// <summary>
-    /// 
+    /// Amount of delivered messages.
     /// </summary>
     int32_t getDelivered() const;
         void setDelivered(int32_t value);
     /// <summary>
-    /// 
+    /// Amount of accepted messages.
     /// </summary>
     int32_t getAccepted() const;
         void setAccepted(int32_t value);
     /// <summary>
-    /// 
+    /// Amount of rejected messages.
     /// </summary>
     int32_t getRejected() const;
         void setRejected(int32_t value);
     /// <summary>
-    /// 
+    /// Amount of schedules messages.
     /// </summary>
     int32_t getScheduled() const;
         void setScheduled(int32_t value);
@@ -83,7 +83,7 @@ public:
     int32_t getAll() const;
         void setAll(int32_t value);
     /// <summary>
-    /// 
+    /// Total sent messages.
     /// </summary>
     int32_t getSent() const;
         void setSent(int32_t value);

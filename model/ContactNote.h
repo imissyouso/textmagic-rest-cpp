@@ -55,17 +55,17 @@ public:
     /// ContactNote members
 
     /// <summary>
-    /// 
+    /// Contact note ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Contact note creation time.
     /// </summary>
     utility::datetime getCreatedAt() const;
         void setCreatedAt(utility::datetime value);
     /// <summary>
-    /// 
+    /// Contact note text.
     /// </summary>
     utility::string_t getNote() const;
         void setNote(utility::string_t value);

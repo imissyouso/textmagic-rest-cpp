@@ -54,12 +54,12 @@ public:
     /// UserStatement members
 
     /// <summary>
-    /// 
+    /// User statement ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// User statement ID.
+    /// User ID.
     /// </summary>
     int32_t getUserId() const;
         void setUserId(int32_t value);

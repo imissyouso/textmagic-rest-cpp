@@ -64,32 +64,32 @@ public:
     utility::string_t getEntityType() const;
         void setEntityType(utility::string_t value);
     /// <summary>
-    /// Id of contact/list if entityType is contact/list OR phone number if entityType is reply
+    /// Id of contact/list if entityType is contact/list OR phone number if entityType is reply.
     /// </summary>
     utility::string_t getValue() const;
         void setValue(utility::string_t value);
     /// <summary>
-    /// Name of the contact/list if entityType is contact/list OR phone number if entityType is reply
+    /// Name of the contact/list if entityType is contact/list OR phone number if entityType is reply.
     /// </summary>
     utility::string_t getLabel() const;
         void setLabel(utility::string_t value);
     /// <summary>
-    /// If contact or list was shared by another user then name if this user will be shown
+    /// If contact or list was shared by another user then name if this user will be shown.
     /// </summary>
     utility::string_t getSharedBy() const;
         void setSharedBy(utility::string_t value);
     /// <summary>
-    /// 
+    /// Contact avatar URI.
     /// </summary>
     utility::string_t getAvatar() const;
         void setAvatar(utility::string_t value);
     /// <summary>
-    /// If contact was marked as favourited
+    /// If contact has been marked as favorite.
     /// </summary>
     bool isFavorited() const;
         void setFavorited(bool value);
     /// <summary>
-    /// Owner id of the contact/list (if it was shared)
+    /// Owner id of the contact/list (if it was shared).
     /// </summary>
     int32_t getUserId() const;
         void setUserId(int32_t value);

@@ -54,37 +54,37 @@ public:
     /// GetInboundMessagesNotificationSettingsResponse members
 
     /// <summary>
-    /// Should user receive notification about new incoming messages
+    /// Should user receive notification about new incoming messages.
     /// </summary>
     bool isInboundMessageNotification() const;
         void setInboundMessageNotification(bool value);
     /// <summary>
-    /// Should user receive notification about new forwarded calls
+    /// Should user receive notification about new forwarded calls.
     /// </summary>
     bool isForwardedCallNotification() const;
         void setForwardedCallNotification(bool value);
     /// <summary>
-    /// Include SMS history into notification Email
+    /// Include SMS history into notification Email.
     /// </summary>
     bool isIncludeSmsHistory() const;
         void setIncludeSmsHistory(bool value);
     /// <summary>
-    /// Send Email notification in HTML format
+    /// Send Email notification in HTML format.
     /// </summary>
     bool isSendInHtmlFormat() const;
         void setSendInHtmlFormat(bool value);
     /// <summary>
-    /// New message notification email 2
+    /// New message notification email 2.
     /// </summary>
     utility::string_t getAlertEmail1() const;
         void setAlertEmail1(utility::string_t value);
     /// <summary>
-    /// New message notification email 2
+    /// New message notification email 2.
     /// </summary>
     utility::string_t getAlertEmail2() const;
         void setAlertEmail2(utility::string_t value);
     /// <summary>
-    /// New message notification email 3
+    /// New message notification email 3.
     /// </summary>
     utility::string_t getAlertEmail3() const;
         void setAlertEmail3(utility::string_t value);

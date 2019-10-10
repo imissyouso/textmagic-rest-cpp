@@ -54,12 +54,12 @@ public:
     /// SetChatStatusInputObject members
 
     /// <summary>
-    /// Chat ID
+    /// Chat ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// Status
+    /// Chat status:   * **a** - Active   * **c** - Closed   * **d** - Deleted 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);

@@ -54,14 +54,14 @@ public:
     /// UnsubscribeContactInputObject members
 
     /// <summary>
-    /// Contact phone number
+    /// Contact phone number.
     /// </summary>
     utility::string_t getPhone() const;
     bool phoneIsSet() const;
     void unsetPhone();
     void setPhone(utility::string_t value);
     /// <summary>
-    /// Default is 0 (false). If set to 1 incoming messages from this number will be blocked.
+    /// If set to 1 incoming messages from this number will be blocked.
     /// </summary>
     int32_t getBlockIncoming() const;
     bool blockIncomingIsSet() const;

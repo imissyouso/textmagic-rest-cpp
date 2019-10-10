@@ -55,12 +55,12 @@ public:
     /// MessagesIcs_textParameters members
 
     /// <summary>
-    /// 
+    /// Cost to check one number is constant – 0.04 in your account currency.
     /// </summary>
     double getCost() const;
         void setCost(double value);
     /// <summary>
-    /// 
+    /// Message parts (multiples of 160 characters) count.
     /// </summary>
     int32_t getParts() const;
         void setParts(int32_t value);
@@ -70,7 +70,7 @@ public:
     int32_t getChars() const;
         void setChars(int32_t value);
     /// <summary>
-    /// 
+    /// Message charset. Could be: * **ISO-8859-1** for plaintext SMS * **UTF-16BE** for Unicode SMS 
     /// </summary>
     utility::string_t getEncoding() const;
         void setEncoding(utility::string_t value);

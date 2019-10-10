@@ -54,7 +54,7 @@ public:
     /// CreateContactNoteInputObject members
 
     /// <summary>
-    /// 
+    /// Contact Note text.
     /// </summary>
     utility::string_t getNote() const;
     bool noteIsSet() const;

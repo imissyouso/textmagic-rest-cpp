@@ -77,7 +77,7 @@ public:
     std::shared_ptr<MessageSession> getSession() const;
         void setSession(std::shared_ptr<MessageSession> value);
     /// <summary>
-    /// 
+    /// Date and time when last message has been sent.
     /// </summary>
     utility::datetime getLastSent() const;
         void setLastSent(utility::datetime value);
@@ -117,27 +117,27 @@ public:
     utility::datetime getLastOccurrence() const;
         void setLastOccurrence(utility::datetime value);
     /// <summary>
-    /// 
+    /// Amount of actual recipients.
     /// </summary>
     int32_t getRecipientsCount() const;
         void setRecipientsCount(int32_t value);
     /// <summary>
-    /// 
+    /// User-friendly timezone name (with spaces replaced by underscores).
     /// </summary>
     utility::string_t getTimezone() const;
         void setTimezone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Indicates that schedling has been completed.
     /// </summary>
     bool isCompleted() const;
         void setCompleted(bool value);
     /// <summary>
-    /// 
+    /// null
     /// </summary>
     utility::string_t getAvatar() const;
         void setAvatar(utility::string_t value);
     /// <summary>
-    /// 
+    /// Scheduling creation time.
     /// </summary>
     utility::datetime getCreatedAt() const;
         void setCreatedAt(utility::datetime value);

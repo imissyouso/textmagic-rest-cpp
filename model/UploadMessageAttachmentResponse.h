@@ -54,22 +54,22 @@ public:
     /// UploadMessageAttachmentResponse members
 
     /// <summary>
-    /// 
+    /// &#x60;href&#x60; field characters count. 
     /// </summary>
     int32_t getChars() const;
         void setChars(int32_t value);
     /// <summary>
-    /// 
+    /// This is a relative link to your file. To construct a full link, just add “[https://my.textmagic.com/”](https://my.textmagic.com/%E2%80%9D) to the beginning (like this: [https://my.textmagic.com/click/Zwcj9](https://my.textmagic.com/click/Zwcj9)). For most modern devices, you can omit “https://” part and write just [my.textmagic.com/click/Zwcj9](https://my.textmagic.com/click/Zwcj9), it will save you 8 characters. 
     /// </summary>
     utility::string_t getHref() const;
         void setHref(utility::string_t value);
     /// <summary>
-    /// 
+    /// File name of uploaded file. 
     /// </summary>
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Attachment size in bytes.
     /// </summary>
     int32_t getSize() const;
         void setSize(int32_t value);

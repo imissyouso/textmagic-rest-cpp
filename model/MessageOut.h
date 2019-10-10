@@ -78,17 +78,17 @@ public:
     utility::string_t getText() const;
         void setText(utility::string_t value);
     /// <summary>
-    /// Delivery status of the message. TODO: Please see the table below to see different delivery statuses. 
+    /// Delivery status of the message. See [message delivery statuses](http://docs.textmagictesting.com/#section/Delivery-status-codes) for details. 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
     /// <summary>
-    /// 
+    /// Recipient contact ID.
     /// </summary>
     int32_t getContactId() const;
         void setContactId(int32_t value);
     /// <summary>
-    /// 
+    /// Message Session ID of a Message.
     /// </summary>
     int32_t getSessionId() const;
         void setSessionId(int32_t value);
@@ -103,7 +103,7 @@ public:
     utility::string_t getAvatar() const;
         void setAvatar(utility::string_t value);
     /// <summary>
-    /// 
+    /// Indicates that message has been deleted.
     /// </summary>
     bool isDeleted() const;
     bool deletedIsSet() const;
@@ -135,14 +135,14 @@ public:
     utility::string_t getCountry() const;
         void setCountry(utility::string_t value);
     /// <summary>
-    /// 
+    /// Receipent phone number.
     /// </summary>
     utility::string_t getPhone() const;
     bool phoneIsSet() const;
     void unsetPhone();
     void setPhone(utility::string_t value);
     /// <summary>
-    /// 
+    /// Message price.
     /// </summary>
     float getPrice() const;
     bool priceIsSet() const;
@@ -161,7 +161,7 @@ public:
     void unsetFromEmail();
     void setFromEmail(utility::string_t value);
     /// <summary>
-    /// 
+    /// Phone number which is used to send SMS.
     /// </summary>
     utility::string_t getFromNumber() const;
     bool fromNumberIsSet() const;

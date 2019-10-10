@@ -66,12 +66,12 @@ public:
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// List description.
+    /// Description of the list.
     /// </summary>
     utility::string_t getDescription() const;
         void setDescription(utility::string_t value);
     /// <summary>
-    /// 
+    /// Is the List favourite? [Custom fields list](http://docs.textmagictesting.com/#operation/getFavourites).
     /// </summary>
     bool isFavorited() const;
         void setFavorited(bool value);
@@ -101,7 +101,7 @@ public:
     std::shared_ptr<ListImage> getAvatar() const;
         void setAvatar(std::shared_ptr<ListImage> value);
     /// <summary>
-    /// 
+    /// Indicates that List is used as a default. All new contacts will be added in this List by default.
     /// </summary>
     bool isIsDefault() const;
         void setIsDefault(bool value);

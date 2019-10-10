@@ -58,7 +58,7 @@ public:
     int32_t getStatus() const;
         void setStatus(int32_t value);
     /// <summary>
-    /// How many contacts have been imported
+    /// How many contacts have been imported.
     /// </summary>
     int32_t getProcessed() const;
         void setProcessed(int32_t value);

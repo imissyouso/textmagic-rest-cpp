@@ -54,57 +54,57 @@ public:
     /// GetBalanceNotificationOptionsResponse members
 
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get1() const;
         void set1(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get2() const;
         void set2(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get3() const;
         void set3(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get5() const;
         void set5(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get10() const;
         void set10(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get20() const;
         void set20(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get30() const;
         void set30(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get50() const;
         void set50(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get100() const;
         void set100(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get500() const;
         void set500(utility::string_t value);
     /// <summary>
-    /// Contains sign of currency in Unicode hex code
+    /// Contains sign of currency in Unicode hex code.
     /// </summary>
     utility::string_t get1000() const;
         void set1000(utility::string_t value);

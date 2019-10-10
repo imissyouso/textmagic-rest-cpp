@@ -55,7 +55,7 @@ public:
     /// GetAvailableDedicatedNumbersResponse members
 
     /// <summary>
-    /// Array of phone number strings.
+    /// Array of phone numbers.
     /// </summary>
     std::vector<utility::string_t>& getNumbers();
         void setNumbers(std::vector<utility::string_t> value);

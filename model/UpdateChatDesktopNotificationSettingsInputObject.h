@@ -53,12 +53,12 @@ public:
     /// UpdateChatDesktopNotificationSettingsInputObject members
 
     /// <summary>
-    /// Notification sound is enable/disabled
+    /// Enable notification sound?
     /// </summary>
     bool isPlaySound() const;
         void setPlaySound(bool value);
     /// <summary>
-    /// Show desktop notifications about new messages
+    /// Show desktop notifications about new messages.
     /// </summary>
     bool isShowNotifications() const;
         void setShowNotifications(bool value);
@@ -70,7 +70,7 @@ public:
     void unsetShowText();
     void setShowText(bool value);
     /// <summary>
-    /// Sound Id of a notification
+    /// Sound Id of a notification.
     /// </summary>
     int32_t getSoundId() const;
     bool soundIdIsSet() const;

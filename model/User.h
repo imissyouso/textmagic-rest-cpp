@@ -63,7 +63,7 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// Format for representation of time
+    /// User&#39;s prefered format of time display * *12h* - AM/PM format * *24h* - 24 hour clock format 
     /// </summary>
     utility::string_t getDisplayTimeFormat() const;
     bool displayTimeFormatIsSet() const;
@@ -100,7 +100,7 @@ public:
     double getBalance() const;
         void setBalance(double value);
     /// <summary>
-    /// 
+    /// User phone number
     /// </summary>
     utility::string_t getPhone() const;
         void setPhone(utility::string_t value);
@@ -130,12 +130,12 @@ public:
     utility::string_t getSubaccountType() const;
         void setSubaccountType(utility::string_t value);
     /// <summary>
-    /// 
+    /// Is account has confirmed Email.
     /// </summary>
     bool isEmailAccepted() const;
         void setEmailAccepted(bool value);
     /// <summary>
-    /// 
+    /// Is account has confirmed Phone number.
     /// </summary>
     bool isPhoneAccepted() const;
         void setPhoneAccepted(bool value);

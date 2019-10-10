@@ -53,7 +53,7 @@ public:
     /// GetUnreadMessagesTotalResponse members
 
     /// <summary>
-    /// 
+    /// Amount of unread messages.
     /// </summary>
     int32_t getTotal() const;
         void setTotal(int32_t value);

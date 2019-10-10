@@ -54,32 +54,32 @@ public:
     /// GetBalanceNotificationSettingsResponse members
 
     /// <summary>
-    /// Should user receive low balance notification
+    /// Should user receive low balance notification.
     /// </summary>
     bool isLowBalanceNotification() const;
         void setLowBalanceNotification(bool value);
     /// <summary>
-    /// If balance is below this value, user receive low balance notification
+    /// If balance is below this value, user receive low balance notification.
     /// </summary>
     utility::string_t getAlertBalance() const;
         void setAlertBalance(utility::string_t value);
     /// <summary>
-    /// Low balance notification phone number
+    /// Low balance notification phone number.
     /// </summary>
     utility::string_t getAlertPhone() const;
         void setAlertPhone(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 1
+    /// Low balance notification email 1.
     /// </summary>
     utility::string_t getAlertEmail1() const;
         void setAlertEmail1(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 2
+    /// Low balance notification email 2.
     /// </summary>
     utility::string_t getAlertEmail2() const;
         void setAlertEmail2(utility::string_t value);
     /// <summary>
-    /// Low balance notification email 3
+    /// Low balance notification email 3.
     /// </summary>
     utility::string_t getAlertEmail3() const;
         void setAlertEmail3(utility::string_t value);

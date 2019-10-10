@@ -54,7 +54,7 @@ public:
     /// UpdateContactNoteInputObject members
 
     /// <summary>
-    /// 
+    /// Contact Note text.
     /// </summary>
     utility::string_t getNote() const;
         void setNote(utility::string_t value);

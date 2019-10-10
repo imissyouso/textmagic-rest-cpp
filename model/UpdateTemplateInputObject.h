@@ -59,7 +59,7 @@ public:
     utility::string_t getName() const;
         void setName(utility::string_t value);
     /// <summary>
-    /// Template text. May contain tags inside braces
+    /// Template text. May contain tags inside braces. See [Get timezones](http://docs.textmagictesting.com/#section/Custom-fields-list-(Merge-tags)).
     /// </summary>
     utility::string_t getContent() const;
         void setContent(utility::string_t value);

@@ -55,7 +55,7 @@ public:
     /// MessagesIcs_parameters members
 
     /// <summary>
-    /// 
+    /// Scheduled message text.
     /// </summary>
     utility::string_t getText() const;
         void setText(utility::string_t value);

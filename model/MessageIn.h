@@ -79,21 +79,21 @@ public:
     utility::string_t getText() const;
         void setText(utility::string_t value);
     /// <summary>
-    /// 
+    /// Sender contact ID.
     /// </summary>
     int32_t getContactId() const;
     bool contactIdIsSet() const;
     void unsetContactId();
     void setContactId(int32_t value);
     /// <summary>
-    /// 
+    /// Sender contact first name.
     /// </summary>
     utility::string_t getFirstName() const;
     bool firstNameIsSet() const;
     void unsetFirstName();
     void setFirstName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Sender contact last name.
     /// </summary>
     utility::string_t getLastName() const;
     bool lastNameIsSet() const;

@@ -89,7 +89,7 @@ public:
     int32_t getNumbersCount() const;
         void setNumbersCount(int32_t value);
     /// <summary>
-    /// 
+    /// Destination type of a Message Session: * **t** - text SMS * **s** - text to speech * **v** - voice broadcast 
     /// </summary>
     utility::string_t getDestination() const;
         void setDestination(utility::string_t value);

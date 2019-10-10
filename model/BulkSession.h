@@ -55,27 +55,27 @@ public:
     /// BulkSession members
 
     /// <summary>
-    /// 
+    /// Bulk Session ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// * **n** - bulk session is just created * **w** - work in progress * **f** - failed * **c** - completed with success * **s** - suspended 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
     /// <summary>
-    /// 
+    /// Amount of messages which is already processed.
     /// </summary>
     int32_t getItemsProcessed() const;
         void setItemsProcessed(int32_t value);
     /// <summary>
-    /// 
+    /// Total amount of messages to be processed.
     /// </summary>
     int32_t getItemsTotal() const;
         void setItemsTotal(int32_t value);
     /// <summary>
-    /// 
+    /// Creation date and time of a Bulk Session.
     /// </summary>
     utility::datetime getCreatedAt() const;
         void setCreatedAt(utility::datetime value);
@@ -85,7 +85,7 @@ public:
     std::shared_ptr<MessageSession> getSession() const;
         void setSession(std::shared_ptr<MessageSession> value);
     /// <summary>
-    /// 
+    /// Message text of a Bulk Session.
     /// </summary>
     utility::string_t getText() const;
         void setText(utility::string_t value);

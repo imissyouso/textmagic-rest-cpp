@@ -99,7 +99,7 @@ public:
     utility::string_t getLastName() const;
         void setLastName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Session ID of a message. See [message sessions](http://docs.textmagictesting.com/#tag/Outbound-Message-Sessions) for details.
     /// </summary>
     int32_t getSessionId() const;
         void setSessionId(int32_t value);

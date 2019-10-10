@@ -76,12 +76,12 @@ public:
     std::shared_ptr<Contact> getContact() const;
         void setContact(std::shared_ptr<Contact> value);
     /// <summary>
-    /// 
+    /// If this field has a value then it means that chat phone number has been unsubscribed from you and this value is a ID of a Unsubscribed contact entity. See [Get all unsubscribed contacts](http://docs.textmagictesting.com/#operation/getUnsubscribers).
     /// </summary>
     int32_t getUnsubscribedContactId() const;
         void setUnsubscribedContactId(int32_t value);
     /// <summary>
-    /// Unread incoming messages count.
+    /// Total unread incoming messages.
     /// </summary>
     int32_t getUnread() const;
         void setUnread(int32_t value);
@@ -91,37 +91,37 @@ public:
     utility::datetime getUpdatedAt() const;
         void setUpdatedAt(utility::datetime value);
     /// <summary>
-    /// 
+    /// Chat status:   * **a** - Active   * **c** - Closed   * **d** - Deleted 
     /// </summary>
     utility::string_t getStatus() const;
         void setStatus(utility::string_t value);
     /// <summary>
-    /// 
+    /// Indicates when chat is muted.
     /// </summary>
     int32_t getMute() const;
         void setMute(int32_t value);
     /// <summary>
-    /// 
+    /// The last message content of a chat.
     /// </summary>
     utility::string_t getLastMessage() const;
         void setLastMessage(utility::string_t value);
     /// <summary>
-    /// 
+    /// Last message type: * **ci** - incoming call * **co** - outgoing call * **i** - incoming message * **o** - outgoing message 
     /// </summary>
     utility::string_t getDirection() const;
         void setDirection(utility::string_t value);
     /// <summary>
-    /// 
+    /// If filled then value will be used as a sender number for all outgoing messages of a chat.
     /// </summary>
     utility::string_t getFrom() const;
         void setFrom(utility::string_t value);
     /// <summary>
-    /// 
+    /// Date and time until chat will be mutted.
     /// </summary>
-    utility::string_t getMutedUntil() const;
-        void setMutedUntil(utility::string_t value);
+    utility::datetime getMutedUntil() const;
+        void setMutedUntil(utility::datetime value);
     /// <summary>
-    /// 
+    /// Time left till chat will be unmutted (seconds).
     /// </summary>
     int32_t getTimeLeftMute() const;
         void setTimeLeftMute(int32_t value);
@@ -144,7 +144,7 @@ protected:
         utility::string_t m_LastMessage;
         utility::string_t m_Direction;
         utility::string_t m_From;
-        utility::string_t m_MutedUntil;
+        utility::datetime m_MutedUntil;
         int32_t m_TimeLeftMute;
         std::shared_ptr<Country> m_Country;
     };

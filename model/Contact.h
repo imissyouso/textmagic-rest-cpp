@@ -66,12 +66,12 @@ public:
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// 
+    /// Is the Contact favourite? [Custom fields list](http://docs.textmagictesting.com/#operation/getFavourites).
     /// </summary>
     bool isFavorited() const;
         void setFavorited(bool value);
     /// <summary>
-    /// 
+    /// Is the Contact blocked? [Custom fields list](http://docs.textmagictesting.com/#operation/getBlockedContacts).
     /// </summary>
     bool isBlocked() const;
         void setBlocked(bool value);

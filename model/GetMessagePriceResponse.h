@@ -54,17 +54,17 @@ public:
     /// GetMessagePriceResponse members
 
     /// <summary>
-    /// 
+    /// Total price of the mesasge.
     /// </summary>
     double getTotal() const;
         void setTotal(double value);
     /// <summary>
-    /// 
+    /// Message parts (multiples of 160 characters) count.
     /// </summary>
     int32_t getParts() const;
         void setParts(int32_t value);
     /// <summary>
-    /// 
+    /// List of countries where message will be sent with pricing explanation.
     /// </summary>
     std::shared_ptr<Object> getCountries() const;
         void setCountries(std::shared_ptr<Object> value);

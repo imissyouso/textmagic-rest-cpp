@@ -53,17 +53,17 @@ public:
     /// MuteChatInputObject members
 
     /// <summary>
-    /// Chat ID
+    /// Chat ID.
     /// </summary>
     int32_t getId() const;
         void setId(int32_t value);
     /// <summary>
-    /// Mute value
+    /// Mute notifications sound.
     /// </summary>
     bool isMute() const;
         void setMute(bool value);
     /// <summary>
-    /// Mute for N hours
+    /// Mute for N hours.
     /// </summary>
     int32_t getFor() const;
     bool forIsSet() const;

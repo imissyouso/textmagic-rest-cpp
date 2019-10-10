@@ -93,21 +93,21 @@ public:
     utility::string_t getLists() const;
         void setLists(utility::string_t value);
     /// <summary>
-    /// Is contact favorited
+    /// Is contact marked as favorite.
     /// </summary>
     bool isFavorited() const;
     bool favoritedIsSet() const;
     void unsetFavorited();
     void setFavorited(bool value);
     /// <summary>
-    /// Is contact blocked for outgoing and incoming messaging
+    /// Is contact blocked for outgoing and incoming messaging.
     /// </summary>
     bool isBlocked() const;
     bool blockedIsSet() const;
     void unsetBlocked();
     void setBlocked(bool value);
     /// <summary>
-    /// Force type of phone. Possible values: 0 - landline, 1 - mobile. Default is -1 (auto detection)
+    /// Force type of phone. Possible values: 0 - landline, 1 - mobile. Default is -1 (auto detection).
     /// </summary>
     int32_t getType() const;
     bool typeIsSet() const;
@@ -121,14 +121,14 @@ public:
     void unsetCustomFieldValues();
     void setCustomFieldValues(std::shared_ptr<Object> value);
     /// <summary>
-    /// Treat phone number passed in request body as local
+    /// Treat phone number passed in request body as **local**.
     /// </summary>
     int32_t getLocal() const;
     bool localIsSet() const;
     void unsetLocal();
     void setLocal(int32_t value);
     /// <summary>
-    /// 2-letter ISO country code for local phone numbers, used when local is  set to true. Default is account country
+    /// 2-letter ISO country code for local phone numbers, used when **local** is set to true.
     /// </summary>
     utility::string_t getCountry() const;
     bool countryIsSet() const;
