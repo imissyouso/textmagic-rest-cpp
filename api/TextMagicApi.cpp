@@ -12809,7 +12809,7 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<ImportContactsInpu
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/api/v2/contacts/import");
+    utility::string_t path = utility::conversions::to_string_t("/api/v2/contacts/import/normalized");
     
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
