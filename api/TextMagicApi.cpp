@@ -16446,7 +16446,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateContact(st
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/api/v2/contact/{id}/normalized");
+    utility::string_t path = utility::conversions::to_string_t("/api/v2/contacts/{id}/normalized");
     boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("id") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(id));
 
     std::map<utility::string_t, utility::string_t> queryParams;
