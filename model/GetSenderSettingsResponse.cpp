@@ -36,43 +36,94 @@ web::json::value GetSenderSettingsResponse::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    val[utility::conversions::to_string_t("user")] = ModelBase::toJson(m_User);
-    val[utility::conversions::to_string_t("special")] = ModelBase::toJson(m_Special);
-    val[utility::conversions::to_string_t("other")] = ModelBase::toJson(m_Other);
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_User )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        val[utility::conversions::to_string_t("user")] = web::json::value::array(jsonArray);
+    }
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Special )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        val[utility::conversions::to_string_t("special")] = web::json::value::array(jsonArray);
+    }
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Other )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        val[utility::conversions::to_string_t("other")] = web::json::value::array(jsonArray);
+    }
 
     return val;
 }
 
 void GetSenderSettingsResponse::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("user")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("user")];
-        if(!fieldValue.is_null())
+        m_User.clear();
+        std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("user")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromJson(fieldValue);
-            setUser( newItem );
+        for( auto& item : val[utility::conversions::to_string_t("user")].as_array() )
+        {
+            if(item.is_null())
+            {
+                m_User.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_User.push_back( newItem );
+            }
+        }
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("special")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("special")];
-        if(!fieldValue.is_null())
+        m_Special.clear();
+        std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("special")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromJson(fieldValue);
-            setSpecial( newItem );
+        for( auto& item : val[utility::conversions::to_string_t("special")].as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Special.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_Special.push_back( newItem );
+            }
+        }
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("other")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("other")];
-        if(!fieldValue.is_null())
+        m_Other.clear();
+        std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("other")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromJson(fieldValue);
-            setOther( newItem );
+        for( auto& item : val[utility::conversions::to_string_t("other")].as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Other.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_Other.push_back( newItem );
+            }
+        }
         }
     }
 }
@@ -85,9 +136,30 @@ void GetSenderSettingsResponse::toMultipart(std::shared_ptr<MultipartFormData> m
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    m_User->toMultipart(multipart, utility::conversions::to_string_t("user."));
-    m_Special->toMultipart(multipart, utility::conversions::to_string_t("special."));
-    m_Other->toMultipart(multipart, utility::conversions::to_string_t("other."));
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_User )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("user"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            }
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Special )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("special"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            }
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Other )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("other"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            }
 }
 
 void GetSenderSettingsResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -98,46 +170,88 @@ void GetSenderSettingsResponse::fromMultiPart(std::shared_ptr<MultipartFormData>
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    std::shared_ptr<Object> newUser(nullptr);
-    newUser->fromMultiPart(multipart, utility::conversions::to_string_t("user."));
-    setUser( newUser );
-    std::shared_ptr<Object> newSpecial(nullptr);
-    newSpecial->fromMultiPart(multipart, utility::conversions::to_string_t("special."));
-    setSpecial( newSpecial );
-    std::shared_ptr<Object> newOther(nullptr);
-    newOther->fromMultiPart(multipart, utility::conversions::to_string_t("other."));
-    setOther( newOther );
+    {
+        m_User.clear();
+
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("user"))));
+        for( auto& item : jsonArray.as_array() )
+        {
+            if(item.is_null())
+            {
+                m_User.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_User.push_back( newItem );
+            }
+        }
+    }
+    {
+        m_Special.clear();
+
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("special"))));
+        for( auto& item : jsonArray.as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Special.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_Special.push_back( newItem );
+            }
+        }
+    }
+    {
+        m_Other.clear();
+
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("other"))));
+        for( auto& item : jsonArray.as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Other.push_back( std::shared_ptr<SenderSettingsItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<SenderSettingsItem> newItem(new SenderSettingsItem());
+                newItem->fromJson(item);
+                m_Other.push_back( newItem );
+            }
+        }
+    }
 }
 
-std::shared_ptr<Object> GetSenderSettingsResponse::getUser() const
+std::vector<std::shared_ptr<SenderSettingsItem>>& GetSenderSettingsResponse::getUser()
 {
     return m_User;
 }
 
-
-void GetSenderSettingsResponse::setUser(std::shared_ptr<Object> value)
+void GetSenderSettingsResponse::setUser(std::vector<std::shared_ptr<SenderSettingsItem>> value)
 {
     m_User = value;
     
 }
-std::shared_ptr<Object> GetSenderSettingsResponse::getSpecial() const
+std::vector<std::shared_ptr<SenderSettingsItem>>& GetSenderSettingsResponse::getSpecial()
 {
     return m_Special;
 }
 
-
-void GetSenderSettingsResponse::setSpecial(std::shared_ptr<Object> value)
+void GetSenderSettingsResponse::setSpecial(std::vector<std::shared_ptr<SenderSettingsItem>> value)
 {
     m_Special = value;
     
 }
-std::shared_ptr<Object> GetSenderSettingsResponse::getOther() const
+std::vector<std::shared_ptr<SenderSettingsItem>>& GetSenderSettingsResponse::getOther()
 {
     return m_Other;
 }
 
-
-void GetSenderSettingsResponse::setOther(std::shared_ptr<Object> value)
+void GetSenderSettingsResponse::setOther(std::vector<std::shared_ptr<SenderSettingsItem>> value)
 {
     m_Other = value;
     

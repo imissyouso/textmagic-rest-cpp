@@ -87,9 +87,16 @@ web::json::value CreateContactInputObject::toJson() const
     {
         val[utility::conversions::to_string_t("type")] = ModelBase::toJson(m_Type);
     }
-    if(m_CustomFieldValuesIsSet)
     {
-        val[utility::conversions::to_string_t("customFieldValues")] = ModelBase::toJson(m_CustomFieldValues);
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_CustomFieldValues )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        if(jsonArray.size() > 0)
+        {
+            val[utility::conversions::to_string_t("customFieldValues")] = web::json::value::array(jsonArray);
+        }
     }
     if(m_LocalIsSet)
     {
@@ -177,14 +184,24 @@ void CreateContactInputObject::fromJson(web::json::value& val)
             setType(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("customFieldValues")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("customFieldValues")];
-        if(!fieldValue.is_null())
+        m_CustomFieldValues.clear();
+        std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("customFieldValues")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromJson(fieldValue);
-            setCustomFieldValues( newItem );
+        for( auto& item : val[utility::conversions::to_string_t("customFieldValues")].as_array() )
+        {
+            if(item.is_null())
+            {
+                m_CustomFieldValues.push_back( std::shared_ptr<CustomFieldListItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<CustomFieldListItem> newItem(new CustomFieldListItem());
+                newItem->fromJson(item);
+                m_CustomFieldValues.push_back( newItem );
+            }
+        }
         }
     }
     if(val.has_field(utility::conversions::to_string_t("local")))
@@ -247,13 +264,17 @@ void CreateContactInputObject::toMultipart(std::shared_ptr<MultipartFormData> mu
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("type"), m_Type));
     }
-    if(m_CustomFieldValuesIsSet)
     {
-        if (m_CustomFieldValues.get())
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_CustomFieldValues )
         {
-            m_CustomFieldValues->toMultipart(multipart, utility::conversions::to_string_t("customFieldValues."));
+            jsonArray.push_back(ModelBase::toJson(item));
         }
         
+        if(jsonArray.size() > 0)
+        {
+            multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("customFieldValues"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+        }
     }
     if(m_LocalIsSet)
     {
@@ -304,13 +325,25 @@ void CreateContactInputObject::fromMultiPart(std::shared_ptr<MultipartFormData> 
     {
         setType(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("type"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("customFieldValues")))
     {
+        m_CustomFieldValues.clear();
         if(multipart->hasContent(utility::conversions::to_string_t("customFieldValues")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromMultiPart(multipart, utility::conversions::to_string_t("customFieldValues."));
-            setCustomFieldValues( newItem );
+
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("customFieldValues"))));
+        for( auto& item : jsonArray.as_array() )
+        {
+            if(item.is_null())
+            {
+                m_CustomFieldValues.push_back( std::shared_ptr<CustomFieldListItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<CustomFieldListItem> newItem(new CustomFieldListItem());
+                newItem->fromJson(item);
+                m_CustomFieldValues.push_back( newItem );
+            }
+        }
         }
     }
     if(multipart->hasContent(utility::conversions::to_string_t("local")))
@@ -492,13 +525,12 @@ void CreateContactInputObject::unsetType()
     m_TypeIsSet = false;
 }
 
-std::shared_ptr<Object> CreateContactInputObject::getCustomFieldValues() const
+std::vector<std::shared_ptr<CustomFieldListItem>>& CreateContactInputObject::getCustomFieldValues()
 {
     return m_CustomFieldValues;
 }
 
-
-void CreateContactInputObject::setCustomFieldValues(std::shared_ptr<Object> value)
+void CreateContactInputObject::setCustomFieldValues(std::vector<std::shared_ptr<CustomFieldListItem>> value)
 {
     m_CustomFieldValues = value;
     m_CustomFieldValuesIsSet = true;

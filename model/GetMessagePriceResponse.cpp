@@ -40,7 +40,14 @@ web::json::value GetMessagePriceResponse::toJson() const
 
     val[utility::conversions::to_string_t("total")] = ModelBase::toJson(m_Total);
     val[utility::conversions::to_string_t("parts")] = ModelBase::toJson(m_Parts);
-    val[utility::conversions::to_string_t("countries")] = ModelBase::toJson(m_Countries);
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Countries )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        val[utility::conversions::to_string_t("countries")] = web::json::value::array(jsonArray);
+    }
 
     return val;
 }
@@ -63,14 +70,24 @@ void GetMessagePriceResponse::fromJson(web::json::value& val)
             setParts(ModelBase::int32_tFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("countries")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("countries")];
-        if(!fieldValue.is_null())
+        m_Countries.clear();
+        std::vector<web::json::value> jsonArray;
+        if(val.has_field(utility::conversions::to_string_t("countries")))
         {
-            std::shared_ptr<Object> newItem(nullptr);
-            newItem->fromJson(fieldValue);
-            setCountries( newItem );
+        for( auto& item : val[utility::conversions::to_string_t("countries")].as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Countries.push_back( std::shared_ptr<GetMessagePriceResponseCountriesItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<GetMessagePriceResponseCountriesItem> newItem(new GetMessagePriceResponseCountriesItem());
+                newItem->fromJson(item);
+                m_Countries.push_back( newItem );
+            }
+        }
         }
     }
 }
@@ -85,7 +102,14 @@ void GetMessagePriceResponse::toMultipart(std::shared_ptr<MultipartFormData> mul
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("total"), m_Total));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("parts"), m_Parts));
-    m_Countries->toMultipart(multipart, utility::conversions::to_string_t("countries."));
+    {
+        std::vector<web::json::value> jsonArray;
+        for( auto& item : m_Countries )
+        {
+            jsonArray.push_back(ModelBase::toJson(item));
+        }
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("countries"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+            }
 }
 
 void GetMessagePriceResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -98,9 +122,24 @@ void GetMessagePriceResponse::fromMultiPart(std::shared_ptr<MultipartFormData> m
 
     setTotal(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("total"))));
     setParts(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("parts"))));
-    std::shared_ptr<Object> newCountries(nullptr);
-    newCountries->fromMultiPart(multipart, utility::conversions::to_string_t("countries."));
-    setCountries( newCountries );
+    {
+        m_Countries.clear();
+
+        web::json::value jsonArray = web::json::value::parse(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("countries"))));
+        for( auto& item : jsonArray.as_array() )
+        {
+            if(item.is_null())
+            {
+                m_Countries.push_back( std::shared_ptr<GetMessagePriceResponseCountriesItem>(nullptr) );
+            }
+            else
+            {
+                std::shared_ptr<GetMessagePriceResponseCountriesItem> newItem(new GetMessagePriceResponseCountriesItem());
+                newItem->fromJson(item);
+                m_Countries.push_back( newItem );
+            }
+        }
+    }
 }
 
 double GetMessagePriceResponse::getTotal() const
@@ -125,13 +164,12 @@ void GetMessagePriceResponse::setParts(int32_t value)
     m_Parts = value;
     
 }
-std::shared_ptr<Object> GetMessagePriceResponse::getCountries() const
+std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>>& GetMessagePriceResponse::getCountries()
 {
     return m_Countries;
 }
 
-
-void GetMessagePriceResponse::setCountries(std::shared_ptr<Object> value)
+void GetMessagePriceResponse::setCountries(std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>> value)
 {
     m_Countries = value;
     

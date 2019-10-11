@@ -11,19 +11,18 @@
  */
 
 /*
- * GetMessagePriceResponse.h
+ * CustomFieldListItem.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_CustomFieldListItem_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_CustomFieldListItem_H_
 
 
 #include "../ModelBase.h"
 
-#include "GetMessagePriceResponseCountriesItem.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -33,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetMessagePriceResponse
+class  CustomFieldListItem
     : public ModelBase
 {
 public:
-    GetMessagePriceResponse();
-    virtual ~GetMessagePriceResponse();
+    CustomFieldListItem();
+    virtual ~CustomFieldListItem();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,28 +51,22 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetMessagePriceResponse members
+    /// CustomFieldListItem members
 
     /// <summary>
-    /// Total price of the mesasge.
+    /// Custom Field ID.
     /// </summary>
-    double getTotal() const;
-        void setTotal(double value);
+    int32_t getId() const;
+        void setId(int32_t value);
     /// <summary>
-    /// Message parts (multiples of 160 characters) count.
+    /// Custom Field value.
     /// </summary>
-    int32_t getParts() const;
-        void setParts(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>>& getCountries();
-        void setCountries(std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>> value);
+    utility::string_t getValue() const;
+        void setValue(utility::string_t value);
 
 protected:
-    double m_Total;
-        int32_t m_Parts;
-        std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>> m_Countries;
+    int32_t m_Id;
+        utility::string_t m_Value;
     };
 
 }
@@ -81,4 +74,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_CustomFieldListItem_H_ */

@@ -22,8 +22,9 @@
 
 #include "../ModelBase.h"
 
+#include "CustomFieldListItem.h"
 #include <cpprest/details/basic_types.h>
-#include "Object.h"
+#include <vector>
 
 namespace com {
 namespace textmagic {
@@ -116,10 +117,10 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Object> getCustomFieldValues() const;
+    std::vector<std::shared_ptr<CustomFieldListItem>>& getCustomFieldValues();
     bool customFieldValuesIsSet() const;
     void unsetCustomFieldValues();
-    void setCustomFieldValues(std::shared_ptr<Object> value);
+    void setCustomFieldValues(std::vector<std::shared_ptr<CustomFieldListItem>> value);
     /// <summary>
     /// Treat phone number passed in request body as **local**.
     /// </summary>
@@ -152,7 +153,7 @@ protected:
     bool m_BlockedIsSet;
     int32_t m_Type;
     bool m_TypeIsSet;
-    std::shared_ptr<Object> m_CustomFieldValues;
+    std::vector<std::shared_ptr<CustomFieldListItem>> m_CustomFieldValues;
     bool m_CustomFieldValuesIsSet;
     int32_t m_Local;
     bool m_LocalIsSet;

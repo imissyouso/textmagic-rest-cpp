@@ -465,7 +465,7 @@ public:
     /// Delete a list
     /// </summary>
     /// <remarks>
-    /// &gt; When you delete a list, the contacts in it are deleted as well unless they were saved in other list. 
+    /// This command has no parameters. If successful, this command will return the standard delete response (204 No Content), otherwise a standard error response will be returned.  When you delete a list, the contacts in it are deleted as well unless they were saved in other list.
     /// </remarks>
     /// <param name="id"></param>
     pplx::task<void> deleteList(

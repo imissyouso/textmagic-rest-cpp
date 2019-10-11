@@ -11,19 +11,18 @@
  */
 
 /*
- * GetMessagePriceResponse.h
+ * SenderSettingsItem.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_SenderSettingsItem_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_SenderSettingsItem_H_
 
 
 #include "../ModelBase.h"
 
-#include "GetMessagePriceResponseCountriesItem.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -33,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetMessagePriceResponse
+class  SenderSettingsItem
     : public ModelBase
 {
 public:
-    GetMessagePriceResponse();
-    virtual ~GetMessagePriceResponse();
+    SenderSettingsItem();
+    virtual ~SenderSettingsItem();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,28 +51,22 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetMessagePriceResponse members
+    /// SenderSettingsItem members
 
     /// <summary>
-    /// Total price of the mesasge.
+    /// Two-letter ISO country code of the recipient phone number. 
     /// </summary>
-    double getTotal() const;
-        void setTotal(double value);
+    utility::string_t getCountry() const;
+        void setCountry(utility::string_t value);
     /// <summary>
-    /// Message parts (multiples of 160 characters) count.
+    /// Phone enabled for sending to specified country
     /// </summary>
-    int32_t getParts() const;
-        void setParts(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>>& getCountries();
-        void setCountries(std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>> value);
+    utility::string_t getPhone() const;
+        void setPhone(utility::string_t value);
 
 protected:
-    double m_Total;
-        int32_t m_Parts;
-        std::vector<std::shared_ptr<GetMessagePriceResponseCountriesItem>> m_Countries;
+    utility::string_t m_Country;
+        utility::string_t m_Phone;
     };
 
 }
@@ -81,4 +74,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetMessagePriceResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_SenderSettingsItem_H_ */

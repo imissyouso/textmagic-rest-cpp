@@ -11,19 +11,18 @@
  */
 
 /*
- * GetSenderSettingsResponse.h
+ * MessagePriceItem.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_GetSenderSettingsResponse_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_GetSenderSettingsResponse_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_MessagePriceItem_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_MessagePriceItem_H_
 
 
 #include "../ModelBase.h"
 
-#include "SenderSettingsItem.h"
-#include <vector>
+#include <cpprest/details/basic_types.h>
 
 namespace com {
 namespace textmagic {
@@ -33,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  GetSenderSettingsResponse
+class  MessagePriceItem
     : public ModelBase
 {
 public:
-    GetSenderSettingsResponse();
-    virtual ~GetSenderSettingsResponse();
+    MessagePriceItem();
+    virtual ~MessagePriceItem();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,28 +51,28 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// GetSenderSettingsResponse members
+    /// MessagePriceItem members
 
     /// <summary>
-    /// 
+    /// Country name.
     /// </summary>
-    std::vector<std::shared_ptr<SenderSettingsItem>>& getUser();
-        void setUser(std::vector<std::shared_ptr<SenderSettingsItem>> value);
+    utility::string_t getName() const;
+        void setName(utility::string_t value);
     /// <summary>
-    /// 
+    /// Price to send message to desired country.
     /// </summary>
-    std::vector<std::shared_ptr<SenderSettingsItem>>& getSpecial();
-        void setSpecial(std::vector<std::shared_ptr<SenderSettingsItem>> value);
+    utility::string_t getPrice() const;
+        void setPrice(utility::string_t value);
     /// <summary>
-    /// 
+    /// Two-letter ISO country code of the recipient phone number.
     /// </summary>
-    std::vector<std::shared_ptr<SenderSettingsItem>>& getOther();
-        void setOther(std::vector<std::shared_ptr<SenderSettingsItem>> value);
+    utility::string_t getCountry() const;
+        void setCountry(utility::string_t value);
 
 protected:
-    std::vector<std::shared_ptr<SenderSettingsItem>> m_User;
-        std::vector<std::shared_ptr<SenderSettingsItem>> m_Special;
-        std::vector<std::shared_ptr<SenderSettingsItem>> m_Other;
+    utility::string_t m_Name;
+        utility::string_t m_Price;
+        utility::string_t m_Country;
     };
 
 }
@@ -81,4 +80,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_GetSenderSettingsResponse_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_MessagePriceItem_H_ */
