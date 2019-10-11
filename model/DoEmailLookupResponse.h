@@ -134,7 +134,7 @@ public:
     bool isHasMx() const;
         void setHasMx(bool value);
     /// <summary>
-    /// 
+    /// &#x60;true&#x60; if the email address domain has an A record (IPv4). 
     /// </summary>
     bool isHasAa() const;
         void setHasAa(bool value);
