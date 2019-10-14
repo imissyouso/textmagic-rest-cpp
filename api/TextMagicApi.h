@@ -96,7 +96,6 @@
 #include "GetUnsubscribersPaginatedResponse.h"
 #include "GetUserDedicatedNumbersPaginatedResponse.h"
 #include "HttpContent.h"
-#include "ImportContactsInputObject.h"
 #include "InviteSubaccountInputObject.h"
 #include "List.h"
 #include "MarkChatsReadBulkInputObject.h"
@@ -1435,18 +1434,6 @@ public:
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
         boost::optional<int32_t> surveyId
-    );
-    /// <summary>
-    /// Import contacts from the CSV, XLS or XLSX file.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="importContactsInputObject"></param>
-    /// <param name="file">File containing contacts in csv or xls(x) formats</param>
-    pplx::task<void> importContacts(
-        std::shared_ptr<ImportContactsInputObject> importContactsInputObject,
-        std::shared_ptr<HttpContent> file
     );
     /// <summary>
     /// Invite a new sub-account
