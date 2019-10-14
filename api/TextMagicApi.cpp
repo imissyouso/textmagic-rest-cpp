@@ -12792,19 +12792,13 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> TextMagicA
         return result;
     });
 }
-pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, std::shared_ptr<ImportContactsInputObject> importContactsInputObject)
+pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, std::vector<std::shared_ptr<ImportColumnMappingItem>> column)
 {
 
     // verify the required parameter 'file' is set
     if (file == nullptr)
     {
         throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling TextMagicApi->importContacts"));
-    }
-
-    // verify the required parameter 'importContactsInputObject' is set
-    if (importContactsInputObject == nullptr)
-    {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'importContactsInputObject' when calling TextMagicApi->importContacts"));
     }
 
 
@@ -12850,6 +12844,9 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file,
     {
         fileParams[ utility::conversions::to_string_t("file") ] = file;
     }
+    {
+        formParams[ utility::conversions::to_string_t("column") ] = ApiClient::parameterToString(column);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -12858,26 +12855,11 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file,
     if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
-        web::json::value json;
-
-        json = ModelBase::toJson(importContactsInputObject);
-        
-
-        httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
     else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-        std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
-
-        if(importContactsInputObject.get())
-        {
-            importContactsInputObject->toMultipart(multipart, utility::conversions::to_string_t("importContactsInputObject"));
-        }
-
-        httpBody = multipart;
-        requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
     else
     {

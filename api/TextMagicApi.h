@@ -96,7 +96,7 @@
 #include "GetUnsubscribersPaginatedResponse.h"
 #include "GetUserDedicatedNumbersPaginatedResponse.h"
 #include "HttpContent.h"
-#include "ImportContactsInputObject.h"
+#include "ImportColumnMappingItem.h"
 #include "InviteSubaccountInputObject.h"
 #include "List.h"
 #include "MarkChatsReadBulkInputObject.h"
@@ -1443,10 +1443,10 @@ public:
     /// 
     /// </remarks>
     /// <param name="file">File containing contacts in csv or xls(x) formats</param>
-    /// <param name="importContactsInputObject"></param>
+    /// <param name="column"></param>
     pplx::task<void> importContacts(
         std::shared_ptr<HttpContent> file,
-        std::shared_ptr<ImportContactsInputObject> importContactsInputObject
+        std::vector<std::shared_ptr<ImportColumnMappingItem>> column
     );
     /// <summary>
     /// Invite a new sub-account
