@@ -12792,7 +12792,7 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> TextMagicA
         return result;
     });
 }
-pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, std::vector<std::shared_ptr<ImportColumnMappingItem>> column)
+pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, utility::string_t column, boost::optional<utility::string_t> listName, boost::optional<int32_t> listId)
 {
 
     // verify the required parameter 'file' is set
@@ -12845,7 +12845,15 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file,
         fileParams[ utility::conversions::to_string_t("file") ] = file;
     }
     {
-        formParams[ utility::conversions::to_string_t("column") ] = ApiClient::parameterToString(column);
+        queryParams[utility::conversions::to_string_t("column")] = ApiClient::parameterToString(column);
+    }
+    if (listName)
+    {
+        queryParams[utility::conversions::to_string_t("listName")] = ApiClient::parameterToString(*listName);
+    }
+    if (listId)
+    {
+        queryParams[utility::conversions::to_string_t("listId")] = ApiClient::parameterToString(*listId);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
