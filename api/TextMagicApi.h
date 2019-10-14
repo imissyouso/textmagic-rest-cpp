@@ -1442,12 +1442,12 @@ public:
     /// 
     /// </remarks>
     /// <param name="file">File containing contacts in csv or xls(x) formats</param>
-    /// <param name="column"></param>
+    /// <param name="column"> (optional)</param>
     /// <param name="listName">List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. (optional)</param>
     /// <param name="listId">List ID contacts will be imported to. (optional)</param>
     pplx::task<void> importContacts(
         std::shared_ptr<HttpContent> file,
-        utility::string_t column,
+        boost::optional<utility::string_t> column,
         boost::optional<utility::string_t> listName,
         boost::optional<int32_t> listId
     );
