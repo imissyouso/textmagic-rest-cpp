@@ -1453,12 +1453,12 @@ public:
     /// Import contacts from the CSV, XLS or XLSX file.
     /// </remarks>
     /// <param name="file">File containing contacts in csv or xls(x) formats</param>
-    /// <param name="column">Import file column mapping. String must contain substrings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where value before &#x60;:&#x60; is a number of column in file, value after &#x60;:&#x60; is a field of newly created contact or ID of custom field. Numbers of columns begins from zero. Allowed built-in contact fields: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  (optional)</param>
+    /// <param name="column">Import file column mapping. String must contain substrings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where value before &#x60;:&#x60; is a number of column in file, value after &#x60;:&#x60; is a field of newly created contact or ID of custom field. Numbers of columns begins from zero. Allowed built-in contact fields: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required. </param>
     /// <param name="listId">List ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  (optional)</param>
     /// <param name="listName">List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if &#x60;listId&#x60; is specified.  (optional)</param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> importContacts(
         std::shared_ptr<HttpContent> file,
-        boost::optional<utility::string_t> column,
+        utility::string_t column,
         boost::optional<int32_t> listId,
         boost::optional<utility::string_t> listName
     );
