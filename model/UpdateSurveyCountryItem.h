@@ -66,7 +66,7 @@ public:
 
 protected:
     utility::string_t m_Country;
-        int32_t m_User_inbound_id;
+        int32_t m_UserInboundId;
     };
 
 }

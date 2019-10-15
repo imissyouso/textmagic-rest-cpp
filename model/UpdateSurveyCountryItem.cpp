@@ -22,7 +22,7 @@ namespace model {
 UpdateSurveyCountryItem::UpdateSurveyCountryItem()
 {
     m_Country = utility::conversions::to_string_t("");
-    m_User_inbound_id = 0;
+    m_UserInboundId = 0;
 }
 
 UpdateSurveyCountryItem::~UpdateSurveyCountryItem()
@@ -39,7 +39,7 @@ web::json::value UpdateSurveyCountryItem::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("country")] = ModelBase::toJson(m_Country);
-    val[utility::conversions::to_string_t("user_inbound_id")] = ModelBase::toJson(m_User_inbound_id);
+    val[utility::conversions::to_string_t("userInboundId")] = ModelBase::toJson(m_UserInboundId);
 
     return val;
 }
@@ -54,9 +54,9 @@ void UpdateSurveyCountryItem::fromJson(web::json::value& val)
             setCountry(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("user_inbound_id")))
+    if(val.has_field(utility::conversions::to_string_t("userInboundId")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("user_inbound_id")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("userInboundId")];
         if(!fieldValue.is_null())
         {
             setUserInboundId(ModelBase::int32_tFromJson(fieldValue));
@@ -73,7 +73,7 @@ void UpdateSurveyCountryItem::toMultipart(std::shared_ptr<MultipartFormData> mul
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("country"), m_Country));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("user_inbound_id"), m_User_inbound_id));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("userInboundId"), m_UserInboundId));
 }
 
 void UpdateSurveyCountryItem::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -85,7 +85,7 @@ void UpdateSurveyCountryItem::fromMultiPart(std::shared_ptr<MultipartFormData> m
     }
 
     setCountry(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("country"))));
-    setUserInboundId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("user_inbound_id"))));
+    setUserInboundId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("userInboundId"))));
 }
 
 utility::string_t UpdateSurveyCountryItem::getCountry() const
@@ -101,13 +101,13 @@ void UpdateSurveyCountryItem::setCountry(utility::string_t value)
 }
 int32_t UpdateSurveyCountryItem::getUserInboundId() const
 {
-    return m_User_inbound_id;
+    return m_UserInboundId;
 }
 
 
 void UpdateSurveyCountryItem::setUserInboundId(int32_t value)
 {
-    m_User_inbound_id = value;
+    m_UserInboundId = value;
     
 }
 }

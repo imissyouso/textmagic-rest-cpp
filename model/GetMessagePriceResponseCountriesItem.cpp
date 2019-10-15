@@ -22,8 +22,8 @@ namespace model {
 GetMessagePriceResponseCountriesItem::GetMessagePriceResponseCountriesItem()
 {
     m_Country = utility::conversions::to_string_t("");
-    m_Country_name = utility::conversions::to_string_t("");
-    m_Allow_dedicated = false;
+    m_CountryName = utility::conversions::to_string_t("");
+    m_AllowDedicated = false;
     m_Count = 0.0;
     m_Max = 0.0;
     m_Sum = utility::conversions::to_string_t("");
@@ -44,8 +44,8 @@ web::json::value GetMessagePriceResponseCountriesItem::toJson() const
     web::json::value val = web::json::value::object();
 
     val[utility::conversions::to_string_t("country")] = ModelBase::toJson(m_Country);
-    val[utility::conversions::to_string_t("country_name")] = ModelBase::toJson(m_Country_name);
-    val[utility::conversions::to_string_t("allow_dedicated")] = ModelBase::toJson(m_Allow_dedicated);
+    val[utility::conversions::to_string_t("countryName")] = ModelBase::toJson(m_CountryName);
+    val[utility::conversions::to_string_t("allowDedicated")] = ModelBase::toJson(m_AllowDedicated);
     val[utility::conversions::to_string_t("count")] = ModelBase::toJson(m_Count);
     val[utility::conversions::to_string_t("max")] = ModelBase::toJson(m_Max);
     val[utility::conversions::to_string_t("sum")] = ModelBase::toJson(m_Sum);
@@ -64,17 +64,17 @@ void GetMessagePriceResponseCountriesItem::fromJson(web::json::value& val)
             setCountry(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("country_name")))
+    if(val.has_field(utility::conversions::to_string_t("countryName")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("country_name")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("countryName")];
         if(!fieldValue.is_null())
         {
             setCountryName(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("allow_dedicated")))
+    if(val.has_field(utility::conversions::to_string_t("allowDedicated")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("allow_dedicated")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("allowDedicated")];
         if(!fieldValue.is_null())
         {
             setAllowDedicated(ModelBase::boolFromJson(fieldValue));
@@ -123,8 +123,8 @@ void GetMessagePriceResponseCountriesItem::toMultipart(std::shared_ptr<Multipart
     }
 
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("country"), m_Country));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("country_name"), m_Country_name));
-    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("allow_dedicated"), m_Allow_dedicated));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("countryName"), m_CountryName));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("allowDedicated"), m_AllowDedicated));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("count"), m_Count));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("max"), m_Max));
     multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sum"), m_Sum));
@@ -140,8 +140,8 @@ void GetMessagePriceResponseCountriesItem::fromMultiPart(std::shared_ptr<Multipa
     }
 
     setCountry(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("country"))));
-    setCountryName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("country_name"))));
-    setAllowDedicated(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("allow_dedicated"))));
+    setCountryName(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("countryName"))));
+    setAllowDedicated(ModelBase::boolFromHttpContent(multipart->getContent(utility::conversions::to_string_t("allowDedicated"))));
     setCount(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("count"))));
     setMax(ModelBase::doubleFromHttpContent(multipart->getContent(utility::conversions::to_string_t("max"))));
     setSum(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("sum"))));
@@ -161,24 +161,24 @@ void GetMessagePriceResponseCountriesItem::setCountry(utility::string_t value)
 }
 utility::string_t GetMessagePriceResponseCountriesItem::getCountryName() const
 {
-    return m_Country_name;
+    return m_CountryName;
 }
 
 
 void GetMessagePriceResponseCountriesItem::setCountryName(utility::string_t value)
 {
-    m_Country_name = value;
+    m_CountryName = value;
     
 }
 bool GetMessagePriceResponseCountriesItem::isAllowDedicated() const
 {
-    return m_Allow_dedicated;
+    return m_AllowDedicated;
 }
 
 
 void GetMessagePriceResponseCountriesItem::setAllowDedicated(bool value)
 {
-    m_Allow_dedicated = value;
+    m_AllowDedicated = value;
     
 }
 double GetMessagePriceResponseCountriesItem::getCount() const

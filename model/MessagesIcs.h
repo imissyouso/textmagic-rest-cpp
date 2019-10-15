@@ -132,7 +132,7 @@ public:
     bool isCompleted() const;
         void setCompleted(bool value);
     /// <summary>
-    /// null
+    /// TODO
     /// </summary>
     utility::string_t getAvatar() const;
         void setAvatar(utility::string_t value);

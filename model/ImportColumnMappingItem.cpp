@@ -21,10 +21,8 @@ namespace model {
 
 ImportColumnMappingItem::ImportColumnMappingItem()
 {
-    m_Column_position_in_file = utility::conversions::to_string_t("");
-    m_Column_position_in_fileIsSet = false;
-    m_Field_or_custom_field_id = utility::conversions::to_string_t("");
-    m_Field_or_custom_field_idIsSet = false;
+    m_ColumnPositionInFile = utility::conversions::to_string_t("");
+    m_FieldOrCustomFieldId = utility::conversions::to_string_t("");
 }
 
 ImportColumnMappingItem::~ImportColumnMappingItem()
@@ -40,31 +38,25 @@ web::json::value ImportColumnMappingItem::toJson() const
 {
     web::json::value val = web::json::value::object();
 
-    if(m_Column_position_in_fileIsSet)
-    {
-        val[utility::conversions::to_string_t("column_position_in_file")] = ModelBase::toJson(m_Column_position_in_file);
-    }
-    if(m_Field_or_custom_field_idIsSet)
-    {
-        val[utility::conversions::to_string_t("field_or_custom_field_id")] = ModelBase::toJson(m_Field_or_custom_field_id);
-    }
+    val[utility::conversions::to_string_t("columnPositionInFile")] = ModelBase::toJson(m_ColumnPositionInFile);
+    val[utility::conversions::to_string_t("fieldOrCustomFieldId")] = ModelBase::toJson(m_FieldOrCustomFieldId);
 
     return val;
 }
 
 void ImportColumnMappingItem::fromJson(web::json::value& val)
 {
-    if(val.has_field(utility::conversions::to_string_t("column_position_in_file")))
+    if(val.has_field(utility::conversions::to_string_t("columnPositionInFile")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("column_position_in_file")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("columnPositionInFile")];
         if(!fieldValue.is_null())
         {
             setColumnPositionInFile(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("field_or_custom_field_id")))
+    if(val.has_field(utility::conversions::to_string_t("fieldOrCustomFieldId")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("field_or_custom_field_id")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("fieldOrCustomFieldId")];
         if(!fieldValue.is_null())
         {
             setFieldOrCustomFieldId(ModelBase::stringFromJson(fieldValue));
@@ -80,16 +72,8 @@ void ImportColumnMappingItem::toMultipart(std::shared_ptr<MultipartFormData> mul
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    if(m_Column_position_in_fileIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("column_position_in_file"), m_Column_position_in_file));
-        
-    }
-    if(m_Field_or_custom_field_idIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("field_or_custom_field_id"), m_Field_or_custom_field_id));
-        
-    }
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("columnPositionInFile"), m_ColumnPositionInFile));
+    multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("fieldOrCustomFieldId"), m_FieldOrCustomFieldId));
 }
 
 void ImportColumnMappingItem::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -100,58 +84,32 @@ void ImportColumnMappingItem::fromMultiPart(std::shared_ptr<MultipartFormData> m
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t("column_position_in_file")))
-    {
-        setColumnPositionInFile(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("column_position_in_file"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("field_or_custom_field_id")))
-    {
-        setFieldOrCustomFieldId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("field_or_custom_field_id"))));
-    }
+    setColumnPositionInFile(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("columnPositionInFile"))));
+    setFieldOrCustomFieldId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("fieldOrCustomFieldId"))));
 }
 
 utility::string_t ImportColumnMappingItem::getColumnPositionInFile() const
 {
-    return m_Column_position_in_file;
+    return m_ColumnPositionInFile;
 }
 
 
 void ImportColumnMappingItem::setColumnPositionInFile(utility::string_t value)
 {
-    m_Column_position_in_file = value;
-    m_Column_position_in_fileIsSet = true;
+    m_ColumnPositionInFile = value;
+    
 }
-bool ImportColumnMappingItem::columnPositionInFileIsSet() const
-{
-    return m_Column_position_in_fileIsSet;
-}
-
-void ImportColumnMappingItem::unsetColumn_position_in_file()
-{
-    m_Column_position_in_fileIsSet = false;
-}
-
 utility::string_t ImportColumnMappingItem::getFieldOrCustomFieldId() const
 {
-    return m_Field_or_custom_field_id;
+    return m_FieldOrCustomFieldId;
 }
 
 
 void ImportColumnMappingItem::setFieldOrCustomFieldId(utility::string_t value)
 {
-    m_Field_or_custom_field_id = value;
-    m_Field_or_custom_field_idIsSet = true;
+    m_FieldOrCustomFieldId = value;
+    
 }
-bool ImportColumnMappingItem::fieldOrCustomFieldIdIsSet() const
-{
-    return m_Field_or_custom_field_idIsSet;
-}
-
-void ImportColumnMappingItem::unsetField_or_custom_field_id()
-{
-    m_Field_or_custom_field_idIsSet = false;
-}
-
 }
 }
 }

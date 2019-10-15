@@ -91,8 +91,8 @@ public:
 
 protected:
     utility::string_t m_Country;
-        utility::string_t m_Country_name;
-        bool m_Allow_dedicated;
+        utility::string_t m_CountryName;
+        bool m_AllowDedicated;
         double m_Count;
         double m_Max;
         utility::string_t m_Sum;

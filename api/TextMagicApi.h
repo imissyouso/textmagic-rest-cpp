@@ -66,6 +66,7 @@
 #include "GetBlockedContactsPaginatedResponse.h"
 #include "GetCallbackSettingsResponse.h"
 #include "GetChatMessagesPaginatedResponse.h"
+#include "GetContactImportSessionProgressResponse.h"
 #include "GetContactNotesPaginatedResponse.h"
 #include "GetContactsAutocompleteResponse.h"
 #include "GetContactsByListIdPaginatedResponse.h"
@@ -726,7 +727,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="country">Two-letter dedicated number country ISO code.</param>
-    /// <param name="prefix">Desired number prefix. Should include country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country. (optional, default to 1)</param>
+    /// <param name="prefix">Desired number prefix. Should include country code (i.e. 447 for UK phone number format). Leave blank to get all the available numbers for the specified country. (optional)</param>
     /// <param name="tollfree">Should we show only tollfree numbers (tollfree available only for US). (optional, default to 0)</param>
     pplx::task<std::shared_ptr<GetAvailableDedicatedNumbersResponse>> getAvailableDedicatedNumbers(
         utility::string_t country,
@@ -874,6 +875,16 @@ public:
         utility::string_t phone
     );
     /// <summary>
+    /// Check import progress
+    /// </summary>
+    /// <remarks>
+    /// Get contact import session progress.
+    /// </remarks>
+    /// <param name="id"></param>
+    pplx::task<std::shared_ptr<GetContactImportSessionProgressResponse>> getContactImportSessionProgress(
+        int32_t id
+    );
+    /// <summary>
     /// Get a contact note
     /// </summary>
     /// <remarks>
@@ -1011,7 +1022,7 @@ public:
     /// </remarks>
     /// <param name="page">Fetch specified results page. (optional, default to 1)</param>
     /// <param name="limit">The number of results per page. (optional, default to 10)</param>
-    /// <param name="query">Find contacts or lists by specified search query (optional, default to A)</param>
+    /// <param name="query">Find contacts or lists by specified search query (optional)</param>
     pplx::task<std::shared_ptr<GetFavouritesPaginatedResponse>> getFavourites(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
@@ -1247,7 +1258,7 @@ public:
     pplx::task<std::shared_ptr<GetMessagingStatResponse>> getMessagingStat(
         boost::optional<utility::string_t> by,
         boost::optional<int32_t> start,
-        boost::optional<utility::string_t> end
+        boost::optional<int32_t> end
     );
     /// <summary>
     /// Get a single message
@@ -1332,7 +1343,7 @@ public:
     pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> getSpendingStat(
         boost::optional<int32_t> page,
         boost::optional<int32_t> limit,
-        boost::optional<int32_t> start,
+        boost::optional<utility::string_t> start,
         boost::optional<utility::string_t> end
     );
     /// <summary>
@@ -1436,20 +1447,20 @@ public:
         boost::optional<int32_t> surveyId
     );
     /// <summary>
-    /// Import contacts from the CSV, XLS or XLSX file.
+    /// Import contacts
     /// </summary>
     /// <remarks>
-    /// 
+    /// Import contacts from the CSV, XLS or XLSX file.
     /// </remarks>
     /// <param name="file">File containing contacts in csv or xls(x) formats</param>
-    /// <param name="column"> (optional)</param>
-    /// <param name="listName">List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. (optional)</param>
-    /// <param name="listId">List ID contacts will be imported to. (optional)</param>
-    pplx::task<void> importContacts(
+    /// <param name="column">Import file column mapping. String must contain substrings of mapping in format &#x60;columnNumber:field&#x60; glued by &#x60;;&#x60;. For example: &#x60;0:firstName;1:lastName;3:phone;4:email&#x60; where value before &#x60;:&#x60; is a number of column in file, value after &#x60;:&#x60; is a field of newly created contact or ID of custom field. Numbers of columns begins from zero. Allowed built-in contact fields: &#x60;firstName&#x60;, &#x60;lastName&#x60;, &#x60;phone&#x60;, &#x60;email&#x60;. Existing of &#x60;phone&#x60; mapping is required.  (optional)</param>
+    /// <param name="listId">List ID contacts will be imported to. Ignored if &#x60;listName&#x60; is specified.  (optional)</param>
+    /// <param name="listName">List name. This list will be created during import. If such name is already taken, an ordinal (1, 2, ...) will be added to the end. Ignored if &#x60;listId&#x60; is specified.  (optional)</param>
+    pplx::task<std::shared_ptr<ResourceLinkResponse>> importContacts(
         std::shared_ptr<HttpContent> file,
         boost::optional<utility::string_t> column,
-        boost::optional<utility::string_t> listName,
-        boost::optional<int32_t> listId
+        boost::optional<int32_t> listId,
+        boost::optional<utility::string_t> listName
     );
     /// <summary>
     /// Invite a new sub-account
@@ -1879,7 +1890,7 @@ public:
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<ResourceLinkResponse>> updateCustomFieldValue(
         std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject,
-        utility::string_t id
+        int32_t id
     );
     /// <summary>
     /// Update inbound messages notification settings

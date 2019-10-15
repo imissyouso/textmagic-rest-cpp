@@ -7506,6 +7506,123 @@ pplx::task<std::shared_ptr<Contact>> TextMagicApi::getContactIfBlocked(utility::
         return result;
     });
 }
+pplx::task<std::shared_ptr<GetContactImportSessionProgressResponse>> TextMagicApi::getContactImportSessionProgress(int32_t id)
+{
+
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
+    utility::string_t path = utility::conversions::to_string_t("/api/v2/contacts/import/progress/{id}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("id") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(id));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if ( responseHttpContentTypes.size() == 0 )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, utility::conversions::to_string_t("TextMagicApi->getContactImportSessionProgress does not produce any supported media type"));
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+    consumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("TextMagicApi->getContactImportSessionProgress does not consume any supported media type"));
+    }
+
+    // authentication (BasicAuth) required
+    // Basic authentication is added automatically as part of the http_client_config
+
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+        if (response.status_code() >= 400)
+        {
+            throw ApiException(response.status_code()
+                , utility::conversions::to_string_t("error calling getContactImportSessionProgress: ") + response.reason_phrase()
+                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+        }
+
+        // check response content type
+        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        {
+            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
+            if( contentType.find(responseHttpContentType) == std::string::npos )
+            {
+                throw ApiException(500
+                    , utility::conversions::to_string_t("error calling getContactImportSessionProgress: unexpected response type: ") + contentType
+                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+            }
+        }
+
+        return response.extract_string();
+    })
+    .then([=](utility::string_t response)
+    {
+        std::shared_ptr<GetContactImportSessionProgressResponse> result(new GetContactImportSessionProgressResponse());
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result->fromJson(json);
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling getContactImportSessionProgress: unsupported response type"));
+        }
+
+        return result;
+    });
+}
 pplx::task<std::shared_ptr<ContactNote>> TextMagicApi::getContactNote(int32_t id)
 {
 
@@ -10693,7 +10810,7 @@ pplx::task<std::shared_ptr<GetMessagingCountersResponse>> TextMagicApi::getMessa
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetMessagingStatResponse>> TextMagicApi::getMessagingStat(boost::optional<utility::string_t> by, boost::optional<int32_t> start, boost::optional<utility::string_t> end)
+pplx::task<std::shared_ptr<GetMessagingStatResponse>> TextMagicApi::getMessagingStat(boost::optional<utility::string_t> by, boost::optional<int32_t> start, boost::optional<int32_t> end)
 {
 
 
@@ -11552,7 +11669,7 @@ pplx::task<std::shared_ptr<GetSenderSettingsResponse>> TextMagicApi::getSenderSe
         return result;
     });
 }
-pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<int32_t> start, boost::optional<utility::string_t> end)
+pplx::task<std::shared_ptr<GetSpendingStatPaginatedResponse>> TextMagicApi::getSpendingStat(boost::optional<int32_t> page, boost::optional<int32_t> limit, boost::optional<utility::string_t> start, boost::optional<utility::string_t> end)
 {
 
 
@@ -12792,7 +12909,7 @@ pplx::task<std::shared_ptr<GetUserDedicatedNumbersPaginatedResponse>> TextMagicA
         return result;
     });
 }
-pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> column, boost::optional<utility::string_t> listName, boost::optional<int32_t> listId)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file, boost::optional<utility::string_t> column, boost::optional<int32_t> listId, boost::optional<utility::string_t> listName)
 {
 
     // verify the required parameter 'file' is set
@@ -12848,13 +12965,13 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file,
     {
         queryParams[utility::conversions::to_string_t("column")] = ApiClient::parameterToString(*column);
     }
-    if (listName)
-    {
-        queryParams[utility::conversions::to_string_t("listName")] = ApiClient::parameterToString(*listName);
-    }
     if (listId)
     {
         queryParams[utility::conversions::to_string_t("listId")] = ApiClient::parameterToString(*listId);
+    }
+    if (listName)
+    {
+        queryParams[utility::conversions::to_string_t("listName")] = ApiClient::parameterToString(*listName);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -12909,7 +13026,25 @@ pplx::task<void> TextMagicApi::importContacts(std::shared_ptr<HttpContent> file,
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        std::shared_ptr<ResourceLinkResponse> result(new ResourceLinkResponse());
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result->fromJson(json);
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling importContacts: unsupported response type"));
+        }
+
+        return result;
     });
 }
 pplx::task<void> TextMagicApi::inviteSubaccount(std::shared_ptr<InviteSubaccountInputObject> inviteSubaccountInputObject)
@@ -17106,7 +17241,7 @@ pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFiel
         return result;
     });
 }
-pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFieldValue(std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject, utility::string_t id)
+pplx::task<std::shared_ptr<ResourceLinkResponse>> TextMagicApi::updateCustomFieldValue(std::shared_ptr<UpdateCustomFieldValueInputObject> updateCustomFieldValueInputObject, int32_t id)
 {
 
     // verify the required parameter 'updateCustomFieldValueInputObject' is set

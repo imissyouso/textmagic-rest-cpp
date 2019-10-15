@@ -57,23 +57,17 @@ public:
     /// Column position in file (indexed from 0)
     /// </summary>
     utility::string_t getColumnPositionInFile() const;
-    bool columnPositionInFileIsSet() const;
-    void unsetColumn_position_in_file();
-    void setColumnPositionInFile(utility::string_t value);
+        void setColumnPositionInFile(utility::string_t value);
     /// <summary>
     /// Field or custom field id
     /// </summary>
     utility::string_t getFieldOrCustomFieldId() const;
-    bool fieldOrCustomFieldIdIsSet() const;
-    void unsetField_or_custom_field_id();
-    void setFieldOrCustomFieldId(utility::string_t value);
+        void setFieldOrCustomFieldId(utility::string_t value);
 
 protected:
-    utility::string_t m_Column_position_in_file;
-    bool m_Column_position_in_fileIsSet;
-    utility::string_t m_Field_or_custom_field_id;
-    bool m_Field_or_custom_field_idIsSet;
-};
+    utility::string_t m_ColumnPositionInFile;
+        utility::string_t m_FieldOrCustomFieldId;
+    };
 
 }
 }
