@@ -11,13 +11,13 @@
  */
 
 /*
- * ImportColumnMappingItem.h
+ * CallPriceResponse.h
  *
  * 
  */
 
-#ifndef COM_TEXTMAGIC_CLIENT_MODEL_ImportColumnMappingItem_H_
-#define COM_TEXTMAGIC_CLIENT_MODEL_ImportColumnMappingItem_H_
+#ifndef COM_TEXTMAGIC_CLIENT_MODEL_CallPriceResponse_H_
+#define COM_TEXTMAGIC_CLIENT_MODEL_CallPriceResponse_H_
 
 
 #include "../ModelBase.h"
@@ -32,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  ImportColumnMappingItem
+class  CallPriceResponse
     : public ModelBase
 {
 public:
-    ImportColumnMappingItem();
-    virtual ~ImportColumnMappingItem();
+    CallPriceResponse();
+    virtual ~CallPriceResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,22 +51,34 @@ public:
     void fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ImportColumnMappingItem members
+    /// CallPriceResponse members
 
     /// <summary>
-    /// Column position in file (indexed from 0)
+    /// Price for outbound message
     /// </summary>
-    utility::string_t getColumnPositionInFile() const;
-        void setColumnPositionInFile(utility::string_t value);
+    double getOutbound() const;
+        void setOutbound(double value);
     /// <summary>
-    /// Field or custom field id
+    /// Price for inbound message
     /// </summary>
-    utility::string_t getFieldOrCustomFieldId() const;
-        void setFieldOrCustomFieldId(utility::string_t value);
+    double getInbound() const;
+        void setInbound(double value);
+    /// <summary>
+    /// Price for forward
+    /// </summary>
+    double getForward() const;
+        void setForward(double value);
+    /// <summary>
+    /// 2-letter ISO country code for local phone numbers, used when local is  set to true. Default is account country
+    /// </summary>
+    utility::string_t getCountry() const;
+        void setCountry(utility::string_t value);
 
 protected:
-    utility::string_t m_ColumnPositionInFile;
-        utility::string_t m_FieldOrCustomFieldId;
+    double m_Outbound;
+        double m_Inbound;
+        double m_Forward;
+        utility::string_t m_Country;
     };
 
 }
@@ -74,4 +86,4 @@ protected:
 }
 }
 
-#endif /* COM_TEXTMAGIC_CLIENT_MODEL_ImportColumnMappingItem_H_ */
+#endif /* COM_TEXTMAGIC_CLIENT_MODEL_CallPriceResponse_H_ */

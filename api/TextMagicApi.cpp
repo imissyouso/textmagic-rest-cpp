@@ -17639,7 +17639,7 @@ pplx::task<void> TextMagicApi::updateSenderSetting(std::shared_ptr<UpdateSenderS
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/api/v2/sender/settings/normalized");
+    utility::string_t path = utility::conversions::to_string_t("/api/v2/sender/settings");
     
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
