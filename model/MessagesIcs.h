@@ -82,7 +82,7 @@ public:
     utility::datetime getLastSent() const;
         void setLastSent(utility::datetime value);
     /// <summary>
-    /// 
+    /// Aggregated contact information. If the message scheduled to be sent to a single contact, a full name will be returned here. Otherwise, a total amount contacts will be returned.
     /// </summary>
     utility::string_t getContactName() const;
         void setContactName(utility::string_t value);
@@ -97,7 +97,7 @@ public:
     utility::string_t getType() const;
         void setType(utility::string_t value);
     /// <summary>
-    /// 
+    /// A human-readable summary of the sending schedule.
     /// </summary>
     utility::string_t getSummary() const;
         void setSummary(utility::string_t value);
@@ -107,12 +107,12 @@ public:
     std::shared_ptr<MessagesIcs_textParameters> getTextParameters() const;
         void setTextParameters(std::shared_ptr<MessagesIcs_textParameters> value);
     /// <summary>
-    /// 
+    /// First occurence date.
     /// </summary>
     utility::datetime getFirstOccurrence() const;
         void setFirstOccurrence(utility::datetime value);
     /// <summary>
-    /// 
+    /// Last occurence date (could be &#x60;null&#x60; if the schedule is endless).
     /// </summary>
     utility::datetime getLastOccurrence() const;
         void setLastOccurrence(utility::datetime value);
@@ -132,7 +132,7 @@ public:
     bool isCompleted() const;
         void setCompleted(bool value);
     /// <summary>
-    /// TODO
+    /// A relative link to the contact avatar.
     /// </summary>
     utility::string_t getAvatar() const;
         void setAvatar(utility::string_t value);

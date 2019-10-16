@@ -73,17 +73,17 @@ public:
     int32_t getRejected() const;
         void setRejected(int32_t value);
     /// <summary>
-    /// Amount of schedules messages.
+    /// Amount of scheduled messages.
     /// </summary>
     int32_t getScheduled() const;
         void setScheduled(int32_t value);
     /// <summary>
-    /// 
+    /// Total amount of messages.
     /// </summary>
     int32_t getAll() const;
         void setAll(int32_t value);
     /// <summary>
-    /// Total sent messages.
+    /// Amount of sent but not yet delivered messages.
     /// </summary>
     int32_t getSent() const;
         void setSent(int32_t value);

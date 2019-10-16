@@ -65,7 +65,7 @@ public:
     int32_t getParts() const;
         void setParts(int32_t value);
     /// <summary>
-    /// 
+    /// Characters count.
     /// </summary>
     int32_t getChars() const;
         void setChars(int32_t value);
@@ -80,7 +80,7 @@ public:
     std::vector<utility::string_t>& getCountries();
         void setCountries(std::vector<utility::string_t> value);
     /// <summary>
-    /// 
+    /// Human-readable message charset label. Could be: *   **ISO-8859-1** for plaintext SMS *   **UTF-16BE** for Unicode SMS *   **Voice** for voice services (Text-to-Speech or Voice Broadcast) messages 
     /// </summary>
     utility::string_t getCharsetLabel() const;
         void setCharsetLabel(utility::string_t value);

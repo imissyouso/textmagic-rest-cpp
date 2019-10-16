@@ -115,7 +115,7 @@ public:
     utility::string_t getCharset() const;
         void setCharset(utility::string_t value);
     /// <summary>
-    /// 
+    /// Human-readable message charset label. Could be: *   **ISO-8859-1** for plaintext SMS *   **UTF-16BE** for Unicode SMS *   **Voice** for voice services (Text-to-Speech or Voice Broadcast) messages 
     /// </summary>
     utility::string_t getCharsetLabel() const;
         void setCharsetLabel(utility::string_t value);
@@ -154,7 +154,7 @@ public:
     int32_t getPartsCount() const;
         void setPartsCount(int32_t value);
     /// <summary>
-    /// 
+    /// User email which this message came from. For Email2SMS and Distribution Lists messages it will be an original email address, in other cases it is an account email address.
     /// </summary>
     utility::string_t getFromEmail() const;
     bool fromEmailIsSet() const;

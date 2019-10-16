@@ -74,7 +74,7 @@ public:
     bool isSendInHtmlFormat() const;
         void setSendInHtmlFormat(bool value);
     /// <summary>
-    /// New message notification email 2.
+    /// New message notification email 1.
     /// </summary>
     utility::string_t getAlertEmail1() const;
         void setAlertEmail1(utility::string_t value);

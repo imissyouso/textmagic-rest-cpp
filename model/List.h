@@ -86,7 +86,7 @@ public:
     std::shared_ptr<User> getUser() const;
         void setUser(std::shared_ptr<User> value);
     /// <summary>
-    /// 
+    /// Internal service field.
     /// </summary>
     bool isService() const;
         void setService(bool value);
@@ -101,7 +101,7 @@ public:
     std::shared_ptr<ListImage> getAvatar() const;
         void setAvatar(std::shared_ptr<ListImage> value);
     /// <summary>
-    /// Indicates that List is used as a default. All new contacts will be added in this List by default.
+    /// Indicates that List is used as a default. All new contacts that added via Web-app will be added in this List by default.
     /// </summary>
     bool isIsDefault() const;
         void setIsDefault(bool value);

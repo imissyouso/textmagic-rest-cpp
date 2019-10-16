@@ -64,7 +64,7 @@ public:
     utility::string_t getHref() const;
         void setHref(utility::string_t value);
     /// <summary>
-    /// 
+    /// Message response type: * **message** when message sent to a single recipient * **session** when message sent to multiple recipients * **schedule** when message has been scheduled for sending * **bulk** when message sent to multiple recipient and the number of recipients requires asynchronous processiong See [Sending more than 1,000 messages in one session](http://docs.textmagictesting.com/#section/Tutorials/Sending-more-than-1000-messages-in-one-session). 
     /// </summary>
     utility::string_t getType() const;
         void setType(utility::string_t value);
@@ -79,7 +79,7 @@ public:
     int32_t getBulkId() const;
         void setBulkId(int32_t value);
     /// <summary>
-    /// 
+    /// Message ID.
     /// </summary>
     int32_t getMessageId() const;
         void setMessageId(int32_t value);

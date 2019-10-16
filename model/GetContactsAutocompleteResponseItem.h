@@ -59,7 +59,7 @@ public:
     int32_t getEntityId() const;
         void setEntityId(int32_t value);
     /// <summary>
-    /// 
+    /// Entry type: * **contact** if it is related to a contact * **list** if it is related to a contact list * **reply** if it is related to an incoming message 
     /// </summary>
     utility::string_t getEntityType() const;
         void setEntityType(utility::string_t value);
@@ -74,7 +74,7 @@ public:
     utility::string_t getLabel() const;
         void setLabel(utility::string_t value);
     /// <summary>
-    /// If contact or list was shared by another user then name if this user will be shown.
+    /// If contact or list was shared by another sub-account then name if this user will be shown.
     /// </summary>
     utility::string_t getSharedBy() const;
         void setSharedBy(utility::string_t value);
