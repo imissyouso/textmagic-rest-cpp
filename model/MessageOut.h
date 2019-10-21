@@ -167,62 +167,6 @@ public:
     bool fromNumberIsSet() const;
     void unsetFromNumber();
     void setFromNumber(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getSmscId() const;
-    bool smscIdIsSet() const;
-    void unsetSmscId();
-    void setSmscId(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getContact() const;
-    bool contactIsSet() const;
-    void unsetContact();
-    void setContact(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getSource() const;
-    bool sourceIsSet() const;
-    void unsetSource();
-    void setSource(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getDeliveredCount() const;
-    bool deliveredCountIsSet() const;
-    void unsetDeliveredCount();
-    void setDeliveredCount(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getNumbersCount() const;
-    bool numbersCountIsSet() const;
-    void unsetNumbersCount();
-    void setNumbersCount(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getUserId() const;
-    bool userIdIsSet() const;
-    void unsetUserId();
-    void setUserId(int32_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getCreditsPrice() const;
-    bool creditsPriceIsSet() const;
-    void unsetCreditsPrice();
-    void setCreditsPrice(utility::string_t value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getChars() const;
-    bool charsIsSet() const;
-    void unsetChars();
-    void setChars(int32_t value);
 
 protected:
     int32_t m_Id;
@@ -252,22 +196,6 @@ protected:
     bool m_FromEmailIsSet;
     utility::string_t m_FromNumber;
     bool m_FromNumberIsSet;
-    utility::string_t m_SmscId;
-    bool m_SmscIdIsSet;
-    utility::string_t m_Contact;
-    bool m_ContactIsSet;
-    utility::string_t m_Source;
-    bool m_SourceIsSet;
-    int32_t m_DeliveredCount;
-    bool m_DeliveredCountIsSet;
-    int32_t m_NumbersCount;
-    bool m_NumbersCountIsSet;
-    int32_t m_UserId;
-    bool m_UserIdIsSet;
-    utility::string_t m_CreditsPrice;
-    bool m_CreditsPriceIsSet;
-    int32_t m_Chars;
-    bool m_CharsIsSet;
 };
 
 }

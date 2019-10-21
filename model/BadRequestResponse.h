@@ -13,7 +13,7 @@
 /*
  * BadRequestResponse.h
  *
- * Returned when the form has errors
+ * Returned when input data validation process has been failed.
  */
 
 #ifndef COM_TEXTMAGIC_CLIENT_MODEL_BadRequestResponse_H_
@@ -31,7 +31,7 @@ namespace client {
 namespace model {
 
 /// <summary>
-/// Returned when the form has errors
+/// Returned when input data validation process has been failed.
 /// </summary>
 class  BadRequestResponse
     : public ModelBase
@@ -55,7 +55,7 @@ public:
     /// BadRequestResponse members
 
     /// <summary>
-    /// HTTP error code.
+    /// Error code. Meanings of error codes are similar to [HTTP response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
     /// </summary>
     int32_t getCode() const;
     bool codeIsSet() const;

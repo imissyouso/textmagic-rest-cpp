@@ -73,7 +73,6 @@
 #include "GetContactsPaginatedResponse.h"
 #include "GetCountriesResponse.h"
 #include "GetCustomFieldsPaginatedResponse.h"
-#include "GetDisallowedRulesResponse.h"
 #include "GetFavouritesPaginatedResponse.h"
 #include "GetInboundMessagesNotificationSettingsResponse.h"
 #include "GetInvoicesPaginatedResponse.h"
@@ -1005,14 +1004,6 @@ public:
     /// <param name="id"></param>
     pplx::task<std::shared_ptr<UsersInbound>> getDedicatedNumber(
         int32_t id
-    );
-    /// <summary>
-    /// Get disallowed permissions
-    /// </summary>
-    /// <remarks>
-    /// Get an array of all rules that are disallowed to the current account.
-    /// </remarks>
-    pplx::task<std::shared_ptr<GetDisallowedRulesResponse>> getDisallowedRules(
     );
     /// <summary>
     /// Get favorite contacts and lists

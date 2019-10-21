@@ -136,10 +136,10 @@ public:
     /// <summary>
     /// iCal RRULE parameter to create recurrent scheduled messages. When used, sendingTime is mandatory as start point of sending. See https://www.textmagic.com/free-tools/rrule-generator for format details.
     /// </summary>
-    utility::string_t getRule() const;
-    bool ruleIsSet() const;
-    void unsetRule();
-    void setRule(utility::string_t value);
+    utility::string_t getRrule() const;
+    bool rruleIsSet() const;
+    void unsetRrule();
+    void setRrule(utility::string_t value);
     /// <summary>
     /// Should sending method try to create new Chat(if not exist) with specified recipients.
     /// </summary>
@@ -192,8 +192,8 @@ protected:
     bool m_ReferenceIdIsSet;
     utility::string_t m_From;
     bool m_FromIsSet;
-    utility::string_t m_Rule;
-    bool m_RuleIsSet;
+    utility::string_t m_Rrule;
+    bool m_RruleIsSet;
     bool m_CreateChat;
     bool m_CreateChatIsSet;
     bool m_Tts;

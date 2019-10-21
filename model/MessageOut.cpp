@@ -48,22 +48,6 @@ MessageOut::MessageOut()
     m_FromEmailIsSet = false;
     m_FromNumber = utility::conversions::to_string_t("");
     m_FromNumberIsSet = false;
-    m_SmscId = utility::conversions::to_string_t("");
-    m_SmscIdIsSet = false;
-    m_Contact = utility::conversions::to_string_t("");
-    m_ContactIsSet = false;
-    m_Source = utility::conversions::to_string_t("");
-    m_SourceIsSet = false;
-    m_DeliveredCount = 0;
-    m_DeliveredCountIsSet = false;
-    m_NumbersCount = 0;
-    m_NumbersCountIsSet = false;
-    m_UserId = 0;
-    m_UserIdIsSet = false;
-    m_CreditsPrice = utility::conversions::to_string_t("");
-    m_CreditsPriceIsSet = false;
-    m_Chars = 0;
-    m_CharsIsSet = false;
 }
 
 MessageOut::~MessageOut()
@@ -119,38 +103,6 @@ web::json::value MessageOut::toJson() const
     if(m_FromNumberIsSet)
     {
         val[utility::conversions::to_string_t("fromNumber")] = ModelBase::toJson(m_FromNumber);
-    }
-    if(m_SmscIdIsSet)
-    {
-        val[utility::conversions::to_string_t("smscId")] = ModelBase::toJson(m_SmscId);
-    }
-    if(m_ContactIsSet)
-    {
-        val[utility::conversions::to_string_t("contact")] = ModelBase::toJson(m_Contact);
-    }
-    if(m_SourceIsSet)
-    {
-        val[utility::conversions::to_string_t("source")] = ModelBase::toJson(m_Source);
-    }
-    if(m_DeliveredCountIsSet)
-    {
-        val[utility::conversions::to_string_t("deliveredCount")] = ModelBase::toJson(m_DeliveredCount);
-    }
-    if(m_NumbersCountIsSet)
-    {
-        val[utility::conversions::to_string_t("numbersCount")] = ModelBase::toJson(m_NumbersCount);
-    }
-    if(m_UserIdIsSet)
-    {
-        val[utility::conversions::to_string_t("userId")] = ModelBase::toJson(m_UserId);
-    }
-    if(m_CreditsPriceIsSet)
-    {
-        val[utility::conversions::to_string_t("creditsPrice")] = ModelBase::toJson(m_CreditsPrice);
-    }
-    if(m_CharsIsSet)
-    {
-        val[utility::conversions::to_string_t("chars")] = ModelBase::toJson(m_Chars);
     }
 
     return val;
@@ -318,70 +270,6 @@ void MessageOut::fromJson(web::json::value& val)
             setFromNumber(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("smscId")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("smscId")];
-        if(!fieldValue.is_null())
-        {
-            setSmscId(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("contact")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("contact")];
-        if(!fieldValue.is_null())
-        {
-            setContact(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("source")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("source")];
-        if(!fieldValue.is_null())
-        {
-            setSource(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("deliveredCount")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("deliveredCount")];
-        if(!fieldValue.is_null())
-        {
-            setDeliveredCount(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("numbersCount")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("numbersCount")];
-        if(!fieldValue.is_null())
-        {
-            setNumbersCount(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("userId")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("userId")];
-        if(!fieldValue.is_null())
-        {
-            setUserId(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("creditsPrice")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("creditsPrice")];
-        if(!fieldValue.is_null())
-        {
-            setCreditsPrice(ModelBase::stringFromJson(fieldValue));
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t("chars")))
-    {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("chars")];
-        if(!fieldValue.is_null())
-        {
-            setChars(ModelBase::int32_tFromJson(fieldValue));
-        }
-    }
 }
 
 void MessageOut::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
@@ -438,42 +326,6 @@ void MessageOut::toMultipart(std::shared_ptr<MultipartFormData> multipart, const
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("fromNumber"), m_FromNumber));
         
     }
-    if(m_SmscIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("smscId"), m_SmscId));
-        
-    }
-    if(m_ContactIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("contact"), m_Contact));
-        
-    }
-    if(m_SourceIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("source"), m_Source));
-        
-    }
-    if(m_DeliveredCountIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("deliveredCount"), m_DeliveredCount));
-    }
-    if(m_NumbersCountIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("numbersCount"), m_NumbersCount));
-    }
-    if(m_UserIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("userId"), m_UserId));
-    }
-    if(m_CreditsPriceIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("creditsPrice"), m_CreditsPrice));
-        
-    }
-    if(m_CharsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("chars"), m_Chars));
-    }
 }
 
 void MessageOut::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -524,38 +376,6 @@ void MessageOut::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, con
     if(multipart->hasContent(utility::conversions::to_string_t("fromNumber")))
     {
         setFromNumber(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("fromNumber"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("smscId")))
-    {
-        setSmscId(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("smscId"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("contact")))
-    {
-        setContact(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("contact"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("source")))
-    {
-        setSource(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("source"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("deliveredCount")))
-    {
-        setDeliveredCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("deliveredCount"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("numbersCount")))
-    {
-        setNumbersCount(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("numbersCount"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("userId")))
-    {
-        setUserId(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("userId"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("creditsPrice")))
-    {
-        setCreditsPrice(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("creditsPrice"))));
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t("chars")))
-    {
-        setChars(ModelBase::int32_tFromHttpContent(multipart->getContent(utility::conversions::to_string_t("chars"))));
     }
 }
 
@@ -847,174 +667,6 @@ bool MessageOut::fromNumberIsSet() const
 void MessageOut::unsetFromNumber()
 {
     m_FromNumberIsSet = false;
-}
-
-utility::string_t MessageOut::getSmscId() const
-{
-    return m_SmscId;
-}
-
-
-void MessageOut::setSmscId(utility::string_t value)
-{
-    m_SmscId = value;
-    m_SmscIdIsSet = true;
-}
-bool MessageOut::smscIdIsSet() const
-{
-    return m_SmscIdIsSet;
-}
-
-void MessageOut::unsetSmscId()
-{
-    m_SmscIdIsSet = false;
-}
-
-utility::string_t MessageOut::getContact() const
-{
-    return m_Contact;
-}
-
-
-void MessageOut::setContact(utility::string_t value)
-{
-    m_Contact = value;
-    m_ContactIsSet = true;
-}
-bool MessageOut::contactIsSet() const
-{
-    return m_ContactIsSet;
-}
-
-void MessageOut::unsetContact()
-{
-    m_ContactIsSet = false;
-}
-
-utility::string_t MessageOut::getSource() const
-{
-    return m_Source;
-}
-
-
-void MessageOut::setSource(utility::string_t value)
-{
-    m_Source = value;
-    m_SourceIsSet = true;
-}
-bool MessageOut::sourceIsSet() const
-{
-    return m_SourceIsSet;
-}
-
-void MessageOut::unsetSource()
-{
-    m_SourceIsSet = false;
-}
-
-int32_t MessageOut::getDeliveredCount() const
-{
-    return m_DeliveredCount;
-}
-
-
-void MessageOut::setDeliveredCount(int32_t value)
-{
-    m_DeliveredCount = value;
-    m_DeliveredCountIsSet = true;
-}
-bool MessageOut::deliveredCountIsSet() const
-{
-    return m_DeliveredCountIsSet;
-}
-
-void MessageOut::unsetDeliveredCount()
-{
-    m_DeliveredCountIsSet = false;
-}
-
-int32_t MessageOut::getNumbersCount() const
-{
-    return m_NumbersCount;
-}
-
-
-void MessageOut::setNumbersCount(int32_t value)
-{
-    m_NumbersCount = value;
-    m_NumbersCountIsSet = true;
-}
-bool MessageOut::numbersCountIsSet() const
-{
-    return m_NumbersCountIsSet;
-}
-
-void MessageOut::unsetNumbersCount()
-{
-    m_NumbersCountIsSet = false;
-}
-
-int32_t MessageOut::getUserId() const
-{
-    return m_UserId;
-}
-
-
-void MessageOut::setUserId(int32_t value)
-{
-    m_UserId = value;
-    m_UserIdIsSet = true;
-}
-bool MessageOut::userIdIsSet() const
-{
-    return m_UserIdIsSet;
-}
-
-void MessageOut::unsetUserId()
-{
-    m_UserIdIsSet = false;
-}
-
-utility::string_t MessageOut::getCreditsPrice() const
-{
-    return m_CreditsPrice;
-}
-
-
-void MessageOut::setCreditsPrice(utility::string_t value)
-{
-    m_CreditsPrice = value;
-    m_CreditsPriceIsSet = true;
-}
-bool MessageOut::creditsPriceIsSet() const
-{
-    return m_CreditsPriceIsSet;
-}
-
-void MessageOut::unsetCreditsPrice()
-{
-    m_CreditsPriceIsSet = false;
-}
-
-int32_t MessageOut::getChars() const
-{
-    return m_Chars;
-}
-
-
-void MessageOut::setChars(int32_t value)
-{
-    m_Chars = value;
-    m_CharsIsSet = true;
-}
-bool MessageOut::charsIsSet() const
-{
-    return m_CharsIsSet;
-}
-
-void MessageOut::unsetChars()
-{
-    m_CharsIsSet = false;
 }
 
 }

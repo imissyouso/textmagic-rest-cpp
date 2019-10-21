@@ -13,7 +13,7 @@
 /*
  * ResourceLinkResponse.h
  *
- * 
+ * Response contains paginated list of data items.
  */
 
 #ifndef COM_TEXTMAGIC_CLIENT_MODEL_ResourceLinkResponse_H_
@@ -30,7 +30,7 @@ namespace client {
 namespace model {
 
 /// <summary>
-/// 
+/// Response contains paginated list of data items.
 /// </summary>
 class  ResourceLinkResponse
     : public ModelBase

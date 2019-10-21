@@ -43,8 +43,8 @@ SendMessageInputObject::SendMessageInputObject()
     m_ReferenceIdIsSet = false;
     m_From = utility::conversions::to_string_t("");
     m_FromIsSet = false;
-    m_Rule = utility::conversions::to_string_t("");
-    m_RuleIsSet = false;
+    m_Rrule = utility::conversions::to_string_t("");
+    m_RruleIsSet = false;
     m_CreateChat = false;
     m_CreateChatIsSet = false;
     m_Tts = false;
@@ -110,9 +110,9 @@ web::json::value SendMessageInputObject::toJson() const
     {
         val[utility::conversions::to_string_t("from")] = ModelBase::toJson(m_From);
     }
-    if(m_RuleIsSet)
+    if(m_RruleIsSet)
     {
-        val[utility::conversions::to_string_t("rule")] = ModelBase::toJson(m_Rule);
+        val[utility::conversions::to_string_t("rrule")] = ModelBase::toJson(m_Rrule);
     }
     if(m_CreateChatIsSet)
     {
@@ -232,12 +232,12 @@ void SendMessageInputObject::fromJson(web::json::value& val)
             setFrom(ModelBase::stringFromJson(fieldValue));
         }
     }
-    if(val.has_field(utility::conversions::to_string_t("rule")))
+    if(val.has_field(utility::conversions::to_string_t("rrule")))
     {
-        web::json::value& fieldValue = val[utility::conversions::to_string_t("rule")];
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("rrule")];
         if(!fieldValue.is_null())
         {
-            setRule(ModelBase::stringFromJson(fieldValue));
+            setRrule(ModelBase::stringFromJson(fieldValue));
         }
     }
     if(val.has_field(utility::conversions::to_string_t("createChat")))
@@ -329,9 +329,9 @@ void SendMessageInputObject::toMultipart(std::shared_ptr<MultipartFormData> mult
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("from"), m_From));
         
     }
-    if(m_RuleIsSet)
+    if(m_RruleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("rule"), m_Rule));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("rrule"), m_Rrule));
         
     }
     if(m_CreateChatIsSet)
@@ -403,9 +403,9 @@ void SendMessageInputObject::fromMultiPart(std::shared_ptr<MultipartFormData> mu
     {
         setFrom(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("from"))));
     }
-    if(multipart->hasContent(utility::conversions::to_string_t("rule")))
+    if(multipart->hasContent(utility::conversions::to_string_t("rrule")))
     {
-        setRule(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("rule"))));
+        setRrule(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("rrule"))));
     }
     if(multipart->hasContent(utility::conversions::to_string_t("createChat")))
     {
@@ -657,25 +657,25 @@ void SendMessageInputObject::unsetFrom()
     m_FromIsSet = false;
 }
 
-utility::string_t SendMessageInputObject::getRule() const
+utility::string_t SendMessageInputObject::getRrule() const
 {
-    return m_Rule;
+    return m_Rrule;
 }
 
 
-void SendMessageInputObject::setRule(utility::string_t value)
+void SendMessageInputObject::setRrule(utility::string_t value)
 {
-    m_Rule = value;
-    m_RuleIsSet = true;
+    m_Rrule = value;
+    m_RruleIsSet = true;
 }
-bool SendMessageInputObject::ruleIsSet() const
+bool SendMessageInputObject::rruleIsSet() const
 {
-    return m_RuleIsSet;
+    return m_RruleIsSet;
 }
 
-void SendMessageInputObject::unsetRule()
+void SendMessageInputObject::unsetRrule()
 {
-    m_RuleIsSet = false;
+    m_RruleIsSet = false;
 }
 
 bool SendMessageInputObject::isCreateChat() const

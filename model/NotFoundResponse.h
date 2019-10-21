@@ -13,7 +13,7 @@
 /*
  * NotFoundResponse.h
  *
- * 
+ * Returned when requested entity was not found.
  */
 
 #ifndef COM_TEXTMAGIC_CLIENT_MODEL_NotFoundResponse_H_
@@ -30,7 +30,7 @@ namespace client {
 namespace model {
 
 /// <summary>
-/// 
+/// Returned when requested entity was not found.
 /// </summary>
 class  NotFoundResponse
     : public ModelBase
@@ -54,14 +54,14 @@ public:
     /// NotFoundResponse members
 
     /// <summary>
-    /// 
+    /// Error code. Meanings of error codes are similar to [HTTP response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
     /// </summary>
     int32_t getCode() const;
     bool codeIsSet() const;
     void unsetCode();
     void setCode(int32_t value);
     /// <summary>
-    /// 
+    /// Brief error message. You could display this message to your user or save it in a log.
     /// </summary>
     utility::string_t getMessage() const;
     bool messageIsSet() const;
